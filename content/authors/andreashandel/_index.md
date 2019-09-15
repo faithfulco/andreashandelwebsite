@@ -74,6 +74,11 @@ bio = ""
   icon_pack = "fas"
   link = "http://handelgroup.uga.edu/authors/andreashandel/"
 
+[[social]]
+  icon = "impactstory"
+  icon_pack = "ai"
+  link = "https://profiles.impactstory.org/u/0000-0002-4622-1146"
+
 +++
 
 #### Short Academic Bio
