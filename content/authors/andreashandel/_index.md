@@ -24,27 +24,27 @@ education:
     institution: University of Stuttgart
     year: 1996-1999
 social:
-- icon: google-scholar
-  icon_pack: ai
-  link: http://scholar.google.com/citations?user=bruHK0YAAAAJ&hl=en
-- icon: twitter
-  icon_pack: fab
-  link: https://twitter.com/andreashandel
+- icon: globe
+  icon_pack: fas
+  link: https://www.andreashandel.com
 - icon: github
   icon_pack: fab
   link: https://github.com/andreashandel
+- icon: twitter
+  icon_pack: fab
+  link: https://twitter.com/andreashandel
+- icon: linkedin-in
+  icon_pack: fab
+  link: https://www.linkedin.com/in/andreashandel/
+- icon: google-scholar
+  icon_pack: ai
+  link: http://scholar.google.com/citations?user=bruHK0YAAAAJ&hl=en
 - icon: impactstory
   icon_pack: ai
   link: https://impactstory.org/u/0000-0002-4622-1146
 - icon: orcid
   icon_pack: ai
   link: http://orcid.org/0000-0002-4622-1146
-- icon: linkedin-in
-  icon_pack: fab
-  link: https://www.linkedin.com/in/andreashandel/
-- icon: globe
-  icon_pack: fas
-  link: https://www.andreashandel.com
 # Organizational groups that you belong to (for People widget)
 #   Set this to `[]` or comment out if you are not using People widget.  
 user_groups:
