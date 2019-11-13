@@ -27,6 +27,8 @@ push to github. Netlify will automatically build and serve site.
 # Post ideas
 * website/blogdown post
 * MADA online course setup/experiences
+* gh_class package to manage class with github
+* general github workflow for classes
 * conceputal thought of usefulness of certain teaching aids like metaphors/examples/jokes that might confuse-enlighten or disengage-engage
 
 
