@@ -1,14 +1,13 @@
 ---
 title: Started website
 author: ~
-date: '2019-11-07'
+date: '2019-09-07'
 slug: started-website
 categories: []
 tags: []
 subtitle: ''
 summary: ''
 authors: []
-lastmod: '2019-11-07T07:52:14-05:00'
 featured: no
 image:
   caption: ''

@@ -3,10 +3,10 @@
 title = "Modern Applied Data Analysis Course"
 
 # Date this page was created.
-date = 2019-03-15
+date = 2019-09-15
 
 # Project summary to display on homepage.
-summary = "An online course covering ..."
+summary = "Complete materials of an online course I teach."
 
 # Tags: can be used for filtering projects.
 tags = ["Data Analysis", "Teaching", "Course"]
@@ -26,6 +26,4 @@ url_custom = [{icon_pack = "fab", icon="github", name="Course Site", url = "http
   focal_point = "Smart"
 +++
 
-
-
-You can find the course [on this site](https://andreashandel.github.io/MADAcourse/).
+Modern Applied Data Analysis (MADA) is a course I regularly teach online. All course materials are available in the form of a simple GitHub website and can be used by anyone for self-learning. You can find the course [on this site](https://andreashandel.github.io/MADAcourse/).
