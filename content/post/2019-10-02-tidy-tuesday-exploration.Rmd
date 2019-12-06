@@ -28,7 +28,7 @@ knitr::opts_chunk$set(echo = TRUE)
 A novel study of pizza restaurants in the US found a clear, statistically significant correlation between the distance of the restaurant to Naples and the quality of the pizza as determined by the community and expert restaurant critics. The study authors attribute the finding to the ability of restaurants that are closer to Naples to more easily get genuine fresh and high quality ingredients, such as the famous San Marzano tomatoes.
 
 ```{r show-plot-naples-distance, echo = FALSE, warning=FALSE, fig.align='center'}
-knitr::include_graphics("pizzadistance.png")
+knitr::include_graphics("./pizzadistance.png")
 ```
 
 
@@ -308,7 +308,7 @@ It is signficant, p<0.05! We hit pay dirt! Let's make a great looking figure and
 #make final plot
 p1 <- d2 %>%  ggplot(aes(x=distvec, y = all_score)) + geom_point(shape = 21, colour = "black", fill = "red",  size = 2 ) + geom_smooth(method = 'lm', se = TRUE, color = "darkgreen", size = 2) + xlab('Distance from Naples (miles)') + ylab('Pizza Quality (score)') + ylim(c(2.5,max(d2$all_score))) + theme_bw() +theme(axis.text=element_text(size=12), axis.title=element_text(size=14,face="bold")) + annotate("text", x=6000, y=9, label= paste("p =",round(pval,4)),size = 12) 
 ggsave('pizzadistance.png')
-knitr::include_graphics("pizzadistance.png")
+knitr::include_graphics("./pizzadistance.png")
 ```
 
 
