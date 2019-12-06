@@ -3,7 +3,7 @@
 title = "Modern Applied Data Analysis Course"
 
 # Date this page was created.
-date = 2019-09-15
+date = 2019-01-15
 
 # Project summary to display on homepage.
 summary = "Complete materials of an online course I teach."

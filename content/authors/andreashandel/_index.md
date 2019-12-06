@@ -58,8 +58,6 @@ user_groups:
 I am currently an Associate Professor in the [Department of Epidemiology and Biostatistics](http://www.publichealth.uga.edu/epibio/),
 [College of Public Health](http://www.publichealth.uga.edu/), at the [University of Georgia (UGA)](http://www.uga.edu/). I also serve as Associate Department Head and Graduate Coordinator and as Director of the Health Systems Modeling Core of UGA's [Health Informatics Institute](http://hii.publichealth.uga.edu/).
 
-I have adjunct appointments in UGA's [Department of Infectious Diseases](http://www.vet.uga.edu/id/), [School of Ecology](https://www.ecology.uga.edu/), and Emory University's [Department of Epidemiology](https://www.sph.emory.edu/departments/epi/index.html). 
-
-My research focuses on data analysis and modeling to study the spread and control of infectious diseases, mainly influenza, tuberculosis and norovirus. You can learn more about the work done in my group [on the research group site](http://handelgroup.uga.edu/). For other activities (e.g. teaching and presentation), see [my website](https://www.andreashandel.com) (which I host separately from the research group site). 
+My research focuses on data analysis and modeling to study the spread and control of infectious diseases, mainly influenza, tuberculosis and norovirus. You can learn more about this work [on my research group site](http://handelgroup.uga.edu/). Information on other activities (teaching, presentations, blog posts, etc.), can be found on this website. 
 
 
