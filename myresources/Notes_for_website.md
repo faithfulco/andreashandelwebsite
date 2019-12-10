@@ -22,7 +22,7 @@ push to github. Netlify will automatically build and serve site.
 
 
 # To-do
-
+* do some SEO once site is finished
 
 # Post ideas
 * how to set up a website with blogdown/hugo 
