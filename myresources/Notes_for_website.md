@@ -30,5 +30,9 @@ push to github. Netlify will automatically build and serve site.
 * gh_class package to manage class with github
 * general github workflow for classes
 * conceputal thought of usefulness of certain teaching aids like metaphors/examples/jokes that might confuse-enlighten or disengage-engage
+* how to 'build your brand' (online presence, website, google scholar, research gate)
+http://blog.impactstory.org/wp-content/uploads/2015/01/impact_challenge_ebook_links.pdf
+* how to 'stay up with the literature'
+
 
 
