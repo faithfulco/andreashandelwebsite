@@ -2,14 +2,14 @@
 # Contact widget.
 widget = "contact"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
-active = false  # Activate this widget? true/false
+active = true  # Activate this widget? true/false
 weight = 130  # Order that this section will appear.
 
-title = "Contact"
+title = "Get in touch"
 subtitle = ""
 
 # Automatically link email and phone?
-autolink = true
+autolink = false
 
 # Email form provider
 #   0: Disable email form
@@ -18,3 +18,4 @@ autolink = true
 email_form = 2
 +++
 
+If for some reason this form does not work for you, it should be fairly easy to find my email address online.

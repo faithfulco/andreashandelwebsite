@@ -9,7 +9,7 @@ date = 2019-03-15
 summary = "R package that allows building and analysis of dynamical models without the need to write code."
 
 # Tags: can be used for filtering projects.
-tags = ["Mechanistic Models", "R Package", "Teaching Resource"]
+tags = ["Mechanistic Models", "R Package", "Teaching Resource","software"]
 
 # Custom links (optional).
 #   Uncomment line below to enable. For multiple links, use the form `[{...}, {...}, {...}]`.

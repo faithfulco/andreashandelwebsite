@@ -9,7 +9,10 @@ date = 2019-03-01
 summary = "R package that teaches modern infectious disease epidemiology in a user-friendly way."
 
 # Tags: can be used for filtering projects.
-tags = ["Infectious Disease Models", "R Package", "Teaching Resource"]
+tags = ["Infectious Disease Models", "R Package", "Teaching Resource", "software"]
+
+categories = ["software"]
+
 
 # Custom links (optional).
 #   Uncomment line below to enable. For multiple links, use the form `[{...}, {...}, {...}]`.

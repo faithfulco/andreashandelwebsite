@@ -9,7 +9,8 @@ date = 2019-03-07
 summary = "R package that teaches modeeling for within-host infection and immunology."
 
 # Tags: can be used for filtering projects.
-tags = ["Within-host Models", "R Package", "Teaching Resource"]
+tags = ["Within-host Models", "R Package", "Teaching Resource","software"]
+categories = ["software"]
 
 # Custom links (optional).
 #   Uncomment line below to enable. For multiple links, use the form `[{...}, {...}, {...}]`.

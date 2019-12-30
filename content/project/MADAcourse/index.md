@@ -9,7 +9,7 @@ date = 2019-01-15
 summary = "Complete materials of an online course I teach."
 
 # Tags: can be used for filtering projects.
-tags = ["Data Analysis", "Teaching", "Course"]
+tags = ["Data Analysis", "Teaching", "course"]
 
 # Custom links (optional).
 #   Uncomment line below to enable. For multiple links, use the form `[{...}, {...}, {...}]`.
