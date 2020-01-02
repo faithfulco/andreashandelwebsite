@@ -30,11 +30,11 @@ subtitle = ""
     tag = "software"
   
   [[content.filter_button]]
-    name = "Course"
+    name = "Courses"
     tag = "course"
     
   [[content.filter_button]]
-    name = "Book"
+    name = "Books"
     tag = "book"
 
 [design]

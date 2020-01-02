@@ -26,6 +26,8 @@ url_custom = [{icon_pack = "fab", icon="github", name="Course Site", url = "http
   focal_point = "Smart"
 +++
 
-This is an online draft of a book convering infectious disease epidemiology from a dynamical systems perspective. It is fairly readable and complete enough that I use it when I teach a course on that topic. It is however not thoroughly fact-checked, error-corrected, properly referenced, etc. While I have been considering the idea of turning this into a full/real book, in my current thinking the cost-benefit analysis doesn't pan out. I thus plan to leave it online for free as is, with occasional updates and fixes, but without an attempt to make it polished and complete enough for a printed book.
+[An online draft of a book convering infectious disease epidemiology from a dynamical systems perspective.](https://ahgroup.github.io/DSAIDEbook/) 
+
+The draft is fairly readable and complete enough that I use it when I teach a course on that topic. It is however not thoroughly fact-checked, error-corrected, properly referenced, etc. While I have been considering the idea of turning this into a full/real book, in my current thinking the cost-benefit analysis doesn't pan out. I thus plan to leave it online for free as is, with occasional updates and fixes, but without an attempt to make it polished and complete enough for a printed book.
 
 

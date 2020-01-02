@@ -1,10 +1,22 @@
 ---
 title: "Analysis of pizza restaurants (TidyTuesday exercise)"
-author: "Andreas Handel"
-date: "10/2/2019"
+subtitle: Using blogdown, Hugo, GitHub and Netlify
+author: ~
+date: '2019-10-02'
+slug: blogdown-website
+categories: []
+tags: []
+summary: ''
+lastmod: '2019-12-19T18:02:57-04:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
 output: 
   html_document:
     toc_depth: 3
+projects: []
 ---
 
 ```{r setup, include=FALSE}
