@@ -1,13 +1,14 @@
 ---
-title: Creating a website in less than 1 hour
+title: Creating a website in less than 1 hour - part 2
 subtitle: Part 2 - adding GitHub to the workflow
 author: Andreas Handel
-date: '2019-09-19'
+draft: true
+date: '2019-01-04'
 slug: blogdown-website
 categories: []
 tags: []
 summary: ''
-lastmod: '2019-09-19T18:02:57-04:00'
+lastmod: '2020-01-04'
 featured: no
 disable_jquery: no
 image:
