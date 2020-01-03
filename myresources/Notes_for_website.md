@@ -9,7 +9,7 @@
 * /themes folder should contain the /academic theme/folder with all subfolders. Update that to new version as needed.
 
 # Things to remember
-* Website icon: Save your desktop and mobile icons as square PNG images named icon-32.png (32x32 pixels), icon-192.png (192x192 pixels), and icon-512.png (512x512 pixels) respectively. Place them in your root static/img/ folder.
+* Save your icon as a square 512x512 pixel image named icon.png and place the image in your root assets/images/ folder, creating the assets and images folders if they don't already exist. (https://sourcethemes.com/academic/docs/customization/)
 
 
 # To work on site
@@ -21,13 +21,12 @@ run blogdown::build_site()
 
 # To deploy site
 push to github. Netlify will automatically build and serve site.
-
+Note that it's important to run build_site() since Hugo/Netlify only do part of the building (they don't process Rmd files)
 
 # To-do
 * do some SEO once site is finished
 
 # Post ideas
-* how to set up a website with blogdown/hugo 
 * MADA online course setup/experiences (mention 'date changed in yaml')
 * gh_class package to manage class with github
 * general github workflow for classes
