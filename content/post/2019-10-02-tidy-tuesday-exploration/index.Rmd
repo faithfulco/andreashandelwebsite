@@ -1,13 +1,12 @@
 ---
 title: "Analysis of pizza restaurants (TidyTuesday exercise)"
-subtitle: Using blogdown, Hugo, GitHub and Netlify
-author: ~
+author: Andreas Handel
 date: '2019-10-02'
-slug: blogdown-website
+slug: tidytuesday-analysis
 categories: []
 tags: []
 summary: ''
-lastmod: '2019-12-19T18:02:57-04:00'
+lastmod: '2019-12-19'
 featured: no
 image:
   caption: ''
@@ -23,20 +22,9 @@ projects: []
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Overview
-This analysis was performed as part of an exercise for my [Modern Applied Data Analysis course](https://andreashandel.github.io/MADAcourse/). When I taught the course in fall 2019, students were assigned to participate in [TidyTuesday](https://github.com/rfordatascience/tidytuesday) as their weekly project. I did the exercise as well, this is my product. The code which produced this website is [here](https://github.com/andreashandel/tidytuesday-2019-10).
+This analysis was performed as part of an exercise for my [Modern Applied Data Analysis course](https://andreashandel.github.io/MADAcourse/). 
 
-
-# The "press release"
-
-A novel study of pizza restaurants in the US found a clear, statistically significant correlation between the distance of the restaurant to Naples and the quality of the pizza as determined by the community and expert restaurant critics. The study authors attribute the finding to the ability of restaurants that are closer to Naples to more easily get genuine fresh and high quality ingredients, such as the famous San Marzano tomatoes.
-
-```{r show-plot-naples-distance, echo = FALSE, warning=FALSE, fig.align='center'}
-knitr::include_graphics("pizzadistance.png")
-```
-
-
-**Ok, now if you want to learn more and see what actually happened, read on...**
+When I taught the course in fall 2019, one of the weekly assignments for the students was to participate in [TidyTuesday](https://github.com/rfordatascience/tidytuesday). I did the exercise as well, this is my product. You can get the R Markdown file to re-run the analysis [here](index.Rmd).
 
 
 # Introduction
@@ -312,16 +300,25 @@ ggsave('pizzadistance.png')
 knitr::include_graphics("pizzadistance.png")
 ```
 
+# The "press release"
+
+A novel study of pizza restaurants in the US found a clear, statistically significant correlation between the distance of the restaurant to Naples and the quality of the pizza as determined by the community and expert restaurant critics. The study authors attribute the finding to the ability of restaurants that are closer to Naples to more easily get genuine fresh and high quality ingredients, such as the famous San Marzano tomatoes.
+
+```{r show-plot-naples-distance, echo = FALSE, warning=FALSE, fig.align='center'}
+knitr::include_graphics("pizzadistance.png")
+```
+
+
 
 # Summary
 
-That was a fun exploration. First time I played with the tidyverse data. I had no idea which direction it was going to go, and ideas just came as I was doing it. I'm sure there is interesting stuff in datasets 1 and 3 as well, but I already spent several hours on this and will therefore call it quits now.
+That was a fun exploration. It was the first time I played with the tidyverse data. I had no idea which direction it was going to go, and ideas just came as I was doing it. I'm sure there is interesting stuff in datasets 1 and 3 as well, but I already spent several hours on this and will therefore call it quits now.
 
 While the exercise was supposed to focus on cleaning/wrangling and visualizing, I couldn't resist going all the way at the end and producing a **statistically significant** and **somewhat plausible sounding** finding. If this were a "real" study/analysis, such a nice result would be happily accepted by most analysts/authors, hyped by a university press release and - if the result is somewhat interesting/cute, picked up by various media outlets.
 
 I had no idea at the beginning what I was going to analyze, I did that longitude/latitude analysis on a whim, and if I hadn't found this correlation and had that crazy _distance to Italy_ idea, nothing would have happened. But now that I have a **significant** result and a good story to go with, I can publish! It's not really much sillier than the [Chocolate and Nobel Laureates paper](https://www.nejm.org/doi/full/10.1056/NEJMon1211064) paper [we discussed here](https://andreashandel.github.io/MADAcourse/4a_Data_Analysis_Overview.html).
 
-What I illustrated here (without having had any plan to do so), is a big, general problem in secondary data analysis. It's perfectly ok to do secondary analyses, but selling exploratory (fishing) results as inferential/causal/confirmatory is wrong - and incredibly widespread. If you want to sharpen your critical thinking skills related to all those supposed significant and _real_ findings in science we see a lot, a great (though at times sobering) read is [Andrew Gelman's blog](https://statmodeling.stat.columbia.edu/) where he regularly picks apart studies/results like the one I did here or the chocolate and Nobel laureates one. And now I'll go eat some chocolate so I can increase my chances for a Nobel prize.
+What I illustrated here (without having had any plan to do so), is a big, general problem in secondary data analysis. It's perfectly ok to do secondary analyses, and computing significance is also (kinda) ok, but selling exploratory (fishing) results as inferential/causal/confirmatory is wrong - and incredibly widespread. If you want to sharpen your critical thinking skills related to all those supposed significant and _real_ findings in science we see a lot, a great (though at times sobering) read is [Andrew Gelman's blog](https://statmodeling.stat.columbia.edu/) where he regularly picks apart studies/results like the one I did here or the chocolate and Nobel laureates one. And now I'll go eat some chocolate so I can increase my chances for a Nobel prize.
 
 
 

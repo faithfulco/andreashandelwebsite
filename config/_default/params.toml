@@ -9,7 +9,6 @@
 #   Latest themes (may require updating): https://sourcethemes.com/academic/themes/
 #   Browse built-in themes in `themes/academic/data/themes/`
 #   Browse user installed themes in `data/themes/`
-# theme = "mythemes" #a modified version of Allison's theme
 theme = "minimal"
 
 # Enable users to switch between day and night mode?
@@ -19,8 +18,7 @@ day_night = true
 #   Latest font sets (may require updating): https://sourcethemes.com/academic/themes/
 #   Browse built-in font sets in `themes/academic/data/fonts/`
 #   Browse user installed font sets in `data/fonts/`
-# font = "myfonts"
-font = "minimal"
+font = ""
 
 # Choose a font size.
 # Sizes: XS (extra small), S (small), M (medium), L (large - DEFAULT), XL (extra large)
@@ -48,10 +46,6 @@ org_name = ""
 # Description for social sharing and search engines. If undefined, superuser role is used in place.
 description = ""
 
-# Display a logo in navigation bar rather than title (optional).
-#   To enable, place an image in `static/img/` and reference its filename below. To disable, set the value to "".
-logo = ""
-
 ############################
 ## Site Features
 ############################
@@ -77,7 +71,7 @@ privacy_pack = false
 
 # Enable visitors to edit pages?
 #   `repo` defines the repository URL. `editable` defines which page types can be edited.
-edit_page = {repo_url = "https://github.com/gcushen/hugo-academic", repo_branch = "master", editable = {docs = true, page = false, post = false}}
+edit_page = {repo_url = "https://github.com/gcushen/hugo-academic", content_dir = "", repo_branch = "master", editable = {docs = true, page = false, post = false}}
 
 ############################
 ## Contact details
@@ -131,9 +125,8 @@ date_format = "Jan 2, 2006"
 #   Examples: "3:04 pm" or "15:04"
 time_format = "3:04 PM"
 
-# List delimiter (separates parts of an address)
-# Popular separators are ", " (comma), "<br>" (new line), " " (space)
-list_delimiter = ", "
+# Address format (choose from the [address_formats] list below or add you own to the list).
+address_format = "en-us"
 
 ############################
 ## Advanced
@@ -164,6 +157,14 @@ link_authors = true
 plugins_css = ["mystyles"]
 plugins_js  = []
 
+# Available address formats.
+[address_formats]
+  en-us = {order = ['street', 'city', 'region', 'postcode'], delimiters = [', ', ', ', ' ', '']}
+  en-gb = {order = ['street', 'city', 'region', 'postcode'], delimiters = [', ', ', ', ', ', '']}
+  de = {order = ['street', 'postcode', 'city'], delimiters = ['<br>', ' ', '']}
+  fr-fr = {order = ['street', 'postcode', 'city'], delimiters = ['<br>', ' ', '']}
+  zh = {order = ['postcode', 'region', 'city', 'street'], delimiters = [' ', ' ', ' ', '']}
+
 # Configuration of publication pages.
 [publications]
   # Date format (refer to https://sourcethemes.com/academic/docs/customization/#date-format )
@@ -182,7 +183,7 @@ plugins_js  = []
   #   4: Citation (publications only)
   post_view = 2
   publication_view = 2
-  talk_view = 3
+  talk_view = 2
 
 ############################
 ## Comments
@@ -246,5 +247,5 @@ plugins_js  = []
 ## Marketing
 ############################
 [marketing]
-  google_analytics = ""
+  google_analytics = "UA-48442618-4"
   google_tag_manager = ""
