@@ -2,7 +2,7 @@
 title: Creating a website in less than 1 hour - part 1
 subtitle: Part 1 - blogdown, Hugo and Netlify
 author: Andreas Handel
-date: '2019-01-03'
+date: '2020-01-03'
 slug: blogdown-website
 draft: true
 categories: []

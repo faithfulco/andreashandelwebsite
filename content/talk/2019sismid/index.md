@@ -1,8 +1,8 @@
 ---
 title: Introduction to within-host modeling
+abstract: An introductory workshop on Infectious Diseases, Immunology and Within-Host Models. 
 event: 2019 Summer Institute in Statistics and Modeling in Infectious Diseases (SISMID)
 location: Seattle, US
-summary: An introductory workshop on Infectious Diseases, Immunology and Within-Host Models 
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
@@ -28,7 +28,15 @@ image:
   preview_only: false
 
 # Enable math on this page?
-math: true
+math: false
+
+categories:
+- talk
+
+tags:
+- teaching
+- infectious disease
+- immunology
 ---
 
 # Preparation
@@ -36,27 +44,22 @@ math: true
 * Install R and (optional) Rstudio.
 * Install the DSAIRM R package and take a brief look. [This website provides instructions.](https://ahgroup.github.io/DSAIRM/)
 
+# Outline
+
+I cover the following topics in this workshop (my co-teacher Paul Thomas covers the immunology part):
+
+1. Introduction to modeling
+2. Some example models
+3. How to use simulation models
+4. Sources of uncertainty
+5. Types of models
+6. How to build (good) models
+7. How to assess modeling studies
 
 # Presentation Slides 
 
-[All pdf slides as zip file](/files/presentations/2019SISMID_Slides.zip)
+[All pdf slides as zip file](2019SISMID_Slides.zip)
 
-[Course Introduction](/files/presentations/2019SISMID_Course_Intro.pdf)
-
-[1. Introduction to modeling](/files/presentations/2019SISMID_1_Modeling_Introduction.pdf)
-
-[2. Some example models](/files/presentations/2019SISMID_2_Modeling_ExampleModels.pdf)
-
-[3. How to use simulation models](/files/presentations/2019SISMID_3_Modeling_UseCases.pdf)
-
-[4. Sources of uncertainty](/files/presentations/2019SISMID_4_Modeling_Uncertainty.pdf)
-
-[5. Types of models](/files/presentations/2019SISMID_5_Modeling_ModelTypes.pdf)
-
-
-[6. How to build (good) models](/files/presentations/2019SISMID_6_Modeling_ModelingProcess.pdf)
-
-[7. How to assess modeling studies](/files/presentations/2019SISMID_7_Modeling_ModelAssessment.pdf)
 
 
 

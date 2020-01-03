@@ -1,0 +1,186 @@
+---
+title: "Building and nurturing your brand"
+date: "`r Sys.Date()`"
+author: Andreas Handel
+output: 
+  ioslides_presentation:
+        self_contained: true
+---
+
+## Motivation
+
+* You will likely have many jobs throughout your career.
+* Freelance/self-employed jobs keep growing.
+* Most good jobs (and other opportunities) are found through connections.
+* **Think of yourself as a "brand".**
+
+```{r brand,  echo=FALSE, fig.cap='', out.width = '70%', fig.align='center'}
+knitr::include_graphics("./brand.jpg")
+```
+
+
+## Motivation
+
+* People (potential collaborators, employers, employees, etc.) will look you up online.
+* If you don't control your online presence, you are at the mercy of what shows up.
+
+```{r embarassing,  echo=FALSE, fig.cap='', out.width = '70%', fig.align='center'}
+knitr::include_graphics("./embarassing.jpg")
+```
+
+
+
+## How to build and manage your brand
+* Create and curate an online presence.
+* Create and curate content.
+* Be consistent with your _brand identity_ (e.g. only publish high-quality work).
+
+## Ways to build and manage your online presence
+* General sites
+* Academia/Science specific sites
+* Self-built site(s)
+
+
+
+# General Sites
+
+## LinkedIn
+
+<div style="float: left; width: 50%;">
+```{r linkedin,  echo=FALSE, fig.cap='', out.width = '80%', fig.align='center'}
+knitr::include_graphics("./linkedin.jpg")
+```
+
+* **The** professional networking site. Almost required to be on there. 
+* You can customize your profile a good bit.
+* A good way to showcase yourself.
+</div>
+
+<div style="float: right; width: 50%;">
+* Great for finding/connecting with others.
+* LinkedIn is useful even if you are not looking for a job!
+* Build a good profile early, not a week before you start applying.
+* Some features require a subscription.
+</div>
+
+
+## Twitter
+<div style="float: left; width: 50%;">
+```{r twitter,  echo=FALSE, fig.cap='', out.width = '60%', fig.align='center'}
+knitr::include_graphics("./twitter.jpg")
+```
+
+* Lots of scientists use Twitter. 
+* Great for learning about new developments in your field.
+</div>
+
+
+<div style="float: right; width: 50%;">
+* Good for announcing your own accomplishments.
+* Good networking tool.
+* Need to be used (active and/or passive) for it to be useful. 
+* Need to decide if you want to mix professional and personal. 
+* You can create/use multiple accounts.
+</div>
+
+
+
+## GitHub
+* A great tool to manage projects and work collaboratively.
+* Great way to showcase any 'products' you've made.
+* Lets you create simple websites fairly easily.
+* Somewhat technical, takes time to get used to it.
+* Showing you know/use GitHub is a desirable skill by itself.
+* [Great perks for students](https://education.github.com/pack).
+
+
+## Instagram
+* Focus is on posting images.
+* I have little experience.
+* I don't think it's much used in academia, but might be useful in science outreach.
+
+## Facebook
+* _Everyone_ is on it.
+* Good way to stay connected with folks.
+* Some educators use Facebook groups for classes.
+* Hard to keep professional and personal lives separated (unless you create 2 accounts).
+
+## YouTube
+* Good for teaching, also useful for outreach.
+* You can create your own channels for specific projects.
+* [Example - Jeff Leek](https://www.youtube.com/user/jtleek2007)
+
+```{r youtube,  echo=FALSE, fig.cap='', out.width = '60%', fig.align='center'}
+knitr::include_graphics("./youtube.jpg")
+```
+
+
+# Academia/Science specific sites
+
+## Academia/Science specific sites
+* Google Scholar
+* ORCID
+* ResearchGate
+* Academia.edu
+* Mendeley
+* ImpactStory
+* Publons
+* ...
+
+## Google Scholar 
+* Only for publications (broadly speaking).
+* Gives citation metrics.
+* Is fairly automated, you have to do very little.
+* Great way to keep track of your papers.
+
+_If I want to get a quick idea who someone "is" in academia, I check their Google Scholar page._
+
+## ORCID
+* Gives you a unique ID to track your research productivity.
+* Used by a lot of journals.
+* Very useful if you have a (slightly) common name (but even if not).
+* Free and not-for-profit.
+
+## ResearchGate/Academia/Mendeley/etc.
+* All are versions of academic social network sites.
+* All are commercial.
+* You have various levels of control of how your profile looks like.
+* Sites are trying to encourage interactions.
+
+_I deleted all my accounts on those sites since I don't like/trust the companies owning the sites and want to control my web presence myself._
+
+## ImpactStory/Kudos/Publons/etc. 
+* Sites that try to measure your 'impact'.
+* Maybe fun, but I haven't found them too useful yet.
+
+
+## Own website
+* You have complete control.
+* You have to build and maintain it yourself.
+* Lot's of ways to do that. Many are free.
+* We'll do that in a separate session.
+
+
+# Create content
+
+## Create content
+* Tweet/re-tweet
+* Write blog posts
+* Create videos
+* ...
+
+## General tips
+* You don't need to duplicate, e.g. you can link to your Google Scholar publications from LinkedIn.
+* Make sure you keep things reasonable updated.
+* Set Google alerts for your name (or other keywords).
+
+
+## Resources
+
+* [The A to Z of social media for academia](https://www.timeshighereducation.com/a-z-social-media)
+
+* [Research impact challenge](https://blog.impactstory.org/impact-challenge-day-1-academia-edu/), also see [this pdf book](http://blog.impactstory.org/wp-content/uploads/2015/01/impact_challenge_ebook_links.pdf). It's a bit outdated and recommends things I'm not too fond of (e.g. Academia.edu/ResearchGate), but has still some nice information.
+
+
+
+
