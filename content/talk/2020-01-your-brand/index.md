@@ -1,16 +1,19 @@
 ---
 title: Building and managing your brand
-abstract: A presentation for our departmental PhD students on how to build and manage their brand (aka online presence).
-abstract_short: ""
+summary: A presentation for our departmental PhD students on how to build and manage their brand (aka online presence).
+abstract: ""
 event: PhD Seminar
 location: Athens, US
 authors: ["andreashandel"]
-tags: []
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
 date: "2020-01-23"
 all_day: true
+
+# Schedule page publish date (NOT talk date).
+publishDate: "2020-01-01T00:00:00Z"
+
 
 # Is this a featured talk? (true/false)
 featured: true
