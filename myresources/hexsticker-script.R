@@ -17,14 +17,14 @@ p1 <- generate_ggplot(result) + theme_void() + theme(legend.position="none")
 plot(p1)
 
 #building sticker myself using the individual building block functions from hexSticker
-mysticker <- ggplot() + geom_hexagon(size = 2, fill = "white", color = "blue") +
+mysticker <- ggplot() + geom_hexagon(size = 2, fill = "#0099cc", color = "#0099cc") +
                       geom_subview(subview = p1, x=1, y=1, width=1.3, height=1) +
-                      geom_pkgname(package="Andreas\n Handel", x = 1, y = 1, color = "black", family = "sans", size=20) +
-                      geom_url(url = 'www.andreashandel.com',family = 'sans', size = 6) +
+                      geom_pkgname(package="Andreas\n Handel", x = 1, y = 1, color = "black", family = "sans", size=24) +
+                      geom_url(url = 'www.andreashandel.com',family = 'sans', size = 8) +
                       theme_sticker()
 plot(mysticker)
-ggsave(filename=here('static/img',"icon.png"), plot = mysticker)
-ggsave(filename=here('static/img',"icon-32.png"), plot = mysticker, width = 43.9, height = 50.8, bg = 'transparent',  units = "mm", family = "sans")
+ggsave(filename=here('assets/images',"icon.png"), plot = mysticker, family = "sans", width = 200, height = 200, units = "mm")
+#ggsave(filename=here('static/img',"icon-32.png"), plot = mysticker, width = 43.9, height = 50.8, bg = 'transparent',  units = "mm", family = "sans")
 
 
 

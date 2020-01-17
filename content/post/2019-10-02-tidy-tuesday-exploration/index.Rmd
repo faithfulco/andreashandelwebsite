@@ -6,7 +6,6 @@ date: '2019-10-02'
 slug: tidytuesday-analysis
 categories: []
 tags: []
-summary: ''
 lastmod: '2019-12-19'
 featured: no
 image:
