@@ -32,7 +32,7 @@ math: false
 
 categories:
   - talk
-
+  - presentation
 ---
 
 These are slides for a talk/discussion I led with our graduate students on ways to build and manage an online presence and overall personal brand. The [presentation slides (as pdf) are here.](2020_01_Building_your_Brand.pdf)
