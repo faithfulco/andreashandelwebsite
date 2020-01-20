@@ -1,0 +1,44 @@
+---
+title: "Reading, managing and publishing papers"
+date: "`r file.mtime(knitr::current_input())`"
+author: Andreas Handel
+output: 
+  ioslides_presentation:
+        self_contained: true
+---
+
+# Efficiently reading the literature
+
+## Become an expert on a topic
+
+## Remain up-to-date on a topic
+
+
+# Efficiently managing your papers
+
+## The basics
+* Use a reference manager!
+
+
+## 
+
+
+# Optimize your publication impact
+
+
+## Where to publish
+
+
+## How to publish
+
+
+## 
+
+
+## Further Resources
+* [The A to Z of social media for academia](https://www.timeshighereducation.com/a-z-social-media)
+* [Research impact challenge](https://blog.impactstory.org/impact-challenge-day-1-academia-edu/), also see [this pdf book](http://blog.impactstory.org/wp-content/uploads/2015/01/impact_challenge_ebook_links.pdf). It's a bit outdated and recommends things I'm not too fond of (e.g. Academia.edu/ResearchGate), but has still some nice information.
+
+
+
+

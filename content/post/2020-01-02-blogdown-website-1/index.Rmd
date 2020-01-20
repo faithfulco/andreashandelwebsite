@@ -221,12 +221,12 @@ So far, everything happened on your local computer. In a final step, we want to 
 
 If you want, you can change the name of your site under `Site settings`. More advanced (not free but also not too expensive and not that hard) is to get your domain name, e.g. `www.yourname.com` or something like that. 
 
-You can stick with this process of deploying your website manually. If you want something more automated, check out [part 2 of this tutorial](./blogdown-website-2/), where you'll learn how to use Github to make deployment to Netflify fully automatic.
+If you want to add GitHub to the mix and have the deployment of your website automated, move on to [part 2]() of this post.
 
-For now, you can either leave the website as is, or if you want to make it better first before putting it online, you can under `Site Settings` in the `Danger Zone` area delete the site. That only deletes the online version, so you can re-create at any time.
 
 
 # More Information
+
 
 There is a lot of good information on blogdown available. I recommend the following:
 
