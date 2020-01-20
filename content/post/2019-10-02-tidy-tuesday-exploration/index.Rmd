@@ -2,11 +2,10 @@
 title: "Analysis of pizza restaurants (TidyTuesday exercise)"
 summary: An analysis of TidyTuesday data for pizza restaurants and their ratings.
 author: Andreas Handel
-date: '2019-10-02'
+date: '2019-10-12'
 slug: tidytuesday-analysis
 categories: []
 tags: []
-lastmod: '2019-12-19'
 featured: no
 image:
   caption: ''

@@ -2,13 +2,12 @@
 title: Creating a website in less than 1 hour - part 2
 subtitle: Part 2 - adding GitHub to the workflow
 author: Andreas Handel
-draft: true
-date: '2020-01-04'
-slug: blogdown-website
+draft: false
+date: '2020-01-20'
+slug: blogdown-website-2
 categories: []
 tags: []
 summary: ''
-lastmod: '2020-01-04'
 featured: no
 disable_jquery: no
 image:
@@ -20,154 +19,66 @@ projects: []
 
 
 
-<p>The following are step-by-step instructions for creating your own website using <a href="https://bookdown.org/yihui/blogdown/">blogdown</a>, <a href="https://gohugo.io/">Hugo</a>, <a href="https://GitHub.com">GitHub</a> and <a href="https://www.netlify.com/">Netlify</a>.</p>
+<p>In <a href="/post/blogdown-website-1/">part 1</a>, I covered how to create a website using <a href="https://bookdown.org/yihui/blogdown/">blogdown</a>, <a href="https://gohugo.io/">Hugo</a>, and <a href="https://www.netlify.com/">Netlify</a>.</p>
+<p>In this part, we’ll move the website to <a href="https://GitHub.com">GitHub</a>, which provides a nice and more automated workflow for editing and deploying your site.</p>
 <div id="required-skills" class="section level1">
 <h1>Required skills</h1>
 <p>I assume that you have general computer literacy, but no experience with any of the tools that will be used. Also, no coding, web-development or related experience is expected.</p>
-</div>
-<div id="what-this-document-covers" class="section level1">
-<h1>What this document covers</h1>
-<p>This document is meant to provide you with the minimum required instructions to get your own website up and running quickly. As such, instructions and background information are kept at a minimum. I used a <em>recipe-like</em> approach by giving hopefully detailed and specific enough instructions to get things to work. I’m not covering any <em>why</em> here or provide much further explanations. If you decide you like to use this setup for your website, you will likely want to go beyond this document and learn a bit more about the various tools involved in the process. To that end, links to further resources are provided. Those resources also discuss a bit why you would want this setup versus something like e.g. Wordpress.</p>
-</div>
-<div id="who-this-is-not-for" class="section level1">
-<h1>Who this is (not) for</h1>
-<p><strong>This way of making and hosting a website might be for you if:</strong></p>
-<ul>
-<li>You are (or would like to be) an R, RMarkdown and GitHub user. This is a method of creating a website that very efficiently fits into your workflow.</li>
-<li>You want a way to host a website where all the content is fully controlled by you, and the website can be hosted without much resources (and for free).</li>
-<li>You are curious about R/RMarkdown/GitHub, how to use it to build a website, and you’ve got a bit of time to spare and want to give it a try.</li>
-</ul>
-<p><strong>This way of making and hosting a website might not be for you if:</strong></p>
-<ul>
-<li>Your workflow is MS Word, Powerpoint, etc. and you are not interested in R/Markdown/GitHub.</li>
-<li>You want everything accessible through a graphical interface.</li>
-</ul>
-</div>
-<div id="motivating-examples" class="section level1">
-<h1>Motivating Examples</h1>
-<p>If you want to see a few nice examples of websites written with blogdown/Hugo, check these out:</p>
-<ul>
-<li><a href="https://alison.rbind.io/">Allison Hill</a></li>
-<li><a href="https://amber.rbind.io/">Amber Thomas</a></li>
-<li><a href="https://www.tslab.org/">TSL Laboratory</a></li>
-<li><a href="https://theory.ucr.edu/flip/">Flip Tanedo</a></li>
-</ul>
-<p>I picked them pretty much randomly, based on the fact that their sites looked nice. Tons more of examples exist. See e.g. <a href="https://awesome-blogdown.com/">here</a> or <a href="https://sourcethemes.com/academic/#expo">here</a>.</p>
+<p>I assume your website is at a stage as described at the end of part 1.</p>
 </div>
 <div id="quick-tool-overview" class="section level1">
 <h1>Quick tool overview</h1>
-<p>A few different software tools are working together for this website built. <strong>In most cases, they play nicely together and you don’t need to worry about details!</strong> But it is still good to know the names of the different components.</p>
-<p><strong><a href="https://GitHub.com">GitHub</a></strong> is the platform where you will store all the files that make up your website. GitHub is a very powerful and common way of developing projects like code, research projects or a website. Github is a great tool to be familiar with in general, and most importantly, it very nicely integrates with the other tools to make things seamless and automated. It is not strictly needed here, but it makes updating automatic and is such an overall useful tool to be exposed to that I’m including it in the setup.</p>
-<p><strong><a href="https://www.netlify.com/">Netlify</a></strong> is the service we’ll use to host the website. It offers a free plan, which is great for a starter website (you can always upgrade once you become famous and everyone visits your website.
-Netlify is very easy to set up and use, and it can automatically pull information from GitHub to build your site every time you update it.</p>
-<p><strong><a href="https://gohugo.io/">Hugo</a></strong> is software that operates in the background. It takes all the content you create for your website (your text, your pictures, etc.), applies layout to your site based on a chosen theme, and turns everything into files that can be placed on Netlify and read by anyone’s web browser. You will likely not have to think or learn much about Hugo, at least not initially.</p>
-<p><strong><a href="https://bookdown.org/yihui/blogdown/">blogdown</a></strong> is an R package that interfaces with Hugo and allows you to create websites easily using RMarkdown syntax.</p>
-<p><strong><a href="https://www.r-project.org/">R</a></strong> and <strong><a href="https://rstudio.com/products/rstudio/download/">RStudio</a></strong> we won’t really use those for their normal purpose as coding software/platform, but since blogdown is part of the RMarkdown family of packages, we need to use R and RStudio to access blogdown.</p>
-<p>While GitHub, Netlify and RStudio have paid options, for our purpose we can use their free versions. Hugo, blogdown and R are completely free.</p>
+<p>The only new tool for this part is <strong><a href="https://GitHub.com">GitHub</a></strong>. GitHub is a very powerful and common way of developing projects like code, research projects or a website. Github is a great tool to be familiar with in general, and most importantly, it very nicely integrates with the other tools to make things seamless and automated. As you learned in part 1, it is not strictly needed, but it makes updating automatic and is such an overall useful tool to be exposed to that I’m including it in the setup.</p>
 </div>
-<div id="pre-requisites" class="section level1">
-<h1>Pre-requisites</h1>
-<p>First, you need to set up accounts and install some software for the tools we will be using.</p>
-<div id="get-a-netlify-account" class="section level2">
-<h2>Get a Netlify account</h2>
-<p>Go to <a href="https://www.netlify.com/">the Netlify website</a> and sign up for an account. Follow the sign-up steps to set up your account.</p>
-</div>
-<div id="install-r-and-rstudio" class="section level2">
-<h2>Install R and RStudio</h2>
-<p>If you don’t already have it on your computer, <a href="https://www.r-project.org/">install R first</a>. You can pick any mirror you like. If you already have R installed, make sure it is a fairly recent version. If yours is old, I suggest you update (install a new R version).</p>
-<p>Once you have R installed, install the free version of <a href="https://www.rstudio.com/products/rstudio/download/">RStudio Desktop</a>. Again, make sure it’s a recent version. If you have an older verion of RStudio, you should update.</p>
-<p>Installing R and RStudio should be fairly straightforward. If you want some more details or need instructions, see <a href="https://andreashandel.GitHub.io/MADAcourse/1c_RandRStudio.html">this page</a> (which is part of an online course I teach).</p>
-</div>
-<div id="get-a-github-account" class="section level2">
-<h2>Get a GitHub account</h2>
+<div id="get-a-github-account" class="section level1">
+<h1>Get a GitHub account</h1>
 <p>If you do not already have a <a href="https://GitHub.com">GitHub</a> account, create one. Note that GitHub is widely used professionally, and you might want to allow other people to see your GitHub presence. I, therefore, recommend using a future-proof, professional user name.</p>
 <p>Note that Git and GitHub (which are technically different, here I’m using GitHub to refer to both) can be initially confusing, mainly because they use a lot of specialized terminology. I will try and walk you through all steps for getting a website up and running in detail, but you might have to look up a few things on the way. If you are completely new to GitHub, I recommend you take a quick look at <a href="https://andreashandel.GitHub.io/MADAcourse/1d_GitHub.html">this page</a> (and links provided there) so you can get some idea of what it’s all about.</p>
-<div id="recommended-but-optional-get-gitkraken" class="section level3">
-<h3>Recommended, but optional: Get Gitkraken</h3>
+</div>
+<div id="get-gitkraken" class="section level1">
+<h1>Get Gitkraken</h1>
 <p>Download and install <a href="https://www.gitkraken.com/download">Gitkraken</a>, link it with your GitHub account. Gitkraken is a graphical Git/GitHub client that makes a lot of tasks related to GitHub easier. It’s not strictly needed, and if you already have your own way of using Git/GitHub (e.g. with another client or the command line) you can stick with that. There is also an option to use Git/GitHub through RStudio, which is fine for most things, but overall Gitkraken is more powerful. So if you plan to use GitHub more in the future, I recommend using it. In the following, I assume you are using Gitkraken. If you interface with GitHub some other way, you will have to adjust those specific instructions accordingly.</p>
 </div>
-<div id="recommended-but-optional-upgrade-github-gitkraken" class="section level3">
-<h3>Recommended, but optional: Upgrade GitHub (&amp; Gitkraken)</h3>
+<div id="recommended-but-optional-upgrade-github-gitkraken" class="section level1">
+<h1>Recommended, but optional: Upgrade GitHub (&amp; Gitkraken)</h1>
 <p>On GitHub, by default, all repositories are public (a repository is the collection of files and folders that make up a specific GitHub project, such as your website.) If you have public repositories, you need to be careful about files that shouldn’t be shared publicly (e.g. because of copyright restrictions or because it might violate data privacy). Normally, if you want private repositories, you have to pay. <strong>As student or educator, you can get private repositories for free.</strong></p>
 <p>If you are a student, <strong>I strongly recommend you get the <a href="https://education.GitHub.com/pack">GitHub student developer pack</a>.</strong> This gives you access to private repositories. You also get 1 year of free Gitkraken Pro access. While the free version of Gitkraken works well, you can’t access private repositories with it. Often, being able to use private repositories is useful.</p>
 <p>Educators can also get a free GitHub Pro account <a href="https://education.GitHub.com/teachers">here</a>. As far as I’m aware, there is no free Gitkraken Pro for educators, but it’s fairly cheap. So if you want to use a private repository for your website (I don’t know why you would), you need to pay for Gitkraken Pro or use a different way to manage your GitHub repositories.</p>
 </div>
-</div>
-</div>
-<div id="setting-up-the-website" class="section level1">
-<h1>Setting up the website</h1>
-<p>With the above registration and installation bits out of the way, you can get started at creating your website.</p>
-<div id="create-a-github-repository" class="section level2">
-<h2>Create a GitHub repository</h2>
-<p>We will use a GitHub repository as the place where all website related files live. Netlify will be able to automatically access our GitHub repository and update the site whenever we make changes. To make a website repository, follow these steps:</p>
+<div id="create-a-github-repository" class="section level1">
+<h1>Create a GitHub repository</h1>
 <ul>
-<li>Log into GitHub, click on ‘Repositories’ and create a new repository (green button). Choose a repository (repo) name that tells you what’s in the repo (e.g. YOURNAME-website). Check the box <em>Initialize this repository with a README.</em> Set the .gitignore option to <code>R</code>, you can leave the license at <em>none</em>. Click <em>create repository</em>.</li>
+<li>Log into GitHub, click on ‘Repositories’ and create a new repository (green button). Choose a repository (repo) name that tells you what’s in the repo (e.g. YOURNAME-website). You can give it the same name as you named your main website directory/project in part 1, but that’s not required. Check the box <em>Initialize this repository with a README.</em> Set the .gitignore option to <code>R</code>, you can leave the license at <em>none</em>. Click <em>create repository</em>.</li>
 <li>Clone the repository from GitHub to your local computer (using Gitkraken or whatever software/method you decided to use). Place the local folder in a location on your computer where it is <strong>not</strong> synced with some other software (e.g., Dropbox, OneDrive).</li>
 </ul>
 </div>
-<div id="start-an-rstudio-project" class="section level2">
-<h2>Start an RStudio Project</h2>
+<div id="move-your-website-folder-to-the-github-repo" class="section level1">
+<h1>Move your website folder to the GitHub repo</h1>
 <ul>
-<li>Open RStudio. Under <code>File</code>, choose <code>New Project</code>, then <code>Existing Directory</code> and select the directory/repository you created in the previous step, a copy of which should be on your local computer. Create the project.</li>
-<li>If things work, you should see in the <code>Files</code> pane (bottom right) of RStudio a few files show up, including a <code>Readme.md</code>. Open that file. Change the existing text to say something like “repository of website for YOURAME.” Save the file.</li>
-<li>Just to make sure things work, go to Gitkraken and - if not already selected - open your repository. You should see in the top right a note about changed files. Click on <code>View Changes</code>. Then click on <code>Stage all changes</code> write some message in the <code>Commit</code> box, click the <code>Commit</code> button. Finally, click the <code>Push</code> button in the top middle of the Gitkraken window. That sends the changes you just made from your local computer to GitHub.com. Hopefully, everything works, which means the GitHub workflow for your repository works as intended.</li>
+<li>Find the main folder of your website and move all of it into your newly created GitHub repository. To make sure everything is up-to-date, close RStudio before doing so.</li>
+<li>Open the repository you just created in Gitkraken. In the top right of Gitkraken, there should be a notification about changed files. Click <code>View changes</code>, then <code>Stage</code>. Write a commit message, commit the changes. You should see the master with the computer symbol above the one with some random logo. That means your local repository is ahead of the one on github.com. To get them in sync, you click the push button. If things work, the two symbols should now be in the same line.</li>
+<li>If your code cannot sync you will likely receive an option from GitKraken to perform a force push. A force push will overwrite the remote repo with the local repo forcibly. This means that the remote will be updated with any changes that exist on your local computer however, if any additional changes have been made to the code since you began editing (i.e. someone else has made a commit to the repo while you were working on it) they will be destroyed by the force push since they are not on your local repo. For this project, you are the only person working on your introduction so it is unlikely you will encounter any issues with force push, but it is good to be aware of this action.</li>
+<li>Go back to GitHub.com and to your repository. You should see all your files in there.</li>
 </ul>
 </div>
-<div id="start-the-website" class="section level2">
-<h2>Start the website</h2>
-<p>So far we have created the GitHub repository that will house our website, and an R project for easier management. Neither of those are strictly required to implement a website using <code>blogdown/hugo</code>, but as you will see later, it makes things more convenient. Now we are ready to start the actual website.</p>
+<div id="connecting-github-to-netlify" class="section level1">
+<h1>Connecting GitHub to Netlify</h1>
 <ul>
-<li>Go back to Rstudio.</li>
-<li>Install the blogdown package by typing <code>install.packages('blogdown')</code> in the R console (the lower left window in RStudio). Note that all <code>R</code> commands are case sensitive. You need to be online for this to work. You should see <code>blogdown</code> and several other packages be installed.</li>
-<li>Load <code>blogdown</code> by typing <code>library(blogdown)</code> into the R console (this step you need to do every time you open/re-load your website).</li>
-<li>Install Hugo by typing <code>install_hugo()</code> into the R console.</li>
-<li>Set a theme for your website. The theme determines the look of your website. Hugo has a lot and quickly growing <a href="https://themes.gohugo.io/">number of themes</a> (though not as many as Wordpress). You can explore different themes later. For now, we’ll use a theme called “Future Imperfect Slim”. Install it and at the same time start your website by typing (copying) this code into the R console.</li>
-</ul>
-<pre class="r"><code>new_site(theme = &quot;pacollins/hugo-future-imperfect-slim&quot;, 
-         sample = TRUE, 
-         theme_example = TRUE, 
-         empty_dirs = TRUE,
-         to_yaml = TRUE,
-         serve = FALSE)</code></pre>
-<p>This command creates a new website and installs and sets up the chosen theme, complete with a small sampe site. Be patient, it might take some time. As long as you see a little red stop sign in the top left corner of the R Console window, you know things are still running.</p>
-<p>Once everyting is done, a file called “Hello R Markdown” will likely pop up. Ignore for now. You will see a lot of new files have shown up in your project/repository folder. The command above installed a small example site. We can look at it by asking RStudio/blogdown to <em>serve</em> the site by typing <code>serve_site()</code> into the R console.</p>
-<p>You’ll likely get a warning message, but hopefully things work and the top right window, which is the RStudio viewer, shows a website. Click on the symbol next to the broom in the top left corner of that window to see the website in your browser. This is your new site. Now it’s time to customize and create content.</p>
-</div>
-</div>
-<div id="a-brief-explanation-of-your-new-website" class="section level1">
-<h1>A brief explanation of your new website</h1>
-<p>The previous steps have given you a website with some example starter content. Any complex website has a certain structure consisting of folders and files. These files and folders either live only on a website server and you never see them (e.g. Wordpress), or they exist locally, as is the case for Hugo (and similar such website generators, e.g. <code>Jekyll</code>.)</p>
-<p>Some of the files and folders you do not need to care much about, others you will need to intereact with. To get a bit of an idea what lives where, here is a quick overview. Some of this depends on the Hugo theme you are using, but most of them have a rather similar structure.</p>
-<ul>
-<li>The folder <code>config</code> contains files that control some of the overall website look and feel. We’ll visit them later. In Hugo, those files that control configuration are called either <code>TOML</code> or <code>YAML</code> files. Many files have both bits of TOML/YAML and other content in them, as you will see below.</li>
-<li>The folder <code>content</code> and its subfolders contain almost all the actual content for your website. We’ll edit some of that soon.</li>
-<li>The folder <code>public</code> is the one that contains your finished website once Hugo has processed your content and applied the layout from your chosen theme. That folder is the one which is deployed to a webserver. As you will see below, for our setup all this happens automatically, so you never really have to care about this folder much.</li>
-<li>The folder <code>static</code> contains subfolders where you can store images and other media (e.g. pdf files or video/audio, etc) that you want to be part of your site.</li>
-<li>The folder <code>themes</code> includes the different Hugo themes you installed. You can have several themes installed and switch between the one you want by editing the configuration files. Note however that themes differ in their details of how they do things, so it is a good idea to check out a few themes first, then settle on one and build your website <em>for real</em> once you picked one.</li>
-<li>The other folders that might exist are ones you don’t need to worry about, at least not initially.</li>
+<li>The last step is to set up <code>Netlify</code> so it can automatically monitor your GitHub repository and process any changes into an updated website. To do so, log into your Netlify account. Select your website. Under <code>Site Settings</code> find the <code>Build and deploy</code> menu. Under <code>Continuous deployment</code> click on <code>Link site to Git</code>. Choose <code>GitHub</code> and the follow the steps to link your webpage repository. Once finished, Netlify will monitor that repository and automatically pull any updates and rebuild your website.</li>
 </ul>
 </div>
-<div id="edit-existing-content" class="section level1">
-<h1>Edit existing content</h1>
-<p>Now that you know a little bit how your website is structured, let’s dig in and add and modify it. We’ll start with some modifications, followed by creating new content.</p>
-<p>All (or at least most) content goes into the <code>content</code> folder and its subfolders. Content is generally written in (R)Markdown. Markdown is very easy to learn. If you are not familiar with it, check out <a href="https://www.markdowntutorial.com/">this nice interactive tutorial</a> or this <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">cheatsheet</a>. See e.g. the RMarkdown section on <a href="https://andreashandel.github.io/MADAcourse/1e_ToolsforReproducibility.html">this page</a> for a bit more information and further links to resources. We’ll take it slow and I’ll guide you through it.</p>
-<p>At the top of your new website, you find a navigation bar, one of the entries is <code>About</code>. Click on it. Now let’s find the file that produces that page and edit it. To that end, go to the <code>Files</code> tab in the lower right RStudio window and browse to <code>content -&gt; about</code> folder, click on <code>_index.md</code>. You’ll note that the text in that file corresponds to what you see on the website. You also see an example of how links are written in Markdown.</p>
-<p>Replace the text in that file. Change the date and title in the top section between the 3 <code>---</code> symbols (that section is called the YAML header. Somewhat confusingly, Hugo also sometimes uses similar sections between 3 <code>+++</code> signs, at which point it is called a TOML header. Don’t ask me…). Set the date for today, the title to <code>About YOURNAME</code>. Once you save the file, you’ll see that something is running in the R console, and if you look at the website, things have been updated. You can see your edits in almost real time!</p>
-<p>Now replace the rest of the document with whatever you like. Try to include a link to something, and use a few headings. You can try to include further Markdown elements as described in the above mentioned resources. We’ll get to things like including pictures below.</p>
-<p>Let’s edit more content. On the left side, under “Recent Posts”, find the one called “Getting Started with Hugo” and click on it. Note in the URL bar that the name of the page is called <code>hugoisforlovers</code>. Let’s try and find the text that goes with that blog post. To that end, go to the <code>content -&gt; blog</code> folder. You find there a file called <code>hugoisforlovers.md</code> (there are also files that seem to be for different languages, we can ignore those). Open the file. You’ll see the content that corresponds to the website.</p>
-</div>
-<div id="create-new-content" class="section level1">
-<h1>Create new content</h1>
-</div>
-<div id="change-site-settings" class="section level1">
-<h1>Change site settings</h1>
+<div id="the-new-workflow" class="section level1">
+<h1>The new workflow</h1>
+<p>The workflow for your website using GitHub now works as follows:</p>
+<ul>
+<li>Open your website in Rstudio by clicking on the <code>.Rproj</code> file. Load blogdown with <code>library(blogdown)</code>. Make any edits you want. While you make your edits, you can run <code>serve_site()</code> to see your updates.<br />
+</li>
+<li>Once you are done with your updates, restart R (to shut down <code>serve_site()</code>) and run <code>build_site()</code>. While Netlify will automatically run <code>Hugo</code> on your files, it won’t do any processing of Rmarkdown files, therefore you need to run the blogdown build command.</li>
+<li>Use Gitkraken to push/pull and therefore sync changes between your local computer (or multiple computers if you work on more than one machine) and Github.com.</li>
+</ul>
+<p>Netlify will monitor your Github repository and when it sees changes, automatically rebuild your website. Note that this means that if you start working on a document and don’t finish it, and then push to GitHub, your half-finished document shows up. To avoid that, you can set <code>draft: true</code> in your TOML/YAML heading for the document in progress.</p>
 </div>
 <div id="more-information" class="section level1">
 <h1>More Information</h1>
-<ul>
-<li>A short introductory course is Allison Hill’s <a href="https://alison.rbind.io/project/summer-of-blogdown/">summer of blogdown</a>.</li>
-<li>A lot of details and further information can be found in <a href="https://bookdown.org/yihui/blogdown/">the blogdown book</a>.
-<a href="https://alison.rbind.io/post/2017-06-12-up-and-running-with-blogdown/" class="uri">https://alison.rbind.io/post/2017-06-12-up-and-running-with-blogdown/</a>
-<a href="https://www.williamrchase.com/post/2019/10/28/making-my-personal-website/" class="uri">https://www.williamrchase.com/post/2019/10/28/making-my-personal-website/</a></li>
-</ul>
+<p>For the non-GitHub aspects of this, see the resources mentioned at the end of <a href="/post/blogdown-website-1/">part 1</a>. For some more GitHub related information, <a href="https://andreashandel.github.io/MADAcourse/1d_Github.html">see e.g. here</a>.</p>
 </div>

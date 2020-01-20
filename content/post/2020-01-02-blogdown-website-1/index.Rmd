@@ -2,13 +2,12 @@
 title: Creating a website in less than 1 hour - part 1
 subtitle: Part 1 - blogdown, Hugo and Netlify
 author: Andreas Handel
-date: '2020-01-03'
-slug: blogdown-website
-draft: true
+date: '2020-01-19'
+slug: blogdown-website-1
+draft: false
 categories: []
 tags: []
 summary: ''
-lastmod: '2020-01-18'
 featured: no
 disable_jquery: no
 image:
@@ -26,7 +25,7 @@ library('emo')
 
 The following are step-by-step instructions for creating your own website using [blogdown](https://bookdown.org/yihui/blogdown/), [Hugo](https://gohugo.io/) and [Netlify](https://www.netlify.com/).
 
-In [part 2](), you will learn how to add [GitHub](https://GitHub.com) to your workflow to make things even more automated and efficient.
+In [part 2](/post/blogdown-website-2/), you will learn how to add [GitHub](https://GitHub.com) to your workflow to make things even more automated and efficient.
 
 
 # Required skills
@@ -222,7 +221,7 @@ So far, everything happened on your local computer. In a final step, we want to 
 
 If you want, you can change the name of your site under `Site settings`. More advanced (not free but also not too expensive and not that hard) is to get your domain name, e.g. `www.yourname.com` or something like that. 
 
-In part 2 of this tutorial, you'll learn how to use Github to make deployment to Netflify fully automatic.
+You can stick with this process of deploying your website manually. If you want something more automated, check out [part 2 of this tutorial](./blogdown-website-2/), where you'll learn how to use Github to make deployment to Netflify fully automatic.
 
 For now, you can either leave the website as is, or if you want to make it better first before putting it online, you can under `Site Settings` in the `Danger Zone` area delete the site. That only deletes the online version, so you can re-create at any time.
 
@@ -234,7 +233,7 @@ There is a lot of good information on blogdown available. I recommend the follow
 * A short introductory course is Alison Hill's [summer of blogdown](https://alison.rbind.io/project/summer-of-blogdown/). Alison also has several blog posts on her website discussing more advanced concepts of Hugo.
 * A lot of details and further information can be found in [the blogdown book](https://bookdown.org/yihui/blogdown/).
 
-For the Academic theme, check out the link to the docs for the theme above. While they could be improved, there are quite comprehensive.
+For the Academic theme, check out [the docs for the theme](https://sourcethemes.com/academic/docs/). While they could be improved and at times a bit confusing, there are quite comprehensive.
 
 
 
