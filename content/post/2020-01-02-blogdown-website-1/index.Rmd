@@ -221,20 +221,19 @@ So far, everything happened on your local computer. In a final step, we want to 
 
 If you want, you can change the name of your site under `Site settings`. More advanced (not free but also not too expensive and not that hard) is to get your domain name, e.g. `www.yourname.com` or something like that. 
 
-If you want to add GitHub to the mix and have the deployment of your website automated, move on to [part 2]() of this post.
+If you want to add GitHub to the mix and have the deployment of your website automated, move on to [part 2](/post/blogdown-website-2/) of this post.
 
 
 
 # More Information
 
-
-There is a lot of good information on blogdown available. I recommend the following:
+There is a lot of good information on blogdown/Hugo/Academic available. I recommend the following:
 
 * A short introductory course is Alison Hill's [summer of blogdown](https://alison.rbind.io/project/summer-of-blogdown/). Alison also has several blog posts on her website discussing more advanced concepts of Hugo.
 * A lot of details and further information can be found in [the blogdown book](https://bookdown.org/yihui/blogdown/).
+* For the Academic theme, check out [the docs for the theme](https://sourcethemes.com/academic/docs/). While they could be improved and at times a bit confusing, there are quite comprehensive.
 
-For the Academic theme, check out [the docs for the theme](https://sourcethemes.com/academic/docs/). While they could be improved and at times a bit confusing, there are quite comprehensive.
-
+Further information and tutorials can easily be found with some online searching. Let me know if you find any especially helpful ones and I'll add them here.
 
 
 
