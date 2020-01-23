@@ -40,7 +40,7 @@ This document is meant to provide you with the minimum required instructions to 
 
 **This way of making and hosting a website might be for you if:**
 
-* You are (or would like to be) an R, RMarkdown and GitHub user. This is a method of creating a website ses those tools and very efficiently fits into such a workflow. 
+* You are (or would like to be) an R, RMarkdown and GitHub user. This is a method of creating a website using those tools which very efficiently fits into such a workflow. 
 * You want a way to host a website where all the content is fully controlled by you, and the website can be hosted without much resources (and for free). 
 * You are curious about R/RMarkdown/GitHub, how to use it to build a website, and you've got a bit of time to spare and want to give it a try.
 
@@ -156,7 +156,7 @@ Now that you know a little bit how your website is structured, let's dig in and 
 
 
 
-All (or at least most) content goes into the `content` folder and its subfolders. Content is generally written in (R)Markdown. For this tutorial, you don't need to know much Rmarkdown, but at some point you will have to learn it. Fortunateyl, (R)Markdown is very easy to learn. See e.g. the RMarkdown section on [this page](https://andreashandel.github.io/MADAcourse/1e_ToolsforReproducibility.html), check out [this nice interactive tutorial](https://www.markdowntutorial.com/) or this [cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet). 
+All (or at least most) content goes into the `content` folder and its subfolders. Content is generally written in (R)Markdown. For this tutorial, you don't need to know much Rmarkdown, but at some point you will have to learn it. Fortunately, (R)Markdown is very easy to learn. See e.g. the RMarkdown section on [this page](https://andreashandel.github.io/MADAcourse/1e_ToolsforReproducibility.html), check out [this nice interactive tutorial](https://www.markdowntutorial.com/) or this [cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet). 
 
 The Academic theme, and many other modern websites, use a layout that employs **widgets**, which are components of a website that are individually formatted and styled. On the demo site you just created, you see many different sections, each is a widget. Which widgets you want is controlled by files in the `/content/home/` folder. Go into that folder (from within RStudio) and open the `demo.md` file. You will see a bunch of text. Some commands are between `+++` signs, this is called the TOML (or YAML if it's 3 `---`) header. These are instructions for the layout. The text below is what is actually shown on the site.
 
