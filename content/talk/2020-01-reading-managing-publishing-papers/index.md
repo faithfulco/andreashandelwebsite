@@ -35,6 +35,7 @@ categories:
   - academia
 ---
 
-These are slides for a talk/discussion I led with our graduate students on how to efficiently read the (peer reviewed) literature, how to manage your references, and how to find the right journals for publishing. The [presentation slides are here.](/presentations/2020-01-reading-managing-publishing-papers/2020_01_reading_managing_publishing_papers.html)
+These are slides for a talk/discussion I led with our graduate students on how to efficiently read the (peer reviewed) literature, how to manage your references, and how to find the right journals for publishing.
+<a href="/presentations/2020-01-reading-managing-publishing-papers/2020_01_reading_managing_publishing_papers.html" target="_blank">The presentation slides are here.</a>
 
 
