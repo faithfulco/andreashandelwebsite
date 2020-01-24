@@ -1,17 +1,17 @@
 ---
 title: Creating a website in less than 1 hour - part 1
 subtitle: Part 1 - blogdown, Hugo and Netlify
+summary: The following are step-by-step instructions for creating your own website using [blogdown](https://bookdown.org/yihui/blogdown/), [Hugo](https://gohugo.io/) and [Netlify](https://www.netlify.com/).
 author: Andreas Handel
 date: '2020-01-19'
 slug: blogdown-website-1
 draft: false
 categories: []
 tags: []
-summary: ''
 featured: no
 disable_jquery: no
 image:
-  caption: ''
+  caption: 'Photo by Agence Olloweb on Unsplash'
   focal_point: ''
   preview_only: no
 projects: []
@@ -33,7 +33,7 @@ projects: []
 <h1>Who this is (not) for</h1>
 <p><strong>This way of making and hosting a website might be for you if:</strong></p>
 <ul>
-<li>You are (or would like to be) an R, RMarkdown and GitHub user. This is a method of creating a website ses those tools and very efficiently fits into such a workflow.</li>
+<li>You are (or would like to be) an R, RMarkdown and GitHub user. This is a method of creating a website using those tools which very efficiently fits into such a workflow.</li>
 <li>You want a way to host a website where all the content is fully controlled by you, and the website can be hosted without much resources (and for free).</li>
 <li>You are curious about R/RMarkdown/GitHub, how to use it to build a website, and you’ve got a bit of time to spare and want to give it a try.</li>
 </ul>
@@ -115,7 +115,7 @@ Netlify is very easy to set up and use, and it can automatically pull informatio
 <p>Now that you know a little bit how your website is structured, let’s dig in and add and modify it. We’ll start with some modifications, followed by creating new content.</p>
 <div id="playing-with-widgets" class="section level2">
 <h2>Playing with widgets</h2>
-<p>All (or at least most) content goes into the <code>content</code> folder and its subfolders. Content is generally written in (R)Markdown. For this tutorial, you don’t need to know much Rmarkdown, but at some point you will have to learn it. Fortunateyl, (R)Markdown is very easy to learn. See e.g. the RMarkdown section on <a href="https://andreashandel.github.io/MADAcourse/1e_ToolsforReproducibility.html">this page</a>, check out <a href="https://www.markdowntutorial.com/">this nice interactive tutorial</a> or this <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">cheatsheet</a>.</p>
+<p>All (or at least most) content goes into the <code>content</code> folder and its subfolders. Content is generally written in (R)Markdown. For this tutorial, you don’t need to know much Rmarkdown, but at some point you will have to learn it. Fortunately, (R)Markdown is very easy to learn. See e.g. the RMarkdown section on <a href="https://andreashandel.github.io/MADAcourse/1e_ToolsforReproducibility.html">this page</a>, check out <a href="https://www.markdowntutorial.com/">this nice interactive tutorial</a> or this <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">cheatsheet</a>.</p>
 <p>The Academic theme, and many other modern websites, use a layout that employs <strong>widgets</strong>, which are components of a website that are individually formatted and styled. On the demo site you just created, you see many different sections, each is a widget. Which widgets you want is controlled by files in the <code>/content/home/</code> folder. Go into that folder (from within RStudio) and open the <code>demo.md</code> file. You will see a bunch of text. Some commands are between <code>+++</code> signs, this is called the TOML (or YAML if it’s 3 <code>---</code>) header. These are instructions for the layout. The text below is what is actually shown on the site.</p>
 <p>As you stare at the content of the file, you might recognize that it corresponds to the 2nd block of the demo website with the dark bubble content. Let’s say you don’t want this particular widget on your home page. The easiest way is to set <code>active = false</code>. (You can also delete the whole file if you are sure you don’t want it). Do that. You should notice 2 things. In the bottom-left RStudio window (the R console) you should see a bit of code showing that the website was re-built and updated in real time. If you re-load the page in your browser, the widget and its content should be gone. You can try turning off other sections of the main page using this approach.</p>
 </div>
@@ -166,15 +166,15 @@ Netlify is very easy to set up and use, and it can automatically pull informatio
 <h1>Making your website public</h1>
 <p>So far, everything happened on your local computer. In a final step, we want to put the website online so everyone can see it. With Netlify, this is fairly simple. Log into your Netlify account. Under <code>Sites</code>, you should see a white box that says “drag and drop your site folder here”. Take the folder named <code>public</code> inside your website folder and drag it into that box. If things work right, after a few seconds you should see that your site is deployed. It will have a weird name and a URL (mine when I tried it just now was called <code>https://cranky-lamport-fff53a.netlify.com/</code>). Click on it and you will see your new website publicly online for everyone to see!</p>
 <p>If you want, you can change the name of your site under <code>Site settings</code>. More advanced (not free but also not too expensive and not that hard) is to get your domain name, e.g. <code>www.yourname.com</code> or something like that.</p>
-<p>You can stick with this process of deploying your website manually. If you want something more automated, check out <a href="./blogdown-website-2/">part 2 of this tutorial</a>, where you’ll learn how to use Github to make deployment to Netflify fully automatic.</p>
-<p>For now, you can either leave the website as is, or if you want to make it better first before putting it online, you can under <code>Site Settings</code> in the <code>Danger Zone</code> area delete the site. That only deletes the online version, so you can re-create at any time.</p>
+<p>If you want to add GitHub to the mix and have the deployment of your website automated, move on to <a href="/post/blogdown-website-2/">part 2</a> of this post.</p>
 </div>
 <div id="more-information" class="section level1">
 <h1>More Information</h1>
-<p>There is a lot of good information on blogdown available. I recommend the following:</p>
+<p>There is a lot of good information on blogdown/Hugo/Academic available. I recommend the following:</p>
 <ul>
 <li>A short introductory course is Alison Hill’s <a href="https://alison.rbind.io/project/summer-of-blogdown/">summer of blogdown</a>. Alison also has several blog posts on her website discussing more advanced concepts of Hugo.</li>
 <li>A lot of details and further information can be found in <a href="https://bookdown.org/yihui/blogdown/">the blogdown book</a>.</li>
+<li>For the Academic theme, check out <a href="https://sourcethemes.com/academic/docs/">the docs for the theme</a>. While they could be improved and at times a bit confusing, there are quite comprehensive.</li>
 </ul>
-<p>For the Academic theme, check out <a href="https://sourcethemes.com/academic/docs/">the docs for the theme</a>. While they could be improved and at times a bit confusing, there are quite comprehensive.</p>
+<p>Further information and tutorials can easily be found with some online searching. Let me know if you find any especially helpful ones and I’ll add them here.</p>
 </div>

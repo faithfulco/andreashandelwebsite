@@ -1,17 +1,17 @@
 ---
 title: Creating a website in less than 1 hour - part 1
 subtitle: Part 1 - blogdown, Hugo and Netlify
+summary: The following are step-by-step instructions for creating your own website using [blogdown](https://bookdown.org/yihui/blogdown/), [Hugo](https://gohugo.io/) and [Netlify](https://www.netlify.com/).
 author: Andreas Handel
 date: '2020-01-19'
 slug: blogdown-website-1
 draft: false
 categories: []
 tags: []
-summary: ''
 featured: no
 disable_jquery: no
 image:
-  caption: ''
+  caption: 'Photo by Agence Olloweb on Unsplash'
   focal_point: ''
   preview_only: no
 projects: []

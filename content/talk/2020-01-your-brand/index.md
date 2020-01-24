@@ -31,10 +31,10 @@ image:
 math: false
 
 categories:
-  - talk
   - presentation
+  - career
 ---
 
-These are slides for a talk/discussion I led with our graduate students on ways to build and manage an online presence and overall personal brand. The [presentation slides (as pdf) are here.](2020_01_Building_your_Brand.pdf)
+These are slides for a talk/discussion I led with our graduate students on ways to build and manage an online presence and overall personal brand. The [presentation slides are here.](/presentations/2020-01-your-brand/2020_01_Building_your_Brand.html)
 
 
