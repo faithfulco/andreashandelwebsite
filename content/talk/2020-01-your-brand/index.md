@@ -1,5 +1,5 @@
 ---
-title: Building and managing your brand
+title: Building and curating your brand
 summary: A presentation for our departmental PhD students on how to build and manage their brand (aka online presence).
 abstract: ""
 event: PhD Seminar
@@ -35,7 +35,7 @@ categories:
   - career
 ---
 
-These are slides for a talk/discussion I led with our graduate students on ways to build and manage an online presence and overall personal brand. 
+These are slides for a talk/discussion I led with our graduate students on ways to build and curate an online presence and overall personal brand. 
 <a href="/presentations/2020-01-your-brand/2020_01_Building_your_Brand.html" target="_blank">The presentation slides are here.</a>
 
 

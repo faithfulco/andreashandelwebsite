@@ -1,6 +1,6 @@
 ---
 title: "Reading, managing and publishing papers"
-author: Andreas Handel
+author: "[Andreas Handel](https://www.andreashandel.com)"
 date: "`r file.mtime(knitr::current_input())`"
 output: 
   ioslides_presentation:
