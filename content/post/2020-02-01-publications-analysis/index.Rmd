@@ -34,7 +34,11 @@ Instead of doing things by hand, there are nicer/faster ways using R. The follow
 ```{r, include = TRUE}
 library(scholar)
 library(dplyr)
+library(tidyr)
+library(knitr)
 library(ggplot2)
+library(here)
+library(bibliometrix)
 ```
 
 # Getting all citations for one (or more) individuals
@@ -91,5 +95,44 @@ windows(width=ww, height=wh)
 print(p4)
 dev.print(device=png,width=ww,height=wh,units="in",res=600,file="citations.png")
 ```
+
+# Getting list of co-authors
+
+```{r}
+#get all pubs for an author (or multiple)
+
+pubs <- get_publications(scholar_ids)
+
+#here I want to separately look at publications in the 2 time periods I defined above
+pubs_old <- pubs %>% dplyr::filter((year>=period_1_start & year<period_2_start ))
+pubs_new <- pubs %>% dplyr::filter(year>=period_2_start)
+
+#unfortunately, get_publications only pulls from the main page, which cuts off the author list. 
+#to get all authors, one needs to run through each paper
+authors_old <- sapply(pubs_old$pubid, get_complete_authors(id = scholar_ids))
+
+```
+
+
+# Making a table of journals and impact factors
+```{r}
+#get all pubs for an author (or multiple)
+pubs <- get_publications(scholar_ids)
+#here I only want publications since 2015
+pubs <- pubs %>% dplyr::filter(year>2014)
+ifdata <- get_impactfactor(pubs$journal) 
+#sort and remove non-journal entries since Google SCholar collects all kinds of 'publications', including items other than standard peer-reviewed papers
+iftable <- ifdata %>% dplyr::arrange(desc(ImpactFactor) ) %>% tidyr::drop_na()
+knitr::kable(iftable)
+```
+Ok so this doesn't quite work. I know for instance that I didn't publish anything in _Cancer Journal for Clinicians_ and the 2 _Rheumatology_ entries are workshop presentations. Oddly, when I look at `pubs$journal` there is no Cancer Journal listed. Somehow this is a bug created by the `get_impactfactor()` function. I could fix that by hand. The bigger problem is what to do with all those publications that are not peer-reviewed papers. I could remove them from my google scholar profile. But I kind of want to keep them there since some of them link to useful stuff. I could alternatively manually clean things at this step. This somewhat defeats the purpose of automation. 
+I do keep all my published, peer-reviewed papers in a bibtex bibliography file in my reference manager (I'm using Zotero and/or Jabref). I know that file is "clean" and only contains real peer-reviewed papers. Unfortunately, the `scholar` package can't read in such data.
+
+
+```{r}
+D <- readFiles("myrefs.bib")
+
+```
+
 
 

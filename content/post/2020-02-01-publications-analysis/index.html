@@ -372,13 +372,13 @@ summary {
 
 <div id="overview" class="section level1">
 <h1>Overview</h1>
-<p>I need some information on all my publications for “bean counting” purposes related to preparing my promotion materials. In the past, I also needed similar information for NSF grant applications.</p>
+<p>I needed some information on all my publications for “bean counting” purposes related to preparing my promotion materials. In the past, I also needed similar information for NSF grant applications.</p>
+<p>Instead of doing things by hand, there are nicer/faster ways using R. The following shows a few things one can do with the <code>scholar</code> package.</p>
 </div>
 <div id="required-packages" class="section level1">
 <h1>Required packages</h1>
-<pre class="r"><code>library(scholar)</code></pre>
-<pre><code>## Warning: package &#39;scholar&#39; was built under R version 3.6.2</code></pre>
-<pre class="r"><code>library(dplyr)</code></pre>
+<pre class="r"><code>library(scholar)
+library(dplyr)</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;dplyr&#39;</code></pre>
 <pre><code>## The following objects are masked from &#39;package:stats&#39;:
@@ -387,7 +387,9 @@ summary {
 <pre><code>## The following objects are masked from &#39;package:base&#39;:
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
-<pre class="r"><code>library(ggplot2)</code></pre>
+<pre class="r"><code>library(tidyr)
+library(knitr)
+library(ggplot2)</code></pre>
 </div>
 <div id="getting-all-citations-for-one-or-more-individuals" class="section level1">
 <h1>Getting all citations for one (or more) individuals</h1>
@@ -435,6 +437,209 @@ print(p4)</code></pre>
 <pre class="r"><code>dev.print(device=png,width=ww,height=wh,units=&quot;in&quot;,res=600,file=&quot;citations.png&quot;)</code></pre>
 <pre><code>## png 
 ##   2</code></pre>
+</div>
+<div id="making-a-table-with-journals-and-impact-factors" class="section level1">
+<h1>Making a table with journals and impact factors</h1>
+<pre class="r"><code>#get all pubs for an author (or multiple)
+pubs &lt;- get_publications(scholar_ids)
+#here I only want publications since 2015
+pubs &lt;- pubs %&gt;% dplyr::filter(year&gt;2014)
+ifdata &lt;- get_impactfactor(pubs$journal) 
+#sort and remove non-journal entries since Google SCholar collects all kinds of &#39;publications&#39;, including items other than standard peer-reviewed papers
+iftable &lt;- ifdata %&gt;% dplyr::arrange(desc(ImpactFactor) ) %&gt;% tidyr::drop_na()
+knitr::kable(iftable)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Journal</th>
+<th align="right">Cites</th>
+<th align="right">ImpactFactor</th>
+<th align="right">Eigenfactor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CA-A CANCER JOURNAL FOR CLINICIANS</td>
+<td align="right">28839</td>
+<td align="right">244.585</td>
+<td align="right">0.06603</td>
+</tr>
+<tr class="even">
+<td align="left">NATURE REVIEWS IMMUNOLOGY</td>
+<td align="right">39215</td>
+<td align="right">41.982</td>
+<td align="right">0.08536</td>
+</tr>
+<tr class="odd">
+<td align="left">NATURE</td>
+<td align="right">710766</td>
+<td align="right">41.577</td>
+<td align="right">1.35581</td>
+</tr>
+<tr class="even">
+<td align="left">AMERICAN JOURNAL OF RESPIRATORY AND CRITICAL CARE MEDICINE</td>
+<td align="right">61024</td>
+<td align="right">15.239</td>
+<td align="right">0.08683</td>
+</tr>
+<tr class="odd">
+<td align="left">Nature Communications</td>
+<td align="right">178348</td>
+<td align="right">12.353</td>
+<td align="right">0.92656</td>
+</tr>
+<tr class="even">
+<td align="left">PLOS BIOLOGY</td>
+<td align="right">28750</td>
+<td align="right">9.163</td>
+<td align="right">0.05868</td>
+</tr>
+<tr class="odd">
+<td align="left">eLife</td>
+<td align="right">25592</td>
+<td align="right">7.616</td>
+<td align="right">0.19592</td>
+</tr>
+<tr class="even">
+<td align="left">eLife</td>
+<td align="right">25592</td>
+<td align="right">7.616</td>
+<td align="right">0.19592</td>
+</tr>
+<tr class="odd">
+<td align="left">PHILOSOPHICAL TRANSACTIONS OF THE ROYAL SOCIETY B-BIOLOGICAL SCIENCES</td>
+<td align="right">41872</td>
+<td align="right">5.666</td>
+<td align="right">0.07129</td>
+</tr>
+<tr class="even">
+<td align="left">Frontiers in Immunology</td>
+<td align="right">16999</td>
+<td align="right">5.511</td>
+<td align="right">0.06747</td>
+</tr>
+<tr class="odd">
+<td align="left">RHEUMATOLOGY</td>
+<td align="right">18744</td>
+<td align="right">5.245</td>
+<td align="right">0.03381</td>
+</tr>
+<tr class="even">
+<td align="left">RHEUMATOLOGY</td>
+<td align="right">18744</td>
+<td align="right">5.245</td>
+<td align="right">0.03381</td>
+</tr>
+<tr class="odd">
+<td align="left">PROCEEDINGS OF THE ROYAL SOCIETY B-BIOLOGICAL SCIENCES</td>
+<td align="right">51704</td>
+<td align="right">4.847</td>
+<td align="right">0.08756</td>
+</tr>
+<tr class="even">
+<td align="left">PROCEEDINGS OF THE ROYAL SOCIETY B-BIOLOGICAL SCIENCES</td>
+<td align="right">51704</td>
+<td align="right">4.847</td>
+<td align="right">0.08756</td>
+</tr>
+<tr class="odd">
+<td align="left">PLoS Computational Biology</td>
+<td align="right">23758</td>
+<td align="right">3.955</td>
+<td align="right">0.08279</td>
+</tr>
+<tr class="even">
+<td align="left">PLoS Computational Biology</td>
+<td align="right">23758</td>
+<td align="right">3.955</td>
+<td align="right">0.08279</td>
+</tr>
+<tr class="odd">
+<td align="left">SOCIOLOGICAL METHODS &amp; RESEARCH</td>
+<td align="right">4177</td>
+<td align="right">3.625</td>
+<td align="right">0.00462</td>
+</tr>
+<tr class="even">
+<td align="left">Epidemics</td>
+<td align="right">576</td>
+<td align="right">3.364</td>
+<td align="right">0.00241</td>
+</tr>
+<tr class="odd">
+<td align="left">PATHOLOGY</td>
+<td align="right">2638</td>
+<td align="right">3.068</td>
+<td align="right">0.00446</td>
+</tr>
+<tr class="even">
+<td align="left">PLoS One</td>
+<td align="right">582877</td>
+<td align="right">2.766</td>
+<td align="right">1.86235</td>
+</tr>
+<tr class="odd">
+<td align="left">PLoS One</td>
+<td align="right">582877</td>
+<td align="right">2.766</td>
+<td align="right">1.86235</td>
+</tr>
+<tr class="even">
+<td align="left">PLoS One</td>
+<td align="right">582877</td>
+<td align="right">2.766</td>
+<td align="right">1.86235</td>
+</tr>
+<tr class="odd">
+<td align="left">PLoS One</td>
+<td align="right">582877</td>
+<td align="right">2.766</td>
+<td align="right">1.86235</td>
+</tr>
+<tr class="even">
+<td align="left">PLoS One</td>
+<td align="right">582877</td>
+<td align="right">2.766</td>
+<td align="right">1.86235</td>
+</tr>
+<tr class="odd">
+<td align="left">PLoS One</td>
+<td align="right">582877</td>
+<td align="right">2.766</td>
+<td align="right">1.86235</td>
+</tr>
+<tr class="even">
+<td align="left">BMC INFECTIOUS DISEASES</td>
+<td align="right">13612</td>
+<td align="right">2.620</td>
+<td align="right">0.04109</td>
+</tr>
+<tr class="odd">
+<td align="left">BMC IMMUNOLOGY</td>
+<td align="right">1784</td>
+<td align="right">2.615</td>
+<td align="right">0.00321</td>
+</tr>
+<tr class="even">
+<td align="left">NEPHROLOGY</td>
+<td align="right">3115</td>
+<td align="right">2.178</td>
+<td align="right">0.00605</td>
+</tr>
+<tr class="odd">
+<td align="left">JAPANESE JOURNAL OF INFECTIOUS DISEASES</td>
+<td align="right">1722</td>
+<td align="right">1.014</td>
+<td align="right">0.00242</td>
+</tr>
+<tr class="even">
+<td align="left">JOURNAL OF APPLIED STATISTICS</td>
+<td align="right">2352</td>
+<td align="right">0.699</td>
+<td align="right">0.00379</td>
+</tr>
+</tbody>
+</table>
 </div>
 
 
