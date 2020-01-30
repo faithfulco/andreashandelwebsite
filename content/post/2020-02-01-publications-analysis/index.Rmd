@@ -44,6 +44,7 @@ library(bibliometrix)
 # Getting all citations for one (or more) individuals
 
 ```{r}
+#setting path 
 #Define the person to analyze
 scholar_ids="bruHK0YAAAAJ" #could be more than one ID
 cites = compare_scholar_careers(scholar_ids, career = TRUE) #get citations
@@ -130,7 +131,7 @@ I do keep all my published, peer-reviewed papers in a bibtex bibliography file i
 
 
 ```{r}
-D <- readFiles("myrefs.bib")
+refs <- readFiles(here("myrefs.bib"))
 
 ```
 
