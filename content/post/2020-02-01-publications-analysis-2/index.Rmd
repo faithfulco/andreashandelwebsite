@@ -1,0 +1,87 @@
+---
+title: Using R to analyze publications - part 2
+subtitle: Some examples using bibliometrix
+summary: Some code and examples showing how to process and analyze meta-data for a set of publications using the `bibilometrix` R package. 
+author: Andreas Handel
+draft: true
+date: '2020-02-10'
+slug: publications-analysis-2
+categories: []
+tags: []
+featured: no
+disable_jquery: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+```{r, include = FALSE}
+#remotes::install_github('emo')
+#library('emo')
+```
+
+# Overview
+
+I needed some information on all my publications for "bean counting" purposes related to preparing my promotion materials. In the past, I also needed similar information for NSF grant applications. 
+
+Instead of doing things by hand, there are nicer/faster ways using R. in [part 1](), I did a few things using the `scholar` package. 
+While some parts worked nicely, I encountered 2 problems. First, since my Google Scholar record lists items other than peer-reviewed journal articles, they show up in the analysis and need to be cleaned out. Second, Google Scholar doesn't like automated queries through the API and is quick to block, at which point things don't work anymore.
+
+To get around these issues, I decided to give a different R package a try, namely [`bibliometrix`](https://www.bibliometrix.org/). The workflow is somewhat different.
+
+# Required packages
+
+```{r, messages = FALSE}
+library(dplyr)
+#library(tidyr)
+#library(knitr)
+#library(ggplot2)
+library(bibliometrix)
+```
+
+# Loading data
+
+I keep all references to my published papers in a BibTeX file, managed through Zotero/Jabref. I know this file is clean and correct. I'm loading it here for processing. If you don't have such a file, make one using your favorite reference manager. Or create it through a saved search on a bibliographic database, as described [in the bibliometrix vignette](https://cran.r-project.org/web/packages/bibliometrix/vignettes/bibliometrix-vignette.html).
+
+
+```{r}
+rawrefs <- readFiles("mypublishedpapers.bib") #read bib file
+pubs <- bibliometrix::convert2df(rawrefs, dbsource = "isi", format = "bibtex") #turn file of references into data frame
+```
+
+Each row of the data frame created by the `convert2df` function is a publication, the columns contain information for each publication. 
+For a list of what each column variable codes for, see [here](https://cran.r-project.org/web/packages/bibliometrix/vignettes/bibliometrix-vignette.html).
+
+
+
+# Getting list of co-authors
+
+I want co-authors separately for 2 different periods, so I'm splitting things.
+
+```{r}
+#get all pubs for an author (or multiple)
+period_1_start = 2009
+period_2_start = 2015
+#here I want to separately look at publications in the 2 time periods I defined above
+pubs_old <- pubs %>% dplyr::filter((PY>=period_1_start & PY<period_2_start ))
+pubs_new <- pubs %>% dplyr::filter(PY>=period_2_start)
+```
+
+
+This runs analysis on the data frames
+
+```{r, eval = FALSE}
+res_old <- bibliometrix::biblioAnalysis(pubs_old, sep = ";") #perform analysis
+res_new <- bibliometrix::biblioAnalysis(pubs_new, sep = ";") #perform analysis
+n_auth_old = length(res_old$Authors)-1 #get number of co-authors. Subtract 1 since it includes myself.
+n_auth_new = length(res_new$Authors)-1
+print(sprintf('Number of co-authors in period 1/2 %f/%f',n_auth_old,n_auth_new))
+```
+
+
+
+
+

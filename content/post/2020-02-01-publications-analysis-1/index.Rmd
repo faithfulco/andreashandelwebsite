@@ -1,11 +1,11 @@
 ---
-title: Using R to analyze publications
-subtitle: 
-summary: Some code and examples showing how to process and analyze meta-data for a set of publications. Useful to get list of co-authors, etc.
+title: Using R to analyze publications - part 1
+subtitle: Some examples using Google Scholar
+summary: Some code and examples showing how to process and analyze meta-data for a set of publications using the `scholar` R package. 
 author: Andreas Handel
 draft: true
 date: '2020-02-01'
-slug: publications-analysis
+slug: publications-analysis-1
 categories: []
 tags: []
 featured: no
@@ -29,6 +29,14 @@ I needed some information on all my publications for "bean counting" purposes re
 
 Instead of doing things by hand, there are nicer/faster ways using R. The following shows a few things one can do with the `scholar` package.
 
+# Notes
+
+* As of this writing, the `scholar` R package does seems semi-dormant and not under active development. If Google changes their API for Scholar and the package isn't updated, the below code might stop working. 
+
+* A problem I keep encountering with Google Scholar is that it starts blocking requests, even after what I consider are not that many attempts to retrieve data. I found that happen when I try to pull references from Google Scholar using `JabRef` and also with the code below. If that happens for you, try a different computer, or clear cookies, or try [tutorial 2]().
+
+* To minimize chances of getting locked out by Google, I wrote the code below such that it only sends a request if there isn't a local file already containing that data. To refresh data, delete the local files.
+
 # Required packages
 
 ```{r, include = TRUE}
@@ -37,17 +45,22 @@ library(dplyr)
 library(tidyr)
 library(knitr)
 library(ggplot2)
-library(here)
-library(bibliometrix)
 ```
 
 # Getting all citations for one (or more) individuals
 
 ```{r}
-#setting path 
 #Define the person to analyze
-scholar_ids="bruHK0YAAAAJ" #could be more than one ID
-cites = compare_scholar_careers(scholar_ids, career = TRUE) #get citations
+scholar_id="bruHK0YAAAAJ" 
+#either load existing file of publications, or get a new one from Google Scholar
+#delete the file to force an update
+if (file.exists('citations.Rds'))
+{
+  cites <- readRDS('citations.Rds')
+} else {
+  cites <- scholar::get_citation_history(scholar_id) #get citations
+  saveRDS(cites,'citations.Rds')
+}
 ```
 
 # Compare citations for different time periods
@@ -56,7 +69,6 @@ For my purpose, I want to compare citations between 2 time periods (my Assistant
 
 ```{r}
 #define who to analyze. Really only needed if more than 1 person's information is pulled above.
-scholar_id = scholar_ids[1] 
 period_1_start = 2009
 period_2_start = 2015
 cites_1 <- cites %>% dplyr::filter(id == scholar_id, (year>=period_1_start & year<period_2_start ))
@@ -101,39 +113,59 @@ dev.print(device=png,width=ww,height=wh,units="in",res=600,file="citations.png")
 
 ```{r}
 #get all pubs for an author (or multiple)
+if (file.exists('publications.Rds'))
+{
+  pubs <- readRDS('publications.Rds')
+} else {
+  publications <- scholar::get_publications(scholar_id) #get citations
+  saveRDS(publications,'publications.Rds')
+}
+```
 
-pubs <- get_publications(scholar_ids)
+Unfortunately, `get_publications()` only pulls from the main page, which cuts off the author list. 
+To get all authors, one needs to run through each paper using `get_complete_authors()`. 
+The problem is that Google cuts off access if one sends too many queries. If you get error messages, it might be that Google blocked you. Try the suggestions above. 
 
-#here I want to separately look at publications in the 2 time periods I defined above
-pubs_old <- pubs %>% dplyr::filter((year>=period_1_start & year<period_2_start ))
-pubs_new <- pubs %>% dplyr::filter(year>=period_2_start)
+```{r}
+all_authors = list()
+if (file.exists('allauthors.Rds'))
+{
+  allauthors <- readRDS('allauthors.Rds')
+} else {
+  for (n in 1:nrow(publications)) 
+  {
+    all_authors[[n]] = get_complete_authors(id = scholar_id, pubid = publications[n,]$pubid)
+    Sys.sleep(2) #wait 2 seconds between each query. Might help with Google not thinking we are querying too much/too fast. Not sure if it really helps though. 
+  }
+  #saveRDS(all_authors,'allauthors.Rds')
+}
+```
 
-#unfortunately, get_publications only pulls from the main page, which cuts off the author list. 
-#to get all authors, one needs to run through each paper
-authors_old <- sapply(pubs_old$pubid, get_complete_authors(id = scholar_ids))
 
+I want to separately look at publications in the 2 time periods I defined above
+```{r}
+#pubs_old <- pubs %>% dplyr::filter((year>=period_1_start & year<period_2_start ))
+#pubs_new <- pubs %>% dplyr::filter(year>=period_2_start)
 ```
 
 
 # Making a table of journals and impact factors
+
 ```{r}
-#get all pubs for an author (or multiple)
-pubs <- get_publications(scholar_ids)
 #here I only want publications since 2015
-pubs <- pubs %>% dplyr::filter(year>2014)
-ifdata <- get_impactfactor(pubs$journal) 
+pub_reduced <- publications %>% dplyr::filter(year>2014)
+ifdata <- get_impactfactor(pub_reduced$journal) 
 #sort and remove non-journal entries since Google SCholar collects all kinds of 'publications', including items other than standard peer-reviewed papers
 iftable <- ifdata %>% dplyr::arrange(desc(ImpactFactor) ) %>% tidyr::drop_na()
 knitr::kable(iftable)
 ```
-Ok so this doesn't quite work. I know for instance that I didn't publish anything in _Cancer Journal for Clinicians_ and the 2 _Rheumatology_ entries are workshop presentations. Oddly, when I look at `pubs$journal` there is no Cancer Journal listed. Somehow this is a bug created by the `get_impactfactor()` function. I could fix that by hand. The bigger problem is what to do with all those publications that are not peer-reviewed papers. I could remove them from my google scholar profile. But I kind of want to keep them there since some of them link to useful stuff. I could alternatively manually clean things at this step. This somewhat defeats the purpose of automation. 
+
+Ok so this doesn't quite work. I know for instance that I didn't publish anything in _Cancer Journal for Clinicians_ and the 2 _Rheumatology_ entries are workshop presentations. Oddly, when I look at `pubs$journal` there is no Cancer Journal listed. Somehow this is a bug created by the `get_impactfactor()` function. I could fix that by hand. The bigger problem is what to do with all those publications that are not peer-reviewed papers. I could remove them from my Google scholar profile. But I kind of want to keep them there since some of them link to useful stuff. I could alternatively manually clean things at this step. This somewhat defeats the purpose of automation. 
 I do keep all my published, peer-reviewed papers in a bibtex bibliography file in my reference manager (I'm using Zotero and/or Jabref). I know that file is "clean" and only contains real peer-reviewed papers. Unfortunately, the `scholar` package can't read in such data.
 
 
-```{r}
-refs <- readFiles(here("myrefs.bib"))
+# Discussion
 
-```
 
 
 
