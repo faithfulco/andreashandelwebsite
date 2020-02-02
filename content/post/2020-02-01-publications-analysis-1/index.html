@@ -22,14 +22,14 @@ projects: []
 <div id="overview" class="section level1">
 <h1>Overview</h1>
 <p>I needed some information on all my publications for “bean counting” purposes related to preparing my promotion materials. In the past, I also needed similar information for NSF grant applications.</p>
-<p>Instead of doing things by hand, there are nicer/faster ways using R. The following shows a few things one can do with the <a href="https://cran.r-project.org/package=scholar"><code>scholar</code> package</a>. I describe an alternative approach using the <a href="https://www.bibliometrix.org/"><code>bibliometrix</code> package</a> in <a href="/post/publication-analysis-2/">part 2</a> of this post.</p>
+<p>Instead of doing things by hand, there are nicer/faster ways using R. The following shows a few things one can do with the <a href="https://cran.r-project.org/package=scholar"><code>scholar</code> package</a>. I describe an alternative approach using the <a href="https://www.bibliometrix.org/"><code>bibliometrix</code> package</a> in <a href="/post/publications-analysis-2/">part 2</a> of this post.</p>
 <p>The RMarkdown file to run this analysis <a href="index.Rmd">is here</a>.</p>
 </div>
 <div id="notes" class="section level1">
 <h1>Notes</h1>
 <ul>
 <li><p>As of this writing, the <code>scholar</code> R package seems semi-dormant and not under active development. If Google changes their API for Scholar and the package isn’t updated, the below code might stop working.</p></li>
-<li><p>A problem I keep encountering with Google Scholar is that it starts blocking requests, even after what I consider are not that many attempts to retrieve data. I notice that when I try to pull references from Google Scholar using <code>JabRef</code> and also with the code below. If that happens to you, try a different computer, or clear cookies. This is a well known problem and if you search online, you find others complaining about it. I haven’t found a great solution yet, other than not using the Google Scholar data. I describe such an approach in <a href="/post/publication-analysis-2/">part 2</a> of this post. However, some analyses are only able with Google Scholar information.</p></li>
+<li><p>A problem I keep encountering with Google Scholar is that it starts blocking requests, even after what I consider are not that many attempts to retrieve data. I notice that when I try to pull references from Google Scholar using <code>JabRef</code> and also with the code below. If that happens to you, try a different computer, or clear cookies. This is a well known problem and if you search online, you find others complaining about it. I haven’t found a great solution yet, other than not using the Google Scholar data. I describe such an approach in <a href="/post/publications-analysis-2/">part 2</a> of this post. However, some analyses are only able with Google Scholar information.</p></li>
 <li><p>To minimize chances of getting locked out by Google, I wrote the code below such that it only sends a request if there isn’t a local file already containing that data. To refresh data, delete the local files.</p></li>
 </ul>
 </div>
@@ -125,7 +125,7 @@ if (file.exists(&#39;publications.Rds&#39;))
 ## $ year    &lt;dbl&gt; 2012, 2011, 2010, 2006, 2007, 2012, 2006, 2017, 2008, 2016,...
 ## $ cid     &lt;fct&gt; 1979732925283755485, 10982184786304722425, 1038596204985444...
 ## $ pubid   &lt;fct&gt; 5nxA0vEk-isC, _FxGoFyzp5QC, 9yKSN-GCB0IC, u5HHmVD_uO8C, d1g...</code></pre>
-<p>This shows the variables obtained in the data frame. One thing I notice is that this contains more entries than I have peer-reviewed publications. Since most people’s Google Scholar profile (inlcuding my own) list items beyond peer-reviewed journal articles, one likely needs to do some manual cleaning before analysis. That is not ideal. I’ll do/show a few more possible analyses, but decided to do the analyses below using the approach <a href="/post/publication-analysis-2/">in part 2</a>.</p>
+<p>This shows the variables obtained in the data frame. One thing I notice is that this contains more entries than I have peer-reviewed publications. Since most people’s Google Scholar profile (inlcuding my own) list items beyond peer-reviewed journal articles, one likely needs to do some manual cleaning before analysis. That is not ideal. I’ll do/show a few more possible analyses, but decided to do the analyses below using the approach <a href="/post/publications-analysis-2/">in part 2</a>.</p>
 </div>
 <div id="making-a-table-of-journals-and-impact-factors" class="section level1">
 <h1>Making a table of journals and impact factors</h1>
@@ -361,6 +361,6 @@ if (file.exists(&#39;allauthors.Rds&#39;))
 <li>Since most people’s Google Scholar profile (inlcuding my own) list items beyond peer-reviewed journal articles, one likely needs to do some manual cleaning before analysis.</li>
 </ol></li>
 </ul>
-<p>I do keep all my published, peer-reviewed papers in a BibTeX bibliography file in my reference manager (I’m using Zotero and/or Jabref). I know that file is clean and only contains peer-reviewed papers. Unfortunately, the <code>scholar</code> package can’t read in such data. In <a href="/post/publication-analysis-2/">part 2</a> of this post series, I’ll use a different R package to produce the journal and author tables I tried making above.</p>
+<p>I do keep all my published, peer-reviewed papers in a BibTeX bibliography file in my reference manager (I’m using Zotero and/or Jabref). I know that file is clean and only contains peer-reviewed papers. Unfortunately, the <code>scholar</code> package can’t read in such data. In <a href="/post/publications-analysis-2/">part 2</a> of this post series, I’ll use a different R package to produce the journal and author tables I tried making above.</p>
 <p>The one feature only available through Google Scholar is the citation record and the analysis I did at the beginning if this post.</p>
 </div>

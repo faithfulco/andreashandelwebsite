@@ -22,7 +22,7 @@ projects: []
 <div id="overview" class="section level1">
 <h1>Overview</h1>
 <p>I needed some information on all my publications for “bean counting” purposes related to preparing my promotion materials. In the past, I also needed similar information for NSF grant applications.</p>
-<p>Instead of doing things by hand, there are nicer/faster ways using R. in <a href="/post/publication-analysis-1/">part 1</a>, I did a few things using the <code>scholar</code> package.
+<p>Instead of doing things by hand, there are nicer/faster ways using R. in <a href="/post/publications-analysis-1/">part 1</a>, I did a few things using the <code>scholar</code> package.
 While some parts worked nicely, I encountered 2 problems. First, since my Google Scholar record lists items other than peer-reviewed journal articles, they show up in the analysis and need to be cleaned out. Second, Google Scholar doesn’t like automated queries through the API and is quick to block, at which point things don’t work anymore.</p>
 <p>To get around these issues, I decided to give a different R package a try, namely <a href="https://www.bibliometrix.org/"><code>bibliometrix</code></a>. The workflow is somewhat different.</p>
 <p>The RMarkdown file to run this analysis <a href="index.Rmd">is here</a>.</p>
@@ -625,6 +625,6 @@ knitr::kable(journaltable)</code></pre>
 </div>
 <div id="discussion" class="section level1">
 <h1>Discussion</h1>
-<p>The <code>bibliometrix</code> package doesn’t suffer from the problems that I encountered in <a href="/post/publication-analysis-1/">part 1</a> of this post when I tried the <code>scholar</code> package (and Google Scholar). The downside is that I can’t get some of the information, e.g. my annual citations. So it seems there is not (yet) a comprehensive solution, and using both packages seems best.</p>
+<p>The <code>bibliometrix</code> package doesn’t suffer from the problems that I encountered in <a href="/post/publications-analysis-1/">part 1</a> of this post when I tried the <code>scholar</code> package (and Google Scholar). The downside is that I can’t get some of the information, e.g. my annual citations. So it seems there is not (yet) a comprehensive solution, and using both packages seems best.</p>
 <p>A larger overall problem is that a lot of this information is controlled by corporations (Google, Elsevier, Clarivate Analytics, etc.), which might or might not allow R packages and individual users (who don’t subscribe to their offerings) to access certain information. As such, R packages accessing this information will need to adjust to whatever the companies allow.</p>
 </div>
