@@ -11,17 +11,12 @@ tags: []
 featured: no
 disable_jquery: no
 image:
-  caption: ''
+  caption: 'Photo by Hope House Press - Leather Diary Studio on Unsplash'
   focal_point: ''
   preview_only: no
 projects: []
 ---
 
-
-```{r, include = FALSE}
-#remotes::install_github('emo')
-#library('emo')
-```
 
 # Overview
 
@@ -33,13 +28,13 @@ Instead of doing things by hand, there are nicer/faster ways using R. The follow
 
 * As of this writing, the `scholar` R package does seems semi-dormant and not under active development. If Google changes their API for Scholar and the package isn't updated, the below code might stop working. 
 
-* A problem I keep encountering with Google Scholar is that it starts blocking requests, even after what I consider are not that many attempts to retrieve data. I found that happen when I try to pull references from Google Scholar using `JabRef` and also with the code below. If that happens for you, try a different computer, or clear cookies, or try [tutorial 2]().
+* A problem I keep encountering with Google Scholar is that it starts blocking requests, even after what I consider are not that many attempts to retrieve data. I found that happen when I try to pull references from Google Scholar using `JabRef` and also with the code below. If that happens for you, try a different computer, or clear cookies, or try the approach I describe in [part 2](/post/publication-analysis-2/) of this post.
 
 * To minimize chances of getting locked out by Google, I wrote the code below such that it only sends a request if there isn't a local file already containing that data. To refresh data, delete the local files.
 
 # Required packages
 
-```{r, include = TRUE}
+```{r, message = FALSE}
 library(scholar)
 library(dplyr)
 library(tidyr)
@@ -109,7 +104,30 @@ print(p4)
 dev.print(device=png,width=ww,height=wh,units="in",res=600,file="citations.png")
 ```
 
+
+
+# Making a table of journals and impact factors
+
+The `scholar` package has a function that allows one to get impact factors for journals. This data doesn't come from Google Scholar, instead the package comes with an internal spreadsheet/table with impact factors. Looking a bit into the `scholar` package indicates that the data was taken from some spreadsheet posted on ResearchGate (probably not fully legal). Either way, let's give it a try.
+
+
+```{r}
+#here I only want publications since 2015
+pub_reduced <- publications %>% dplyr::filter(year>2014)
+ifdata <- scholar::get_impactfactor(pub_reduced$journal) 
+#sort and remove non-journal entries since Google SCholar collects all kinds of 'publications', including items other than standard peer-reviewed papers
+iftable <- ifdata %>% dplyr::arrange(desc(ImpactFactor) ) %>% tidyr::drop_na()
+knitr::kable(iftable)
+```
+
+Ok so this doesn't quite work. I know for instance that I didn't publish anything in _Cancer Journal for Clinicians_ and the 2 _Rheumatology_ entries are workshop presentations. Oddly, when I look at `pubs$journal` there is no Cancer Journal listed. Somehow this is a bug created by the `get_impactfactor()` function. I could fix that by hand. The bigger problem is what to do with all those publications that are not peer-reviewed papers. I could remove them from my Google scholar profile. But I kind of want to keep them there since some of them link to useful stuff. I could alternatively manually clean things at this step. This somewhat defeats the purpose of automation. 
+
+I do keep all my published, peer-reviewed papers in a bibtex bibliography file in my reference manager (I'm using Zotero and/or Jabref). I know that file is "clean" and only contains real peer-reviewed papers. Unfortunately, the `scholar` package can't read in such data. In [part 2](/post/publication-analysis-2/) of this post series, I'll use a slightly different approach to get this table, using my own BibTeX bibliography file.
+
+
 # Getting list of co-authors
+
+
 
 ```{r}
 #get all pubs for an author (or multiple)
@@ -122,8 +140,7 @@ if (file.exists('publications.Rds'))
 }
 ```
 
-Unfortunately, `get_publications()` only pulls from the main page, which cuts off the author list. 
-To get all authors, one needs to run through each paper using `get_complete_authors()`. 
+Unfortunately, `get_publications()` only pulls from the main page, which cuts off the author list. To get all authors, one needs to run through each paper using `get_complete_authors()`. 
 The problem is that Google cuts off access if one sends too many queries. If you get error messages, it might be that Google blocked you. Try the suggestions above. 
 
 ```{r}
@@ -149,23 +166,9 @@ I want to separately look at publications in the 2 time periods I defined above
 ```
 
 
-# Making a table of journals and impact factors
-
-```{r}
-#here I only want publications since 2015
-pub_reduced <- publications %>% dplyr::filter(year>2014)
-ifdata <- get_impactfactor(pub_reduced$journal) 
-#sort and remove non-journal entries since Google SCholar collects all kinds of 'publications', including items other than standard peer-reviewed papers
-iftable <- ifdata %>% dplyr::arrange(desc(ImpactFactor) ) %>% tidyr::drop_na()
-knitr::kable(iftable)
-```
-
-Ok so this doesn't quite work. I know for instance that I didn't publish anything in _Cancer Journal for Clinicians_ and the 2 _Rheumatology_ entries are workshop presentations. Oddly, when I look at `pubs$journal` there is no Cancer Journal listed. Somehow this is a bug created by the `get_impactfactor()` function. I could fix that by hand. The bigger problem is what to do with all those publications that are not peer-reviewed papers. I could remove them from my Google scholar profile. But I kind of want to keep them there since some of them link to useful stuff. I could alternatively manually clean things at this step. This somewhat defeats the purpose of automation. 
-I do keep all my published, peer-reviewed papers in a bibtex bibliography file in my reference manager (I'm using Zotero and/or Jabref). I know that file is "clean" and only contains real peer-reviewed papers. Unfortunately, the `scholar` package can't read in such data.
-
-
 # Discussion
 
+While the `scholar` package has some nice features.
 
 
 
