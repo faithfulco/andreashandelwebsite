@@ -11,9 +11,9 @@ tags: []
 featured: no
 disable_jquery: no
 image:
-  caption: 'Photo by Hope House Press - Leather Diary Studio on Unsplash'
+  caption: ''
   focal_point: ''
-  preview_only: no
+  preview_only: yes
 projects: []
 ---
 
@@ -46,24 +46,26 @@ library(ggplot2)</code></pre>
 <p>First, I’m using Google Scholar to get all citations for a specific author (in this case, myself).</p>
 <pre class="r"><code>#Define the person to analyze
 scholar_id=&quot;bruHK0YAAAAJ&quot; 
-#either load existing file of publications, or get a new one from Google Scholar
+#either load existing file of publications
+#or get a new one from Google Scholar
 #delete the file to force an update
 if (file.exists(&#39;citations.Rds&#39;))
 {
   cites &lt;- readRDS(&#39;citations.Rds&#39;)
 } else {
-  cites &lt;- scholar::get_citation_history(scholar_id) #get citations
+  #get citations
+  cites &lt;- scholar::get_citation_history(scholar_id) 
   saveRDS(cites,&#39;citations.Rds&#39;)
 }</code></pre>
 </div>
 <div id="compare-citations-for-different-time-periods" class="section level1">
 <h1>Compare citations for different time periods</h1>
 <p>For my purpose, I want to compare citations between 2 time periods (my Assistant Professor time and my Associate Professor time). I’m splitting them into 2.</p>
-<pre class="r"><code>#define who to analyze. Really only needed if more than 1 person&#39;s information is pulled above.
-period_1_start = 2009
+<pre class="r"><code>period_1_start = 2009
 period_2_start = 2015
 cites_1 &lt;- cites %&gt;% dplyr::filter((year&gt;=period_1_start &amp; year&lt;period_2_start ))
-cites_2 &lt;- cites %&gt;% dplyr::filter((year&gt;=period_2_start &amp; year&lt;2020 )) #remove last year since it&#39;s not a full year</code></pre>
+#remove last year since it&#39;s not a full year
+cites_2 &lt;- cites %&gt;% dplyr::filter((year&gt;=period_2_start &amp; year&lt;2020 )) </code></pre>
 <p>Fitting a linear model to both time segments to look at increase in citations over both periods.</p>
 <pre class="r"><code>fit1=lm(cites ~ year, data = cites_1)
 fit2=lm(cites ~ year, data = cites_2)
@@ -79,18 +81,19 @@ cites_2$group = &quot;2&quot;
 cites_df = rbind(cites_1,cites_2)
 xlabel = cites_df$year[seq(1,nrow(cites_df),by=2)]
 #make the plot and show linear fit lines
-p1 &lt;- ggplot(data = cites_df, aes(year, cites, colour=group, shape=group)) + geom_point(size = I(4)) + geom_smooth(method=&quot;lm&quot;,aes(group = group), se = F, size=1.5)  
-# format axes and legend
-p2 &lt;- p1 + scale_x_continuous(name = &quot;Year&quot;, breaks = xlabel, labels = xlabel) + scale_y_continuous(&quot;Citations according to Google Scholar&quot;) + theme_bw(base_size=14) + theme(legend.position=&quot;none&quot;) 
-# add text to plot
-p3 &lt;- p2 + geom_text(aes(NULL,NULL),x=2010.8,y=150,label=&quot;Average annual \n increase 22%&quot;,color=&quot;black&quot;,size=5.5)
-p4 &lt;- p3 + geom_text(aes(NULL,NULL),x=2017,y=150,label=&quot;Average annual \n increase 45%&quot;,color=&quot;black&quot;,size=5.5) 
+p1 &lt;- ggplot(data = cites_df, aes(year, cites, colour=group, shape=group)) + 
+      geom_point(size = I(4)) + 
+      geom_smooth(method=&quot;lm&quot;,aes(group = group), se = F, size=1.5) + 
+      scale_x_continuous(name = &quot;Year&quot;, breaks = xlabel, labels = xlabel) +     scale_y_continuous(&quot;Citations according to Google Scholar&quot;) +
+      theme_bw(base_size=14) + theme(legend.position=&quot;none&quot;) + 
+      geom_text(aes(NULL,NULL),x=2010.8,y=150,label=&quot;Average annual \n increase 22%&quot;,color=&quot;black&quot;,size=5.5) +
+      geom_text(aes(NULL,NULL),x=2017,y=150,label=&quot;Average annual \n increase 45%&quot;,color=&quot;black&quot;,size=5.5) 
 
 #open a new graphics window
 #note that this is Windows specific. Use quartz() for MacOS
 ww=5; wh=5; 
 windows(width=ww, height=wh)                    
-print(p4)</code></pre>
+print(p1)</code></pre>
 <p><img src="/post/2020-02-01-publications-analysis-1/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <pre class="r"><code>dev.print(device=png,width=ww,height=wh,units=&quot;in&quot;,res=600,file=&quot;citations.png&quot;)</code></pre>
 <pre><code>## png 
@@ -104,7 +107,8 @@ if (file.exists(&#39;publications.Rds&#39;))
 {
   publications &lt;- readRDS(&#39;publications.Rds&#39;)
 } else {
-  publications &lt;- scholar::get_publications(scholar_id) #get citations
+  #get citations
+  publications &lt;- scholar::get_publications(scholar_id) 
   saveRDS(publications,&#39;publications.Rds&#39;)
 }</code></pre>
 </div>
@@ -129,7 +133,9 @@ if (file.exists(&#39;publications.Rds&#39;))
 <pre class="r"><code>#here I only want publications since 2015
 pub_reduced &lt;- publications %&gt;% dplyr::filter(year&gt;2014)
 ifdata &lt;- scholar::get_impactfactor(pub_reduced$journal) 
-#sort and remove non-journal entries since Google SCholar collects all kinds of &#39;publications&#39;, including items other than standard peer-reviewed papers
+#Google SCholar collects all kinds of &#39;publications&#39;
+#including items other than standard peer-reviewed papers
+#this sorts and removes some non-journal entries  
 iftable &lt;- ifdata %&gt;% dplyr::arrange(desc(ImpactFactor) ) %&gt;% tidyr::drop_na()
 knitr::kable(iftable)</code></pre>
 <table>

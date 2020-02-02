@@ -13,7 +13,7 @@ disable_jquery: no
 image:
   caption: 'Photo by Bernd Klutsch on Unsplash'
   focal_point: ''
-  preview_only: no
+  preview_only: yes
 projects: []
 ---
 
@@ -134,7 +134,7 @@ Ok that's not too bad. It couldn't find the Lancet Global Health, Current Opinio
 
 # Discussion
 
-The `bibliometrix` package doesn't suffer from the problems that I encountered in [part 1](/post/publication-analysis-1/) of this post when I tried  the `scholar` package (and Google Scholar) have. The downside is that I can't get some of the information, e.g. my annual citations. So it seems there is not (yet) a comprehensive solution, and using both packages seems best. 
+The `bibliometrix` package doesn't suffer from the problems that I encountered in [part 1](/post/publication-analysis-1/) of this post when I tried  the `scholar` package (and Google Scholar). The downside is that I can't get some of the information, e.g. my annual citations. So it seems there is not (yet) a comprehensive solution, and using both packages seems best. 
 
 A larger overall problem is that a lot of this information is controlled by corporations (Google, Elsevier, Clarivate Analytics, etc.), which might or might not allow R packages and individual users (who don't subscribe to their offerings) to access certain information. As such, R packages accessing this information will need to adjust to whatever the companies allow.
 
