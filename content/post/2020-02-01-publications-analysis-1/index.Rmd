@@ -11,7 +11,7 @@ tags: []
 featured: no
 disable_jquery: no
 image:
-  caption: 'Photo by Hope House Press - Leather Diary Studio on Unsplash'
+  caption: ''
   focal_point: ''
   preview_only: no
 projects: []
@@ -23,6 +23,8 @@ projects: []
 I needed some information on all my publications for "bean counting" purposes related to preparing my promotion materials. In the past, I also needed similar information for NSF grant applications. 
 
 Instead of doing things by hand, there are nicer/faster ways using R. The following shows a few things one can do with the [`scholar` package](https://cran.r-project.org/package=scholar). I describe an alternative approach using the [`bibliometrix` package](https://www.bibliometrix.org/) in [part 2](/post/publication-analysis-2/) of this post.
+
+The RMarkdown file to run this analysis [is here](index.Rmd).
 
 # Notes
 

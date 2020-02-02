@@ -4,7 +4,7 @@ subtitle: Some examples using bibliometrix
 summary: Some code and examples showing how to process and analyze meta-data for a set of publications using the `bibilometrix` R package. 
 author: Andreas Handel
 draft: false
-date: '2020-02-10'
+date: '2020-02-02'
 slug: publications-analysis-2
 categories: []
 tags: []
@@ -26,9 +26,11 @@ While some parts worked nicely, I encountered 2 problems. First, since my Google
 
 To get around these issues, I decided to give a different R package a try, namely [`bibliometrix`](https://www.bibliometrix.org/). The workflow is somewhat different.
 
+The RMarkdown file to run this analysis [is here](index.Rmd).
+
 # Required packages
 
-```{r, message = FALSE}
+```{r, include = FALSE}
 library(dplyr)
 library(knitr)
 library(bibliometrix)

@@ -4,7 +4,7 @@ subtitle: Some examples using bibliometrix
 summary: Some code and examples showing how to process and analyze meta-data for a set of publications using the `bibilometrix` R package. 
 author: Andreas Handel
 draft: false
-date: '2020-02-10'
+date: '2020-02-02'
 slug: publications-analysis-2
 categories: []
 tags: []
@@ -25,12 +25,10 @@ projects: []
 <p>Instead of doing things by hand, there are nicer/faster ways using R. in <a href="/post/publication-analysis-1/">part 1</a>, I did a few things using the <code>scholar</code> package.
 While some parts worked nicely, I encountered 2 problems. First, since my Google Scholar record lists items other than peer-reviewed journal articles, they show up in the analysis and need to be cleaned out. Second, Google Scholar doesn’t like automated queries through the API and is quick to block, at which point things don’t work anymore.</p>
 <p>To get around these issues, I decided to give a different R package a try, namely <a href="https://www.bibliometrix.org/"><code>bibliometrix</code></a>. The workflow is somewhat different.</p>
+<p>The RMarkdown file to run this analysis <a href="index.Rmd">is here</a>.</p>
 </div>
 <div id="required-packages" class="section level1">
 <h1>Required packages</h1>
-<pre class="r"><code>library(dplyr)
-library(knitr)
-library(bibliometrix)</code></pre>
 </div>
 <div id="loading-data" class="section level1">
 <h1>Loading data</h1>
