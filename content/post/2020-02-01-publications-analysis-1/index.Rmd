@@ -89,11 +89,11 @@ Making a figure to show citation count increases
 cites_1$group = "1"
 cites_2$group = "2"
 cites_df = rbind(cites_1,cites_2)
-
+xlabel = cites_df$year[seq(1,nrow(cites_df),by=2)]
 #make the plot and show linear fit lines
 p1 <- ggplot(data = cites_df, aes(year, cites, colour=group, shape=group)) + geom_point(size = I(4)) + geom_smooth(method="lm",aes(group = group), se = F, size=1.5)  
 # format axes and legend
-p2 <- p1 + scale_x_continuous(name = "Year", breaks = cites_df$year, labels = cites_df$year) + scale_y_continuous("Citations according to Google Scholar") + theme_bw(base_size=14) + theme(legend.position="none") 
+p2 <- p1 + scale_x_continuous(name = "Year", breaks = xlabel, labels = xlabel) + scale_y_continuous("Citations according to Google Scholar") + theme_bw(base_size=14) + theme(legend.position="none") 
 # add text to plot
 p3 <- p2 + geom_text(aes(NULL,NULL),x=2010.8,y=150,label="Average annual \n increase 22%",color="black",size=5.5)
 p4 <- p3 + geom_text(aes(NULL,NULL),x=2017,y=150,label="Average annual \n increase 45%",color="black",size=5.5) 
