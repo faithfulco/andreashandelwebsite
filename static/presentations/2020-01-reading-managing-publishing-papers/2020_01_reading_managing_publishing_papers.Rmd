@@ -10,31 +10,35 @@ output:
 # Efficiently reading the literature
 
 
-## Become an expert on a topic I
+## Become an expert on a topic 
 
-- If you know 'nothing', start with Wikipedia, CDC website, WHO, etc. Often information on those sites provide links to peer reviewed papers.
-- Use Web of Science/Pubmed/Scopus/Google Scholar to find a highly cited review paper on the topic. 
-- Look at all papers cited by the review. Skim through a few of the highly cited ones.
-- Look at all papers that cite the review. Skim through a few of the highly cited ones.
-- Mark/save/download papers that seem especially relevant. 
+* Becoming a real expert does of course take time and active engagement with a topic.
+* With good (re)search skills, it is fairly easy to become an almost-expert in many topics, especially those where you have a good foundation.
+* If you know 'nothing', start with Wikipedia or other general trustworthy websites. Often information on those sites provide links to peer reviewed papers.
+* Next use Web of Science/Pubmed/Scopus/Google Scholar to find a highly cited review paper on the topic. Read it.
 
 
-## Become an expert on a topic II
+## Efficient literature scanning 
 
-- Look at the most highly cited ones of those, see who cites them. Start reading full text artices.
-- Find a few of the most influential/cited papers on the specific question you are interested in. 
-- Look at titles/abstracts of every paper that cites those studies. Take a closer look at relevant papers.
-- As you learn about a research area/topic, figure out who the main important people are. Search for their work. Read some/all of their papers.
+* Start with the highly cited review you found previously, or another relevant paper.
+* Look at all papers cited by the starting article. Check titles/abstracts of those references, focus on highly cited ones.
+* Look at all papers that cite the starting article. Check titles/abstracts, focus on highly cited ones.
+* Continue this pattern (look who is cited and who cites) for other relevant articles.
+
+## Becoming an expert quickly 
+
+* Start reading some of the relevant and influential papers you found in your previous search.
+* Identify a few important and influential papers that are close to the specific question you are interested in. 
+* Look at titles/abstracts of every paper that cites those studies. Take a closer look at relevant papers.
+* As you learn about a research area/topic, figure out who the main important people are. Focus initially on a few names. Search for their work. Read some of their papers.
 
 
 ## Remain up-to-date on a topic
 
-- Follow specific journals, e.g. by subscribing to table of content emails.
-- Follow specific topics, e.g. by setting alerts in places like ScienceDirect (Elsevier journals), Google alerts, PubMed.
-- Follow specific individuals, e.g. by setting alerts in PubMed, Google Scholars.
-- Participate in journal clubs.
-
-
+* Follow relevant journals, e.g. by subscribing to table of content emails.
+* Follow specific topics, e.g. by setting alerts in places like ScienceDirect (Elsevier journals), Google alerts, PubMed.
+* Follow specific individuals, e.g. by setting alerts in PubMed, Google Scholars, or by following people on Twitter.
+* Participate in journal clubs.
 
 
 
@@ -46,53 +50,60 @@ output:
 
 
 ## Reference Managers
-* Good free ones (in my opinion) are Bibtex/Jabref.
+* Good free ones (in my opinion) are Zotero and Jabref.
 
 * Non-free ones are Endnote, Papers, RefWorks.
 
-* [Wikipedia has a comparison list](https://en.wikipedia.org/wiki/Comparison_of_reference_management_software)
+* [Wikipedia has a comparison list.](https://en.wikipedia.org/wiki/Comparison_of_reference_management_software)
 
 * Check the features of different reference managers, figure out what works best for your workflow and setting. 
 
-- Don't forget to include considerations of collaborative work into your decision.
+* Don't forget to include considerations of collaborative work into your decision.
 
-- Pick one. Best to use only one system at a time.
+* Pick one. Best to use only one system at a time. Sometimes collaborations require flexibility.
 
 
-## Paper full texts
+## Full text management
 * Some reference managers can link references to full text pdf. You might have to pay for storage. 
 * You can add comments to pdfs through some reference managers.
 * Use a system that lets you quickly find full text papers.
-* Use constistent naming.
+* Download papers liberally so you can get to them even if you are not online/have university access.
+
+## Full text management
+* Use consistent naming.
+  * Example: I use `firstauthorXXjournal - title.pdf` 
 * Use a good folder system.
-* Example: I use `firstauthorXXjournal - title.pdf` 
+  * Example: I sort by pathogen, then by model/data/review.
+* Have some good software that can quickly search your computer.
+  * Example: I'm on Windows and I use [Everything.](https://www.voidtools.com/downloads/)
 
 
 
-# Optimize your research impact
+# Tips for publishing with high impact
+
 
 ## Before you start your project
 
-* Visualize the final product/paper
-* Critically assess its expected quality
-* Start thinking about suitable journals
+* Visualize the final product/paper.
+* Critically assess its expected quality.
+* Start thinking about suitable journals.
 * Decide and agree on authorship!
 
 ## While you do the research
 
-* Start the manuscript draft early
-* Write the background section as you do your literature review
-* Add "skeletons" for each of your findings as sections
-* Keep thinking about suitable journals
-* Don't pay any attention to formatting
+* Start the manuscript draft early.
+* Write the background section as you do your literature review. (Could eventually become a [full review article.](https://doi.org/10.1371/journal.pcbi.1003149) )
+* Add "skeletons" for each of your findings as sections.
+* Keep thinking about suitable journals.
+* Don't pay any attention to formatting.
 
 
 ## When you are almost done
 
-* Decide on the journal(s) you want to submit to
-* Get input from others
-* Finish writing your paper so it fits your target journal(s)
-* Try to achieve fit with regard to content, mostly ignore formatting
+* Decide on the journal(s) you want to submit to.
+* Get input from others.
+* Finish writing your paper so it fits your target journal(s) audience.
+* Mostly ignore formatting.
 
 
 ## As you finish writing
@@ -101,16 +112,17 @@ output:
 * Try to put yourself in the shoes of the reader (and reviewer).
 * Paper should be 'skimmable': A reader familiar with the topic should get the message by reading abstract and looking at figures and tables.
 * Make each section as self-contained as possible (you might not know order of _Methods_ and _Results_).
-* 1-2 main points/take-home messages a few side ones.
 * Paper should have a single focus/topic, should be substantial but not sprawling.
+* 1-2 main points/take-home messages (maybe a few side points). If you have more, consider splitting it into 2 papers.
 * Everything that distracts from the main message should be left out or put in SM.
 
-## Write for impact
 
-- Spend a lot of time on the title
-- Spend a good amout of time on abstract
-- Contemplate how to get readers/citers
-- Have a clear message/story
+## Tips to increase visibility 
+
+* Spend a lot of time on the title.
+* Spend a good amout of time on abstract
+* Contemplate how to get readers/citers
+* Have a clear message/story
 
 
 ## How to choose the right journal
@@ -118,24 +130,19 @@ output:
 * Quality (for instance impact factor)
 * Audience fit
 * Speed (time to publication)
-* Cost (open access or subscription-based)
+* Cost and Reach (open access or subscription-based)
+* Type, e.g. society/non-profit or for-profit
 * Other considerations (co-author wishes, special issue, etc.)
 
 
-## Where to publish I
+## Where to publish 
 
-- Make sure it's a legitimate and not a fake/predatory journal.
+- [Make sure it's a legitimate and not a fake/predatory journal](https://www.jabfm.org/content/31/5/671).
   - If someone you don't know invites you to submit, it's most often not a good quality journal.
-  - Check that the journal is indexed by 
+  - Check that the journal is indexed by PubMed, Web of Science. No guarantee either way, but a good check.
   - Ask senior colleagues their opinion about a specific journal.
 
 - Check impact factor/ranking or related metrics. Don't take those numbers too seriously, but use them to get a rough estimate of the quality of a journal.
-
-
-## Where to publish II
-- Consider fit.
-- If you can, publish in an open access journal.
-- I suggest to favor non-for profit publishers.
 - Pay attention to journal policies, e.g. regarding conference presentations, pre-prints, data availability.
 
 
@@ -151,24 +158,24 @@ output:
 
 * __If it's not published, it didn't happen!__
 * Make sure everything is reviewer friendly (e.g. line numbers, figures and captions in text if possible).
-* Spend as little time on formatting as possible.
+* Spend as little time on formatting as possible. More and more journals allow the 1st submission to be in any _reasonable_ format.
 * If you can suggest editors and reviewers, definitely do so.
-* Write a good cover letter.
+* [Write a good cover letter.](https://www.nature.com/articles/ni0208-107)
 * Gather all other information and fill out all forms the journal requires. 
 
 
 ## When the reviews come back
 
 * You can get anything from outright rejection without review to immediate acceptance (the latter is rare).
-* Share reviews with your co-authors.
+* Share reviews with your co-authors. In general, as courtesy, keep co-authors updated, even if you don't require their input.
 * Read reviews, especially negative ones, when you're in a state of mind where you can handle that.
 * Let things sit for a few days before you start addressing reviewer comments.
 
 
 ## If your paper is rejected
 
-* Rejection without useful feedback: immediately move to the next journal.
-* Rejection with reviewer feedback: Go through it, address any useful comments. You might get the same reviewers again. 
+* Rejection without useful feedback (e.g. editorial rejection): immediately move to the next journal.
+* Rejection with reviewer feedback: Go through it, address any useful comments. You might get the same reviewers again at a different journal. 
 * If the reviews are clearly ridiculous, you could appeal to the journal. Success likely depends on how clearly outrageous the reviews are and your status in the field (let the senior author do the appeal).
 * Use the rejection feedback to help you decide where to send it next.
 
@@ -179,9 +186,9 @@ output:
 * If you get rejected from your "safety journal", critically reassess your paper.
 * Do not try to publish in a journal that does not meet your and your co-authors minimum standards of quality. Papers in bad journals will count negatively for your career/CV.
 
-## If you are asked to revise
+## [If you are asked to revise](http://www.stgries.info/research/ToEditors.pdf)
 
-* Major revision: often sounds like a reject, so read the email carefully. 
+* Major revision: Is often worded to sound like a reject, so read the email carefully, ask a senior co-author. 
 * Read through reviewer comments. If you can address them or explain why you shouldn't, do the revision. If they ask for something you simply cannot do, decide if it's worth resubmitting or not. In that situation, it's okay to contact the editor. 
 
 ## If you are asked to revise
@@ -190,6 +197,14 @@ output:
 * Write a document that lists every point raised by the reviewers and an explanation of how you addressed it.
 * This is not the time or place to get into arguments! Thank the reviewers, acknowledge their comments, address everything you can, even if you think it doesn't make much of a difference. 
 * If there's a point you can't or do not want to change, be as polite as possible in your refusal.
+* [Ten simple rules for writing a response to reviewers.](https://doi.org/10.1371/journal.pcbi.1005730)
+
+## Suggestions for replies to reviewer comments
+
+* "We thank the reviewer for their comment. We did what they asked for." 
+* "We thank the reviewer for their comment. We weren't quite able to do Z, but we did X and Y to show that Z is likely not a problem. We added all that additional analysis into the main text/SM." 
+* "We thank the reviewer for their comment. We agree our study has limitation Y. We now discuss this more explicitly in section X." 
+
 
 ## If your paper is accepted
 
@@ -208,21 +223,20 @@ output:
 * The duration of the whole process depends on the number of times you will need to resubmit before it's accepted.
 
 
-## Useful considerations 
+## General writing tips 
 
-* Use a reference manager
-* Make everything as automated as possible
-* Pay attention to reproducibility
-* Figure out one or two workflows that work for you and get really good at them
-
-
-## Other thoughts
-
-* Being a good writer/presenter might be even more important than being a good researcher!
-* Work on all aspects of your writing/presentation (text, structure, grammar, style, figures, flow,...)!
-* Read many other papers and as you do, don't only pay attention to content but also presentation to learn from good and bad examples.
+* Work on all aspects of your writing/presentation (text, structure, grammar, style, figures, flow,...).
+* Read many other papers and as you do, not only pay attention to content but also presentation to learn from good and bad examples.
 * Read books on non-fiction writing.
 * Most 'good writing' practices apply to all kinds of writing and presenting.
+* [Ten simple rules for structuring papers.](https://doi.org/10.1371/journal.pcbi.1005619)
+
+
+## General thoughts
+
+* Being able to (re)search the literature, organize information (references) and write a clear report (paper) are incredibly valuable skills beyond academia! Practice them and be aware that you are acquiring those valuable skills.
+
+* Being a good writer/presenter might be even more important for general career advancement (especially outside academia than being a good researcher).
 
 
 
@@ -231,5 +245,10 @@ output:
 
 ## Further Resources
 
-- [The RoMEO service](http://sherpa.ac.uk/romeo/index.php) provides information regarding pre-print (and other) policies of different journals.
+* [Ten Simple Rules for Getting Published](https://doi.org/10.1371/journal.pcbi.0010057)
+* [Ten simple rules for scientists: Improving your writing productivity](https://doi.org/10.1371/journal.pcbi.1006379)
+* [Ten Simple (Empirical) Rules for Writing Science](https://doi.org/10.1371/journal.pcbi.1004205)
+* [Ten Simple Rules for Writing Research Papers](https://doi.org/10.1371/journal.pcbi.1003453)
+* [Successful Scientific Writing and Publishing: A Step-by-Step Approach](https://www.cdc.gov/pcd/issues/2018/18_0085.htm)
+* [The RoMEO service](http://sherpa.ac.uk/romeo/index.php) provides information regarding pre-print (and other) policies of different journals.
 
