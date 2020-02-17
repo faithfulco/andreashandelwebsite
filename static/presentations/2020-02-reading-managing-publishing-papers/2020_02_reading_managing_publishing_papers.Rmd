@@ -25,7 +25,7 @@ output:
 * Look at all papers that cite the starting article. Check titles/abstracts, focus on highly cited ones.
 * Continue this pattern (look who is cited and who cites) for other relevant articles.
 
-## Becoming an expert quickly 
+## Becoming an expert 
 
 * Start reading some of the relevant and influential papers you found in your previous search.
 * Identify a few important and influential papers that are close to the specific question you are interested in. 
@@ -36,7 +36,7 @@ output:
 ## Remain up-to-date on a topic
 
 * Follow relevant journals, e.g. by subscribing to table of content emails.
-* Follow specific topics, e.g. by setting alerts in places like ScienceDirect (Elsevier journals), Google alerts, PubMed.
+* Follow specific topics, e.g. by setting keyword alerts (e.g. _Influenza_) in places like ScienceDirect (Elsevier journals), Google alerts, PubMed.
 * Follow specific individuals, e.g. by setting alerts in PubMed, Google Scholars, or by following people on Twitter.
 * Participate in journal clubs.
 
@@ -79,7 +79,7 @@ output:
 
 
 
-# Tips for publishing with high impact
+# Tips for successful paper writing and publishing 
 
 
 ## Before you start your project
@@ -98,6 +98,19 @@ output:
 * Don't pay any attention to formatting.
 
 
+## Once your are mostly done with the research
+* Assess scope. A paper should have a single focus/topic, should be substantial but not sprawling.
+* 1-2 main points/take-home messages (maybe a few side points). If you have more, consider splitting it into 2 papers.
+* Everything that distracts from the main message should be left out or put in SM.
+
+## As you finish writing
+* Make sure the message is clear.
+* Try to put yourself in the position of the reader (and reviewer).
+* A paper should be 'skimmable': A reader familiar with the topic should get the message by reading abstract and looking at figures and tables.
+* Make each section as self-contained as possible (you might not know order of _Methods_ and _Results_).
+* [Ten simple rules for structuring papers.](https://doi.org/10.1371/journal.pcbi.1005619)
+
+
 ## When you are almost done
 
 * Decide on the journal(s) you want to submit to.
@@ -106,48 +119,35 @@ output:
 * Mostly ignore formatting.
 
 
-## As you finish writing
-
-* Make sure the message is clear.
-* Try to put yourself in the shoes of the reader (and reviewer).
-* Paper should be 'skimmable': A reader familiar with the topic should get the message by reading abstract and looking at figures and tables.
-* Make each section as self-contained as possible (you might not know order of _Methods_ and _Results_).
-* Paper should have a single focus/topic, should be substantial but not sprawling.
-* 1-2 main points/take-home messages (maybe a few side points). If you have more, consider splitting it into 2 papers.
-* Everything that distracts from the main message should be left out or put in SM.
 
 
 ## Tips to increase visibility 
 
 * Spend a lot of time on the title.
-* Spend a good amout of time on abstract
-* Contemplate how to get readers/citers
-* Have a clear message/story
+* Spend a good amout of time on abstract.
+* Contemplate how to get readers/citers.
+* Have a clear message/story.
 
 
 ## How to choose the right journal
+* Quality (for instance impact factor). Don't take any one metric too seriously, but use them to get a rough estimate of the quality of a journal.
+* [Make sure it's not a fake/predatory journal](https://www.jabfm.org/content/31/5/671).
+  * If someone you don't know invites you to submit, it's most often not a good quality journal.
+  * Check that the journal is indexed by PubMed, Web of Science. No guarantee either way, but a good check.
+* Ask senior colleagues for their opinion about a specific journal.
 
-* Quality (for instance impact factor)
+
+## How to choose the right journal
 * Audience fit
 * Speed (time to publication)
 * Cost and Reach (open access or subscription-based)
 * Type, e.g. society/non-profit or for-profit
+* Journal policies, e.g. regarding conference presentations, pre-prints, data availability.
 * Other considerations (co-author wishes, special issue, etc.)
 
 
-## Where to publish 
-
-- [Make sure it's a legitimate and not a fake/predatory journal](https://www.jabfm.org/content/31/5/671).
-  - If someone you don't know invites you to submit, it's most often not a good quality journal.
-  - Check that the journal is indexed by PubMed, Web of Science. No guarantee either way, but a good check.
-  - Ask senior colleagues their opinion about a specific journal.
-
-- Check impact factor/ranking or related metrics. Don't take those numbers too seriously, but use them to get a rough estimate of the quality of a journal.
-- Pay attention to journal policies, e.g. regarding conference presentations, pre-prints, data availability.
-
-
 ## How high to aim
-* If you never get rejected, you are not optimizing impact.
+* If you never get rejected, you are probably not optimizing impact.
 * If you always get rejected 5+ times, you are wasting time/resources.
 * Look at previous articles published in target journals, see if yours is likely similar (quality and type).
 * Ask others who know the field to read the paper and suggest a journal (co-authors are good).
@@ -176,7 +176,7 @@ output:
 
 * Rejection without useful feedback (e.g. editorial rejection): immediately move to the next journal.
 * Rejection with reviewer feedback: Go through it, address any useful comments. You might get the same reviewers again at a different journal. 
-* If the reviews are clearly ridiculous, you could appeal to the journal. Success likely depends on how clearly outrageous the reviews are and your status in the field (let the senior author do the appeal).
+* If the reviews are clearly ridiculous, you could appeal to the journal. Success likely depends on how outrageous the reviews are, the fanciness of the journal and your status in the field (let the senior author do the appeal).
 * Use the rejection feedback to help you decide where to send it next.
 
 
@@ -189,7 +189,7 @@ output:
 ## [If you are asked to revise](http://www.stgries.info/research/ToEditors.pdf)
 
 * Major revision: Is often worded to sound like a reject, so read the email carefully, ask a senior co-author. 
-* Read through reviewer comments. If you can address them or explain why you shouldn't, do the revision. If they ask for something you simply cannot do, decide if it's worth resubmitting or not. In that situation, it's okay to contact the editor. 
+* Read through reviewer comments. If you can address them or explain why you shouldn't, do the revision. If they ask for something you simply cannot do, decide if it's worth resubmitting or not. In that situation, it's okay to contact the editor and ask for guidance. 
 
 ## If you are asked to revise
 
@@ -211,7 +211,7 @@ output:
 * Usually, either on the first try (happens rarely) or after revisions, you receive a _conditional_ acceptance. 
 * The conditions are usually to make any small changes still requested by the reviewers and to make any formatting changes requested by the journal.
 * At this stage, **and not earlier**, you need to follow all the journals formatting guidelines.
-* This is also your last chance to make further edits. Go through the paper once more and send it to your co-authors for final feedback and approval.
+* This is also your last chance to make further (minor) edits. Go through the paper once more and send it to your co-authors for final feedback and approval.
 
 ## Timelines
 
@@ -222,31 +222,31 @@ output:
 * If you asked to do revisions you should do them on a similar timeframe of weeks or months.
 * The duration of the whole process depends on the number of times you will need to resubmit before it's accepted.
 
+## Some publishing tips
+* Understand there is luck involved.
+* Fancy journals are much more worried to accept a paper that's not that great (i.e. highly citeable) than to reject a great one.
+* If you have the option to be a reviewer, take it. It's a good learning experience.
+* As long as you did good work, you'll be able to publish it somewhere eventually.
+* [Ten Simple Rules for Getting Published](https://doi.org/10.1371/journal.pcbi.0010057)
+
 
 ## General writing tips 
-
 * Work on all aspects of your writing/presentation (text, structure, grammar, style, figures, flow,...).
-* Read many other papers and as you do, not only pay attention to content but also presentation to learn from good and bad examples.
+* Read many papers and as you do, not only pay attention to content but also presentation to learn from good and bad examples.
 * Read books on non-fiction writing.
 * Most 'good writing' practices apply to all kinds of writing and presenting.
-* [Ten simple rules for structuring papers.](https://doi.org/10.1371/journal.pcbi.1005619)
+* [Ten simple rules for scientists: Improving your writing productivity](https://doi.org/10.1371/journal.pcbi.1006379)
 
 
 ## General thoughts
 
 * Being able to (re)search the literature, organize information (references) and write a clear report (paper) are incredibly valuable skills beyond academia! Practice them and be aware that you are acquiring those valuable skills.
 
-* Being a good writer/presenter might be even more important for general career advancement (especially outside academia than being a good researcher).
-
-
-
-
+* Being a good writer/presenter might be even more important for general career advancement (especially outside academia) than being a good researcher.
 
 
 ## Further Resources
 
-* [Ten Simple Rules for Getting Published](https://doi.org/10.1371/journal.pcbi.0010057)
-* [Ten simple rules for scientists: Improving your writing productivity](https://doi.org/10.1371/journal.pcbi.1006379)
 * [Ten Simple (Empirical) Rules for Writing Science](https://doi.org/10.1371/journal.pcbi.1004205)
 * [Ten Simple Rules for Writing Research Papers](https://doi.org/10.1371/journal.pcbi.1003453)
 * [Successful Scientific Writing and Publishing: A Step-by-Step Approach](https://www.cdc.gov/pcd/issues/2018/18_0085.htm)
