@@ -495,9 +495,8 @@ knitr::kable(authortable)</code></pre>
 #knitr::kable(journaltable) #uncomment this to print the table</code></pre>
 <p>It might also be nice to get some journal metrics, such as impact factors. While this is possible with the <code>scholar</code> package, the <code>bibliometrix</code> package doesn’t have it.</p>
 <p>However, the <code>scholar</code> package doesn’t really get that data from Google Scholar, instead it has an internal spreadsheet/table with impact factors (according to the documentation, taken - probably not fully legally - from some spreadsheet posted on ResearchGate). We can thus access those impact factors stored in the <code>scholar</code> package without having to connect to Google Scholar. As long as the journal names stored in the <code>scholar</code> package are close to the ones we have here, we might get matches.</p>
-<pre class="r"><code>library(scholar)</code></pre>
-<pre><code>## Warning: package &#39;scholar&#39; was built under R version 3.6.2</code></pre>
-<pre class="r"><code>ifvalues = scholar::get_impactfactor(journaltable[,1], max.distance = 0.1)
+<pre class="r"><code>library(scholar)
+ifvalues = scholar::get_impactfactor(journaltable[,1], max.distance = 0.1)
 journaltable = cbind(journaltable, ifvalues$ImpactFactor)
 colnames(journaltable) = c(&#39;Journal&#39;,&#39;Number of Pubs&#39;,&#39;Impact Factor&#39;)
 knitr::kable(journaltable)</code></pre>
