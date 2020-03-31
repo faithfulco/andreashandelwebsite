@@ -4,7 +4,7 @@ subtitle: Some examples using bibliometrix
 summary: Some code and examples showing how to process and analyze meta-data for a set of publications using the `bibilometrix` R package. 
 author: Andreas Handel
 draft: false
-date: '2020-02-02'
+date: "Originally published: 2020-02-02. Last updated: 2020-03-31."
 slug: publications-analysis-2
 categories: []
 tags: []
@@ -40,7 +40,7 @@ pubs &lt;- bibliometrix::convert2df(rawrefs, dbsource = &quot;isi&quot;, format 
 <pre><code>## 
 ## Converting your isi collection into a bibliographic dataframe
 ## 
-## Articles extracted   62 
+## Articles extracted   64 
 ## Done!</code></pre>
 <p>Each row of the data frame created by the <code>convert2df</code> function is a publication, the columns contain information for each publication.
 For a list of what each column variable codes for, see <a href="https://cran.r-project.org/web/packages/bibliometrix/vignettes/bibliometrix-vignette.html">here</a>.</p>
@@ -116,17 +116,17 @@ res_new &lt;- bibliometrix::biblioAnalysis(pubs_new, sep = &quot;;&quot;) #perfo
 ## 
 ## Top manuscripts per citations
 ## 
-##         Paper          TC TCperYear
-## 1  ZHENG N, 2014,      NA        NA
-## 2  NGUYEN THO, 2014,   NA        NA
-## 3  LI Y, 2014,         NA        NA
-## 4  HANDEL A, 2014,     NA        NA
-## 5  HANDEL A, 2014, -a  NA        NA
-## 6  CUKALAC T, 2014,    NA        NA
-## 7  THOMAS PG, 2013,    NA        NA
-## 8  HANDEL A, 2013,     NA        NA
-## 9  JACKWOOD MW, 2012,  NA        NA
-## 10 FUNG ICH, 2012,     NA        NA
+##              Paper          TC TCperYear
+## 1  BEAUCHEMIN CAA, 2011,    NA        NA
+## 2  CUKALAC T, 2014,         NA        NA
+## 3  DESAI R, 2012,           NA        NA
+## 4  FUNG ICH, 2012,          NA        NA
+## 5  HANDEL A, 2009,          NA        NA
+## 6  HANDEL A, 2009, -a       NA        NA
+## 7  HANDEL A, 2009, -a-b     NA        NA
+## 8  HANDEL A, 2009, -a-b-c   NA        NA
+## 9  HANDEL A, 2009, -a-b-c-d NA        NA
+## 10 HANDEL A, 2010,          NA        NA
 ## 
 ## 
 ## Most Relevant Sources
@@ -148,23 +148,23 @@ res_new &lt;- bibliometrix::biblioAnalysis(pubs_new, sep = &quot;;&quot;) #perfo
 ## 
 ## Main Information about data
 ## 
-##  Documents                             31 
-##  Sources (Journals, Books, etc.)       22 
+##  Documents                             33 
+##  Sources (Journals, Books, etc.)       24 
 ##  Keywords Plus (ID)                    0 
 ##  Author&#39;s Keywords (DE)                0 
 ##  Period                                2015 - 2020 
 ##  Average citations per documents       NaN 
 ## 
-##  Authors                               207 
-##  Author Appearances                    336 
+##  Authors                               211 
+##  Author Appearances                    345 
 ##  Authors of single-authored documents  1 
-##  Authors of multi-authored documents   206 
+##  Authors of multi-authored documents   210 
 ##  Single-authored documents             2 
 ## 
-##  Documents per Author                  0.15 
-##  Authors per Document                  6.68 
-##  Co-Authors per Documents              10.8 
-##  Collaboration Index                   7.1 
+##  Documents per Author                  0.156 
+##  Authors per Document                  6.39 
+##  Co-Authors per Documents              10.5 
+##  Collaboration Index                   6.77 
 ##  
 ## 
 ## Annual Scientific Production
@@ -175,19 +175,19 @@ res_new &lt;- bibliometrix::biblioAnalysis(pubs_new, sep = &quot;;&quot;) #perfo
 ##     2017        3
 ##     2018        7
 ##     2019        8
-##     2020        1
+##     2020        3
 ## 
-## Annual Percentage Growth Rate -27.52203 
+## Annual Percentage Growth Rate -9.711955 
 ## 
 ## 
 ## Most Productive Authors
 ## 
 ##    Authors        Articles Authors        Articles Fractionalized
-## 1     HANDEL A          31    HANDEL A                      6.799
+## 1     HANDEL A          33    HANDEL A                      7.299
 ## 2     WHALEN CC          9    WHALEN CC                     0.828
-## 3     MARTINEZ L         6    ANTIA R                       0.643
-## 4     ZALWANGO S         5    EBELL MH                      0.571
-## 5     ANTIA R            4    THOMAS PG                     0.571
+## 3     MARTINEZ L         6    ANTIA R                       0.810
+## 4     ANTIA R            5    EBELL MH                      0.571
+## 5     ZALWANGO S         5    THOMAS PG                     0.571
 ## 6     LA GRUTA NL        4    MARTINEZ L                    0.561
 ## 7     SHEN Y             4    LA GRUTA NL                   0.540
 ## 8     THOMAS PG          4    MCKAY B                       0.533
@@ -197,17 +197,17 @@ res_new &lt;- bibliometrix::biblioAnalysis(pubs_new, sep = &quot;;&quot;) #perfo
 ## 
 ## Top manuscripts per citations
 ## 
-##           Paper          TC TCperYear
-## 1  HANDEL A, 2020,       NA        NA
-## 2  WU T, 2019,           NA        NA
-## 3  SCHWARTZ LM, 2019,    NA        NA
-## 4  MCKAY B, 2019,        NA        NA
-## 5  MARTINEZ L, 2019,     NA        NA
-## 6  HANDEL A, 2019,       NA        NA
-## 7  HANDEL A, 2019, -a    NA        NA
-## 8  DALE AP, 2019,        NA        NA
-## 9  HANDEL A, 2017,       NA        NA
-## 10 ZARNITSYNA VI, 2018,  NA        NA
+##            Paper          TC TCperYear
+## 1  ANTIA A, 2018,         NA        NA
+## 2  BIRD NL, 2015,         NA        NA
+## 3  CASTELLANOS ME, 2018,  NA        NA
+## 4  DALE AP, 2019,         NA        NA
+## 5  DEVASIA T, 2015,       NA        NA
+## 6  HANDEL A, 2015,        NA        NA
+## 7  HANDEL A, 2015, -a     NA        NA
+## 8  HANDEL A, 2017,        NA        NA
+## 9  HANDEL A, 2018,        NA        NA
+## 10 HANDEL A, 2018, -a     NA        NA
 ## 
 ## 
 ## Most Relevant Sources
@@ -220,9 +220,9 @@ res_new &lt;- bibliometrix::biblioAnalysis(pubs_new, sep = &quot;;&quot;) #perfo
 ## 5  AMERICAN JOURNAL OF RESPIRATORY AND CRITICAL CARE MEDICINE        1
 ## 6  BMC IMMUNOLOGY                                                    1
 ## 7  BMC INFECTIOUS DISEASES                                           1
-## 8  CURRENT OPINION IN SYSTEMS BIOLOGY                                1
-## 9  ELIFE                                                             1
-## 10 EPIDEMICS                                                         1</code></pre>
+## 8  BULLETIN OF MATHEMATICAL BIOLOGY                                  1
+## 9  COMPUTATIONAL STATISTICS                                          1
+## 10 CURRENT OPINION IN SYSTEMS BIOLOGY                                1</code></pre>
 <p>Note that some values are reported as NA, e.g. the citations. Depending on which source you got the original data from, that information might be included or not. In my case, it is not.</p>
 </div>
 <div id="getting-a-table-of-co-authors" class="section level1">
@@ -334,7 +334,7 @@ knitr::kable(authortable)</code></pre>
 <td align="right">1</td>
 </tr>
 <tr class="even">
-<td align="left">KJER-NIELSEN L</td>
+<td align="left">KJER-NIELSEN LARS KNL</td>
 <td align="right">1</td>
 </tr>
 <tr class="odd">
@@ -442,12 +442,12 @@ knitr::kable(authortable)</code></pre>
 <td align="right">6</td>
 </tr>
 <tr class="odd">
-<td align="left">ZALWANGO S</td>
+<td align="left">ANTIA R</td>
 <td align="right">5</td>
 </tr>
 <tr class="even">
-<td align="left">ANTIA R</td>
-<td align="right">4</td>
+<td align="left">ZALWANGO S</td>
+<td align="right">5</td>
 </tr>
 <tr class="odd">
 <td align="left">LA GRUTA NL</td>
@@ -543,6 +543,16 @@ knitr::kable(journaltable)</code></pre>
 <td align="left">BMC INFECTIOUS DISEASES</td>
 <td align="right">1</td>
 <td align="right">2.620</td>
+</tr>
+<tr class="even">
+<td align="left">BULLETIN OF MATHEMATICAL BIOLOGY</td>
+<td align="right">1</td>
+<td align="right">1.484</td>
+</tr>
+<tr class="odd">
+<td align="left">COMPUTATIONAL STATISTICS</td>
+<td align="right">1</td>
+<td align="right">0.828</td>
 </tr>
 <tr class="even">
 <td align="left">CURRENT OPINION IN SYSTEMS BIOLOGY</td>

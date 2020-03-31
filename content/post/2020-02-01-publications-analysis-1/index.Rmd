@@ -4,7 +4,7 @@ subtitle: Some examples using Google Scholar
 summary: Some code and examples showing how to process and analyze meta-data for a set of publications using the `scholar` R package. 
 author: Andreas Handel
 draft: false
-date: '2020-02-01'
+date: "Originally published: 2020-02-01. Last updated: 2020-03-31."
 slug: publications-analysis-1
 categories: []
 tags: []
@@ -101,7 +101,7 @@ p1 <- ggplot(data = cites_df, aes(year, cites, colour=group, shape=group)) +
       scale_x_continuous(name = "Year", breaks = xlabel, labels = xlabel) +     scale_y_continuous("Citations according to Google Scholar") +
       theme_bw(base_size=14) + theme(legend.position="none") + 
       geom_text(aes(NULL,NULL),x=2010.8,y=150,label="Average annual \n increase 22%",color="black",size=5.5) +
-      geom_text(aes(NULL,NULL),x=2017,y=150,label="Average annual \n increase 45%",color="black",size=5.5) 
+      geom_text(aes(NULL,NULL),x=2017,y=150,label="Average annual \n increase 43%",color="black",size=5.5) 
 
 #open a new graphics window
 #note that this is Windows specific. Use quartz() for MacOS

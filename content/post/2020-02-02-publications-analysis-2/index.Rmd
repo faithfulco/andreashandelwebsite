@@ -4,7 +4,7 @@ subtitle: Some examples using bibliometrix
 summary: Some code and examples showing how to process and analyze meta-data for a set of publications using the `bibilometrix` R package. 
 author: Andreas Handel
 draft: false
-date: '2020-02-02'
+date: "Originally published: 2020-02-02. Last updated: 2020-03-31."
 slug: publications-analysis-2
 categories: []
 tags: []

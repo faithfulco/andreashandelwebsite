@@ -4,7 +4,7 @@ subtitle: Some examples using Google Scholar
 summary: Some code and examples showing how to process and analyze meta-data for a set of publications using the `scholar` R package. 
 author: Andreas Handel
 draft: false
-date: '2020-02-01'
+date: "Originally published: 2020-02-01. Last updated: 2020-03-31."
 slug: publications-analysis-1
 categories: []
 tags: []
@@ -72,7 +72,7 @@ fit2=lm(cites ~ year, data = cites_2)
 inc1 = fit1$coefficients[&quot;year&quot;]
 inc2 = fit2$coefficients[&quot;year&quot;] 
 print(sprintf(&#39;Annual increase for periods 1 and 2 are %f, %f&#39;,inc1,inc2))</code></pre>
-<pre><code>## [1] &quot;Annual increase for periods 1 and 2 are 22.428571, 44.700000&quot;</code></pre>
+<pre><code>## [1] &quot;Annual increase for periods 1 and 2 are 22.257143, 43.100000&quot;</code></pre>
 <p>Making a figure to show citation count increases</p>
 <pre class="r"><code># combine data above into single data frame
 #add a variable to indicate period 1 and period 2
@@ -87,13 +87,14 @@ p1 &lt;- ggplot(data = cites_df, aes(year, cites, colour=group, shape=group)) +
       scale_x_continuous(name = &quot;Year&quot;, breaks = xlabel, labels = xlabel) +     scale_y_continuous(&quot;Citations according to Google Scholar&quot;) +
       theme_bw(base_size=14) + theme(legend.position=&quot;none&quot;) + 
       geom_text(aes(NULL,NULL),x=2010.8,y=150,label=&quot;Average annual \n increase 22%&quot;,color=&quot;black&quot;,size=5.5) +
-      geom_text(aes(NULL,NULL),x=2017,y=150,label=&quot;Average annual \n increase 45%&quot;,color=&quot;black&quot;,size=5.5) 
+      geom_text(aes(NULL,NULL),x=2017,y=150,label=&quot;Average annual \n increase 43%&quot;,color=&quot;black&quot;,size=5.5) 
 
 #open a new graphics window
 #note that this is Windows specific. Use quartz() for MacOS
 ww=5; wh=5; 
 windows(width=ww, height=wh)                    
 print(p1)</code></pre>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="/post/2020-02-01-publications-analysis-1/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <pre class="r"><code>dev.print(device=png,width=ww,height=wh,units=&quot;in&quot;,res=600,file=&quot;citations.png&quot;)</code></pre>
 <pre><code>## png 
@@ -115,16 +116,16 @@ if (file.exists(&#39;publications.Rds&#39;))
 <div id="quick-peek-at-publications" class="section level1">
 <h1>Quick peek at publications</h1>
 <pre class="r"><code>glimpse(publications)</code></pre>
-<pre><code>## Observations: 86
+<pre><code>## Observations: 90
 ## Variables: 8
 ## $ title   &lt;fct&gt; &quot;Severe outcomes are associated with genogroup 2 genotype 4...
 ## $ author  &lt;fct&gt; &quot;R Desai, CD Hembree, A Handel, JE Matthews, BW Dickey, S M...
 ## $ journal &lt;fct&gt; &quot;Clinical infectious diseases&quot;, &quot;BMC public health&quot;, &quot;Journ...
-## $ number  &lt;fct&gt; &quot;55 (2), 189-193&quot;, &quot;11 (S1), S7&quot;, &quot;7 (42), 35-47&quot;, &quot;24 (44-...
-## $ cites   &lt;dbl&gt; 168, 156, 126, 125, 121, 111, 105, 82, 71, 67, 53, 52, 51, ...
-## $ year    &lt;dbl&gt; 2012, 2011, 2010, 2006, 2007, 2012, 2006, 2017, 2008, 2016,...
+## $ number  &lt;fct&gt; &quot;55 (2), 189-193&quot;, &quot;11 (S1), S7&quot;, &quot;7 (42), 35-47&quot;, &quot;3 (12)&quot;...
+## $ cites   &lt;dbl&gt; 163, 158, 129, 124, 123, 115, 105, 89, 71, 71, 55, 53, 52, ...
+## $ year    &lt;dbl&gt; 2012, 2011, 2010, 2007, 2006, 2012, 2006, 2017, 2016, 2008,...
 ## $ cid     &lt;fct&gt; 1979732925283755485, 10982184786304722425, 1038596204985444...
-## $ pubid   &lt;fct&gt; 5nxA0vEk-isC, _FxGoFyzp5QC, 9yKSN-GCB0IC, u5HHmVD_uO8C, d1g...</code></pre>
+## $ pubid   &lt;fct&gt; 5nxA0vEk-isC, _FxGoFyzp5QC, 9yKSN-GCB0IC, d1gkVwhDpl0C, u5H...</code></pre>
 <p>This shows the variables obtained in the data frame. One thing I notice is that this contains more entries than I have peer-reviewed publications. Since most people’s Google Scholar profile (inlcuding my own) list items beyond peer-reviewed journal articles, one likely needs to do some manual cleaning before analysis. That is not ideal. I’ll do/show a few more possible analyses, but decided to do the analyses below using the approach <a href="/post/publications-analysis-2/">in part 2</a>.</p>
 </div>
 <div id="making-a-table-of-journals-and-impact-factors" class="section level1">
@@ -317,10 +318,22 @@ knitr::kable(iftable)</code></pre>
 <td align="right">0.00605</td>
 </tr>
 <tr class="odd">
+<td align="left">BULLETIN OF MATHEMATICAL BIOLOGY</td>
+<td align="right">3736</td>
+<td align="right">1.484</td>
+<td align="right">0.00447</td>
+</tr>
+<tr class="even">
 <td align="left">JAPANESE JOURNAL OF INFECTIOUS DISEASES</td>
 <td align="right">1722</td>
 <td align="right">1.014</td>
 <td align="right">0.00242</td>
+</tr>
+<tr class="odd">
+<td align="left">COMPUTATIONAL STATISTICS</td>
+<td align="right">958</td>
+<td align="right">0.828</td>
+<td align="right">0.00337</td>
 </tr>
 <tr class="even">
 <td align="left">JOURNAL OF APPLIED STATISTICS</td>
