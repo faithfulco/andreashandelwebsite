@@ -12,7 +12,7 @@
 * Save your icon as a square 512x512 pixel image named icon.png and place the image in your root assets/images/ folder, creating the assets and images folders if they don't already exist. (https://sourcethemes.com/academic/docs/customization/)
 * Store slides made as Rmd files as sub-folders in /static and render them by hand into html. Otherwise they get automatically rendered into the wrong html format when running build_site(). See more here:
 https://bookdown.org/yihui/blogdown/static-files.html
-* Google Analytics is implemented. This is set up specifying the analytics tag in params.toml
+* Google Analytics is implemented. This is set up by specifying the analytics tag in params.toml
 
 # To work on site
 edit content
