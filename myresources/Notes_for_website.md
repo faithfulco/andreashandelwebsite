@@ -10,7 +10,7 @@ Note that it's important to run build_site() since Hugo/Netlify only do part of 
 * gh_class package to manage class with github
 * general github workflow for classes
 * conceputal thought of usefulness of certain teaching aids like metaphors/examples/jokes that might confuse-enlighten or disengage-engage
-* how to 'stay up with the literature'
+* staying mentally in good shape in grad school (and in general)
 
 
 
