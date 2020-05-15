@@ -42,7 +42,7 @@ tags:
 
 * Install R and (optional) Rstudio.
 * Install the DSAIDE R package and take a brief look. [This website provides instructions.](https://ahgroup.github.io/DSAIDE/)
-* Optional: Read [this paper](http://handelgroup.uga.edu/publication/handel07prsb/) which provides background reading for the "ID Control of multiple outbreaks" app in DSAIDE.
+* Optional: Read [this paper](http://handelgroup.uga.edu/publication/2007-handel-prsb/) which provides background reading for the "ID Control of multiple outbreaks" app in DSAIDE.
 
 # Outline
 
