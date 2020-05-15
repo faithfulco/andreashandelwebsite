@@ -4,7 +4,8 @@ subtitle: Some examples using Google Scholar
 summary: Some code and examples showing how to process and analyze meta-data for a set of publications using the `scholar` R package. 
 author: Andreas Handel
 draft: false
-date: "Originally published: 2020-02-01. Last updated: 2020-03-31."
+date: '2020-02-01'
+lastmod: '2020-05-15'
 slug: publications-analysis-1
 categories: []
 tags: []

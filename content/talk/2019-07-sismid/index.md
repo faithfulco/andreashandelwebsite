@@ -58,7 +58,7 @@ I cover the following topics in this workshop (my co-teacher Paul Thomas covers 
 
 # Presentation Slides 
 
-[All pdf slides as zip file](2019SISMID_Slides.zip)
+[All pdf slides as zip file](/presentations/2019SISMID_Slides.zip)
 
 
 

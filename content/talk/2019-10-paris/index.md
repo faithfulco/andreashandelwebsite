@@ -38,7 +38,7 @@ image:
 math: false
 ---
 
-We described some of our past and ongoing work in using a combination of models and data to understand the role of inoculum dose on vaccination and infection outcomes. The [presentation slides (as pdf) are here](2019_10_Paris_Slides.pdf).
+We described some of our past and ongoing work in using a combination of models and data to understand the role of inoculum dose on vaccination and infection outcomes. The [presentation slides (as pdf) are here](/presentations/2019_10_Paris_Slides.pdf).
 
 
 

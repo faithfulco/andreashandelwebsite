@@ -60,6 +60,6 @@ The following topics are covered in this workshop:
 
 # Presentation Slides 
 
-[All pdf slides as zip file](2019Hangzhou_Slides.zip)
+[All pdf slides as zip file](/presentations/2019Hangzhou_Slides.zip)
 
 
