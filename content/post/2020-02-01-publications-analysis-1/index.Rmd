@@ -4,7 +4,7 @@ subtitle: Some examples using Google Scholar
 summary: Some code and examples showing how to process and analyze meta-data for a set of publications using the `scholar` R package. 
 author: Andreas Handel
 draft: false
-date: 2020-02-01T00:00:00
+publishDate: 2020-02-01T00:00:00
 lastmod: 2020-05-15T00:00:00
 slug: publications-analysis-1
 categories: []
