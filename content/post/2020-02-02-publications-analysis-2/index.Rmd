@@ -4,10 +4,11 @@ subtitle: Some examples using bibliometrix
 summary: Some code and examples showing how to process and analyze meta-data for a set of publications using the `bibilometrix` R package. 
 author: Andreas Handel
 draft: false
-date: "Originally published: 2020-02-02. Last updated: 2020-03-31."
+publishDate: 2020-02-02T00:00:00
+lastmod: 2020-05-15T00:00:00
 slug: publications-analysis-2
 categories: []
-tags: []
+tags: ["R","Data Analysis","bibliometrics"]
 featured: no
 disable_jquery: no
 image:
@@ -40,10 +41,9 @@ library(bibliometrix)
 
 **Old:** I keep all references to my published papers in a BibTeX file, managed through Zotero/Jabref. I know this file is clean and correct. I'm loading it here for processing. If you don't have such a file, make one using your favorite reference manager. Or create it through a saved search on a bibliographic database, as described [in the bibliometrix vignette](https://cran.r-project.org/web/packages/bibliometrix/vignettes/bibliometrix-vignette.html).
 
-**New:** In the current version of `bibliometrix`, reading in my bibtex file failed. A good new alternative is to go to your NIH "My Bibliography" (which anyone with NIH funding needs to have anyway) and export it in MEDLINE format. Then read in the file with the code below.
+**New:** In the current version of `bibliometrix`, reading in my bibtex file failed. A fairly good alternative is to go to your NIH "My Bibliography" (which anyone with NIH funding needs to have anyway) and export it in MEDLINE format. Then read in the file with the code below. As of the time of writing this, it requires the Github version of `bibliometrix`.
 
-
-```{r}
+```{r, message=FALSE}
 #read bib file, turn file of references into data frame
 pubs <- bibliometrix::convert2df("medline.txt", dbsource="pubmed",format="pubmed") 
 ```
