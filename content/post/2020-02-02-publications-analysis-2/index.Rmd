@@ -38,14 +38,14 @@ library(bibliometrix)
 
 # Loading data
 
-I keep all references to my published papers in a BibTeX file, managed through Zotero/Jabref. I know this file is clean and correct. I'm loading it here for processing. If you don't have such a file, make one using your favorite reference manager. Or create it through a saved search on a bibliographic database, as described [in the bibliometrix vignette](https://cran.r-project.org/web/packages/bibliometrix/vignettes/bibliometrix-vignette.html).
+**Old:** I keep all references to my published papers in a BibTeX file, managed through Zotero/Jabref. I know this file is clean and correct. I'm loading it here for processing. If you don't have such a file, make one using your favorite reference manager. Or create it through a saved search on a bibliographic database, as described [in the bibliometrix vignette](https://cran.r-project.org/web/packages/bibliometrix/vignettes/bibliometrix-vignette.html).
+
+**New:** In the current version of `bibliometrix`, reading in my bibtex file failed. A good new alternative is to go to your NIH "My Bibliography" (which anyone with NIH funding needs to have anyway) and export it in MEDLINE format. Then read in the file with the code below.
 
 
 ```{r}
-#read bib file
-rawrefs <- readFiles("mypublishedpapers.bib") 
-#turn file of references into data frame
-pubs <- bibliometrix::convert2df(rawrefs, dbsource = "isi", format = "bibtex") 
+#read bib file, turn file of references into data frame
+pubs <- bibliometrix::convert2df("medline.txt", dbsource="pubmed",format="pubmed") 
 ```
 
 Each row of the data frame created by the `convert2df` function is a publication, the columns contain information for each publication. 
