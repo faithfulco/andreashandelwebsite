@@ -4,8 +4,8 @@ subtitle: Some examples using Google Scholar
 summary: Some code and examples showing how to process and analyze meta-data for a set of publications using the `scholar` R package. 
 author: Andreas Handel
 draft: false
-date: '2020-02-01'
-lastmod: '2020-05-15'
+date: 2020-02-01T00:00:00
+lastmod: 2020-05-15T00:00:00
 slug: publications-analysis-1
 categories: []
 tags: []
@@ -68,6 +68,7 @@ if (file.exists('citations.Rds'))
 # Compare citations for different time periods
 
 For my purpose, I want to compare citations between 2 time periods (my Assistant Professor time and my Associate Professor time). I'm splitting them into 2.
+I'm doing this analysis at the beginning of 2020 and want only full years. The code snippets below give me what I need, two time periods 2009-2014 and 2014-2019.
 
 ```{r}
 period_1_start = 2009
@@ -158,7 +159,7 @@ Ok so this doesn't quite work. I know for instance that I didn't publish anythin
 
 Another useful piece of information to have, e.g. for NSF grants, is a table with all co-authors.
 Unfortunately, `get_publications()` only pulls from the main Google Scholar page, which cuts off the author list. To get all authors, one needs to run through each paper using `get_complete_authors()`. 
-The problem is that Google cuts off access if one sends too many queries. If you get error messages, it might be that Google blocked you. Try the suggestions above. 
+The problem is that Google cuts off access if one sends too many queries. If you get error messages, it might be that Google blocked you. See the _Notes_ section. 
 
 ```{r, eval = FALSE}
 allauthors = list()
@@ -180,8 +181,8 @@ Theoretically, if the above code runs without Google blocking things, I should e
 
 While the `scholar` package has some nice features, it has 2 major problems: 
 
-* 1) Google blocking the script if it decides too many requests are made (that can happen quickly). 
-* 2) Since most people's Google Scholar profile (inlcuding my own) list items beyond peer-reviewed journal articles, one likely needs to do some manual cleaning before analysis.
+* Google blocking the script if it decides too many requests are made (that can happen quickly). 
+* Since most people's Google Scholar profile (including my own) list items beyond peer-reviewed journal articles, one likely needs to do some manual cleaning before analysis.
 
 I do keep all my published, peer-reviewed papers in a BibTeX bibliography file in my reference manager (I'm using Zotero and/or Jabref). I know that file is clean and only contains peer-reviewed papers. Unfortunately, the `scholar` package can't read in such data. In [part 2](/post/publications-analysis-2/) of this post series, I'll use a different R package to produce the journal and author tables I tried making above.
 

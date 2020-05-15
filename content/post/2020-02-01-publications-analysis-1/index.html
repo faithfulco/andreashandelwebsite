@@ -4,8 +4,8 @@ subtitle: Some examples using Google Scholar
 summary: Some code and examples showing how to process and analyze meta-data for a set of publications using the `scholar` R package. 
 author: Andreas Handel
 draft: false
-date: '2020-02-01'
-lastmod: '2020-05-15'
+date: 2020-02-01T00:00:00
+lastmod: 2020-05-15T00:00:00
 slug: publications-analysis-1
 categories: []
 tags: []
@@ -61,7 +61,8 @@ if (file.exists(&#39;citations.Rds&#39;))
 </div>
 <div id="compare-citations-for-different-time-periods" class="section level1">
 <h1>Compare citations for different time periods</h1>
-<p>For my purpose, I want to compare citations between 2 time periods (my Assistant Professor time and my Associate Professor time). I’m splitting them into 2.</p>
+<p>For my purpose, I want to compare citations between 2 time periods (my Assistant Professor time and my Associate Professor time). I’m splitting them into 2.
+I’m doing this analysis at the beginning of 2020 and want only full years. The code snippets below give me what I need, two time periods 2009-2014 and 2014-2019.</p>
 <pre class="r"><code>period_1_start = 2009
 period_2_start = 2015
 cites_1 &lt;- cites %&gt;% dplyr::filter((year&gt;=period_1_start &amp; year&lt;period_2_start ))
@@ -350,7 +351,7 @@ knitr::kable(iftable)</code></pre>
 <h1>Getting list of co-authors</h1>
 <p>Another useful piece of information to have, e.g. for NSF grants, is a table with all co-authors.
 Unfortunately, <code>get_publications()</code> only pulls from the main Google Scholar page, which cuts off the author list. To get all authors, one needs to run through each paper using <code>get_complete_authors()</code>.
-The problem is that Google cuts off access if one sends too many queries. If you get error messages, it might be that Google blocked you. Try the suggestions above.</p>
+The problem is that Google cuts off access if one sends too many queries. If you get error messages, it might be that Google blocked you. See the <em>Notes</em> section.</p>
 <pre class="r"><code>allauthors = list()
 if (file.exists(&#39;allauthors.Rds&#39;))
 {
@@ -368,12 +369,8 @@ if (file.exists(&#39;allauthors.Rds&#39;))
 <h1>Discussion</h1>
 <p>While the <code>scholar</code> package has some nice features, it has 2 major problems:</p>
 <ul>
-<li><ol style="list-style-type: decimal">
 <li>Google blocking the script if it decides too many requests are made (that can happen quickly).</li>
-</ol></li>
-<li><ol start="2" style="list-style-type: decimal">
-<li>Since most people’s Google Scholar profile (inlcuding my own) list items beyond peer-reviewed journal articles, one likely needs to do some manual cleaning before analysis.</li>
-</ol></li>
+<li>Since most people’s Google Scholar profile (including my own) list items beyond peer-reviewed journal articles, one likely needs to do some manual cleaning before analysis.</li>
 </ul>
 <p>I do keep all my published, peer-reviewed papers in a BibTeX bibliography file in my reference manager (I’m using Zotero and/or Jabref). I know that file is clean and only contains peer-reviewed papers. Unfortunately, the <code>scholar</code> package can’t read in such data. In <a href="/post/publications-analysis-2/">part 2</a> of this post series, I’ll use a different R package to produce the journal and author tables I tried making above.</p>
 <p>The one feature only available through Google Scholar is the citation record and the analysis I did at the beginning if this post.</p>
