@@ -713,7 +713,7 @@ ggplot(question_sentiment, aes(question, sent_per_word)) +
 inner_join(bing) %&gt;%
   count(word, sentiment, sort = TRUE) %&gt;%
   acast(word ~ sentiment, value.var = &quot;n&quot;, fill = 0) %&gt;%
-  comparison.cloud(colors = c(&quot;#F8766D&quot;, &quot;#00BFC4&quot;),
+  wordcloud::comparison.cloud(colors = c(&quot;#F8766D&quot;, &quot;#00BFC4&quot;),
                    max.words = 100)</code></pre>
 <p><img src="/post/2020-02-15-MADA-survey-analysis/index_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <p>At this point, I ran out of ideas for further text analysis. I didn’t think analysis by word pairs, or sentences, or such alternatives would lead to any further interesting results. I looked in the <a href="https://www.tidytextmining.com/">Text Mining with R book</a> for some more ideas of what kind of analyses might be useful, but can’t come up with anything else. Not that the above ones are that useful either, but it was fun to try some text analysis, which is a type of data analysis I’m not very familiar with. So, I’ll stop this here. Feel free to play around yourself, you have access to the raw data and this script in the GitHub repository.</p>
