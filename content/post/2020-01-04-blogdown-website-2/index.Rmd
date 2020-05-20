@@ -4,8 +4,8 @@ subtitle: Part 2 - adding GitHub to the workflow
 summary: This is part 2/2 of the website development posts, where we'll move the website to [GitHub](https://GitHub.com).
 author: Andreas Handel
 draft: false
-date: '2020-01-20'
-lastmod: 2020-05-15T00:00:00
+publishDate: 2020-01-20
+lastmod: 2020-05-15
 slug: blogdown-website-2
 categories: []
 tags: []
