@@ -1,6 +1,6 @@
 +++
 # Project title.
-title = "Infectious Disease Epidemiology - A modern systems approach"
+title = "Infectious Disease Epidemiology - a Model-based Approach"
 
 # Date this page was created.
 date = 2018-07-15
@@ -13,7 +13,7 @@ tags = ["Data Analysis", "Teaching", "book"]
 
 # Custom links (optional).
 #   Uncomment line below to enable. For multiple links, use the form `[{...}, {...}, {...}]`.
-url_custom = [{icon_pack = "fab", icon="github", name="Course Site", url = "https://ahgroup.github.io/DSAIDEbook/"}]
+url_custom = [{icon_pack = "fab", icon="github", name="Course Site", url = "https://andreashandel.github.io/IDEMAbook/"}]
 
 
 # Featured image
@@ -26,7 +26,7 @@ url_custom = [{icon_pack = "fab", icon="github", name="Course Site", url = "http
   focal_point = "Smart"
 +++
 
-[An online draft of a book convering infectious disease epidemiology from a dynamical systems perspective.](https://ahgroup.github.io/DSAIDEbook/) 
+[An online draft of a book convering infectious disease epidemiology using a model-based approach.](https://andreashandel.github.io/IDEMAbook/) 
 
 The draft is fairly readable and complete enough that I use it when I teach a course on that topic. It is however not thoroughly fact-checked, error-corrected, properly referenced, etc. While I have been considering the idea of turning this into a full/real book, in my current thinking the cost-benefit analysis doesn't pan out. I thus plan to leave it online for free as is, with occasional updates and fixes, but without an attempt to make it polished and complete enough for a printed book.
 
