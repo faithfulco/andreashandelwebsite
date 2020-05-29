@@ -88,6 +88,8 @@ Note that some values are reported as NA, e.g. the citations. Depending on which
 
 This can be useful for NSF applications. For reasons nobody understands, that agency still asks for a list of all co-authors. An insane request in the age of modern science. If one wanted to do that, the following gives a table. 
 
+**Update:** I have since created a short blog post describing how to do just that part in a bit more detail. It has a few additional components that might be useful, if interested [check it out here](/post/conflict-of-interest-form/).
+
 Here is the full table of my co-authors in the first period dataset.
 
 ```{r}
