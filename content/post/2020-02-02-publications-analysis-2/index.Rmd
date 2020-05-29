@@ -12,7 +12,7 @@ tags: ["R","Data Analysis","bibliometrics"]
 featured: no
 disable_jquery: no
 image:
-  caption: 'Photo by Bernd Klutsch on Unsplash'
+  caption: 'Photo by Rita Morais on Unsplash'
   focal_point: ''
   preview_only: yes
 projects: []
