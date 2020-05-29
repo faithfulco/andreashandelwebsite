@@ -31,7 +31,7 @@ The RMarkdown file to run this analysis [is here](index.Rmd).
 
 # Required packages
 
-```{r, include = FALSE}
+```{r, echo = TRUE, message = FALSE, warning=FALSE}
 library(dplyr)
 library(knitr)
 library(bibliometrix)

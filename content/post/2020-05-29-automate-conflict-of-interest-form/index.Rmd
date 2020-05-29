@@ -27,7 +27,7 @@ The RMarkdown file to run this analysis [is here](index.Rmd).
 
 # Required packages
 
-```{r, include = FALSE}
+```{r, echo = TRUE, message = FALSE, warning=FALSE}
 library(dplyr)
 library(knitr)
 library(flextable)
@@ -36,7 +36,7 @@ library(bibliometrix)
 
 # Loading data
 
-As described in the [previous post](/post/publications-analysis-2/), the currently best way to get all my papers is to download them from NIH's "My Bibliography" and export it in MEDLINE format. Then read in the file with the code below. As of the time of writing this, it requires the Github version of `bibliometrix`.
+As explained [in a previous post](/post/publications-analysis-2/), the currently best way to get all my papers is to download them from NIH's "My Bibliography" and export it in MEDLINE format. Then read in the file with the code below. As of the time of writing this, it requires the Github version of `bibliometrix`.
 
 ```{r, message=FALSE}
 #read bib file, turn file of references into data frame
@@ -49,7 +49,7 @@ For a list of what each column variable codes for, see [here](https://cran.r-pro
 
 # Getting the right time period
 
-This specific funding agency I'm currently writing a COI for (NIFA) requires co-authors of the last 3 years, so let's get them. I don't know if they mean 3 full years, so to be on safe side, I go back to 2017.
+This specific funding agency I'm currently writing a COI for (NIFA) requires co-authors of the last 3 years, so let's get them. I don't know if they mean 3 full years. I'm doing this mid-2020, so to be on safe side, I go back to 2017.
 
 ```{r}
 period_start = 2017
@@ -66,8 +66,11 @@ I made a tibble that looks similar to what the COI document requires.
 ```{r}
 #removing the 1st one since that's me
 authors = sort(names(res$Authors)) 
-authortable = dplyr::tibble(Name = authors, "Co-Author" = 'x', Collaborator = '', 'Advisees/Advisors' = '', 'Other – Specify Nature' = '')
-
+authortable = dplyr::tibble(Name = authors, 
+                            "Co-Author" = 'x', 
+                            Collaborator = '', 
+                            'Advisees/Advisors' = '', 
+                            'Other – Specify Nature' = '')
 ```
 
 Finally, I'm using the `flextable` package to make a decent looking table and save it to a word document.
@@ -78,9 +81,11 @@ ft
 flextable::save_as_docx("my table" = ft, path = "COItable.docx")
 ```
 
+I notice a few duplicates in the table that need to be removed. Of course I also need to remove myself. And I need to fill in a few of the other columns and potentially add a few individuals who were not captured.
+
 # Discussion
 
-While doing these kinds of COI documents that ask for all co-authors is in my opinion an antiquated approach that should go away, in the meantime using an automated approach makes the problem not too bad. I can take this table, make a few adjustments (e.g. mark advisor/advisee individuals, remove a few duplicates) and have a workflow that is ok. I'm still glad that NIH does not require this.
+While doing these kinds of COI documents that ask for all co-authors is in my opinion an antiquated approach that should go away, in the meantime using an almost fully automated approach makes the problem not too bad. I will have to make a few manual adjustments to the table, but overall it's not too bad. I'm still glad that NIH does not require this.
 
 
 
