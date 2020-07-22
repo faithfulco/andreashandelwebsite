@@ -62,8 +62,8 @@ Therefore, I split the data frame containing publications, then run the analysis
 period_1_start = 2009
 period_2_start = 2015
 #here I want to separately look at publications in the 2 time periods I defined above
-pubs_old <- pubs %>% dplyr::filter((PY>=period_1_start & PY<period_2_start ))
-pubs_new <- pubs %>% dplyr::filter(PY>=period_2_start)
+pubs_old <- data.frame(pubs) %>% dplyr::filter((PY>=period_1_start & PY<period_2_start ))
+pubs_new <- data.frame(pubs) %>% dplyr::filter(PY>=period_2_start)
 res_old <- bibliometrix::biblioAnalysis(pubs_old, sep = ";") #perform analysis
 res_new <- bibliometrix::biblioAnalysis(pubs_new, sep = ";") #perform analysis
 ```
@@ -132,7 +132,7 @@ colnames(journaltable) = c('Journal','Number of Pubs','Impact Factor')
 knitr::kable(journaltable)
 ```
 
-Ok that's not too bad. It couldn't find the Lancet Global Health, Current Opinion Systems Biology does indeed not have an impact factor (as of this writing), and PNAS is clearly wrong. The others seem reasonable. But since I don't know what year those IF are from, and if the rest is fully reliable, I would take this with a grain of salt.
+Ok that worked somewhat. It couldn't find several journals. The reported IF seem reasonable. But since I don't know what year those IF are from, and if the rest is fully reliable, I would take this with a grain of salt.
 
 # Discussion
 

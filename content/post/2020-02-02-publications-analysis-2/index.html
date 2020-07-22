@@ -58,8 +58,8 @@ Therefore, I split the data frame containing publications, then run the analysis
 period_1_start = 2009
 period_2_start = 2015
 #here I want to separately look at publications in the 2 time periods I defined above
-pubs_old &lt;- pubs %&gt;% dplyr::filter((PY&gt;=period_1_start &amp; PY&lt;period_2_start ))
-pubs_new &lt;- pubs %&gt;% dplyr::filter(PY&gt;=period_2_start)
+pubs_old &lt;- data.frame(pubs) %&gt;% dplyr::filter((PY&gt;=period_1_start &amp; PY&lt;period_2_start ))
+pubs_new &lt;- data.frame(pubs) %&gt;% dplyr::filter(PY&gt;=period_2_start)
 res_old &lt;- bibliometrix::biblioAnalysis(pubs_old, sep = &quot;;&quot;) #perform analysis
 res_new &lt;- bibliometrix::biblioAnalysis(pubs_new, sep = &quot;;&quot;) #perform analysis</code></pre>
 </div>
@@ -305,8 +305,9 @@ res_new &lt;- bibliometrix::biblioAnalysis(pubs_new, sep = &quot;;&quot;) #perfo
 ## Corresponding Author&#39;s Countries
 ## 
 ##     Country Articles  Freq SCP MCP MCP_Ratio
-## 1 USA             21 0.808   7  14     0.667
-## 2 AUSTRALIA        5 0.192   1   4     0.800
+## 1 USA             16 0.696   7   9     0.562
+## 2 AUSTRALIA        5 0.217   1   4     0.800
+## 3 GEORGIA          2 0.087   0   2     1.000
 ## 
 ## 
 ## SCP: Single Country Publications
@@ -318,7 +319,8 @@ res_new &lt;- bibliometrix::biblioAnalysis(pubs_new, sep = &quot;;&quot;) #perfo
 ## 
 ##   Country      Total Citations Average Article Citations
 ## 1    AUSTRALIA               0                         0
-## 2    USA                     0                         0
+## 2    GEORGIA                 0                         0
+## 3    USA                     0                         0
 ## 
 ## 
 ## Most Relevant Sources
@@ -365,6 +367,7 @@ res_new &lt;- bibliometrix::biblioAnalysis(pubs_new, sep = &quot;;&quot;) #perfo
 <div id="getting-a-table-of-co-authors" class="section level1">
 <h1>Getting a table of co-authors</h1>
 <p>This can be useful for NSF applications. For reasons nobody understands, that agency still asks for a list of all co-authors. An insane request in the age of modern science. If one wanted to do that, the following gives a table.</p>
+<p><strong>Update:</strong> I have since created a short blog post describing how to do just that part in a bit more detail. It has a few additional components that might be useful, if interested <a href="/post/conflict-of-interest-form/">check it out here</a>.</p>
 <p>Here is the full table of my co-authors in the first period dataset.</p>
 <pre class="r"><code>#removing the 1st one since that&#39;s me
 authortable = data.frame(res_old$Authors[-1])
@@ -638,6 +641,11 @@ journaltable = cbind(journaltable, ifvalues$ImpactFactor)
 colnames(journaltable) = c(&#39;Journal&#39;,&#39;Number of Pubs&#39;,&#39;Impact Factor&#39;)
 knitr::kable(journaltable)</code></pre>
 <table>
+<colgroup>
+<col width="83%" />
+<col width="8%" />
+<col width="7%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Journal</th>
@@ -758,7 +766,7 @@ knitr::kable(journaltable)</code></pre>
 </tr>
 </tbody>
 </table>
-<p>Ok that’s not too bad. It couldn’t find the Lancet Global Health, Current Opinion Systems Biology does indeed not have an impact factor (as of this writing), and PNAS is clearly wrong. The others seem reasonable. But since I don’t know what year those IF are from, and if the rest is fully reliable, I would take this with a grain of salt.</p>
+<p>Ok that worked somewhat. It couldn’t find several journals. The reported IF seem reasonable. But since I don’t know what year those IF are from, and if the rest is fully reliable, I would take this with a grain of salt.</p>
 </div>
 <div id="discussion" class="section level1">
 <h1>Discussion</h1>

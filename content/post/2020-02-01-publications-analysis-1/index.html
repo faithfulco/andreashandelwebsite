@@ -142,6 +142,12 @@ ifdata &lt;- scholar::get_impactfactor(pub_reduced$journal)
 iftable &lt;- ifdata %&gt;% dplyr::arrange(desc(ImpactFactor) ) %&gt;% tidyr::drop_na()
 knitr::kable(iftable)</code></pre>
 <table>
+<colgroup>
+<col width="68%" />
+<col width="6%" />
+<col width="12%" />
+<col width="11%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Journal</th>
