@@ -7,11 +7,11 @@ role: Associate Professor
 organizations:
   - name: University of Georgia 
   - url: https://www.uga.edu
-bio: Data Analysis and Modeling with a focus on infectious diseases.  
+bio: Data analysis and modeling with a focus on infectious diseases.  
 interests:
 - Infectious Disease Modeling
 - Data Science
-- R package development
+- R Package Development
 education:
   courses:
   - course: Postdoc in Computational Biology
@@ -55,9 +55,13 @@ user_groups:
 - Current Members
 ---
 
-I am currently an Associate Professor in the [Department of Epidemiology and Biostatistics](https://publichealth.uga.edu/departments/epidemiology-biostatistics/),
-[College of Public Health](https://www.publichealth.uga.edu/), at the [University of Georgia (UGA)](https://www.uga.edu/). I also serve as Associate Department Head and Graduate Coordinator and as Director of the Health Systems Modeling Core of UGA's [Health Informatics Institute](http://hii.publichealth.uga.edu/).
+Welcome to the website of Andreas Handel. I am currently an Associate Professor in the [Department of Epidemiology and Biostatistics](https://publichealth.uga.edu/departments/epidemiology-biostatistics/),
+[College of Public Health](https://www.publichealth.uga.edu/), at the [University of Georgia (UGA)](https://www.uga.edu/). 
+My research focuses on data analysis and modeling in public health, wihth a focus on infectious diseases. 
+This website contains some information [about myself](/aboutme/) and my individual activities (teaching, presentations, blog posts, etc.). 
+More details regarding the research done in my group, as well as links to publications, can be found [on my research group site](https://handelgroup.uga.edu/). 
+Some overlap between the two sites might occur.
 
-My research focuses on data analysis and modeling to study the spread and control of infectious diseases, mainly influenza, tuberculosis and norovirus. You can learn more about this work, as well as find links to publications, [on my research group site](https://handelgroup.uga.edu/). Information regarding my individual activities (teaching, presentations, blog posts, etc.), can be found on this website. Some overlap between the two sites might occur.
+
 
 
