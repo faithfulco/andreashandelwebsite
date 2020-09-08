@@ -6,7 +6,7 @@ title = "DSAIRM - Dynamical Systems Approach to Immune Response Modeling"
 date = 2019-03-07
 
 # Project summary to display on homepage.
-summary = "R package that teaches modeeling for within-host infection and immunology."
+summary = "R package that teaches modeling for within-host infection and immunology."
 
 # Tags: can be used for filtering projects.
 tags = ["Within-host Models", "R Package", "Teaching Resource","software"]
