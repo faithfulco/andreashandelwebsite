@@ -1,19 +1,19 @@
 +++
 # Project title.
-title = "Simulation Modeling in Immunology"
+title = "Infectious Disease Epidemiology - A model-based approach"
 
 # Date this page was created.
-date = 2020-06-15
+date = 2020-09-15
 
 # Project summary to display on homepage.
-summary = "Complete materials of an online workshop on simulation modeling in immunology."
+summary = "Complete materials of an online course on infectious disease epidemiology from a model-based perspective."
 
 # Tags: can be used for filtering projects.
-tags = ["Modeling", "Immunology", "Teaching", "course"]
+tags = ["Modeling", "Epidemiology", "Infectious Disease", "Teaching", "course"]
 
 # Custom links (optional).
 #   Uncomment line below to enable. For multiple links, use the form `[{...}, {...}, {...}]`.
-url_custom = [{icon_pack = "fab", icon="github", name="Course Site", url = "https://andreashandel.github.io/SMIcourse/"}]
+url_custom = [{icon_pack = "fab", icon="github", name="Course Site", url = "https://andreashandel.github.io/IDEMAcourse/"}]
 
 
 # Featured image
@@ -26,4 +26,7 @@ url_custom = [{icon_pack = "fab", icon="github", name="Course Site", url = "http
   focal_point = "Smart"
 +++
 
-Simulation Modeling in Immunology (SMI) is an annual workshop that I co-teach with my colleague Paul Thomas. It usually occurs each year in July in Seattle. In 2020 we taught it online. All course materials are available in the form of a simple GitHub website and can be used by anyone for self-learning. You can find the course [on this site](https://andreashandel.github.io/SMIcourse/).
+Infectious Disease Epidemiology - A model-based approach (IDEMA) is an online course I teach at the University of Georgia. 
+All course materials (or links to the materials) are available in the form of a simple GitHub website and can be used by anyone. You can find the course [on this site](https://andreashandel.github.io/SMIcourse/).
+
+The course also makes heavy use of my [DSAIDE R package](https://ahgroup.github.io/DSAIDE/). 
