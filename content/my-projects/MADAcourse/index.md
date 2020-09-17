@@ -6,10 +6,10 @@ title = "Modern Applied Data Analysis Course"
 date = 2019-01-15
 
 # Project summary to display on homepage.
-summary = "Complete materials of an online course I teach."
+summary = "Complete materials of an online course on Modern Applied Data Analysis I teach."
 
 # Tags: can be used for filtering projects.
-tags = ["Data Analysis", "Teaching", "course"]
+tags = ["Data Analysis", "Teaching", "Course"]
 
 # Custom links (optional).
 #   Uncomment line below to enable. For multiple links, use the form `[{...}, {...}, {...}]`.

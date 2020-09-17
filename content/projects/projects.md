@@ -31,11 +31,11 @@ subtitle = ""
   
   [[content.filter_button]]
     name = "Courses"
-    tag = "course"
+    tag = "Course"
     
   [[content.filter_button]]
     name = "Books"
-    tag = "book"
+    tag = "Book"
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.

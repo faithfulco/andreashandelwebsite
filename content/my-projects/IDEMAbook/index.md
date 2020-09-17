@@ -9,7 +9,7 @@ date = 2018-07-15
 summary = "An online book (perpetually under construction) covering infectious disease epidemiology from a model-based perspective."
 
 # Tags: can be used for filtering projects.
-tags = ["Infectious Disease", "Epidemiology", "Modeling", "Teaching", "book"]
+tags = ["Infectious Disease", "Epidemiology", "Modeling", "Teaching", "Book"]
 
 # Custom links (optional).
 #   Uncomment line below to enable. For multiple links, use the form `[{...}, {...}, {...}]`.

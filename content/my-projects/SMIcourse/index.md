@@ -9,7 +9,7 @@ date = 2020-06-15
 summary = "Complete materials of an online workshop on simulation modeling in immunology."
 
 # Tags: can be used for filtering projects.
-tags = ["Modeling", "Immunology", "Teaching", "course"]
+tags = ["Modeling", "Immunology", "Teaching", "Course"]
 
 # Custom links (optional).
 #   Uncomment line below to enable. For multiple links, use the form `[{...}, {...}, {...}]`.
