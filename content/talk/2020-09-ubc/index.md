@@ -3,7 +3,7 @@ title: Modeling COVID-19
 summary: A (virtual) presentation at the University of British Columbia discussing some recent COVID-19 modeling projects.
 abstract: ""
 event: UCB Seminar Presentation
-location: Vancouver (virtual), CAN
+location: Vancouver (virtual), Canada
 authors: ["andreashandel"]
 
 # Talk start and end times.
