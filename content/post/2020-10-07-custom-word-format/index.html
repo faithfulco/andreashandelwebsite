@@ -1,0 +1,104 @@
+---
+title: Custom Word Formatting using RMarkdown
+subtitle: 
+summary: 
+author: Andreas Handel
+date: '2020-10-07'
+slug: word-formatting-rmarkdown
+draft: false
+categories: []
+tags: ["R", "RMarkdown", "Word"]
+featured: no
+disable_jquery: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: yes
+projects: []
+---
+
+
+
+<div id="background" class="section level1">
+<h1>Background</h1>
+<p>A good while back (around 2 years as of this writing), I needed the feature to turn an R Markdown document into a Word document (that’s easy) and to apply custom styles to specific parts of the Word document (that was trickier). I found some good information <a href="https://rmarkdown.rstudio.com/articles_docx.html">in this RStudio article</a>, but it didn’t quite address everything I was looking for.</p>
+<p>Specifically, I wanted to find a way to format certain parts of the R Markdown document in a specific style. I asked online and <a href="https://rmarkdown.rstudio.com/articles_docx.html#comment-4105255981">got some help</a> from <a href="https://rstudio.com/speakers/j.j.-allaire/">JJ Allaire</a> (yes, the guy who started RStudio). Then recently, <a href="https://deanattali.com/">Dean Attali</a> (yes, the guy who does a lot of cool Shiny stuff) posted a reply asking for an example. I tried to dig out the 2 year old project (it turns out I ended up not needing it for that project and haven’t used it since).</p>
+<p>As I was trying to contemplate how to best share the example with Dean, I figured I might turn it into a brief blog post, which might be of benefit to others. So here goes.</p>
+</div>
+<div id="word-template-preparation" class="section level1">
+<h1>Word template preparation</h1>
+<ul>
+<li>Create a new word document (either through RMarkdown -&gt; Word or easier, just open Word and create a new empty one).</li>
+<li>Open the word document. Write a bit of text. It doesn’t matter what you write, it’s just meant so you can create and apply new styles to it. For instance you can write “this is text for mystyle1”.</li>
+<li>Mark the text you wrote, click in the lower left corner of the ‘styles’ box (see the red “circle” in the figure) and choose <em>Create a style</em>. Depending on your version of Word, this might be somewhere else. Create the formatting the way you want.</li>
+<li>Repeat to create as many custom styles as you want, save the word document into the folder of your RMarkdown file.</li>
+</ul>
+<p><img src="wordscreenshot.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="rmarkdown-setup" class="section level1">
+<h1>RMarkdown setup</h1>
+<p>Start a new Rmarkdown document. Your YAML header should look something like this:</p>
+<pre><code>---
+title: &quot;An example for using formatting of text blocks in Word&quot;
+author: &quot;Andreas Handel&quot;
+documentclass: article
+site: bookdown::bookdown_site
+output:
+  bookdown::word_document2: 
+    toc: false
+    reference_docx: wordstyletemplate.docx
+---</code></pre>
+<p>Note that I’m using bookdown as the output format here, but any others that can produce word output, e.g. the standard R Markdown format, should work equally well.
+The important part is the last line, which specifies the word document with the custom styles you created in the previous step.</p>
+</div>
+<div id="rmarkdown-input-content" class="section level1">
+<h1>RMarkdown input content</h1>
+<p>You can now assign text blocks in your R markdown file specific styles. Here I created 3 styles called mystyle1/mystyle2/mystyle3 in the Word doc, and assign them to specific parts of the text.
+This example markdown text shows how to use the styles.</p>
+<pre><code># A regular section
+
+This text is not getting a special format.
+
+# A formatted Section
+
+:::{custom-style=&quot;mystyle1&quot;}
+This is formatted according to the _mystyle1_ format.
+:::
+
+# Another formatted block of text
+
+Some more regular text.
+
+:::{custom-style=&quot;mystyle2&quot;}
+Now text formatted based on _mystyle2_.
+:::
+
+More regular text.
+
+:::{custom-style=&quot;mystyle3&quot;}
+This format includes a border and it also works with an equation.
+$$Y = bX + c$$
+:::
+
+Regular text again.
+
+::: {custom-style=&quot;mystyle1&quot;}
+# With a header
+
+Note that the header formatting is overwritten.
+:::</code></pre>
+</div>
+<div id="word-output" class="section level1">
+<h1>Word output</h1>
+<p>The resulting word document looks like this:</p>
+<p><img src="wordoutput.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="some-notes" class="section level1">
+<h1>Some notes</h1>
+<p>One thing you see in this example is that your own styles overwrite all others, so headers inside your custom style will just be formatted like your custom style. Some other quirks I noticed is that you seem to need empty lines before and after your custom style block. I seem to remember that formatting of R chunks works ok, but I also seem to recall that sometimes manual intervention is required.</p>
+<p>Overall, this approach gives you a good deal of flexibility for applying styling to your Word documents when writing in R Markdown, but there might still be some kinks. As I mentioned in the beginning, I ended up not using it for the project I had intended to use it (a review paper I wrote), so I don’t have a lot of <em>real world</em> experience beyond what I’m describing here.</p>
+</div>
+<div id="files" class="section level1">
+<h1>Files</h1>
+<p>You can get the Word template and the example R Markdown file I used to illustrate this <a href="wordstyletemplate.docx">here</a> and <a href="word_formatting_example.Rmd">here</a>.</p>
+</div>
