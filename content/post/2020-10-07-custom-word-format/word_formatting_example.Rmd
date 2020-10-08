@@ -1,5 +1,5 @@
 ---
-title: "An example for using formatting of text blocks in Word"
+title: "An example of formatting text blocks in Word"
 author: "Andreas Handel"
 documentclass: article
 site: bookdown::bookdown_site
