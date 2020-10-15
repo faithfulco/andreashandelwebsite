@@ -25,7 +25,7 @@ library('emo')
 
 # Background
 
-A good while back (around 2 years as of this writing), I needed the feature to turn an R Markdown document into a Word document (that's easy) and to apply custom styles to specific parts of the Word document (that was trickier). I found some good information [in this RStudio     article](https://rmarkdown.rstudio.com/articles_docx.html), but it didn't quite address everything I was looking for.
+A good while back (around 2 years as of this writing), I needed the feature to turn an R Markdown document into a Word document (that's easy) and to apply custom styles to specific parts of the Word document (that was trickier). I found some good information [in this RStudio article](https://rmarkdown.rstudio.com/articles_docx.html), but it didn't quite address everything I was looking for.
 
 Specifically, I wanted to find a way to format certain parts of the R Markdown document in a specific style. I asked online and [got some help](https://rmarkdown.rstudio.com/articles_docx.html#comment-4105255981) from [JJ Allaire](https://rstudio.com/speakers/j.j.-allaire/) (yes, the guy who started RStudio `r emo::ji('star-struck')`). Then recently, [Dean Attali](https://deanattali.com/) (yes, the guy who does a lot of cool Shiny stuff `r emo::ji('sparkles')`) posted a reply asking for an example. I tried to dig out the 2 year old project (it turns out I ended up not needing it for that project and haven't used it since).
 
@@ -122,10 +122,10 @@ One thing you see in this example is that your own styles overwrite all others, 
 Overall, this approach gives you a good deal of flexibility for applying styling to your Word documents when writing in R Markdown, but there might still be some kinks. As I mentioned in the beginning, I ended up not using it for the project I had intended to use it (a review paper I wrote), so I don't have a lot of _real world_ experience beyond what I'm describing here.
 
 
-# Files
+# Further Resources
 
 You can get the Word template and the example R Markdown file I used to illustrate this [here](wordstyletemplate.docx) and [here](word_formatting_example.Rmd).
 
-
+I recently saw that the new R Markdown cookbook has [a section describing word styling](https://bookdown.org/yihui/rmarkdown-cookbook/word-template.html). I expect that more content will be added to the cookbook, so it's worth checking regularly.
 
 
