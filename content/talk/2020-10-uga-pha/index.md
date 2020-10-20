@@ -23,7 +23,7 @@ featured: false
 image:
   caption: 
   focal_point: Right
-  preview_only: true
+  preview_only: false
 
 
 # Enable math on this page?
@@ -38,4 +38,4 @@ categories:
   
 ---
 
-These are slides for a brief presentation on COVID-19 vaccines and how to model their deployment. <a href="2020-10-PHA-UGA.html" target="_blank">The presentation slides are here.</a>
+These are slides for a brief presentation on COVID-19 vaccines and how to model their deployment. <a href="/presentations/2020-10-PHA-UGA/2020-10-PHA-UGA.html" target="_blank">The presentation slides are here.</a>
