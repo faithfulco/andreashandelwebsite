@@ -48,25 +48,29 @@ subtitle = ""
 +++
 
 
-### Brief professional bio
+## Brief professional bio
 
+
+### Current position
 
 I am currently an Associate Professor in the [Department of Epidemiology and Biostatistics](http://www.publichealth.uga.edu/epibio/),
 [College of Public Health](http://www.publichealth.uga.edu/), at the [University of Georgia](http://www.uga.edu/). 
 I also serve as Associate Department Head and Graduate Coordinator and as Director of the Health Systems Modeling Core of UGA's [Health Informatics Institute](http://hii.publichealth.uga.edu/).
 
-My research focuses on analyzing and modeling the spread and control of infectious diseases, mainly influenza, tuberculosis and norovirus. Lately, I have also worked a lot on COVID-19. I uses mathematical models, computational simulations and statistical analysis to understand the dynamics of pathogens on different spatial and temporal scales. The ultimate goal of his work is to help design better intervention and control strategies against infectious diseases, both for individual patients and on the population level.
-
-Descriptions of some current research projects, as well as scientific publications, can be found [on my research group website](https://handelgroup.uga.edu/). Slides for recent talks and presentations are located on this website and [can be found here](https://www.andreashandel.com/talk/).
-
 I have adjunct appointments in UGA's [School of Ecology](https://www.ecology.uga.edu/directory/andreas-handel/) and [Department of Infectious Diseases in the College of Veterinary Medicine](https://vet.uga.edu/person/andreas-handel/), as well as the [Department of Epidemiology, Rollins School of Public Health](http://sph.emory.edu/faculty/profile/#AHANDEL) at Emory University. I am also a Member of UGA's [Institute of Bioinformatics](http://iob.uga.edu/faculty/) and 
 [Faculty of Infectious Diseases](https://fid.uga.edu/directory/).
 
+
+### Research focus
+
+My research focuses on analyzing and modeling infectious diseases, mainly influenza, tuberculosis and norovirus. Lately, I have also worked a lot on COVID-19. I uses mathematical models, computational simulations and statistical analysis to understand the dynamics of pathogens on different spatial and temporal scales. I work both on the within-host level (the immunology, virology, microbiology scale) and the population level (the epidemiology, ecology, evolution scale). The ultimate goal of my work is to help design better intervention and control strategies against infectious diseases, both for individual patients and on the population level.
+
+Descriptions of some current research projects, as well as scientific publications, can be found [on my research group website](https://handelgroup.uga.edu/). Slides for recent talks and presentations are located on this website and [can be found here](https://www.andreashandel.com/talk/).
+
+### Previous positions
+
 Before I startedy my faculty position at UGA, I was a Postdoctoral Fellow in the [Department of Biology](http://www.biology.emory.edu/) 
-at [Emory University](http://www.emory.edu/) in the group of [Rustom Antia](http://www.biology.emory.edu/Antia/). 
-During my Postdoc, I used the mathematical and computational approaches that I learned during my Ph.D. to 
-study the dynamics of pathogens, both on the within-host level during individual infections and the between-host, 
-population level.
+at [Emory University](http://www.emory.edu/) in the group of [Rustom Antia](http://www.biology.emory.edu/Antia/). During my Postdoc I made the transition from physics to infectious disease modeling. 
 
 I obtained a Ph.D. in physics from the [Center for Nonlinear Science](http://cns.physics.gatech.edu/) and 
 [School of Physics](http://www.physics.gatech.edu/), at the [Georgia Institute of Technology](http://www.gatech.edu/). 
