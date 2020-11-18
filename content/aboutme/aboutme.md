@@ -48,6 +48,8 @@ subtitle = ""
 +++
 
 
+### Brief professional bio
+
 
 I am currently an Associate Professor in the [Department of Epidemiology and Biostatistics](http://www.publichealth.uga.edu/epibio/),
 [College of Public Health](http://www.publichealth.uga.edu/), at the [University of Georgia](http://www.uga.edu/). 
@@ -55,6 +57,7 @@ I also serve as Associate Department Head and Graduate Coordinator and as Direct
 
 My research focuses on analyzing and modeling the spread and control of infectious diseases, mainly influenza, tuberculosis and norovirus. Lately, I have also worked a lot on COVID-19. I uses mathematical models, computational simulations and statistical analysis to understand the dynamics of pathogens on different spatial and temporal scales. The ultimate goal of his work is to help design better intervention and control strategies against infectious diseases, both for individual patients and on the population level.
 
+Descriptions of some current research projects, as well as scientific publications, can be found [on my research group website](https://handelgroup.uga.edu/). Slides for recent talks and presentations are located on this website and [can be found here](https://www.andreashandel.com/talk/).
 
 I have adjunct appointments in UGA's [School of Ecology](https://www.ecology.uga.edu/directory/andreas-handel/) and [Department of Infectious Diseases in the College of Veterinary Medicine](https://vet.uga.edu/person/andreas-handel/), as well as the [Department of Epidemiology, Rollins School of Public Health](http://sph.emory.edu/faculty/profile/#AHANDEL) at Emory University. I am also a Member of UGA's [Institute of Bioinformatics](http://iob.uga.edu/faculty/) and 
 [Faculty of Infectious Diseases](https://fid.uga.edu/directory/).
@@ -75,7 +78,7 @@ from the [Department of Physics](http://www.physik.uni-stuttgart.de/index.en.htm
 [University of Stuttgart](http://www.uni-stuttgart.de/en/). 
 
 
-### Additional - completely irrelevant information 
+### Additional, completely irrelevant information 
 
 My current [Erdős number](http://en.wikipedia.org/wiki/Erd%C5%91s_number) is (as far as I'm aware) __4__. 
 (Paul Erdős -> Ernst Gabor Straus -> Raymond M. Redheffer -> Sergei S. Pilyugin -> Andreas Handel).
