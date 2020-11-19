@@ -1,6 +1,6 @@
 ---
 title: "Simulation modeling to inform COVID-19 control and vaccination strategies"
-summary: "A (virtual) presentation of some rencent COVID-19 modeling work." 
+summary: "A (virtual) presentation of some recent COVID-19 modeling work." 
 abstract: ""
 event: "International Symposium on the Prevention and Control of Infectious Diseases during the Pandemic of COVID-19 - The 4th Pudong Health Forum and the Yangtze River Delta Regional Public Health Symposium"
 location: "Pudong/Shanghai, China (virtual)"
