@@ -3,7 +3,7 @@ title: "The Role of Influenza Vaccine Dose Towards Homologous and Heterologous P
 summary: "A (virtual) presentation of some work on understanding the impact of dose for influenza vaccines." 
 abstract: ""
 event: "International Society for Vaccines North America Influenza Vaccine Symposium"
-location: "Virtual"
+location: "ISV Influenza Vaccine Symposium (Virtual)"
 authors: ["andreashandel"]
 
 # Talk start and end times.
