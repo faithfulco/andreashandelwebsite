@@ -37,3 +37,5 @@ categories:
 ---
 
 These are slides for a talk discussing a recent project that investigated the impact of standard-dose versus high-dose influenza vaccine on immune responses. I gave the talk during the ISV Virtual Congress North America Influenza Vaccine Symposium. <a href="/presentations/2020-12-isv/2020_12_ISV.html" target="_blank">The presentation slides are here.</a>
+
+The organizers also recorded the event, the video recording of my presentation [can be found here.](https://www.youtube.com/watch?v=t_Lx6Q9jT0o) 
