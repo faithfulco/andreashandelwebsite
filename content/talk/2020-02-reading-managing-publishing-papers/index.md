@@ -35,4 +35,4 @@ categories:
 ---
 
 These are slides for a talk/discussion I led with our graduate students on how to efficiently read the (peer reviewed) literature, how to manage your references, and how to write and publish papers.
-<a href="/presentations/2020-02-reading-managing-publishing-papers/2020_02_reading_managing_publishing_papers.html" target="_blank">The presentation slides are here.</a>
+<a href="/presentations/2020_02_reading_managing_publishing_papers.html" target="_blank">The presentation slides are here.</a>

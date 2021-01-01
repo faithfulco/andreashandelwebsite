@@ -35,4 +35,4 @@ categories:
 ---
 
 These are slides for a talk/discussion I led with our graduate students on ways to build and curate an online presence and overall personal brand. 
-<a href="/presentations/2020-01-your-brand/2020_01_Building_your_Brand.html" target="_blank">The presentation slides are here.</a>
+<a href="/presentations/2020_01_Building_your_Brand.html" target="_blank">The presentation slides are here.</a>

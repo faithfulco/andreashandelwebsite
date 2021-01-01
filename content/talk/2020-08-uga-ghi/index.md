@@ -36,4 +36,4 @@ categories:
 ---
 
 These are slides for a talk discussing some recent COVID-19 projects. I gave the talk (online) as part of UGA's Global Health Institute seminar series.
-<a href="/presentations/2020-08-uga-ghi/2020-08-uga-ghi.html" target="_blank">The presentation slides are here.</a>
+<a href="/presentations/2020-08-uga-ghi.html" target="_blank">The presentation slides are here.</a>

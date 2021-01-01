@@ -35,4 +35,4 @@ categories:
   - COVID-19
 ---
 
-Short talk for an online webinar hosted by MJH life sciences on the topic [_Battling Dual Threats: Flu and COVID-19 Converge_](https://globalmeet.webcasts.com/starthere.jsp?ei=1369490&tp_key=972e333d5c&sti=mjh_corp). My talk was titled _Population-level patterns of COVID-19 and Flu: What should we expect?_ <a href="/presentations/2020-09-mjh/Handel_MJH_Presentation_2020_09_15.pdf" target="_blank">The presentation slides are here.</a>
+Short talk for an online webinar hosted by MJH life sciences on the topic [_Battling Dual Threats: Flu and COVID-19 Converge_](https://globalmeet.webcasts.com/starthere.jsp?ei=1369490&tp_key=972e333d5c&sti=mjh_corp). My talk was titled _Population-level patterns of COVID-19 and Flu: What should we expect?_ <a href="/presentations/2020-09-mjh-flucovid.pdf" target="_blank">The presentation slides are here.</a>

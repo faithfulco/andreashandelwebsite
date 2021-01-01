@@ -36,4 +36,4 @@ categories:
 ---
 
 These are slides for a talk discussing a recent TB superspreader project I did, as well as some general background on the topic. I gave the talk to the Epidemiology in Action group (Dr. Whalen's research group) at UGA.
-<a href="/presentations/2020-03-EIA/2020_03_EIA-Superspreader-Presentation.html" target="_blank">The presentation slides are here.</a>
+<a href="/presentations/2020_03_EIA-Superspreader-Presentation.html" target="_blank">The presentation slides are here.</a>

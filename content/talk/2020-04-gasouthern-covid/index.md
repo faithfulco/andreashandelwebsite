@@ -36,4 +36,4 @@ categories:
 ---
 
 These are slides for a talk discussing some recent COVID-19 projects. I gave the talk (online) at GA Southern.
-<a href="/presentations/2020-04-GASouthern/2020_04_GASouthern_COVID_Presentation.html" target="_blank">The presentation slides are here.</a>
+<a href="/presentations/2020_04_GASouthern_COVID_Presentation.html" target="_blank">The presentation slides are here.</a>

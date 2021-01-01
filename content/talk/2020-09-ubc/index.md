@@ -37,4 +37,4 @@ categories:
 ---
 
 These are slides for a talk discussing some COVID-19 modeling projects. I gave the talk (online) at UBC.
-<a href="/presentations/2020-09-ubc/2020-09-ubc.html" target="_blank">The presentation slides are here.</a>
+<a href="/presentations/2020-09-ubc.html" target="_blank">The presentation slides are here.</a>
