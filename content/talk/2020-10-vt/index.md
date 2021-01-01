@@ -37,4 +37,4 @@ categories:
 ---
 
 These are slides for a talk discussing some COVID-19 projects. I gave the talk (online) at Virginia Tech.
-<a href="/presentations/2020-10-vt/2020-10-vt.html" target="_blank">The presentation slides are here.</a>
+<a href="/presentations/2020-10-vt.html" target="_blank">The presentation slides are here.</a>

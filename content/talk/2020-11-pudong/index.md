@@ -37,4 +37,4 @@ categories:
 ---
 
 These are slides for a talk discussing some recent projects on modeling COVID-19 spread and control. I gave a pre-recorded online talk as part of the 
-International Symposium on the Prevention and Control of Infectious Diseases during the Pandemic of COVID-19 - The 4th Pudong Health Forum and the Yangtze River Delta Regional Public Health Symposium. <a href="/presentations/2020-11-pudong/2020-11-pudong.html" target="_blank">The presentation slides are here.</a>
+International Symposium on the Prevention and Control of Infectious Diseases during the Pandemic of COVID-19 - The 4th Pudong Health Forum and the Yangtze River Delta Regional Public Health Symposium. <a href="/presentations/2020-11-pudong.html" target="_blank">The presentation slides are here.</a>

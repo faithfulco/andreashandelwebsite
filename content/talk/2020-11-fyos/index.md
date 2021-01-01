@@ -36,4 +36,4 @@ categories:
   - software
 ---
 
-These are slides for a talk I gave to a group of undergraduate students as part of a First Year Odyssey Seminar class. I provide a very brief introduction to infectious disease modeling and show the [DSAIDE software](https://ahgroup.github.io/DSAIDE/) and a worked example. <a href="2020-11-fyos.html" target="_blank">The presentation slides are here.</a>
+These are slides for a talk I gave to a group of undergraduate students as part of a First Year Odyssey Seminar class. I provide a very brief introduction to infectious disease modeling and show the [DSAIDE software](https://ahgroup.github.io/DSAIDE/) and a worked example. <a href="/presentations/2020-11-fyos.html" target="_blank">The presentation slides are here.</a>
