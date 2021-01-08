@@ -32,6 +32,7 @@ math: false
 categories:
   - presentation
   - career
+  - teaching
 ---
 
 These are slides for a talk/discussion I led with our graduate students discussing Individual Development Plans, and specifically the AAAS myIDP plan. This is the kick-off presentation/discussion for a semester-long IDP development project done as part of the seminar class. <a href="/presentations/2021_01_IDP.html" target="_blank">The presentation slides are here.</a>
