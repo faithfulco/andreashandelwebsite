@@ -26,5 +26,7 @@ My experience using github for teaching: workflow, exercises
 
 * staying mentally in good shape in grad school (and in general)
 
-* gradingapp description
+* quizgrader description
+
+* Reading/managing/publishing papers: turn my presentation and my text on the 'teaching-research-resources' list into a blog post.
 
