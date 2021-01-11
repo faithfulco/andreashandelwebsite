@@ -88,7 +88,13 @@ Installing R and RStudio should be fairly straightforward. If you want some more
 
 ## Get Github up and running
 
-If you are new to Github, you need to create an account. At some point, it would also be useful to learn more about what Git/Github is and how to use it, but for this purpose you actually don't need to know much. If you want to read a bit about Git/Github, see e.g. [this document, which I wrote for one of my courses.](https://andreashandel.github.io/MADAcourse/1d_Github.html) If you are impatient, all you need to do for now is create a Github account, download and install [Gitkraken](https://www.gitkraken.com/) and [connect Gitkraken to your Github account](https://www.gitkraken.com/resources/gitkraken-github-cheat-sheet).
+If you are new to Github, you need to create an account. At some point, it would also be useful to learn more about what Git/Github is and how to use it, but for this purpose you actually don't need to know much. If you want to read a bit about Git/Github, see e.g. [this document, which I wrote for one of my courses.](https://andreashandel.github.io/MADAcourse/1d_Github.html). But for now, you don't need to know much about Git/Github.
+
+## Install Gitkraken (optional but assumed)
+There are many ways you can interact with Git/Github. I mosty use the fairly user-friendly and full-featured [Gitkraken](https://www.gitkraken.com/). You can get a basic version for free, if you are a student, you can get the Pro version through the [Github developer pack](https://education.github.com/pack), teachers can get it through the [Github teacher toolbox](https://education.github.com/toolbox). If you qualify for either, I highly recommend signing up. But you don't need it for our purpose.
+
+I assume for the rest of the post that you are using Gitkraken. If you have your own preferred Git/Github client (e.g. the one that comes with RStudio), you can of course use that one too.
+Make sure you [connect Gitkraken to your Github account](https://www.gitkraken.com/resources/gitkraken-github-cheat-sheet).
 
 
 # Starting your website 
@@ -211,7 +217,8 @@ date: "`r file.mtime(knitr::current_input())`"
 ```
 It gets the 'last modified' time stamp of the file that is being processed and displays it. It's not perfect, e.g. if you recently cloned the files from Github to a new computer, it will show that date as the modified date. But it's good enough for me. If you want exact _last edited date_ time stamps, you'll probably have to do it manually.
 
-
+* It's easy to have broken links when creating any website and it's good to check that things are ok. There are simple free tools out there that let you check to make sure links are not broken. I like using [Dr Link Check](https://www.drlinkcheck.com/) or the [W3C Link Checker](https://validator.w3.org/checklink). I'm sure many others exist. 
+ 
  
 
 # More Information
