@@ -200,7 +200,7 @@ summary {
 <div id="overview" class="section level1">
 <h1>Overview</h1>
 <p>Generating personalized documents is often useful. Since this is a very common task, programs like Word or similar software can do this. But I like to use R if I can. And the whole R Markdown system is perfectly suited for repeat generation of customized documents.</p>
-<p>I’m certainly not the first one to have the idea of using R, and in fact my initial approach is based on <a href="http://www.dsup.org/blog/creating-certificates-of-attendance-using-r/">this prior post</a>. In this brief post, I describe a few ways of using R and R Markdown to auto-generate custom documents, and provide example code and explanations for anyone who might want to use this (including my future self).</p>
+<p>I’m certainly not the first one to have the idea of using R, and in fact my initial approach is based on <a href="http://www.dsup.org/blog/creating-certificates-of-attendance-using-r/">this prior post</a>. Here, I describe a few ways of using R and R Markdown to auto-generate custom documents, and provide example code and explanations for anyone who might want to use this (including my future self).</p>
 </div>
 <div id="rationale" class="section level1">
 <h1>Rationale</h1>
@@ -219,7 +219,7 @@ summary {
 </div>
 <div id="data-frame" class="section level1">
 <h1>Data frame</h1>
-<p>This part is fairly straightforward. You need a file (e.g. and Excel or CSV file) that you can load as a data frame and that contains the information you want to use for each personalized document. Here is an example of a very simple data frame containing names and scores for 2 students, which is stored in <a href="student_data.csv">this csv file</a>.</p>
+<p>This part is fairly straightforward. You need a file (e.g. and Excel or CSV file) that you can load as a data frame and that contains the information you want to use for each personalized document. Here is an example of a very simple data frame containing names and scores for 2 students, which is stored in <a href="/post/2020-10-15-customized-documents-with-Rmarkdown/student_data.csv">this csv file</a>.</p>
 <table>
 <thead>
 <tr class="header">
@@ -248,7 +248,7 @@ summary {
 <p>There are different ways you can create the templates and thus the output, with different advantages and disadvantages. I’ll describe and show examples for LaTeX/PDF and Word, and discuss other options briefly.</p>
 <div id="latexpdf" class="section level2">
 <h2>LaTeX/PDF</h2>
-<p>For this approach, you start with a template file that contains some LaTeX commands, including the placeholders that will get personalized. Here is code for an example file, you can get the file <a href="certificate_template_pdf.Rmd">here</a>. We’ll look at the resulting output below.</p>
+<p>For this approach, you start with a template file that contains some LaTeX commands, including the placeholders that will get personalized. Here is code for an example file, you can get the file <a href="/post/2020-10-15-customized-documents-with-Rmarkdown/certificate_template_pdf.Rmd">here</a>. We’ll look at the resulting output below.</p>
 <pre><code>---
 title: &quot;&quot;
 output: pdf_document
@@ -273,7 +273,7 @@ classoption: landscape
 </div>
 <div id="word" class="section level2">
 <h2>Word</h2>
-<p>For this approach, you start with a template file that contains commands that lead to a decent looking Word document. Again, it needs to include the placeholders that will get personalized. Here is code for an example file, you can get the file <a href="certificate_template_word.Rmd">here</a>. We’ll look at the end result below.</p>
+<p>For this approach, you start with a template file that contains commands that lead to a decent looking Word document. Again, it needs to include the placeholders that will get personalized. Here is code for an example file, you can get the file <a href="/post/2020-10-15-customized-documents-with-Rmarkdown/certificate_template_word.Rmd">here</a>. We’ll look at the end result below.</p>
 <pre><code>---
 title: &quot;&quot;
 output: 
@@ -308,7 +308,7 @@ knitr::include_graphics(&quot;fig2.jpg&quot;)
 </div>
 <div id="processing-script" class="section level1">
 <h1>Processing script</h1>
-<p>Once you generated your data and template, you only need a few lines of code to read the template, personalize it, and turn it into the wanted output. Here is example code that shows how to process the data and template files above, you can get the file <a href="certificate_generator.R">here</a>.</p>
+<p>Once you generated your data and template, you only need a few lines of code to read the template, personalize it, and turn it into the wanted output. Here is example code that shows how to process the data and template files above, you can get the file <a href="/post/2020-10-15-customized-documents-with-Rmarkdown/certificate_generator.R">here</a>.</p>
 <pre class="r"><code>#####################################################
 # automatically create customized certificates
 #####################################################
@@ -355,11 +355,11 @@ for (i in 1:nrow(df))
 </div>
 <div id="results" class="section level1">
 <h1>Results</h1>
-<p>If you run the script for the PDF output, you’ll get two pdf certificates, <a href="Smith_Jennifer_Certificate.pdf">here is one of them</a>. Similarly, if you run the Word template, you get two Word documents, <a href="Smith_Jennifer_Certificate.docx">here is one of them</a>. As mentioned above, the Word output is not that nicely formatted, the figure placement and sizing can’t really be controlled.</p>
+<p>If you run the script for the PDF output, you’ll get two pdf certificates, <a href="/post/2020-10-15-customized-documents-with-Rmarkdown/Smith_Jennifer_Certificate.pdf">here is one of them</a>. Similarly, if you run the Word template, you get two Word documents, <a href="/post/2020-10-15-customized-documents-with-Rmarkdown/Smith_Jennifer_Certificate.docx">here is one of them</a>. As mentioned above, the Word output is not that nicely formatted, the figure placement and sizing can’t really be controlled.</p>
 </div>
 <div id="further-resources" class="section level1">
 <h1>Further Resources</h1>
-<p>To reproduce the example here, you can download <a href="certificate_generator.zip">this zip file</a> which contains the <a href="student_data.csv">data file</a>, <a href="certificate_template_pdf.Rmd">the R Markdown template for PDF output</a> and <a href="certificate_template_word.Rmd">the R Markdown template for Word output</a>, the <a href="certificate_generator.R">certificate generator script</a>, the files for <a href="fig1.png">figure 1</a> and <a href="fig2.jpg">figure 2</a> as well as the <a href="wordstyletemplate.docx">word style file</a>. Place all files into a folder and run the <code>certificate_generator.R</code> function to produce either PDF or Word output.</p>
+<p>To reproduce the example here, you can download <a href="/post/2020-10-15-customized-documents-with-Rmarkdown/certificate_generator.zip">this zip file</a> which contains the <a href="/post/2020-10-15-customized-documents-with-Rmarkdown/student_data.csv">data file</a>, <a href="/post/2020-10-15-customized-documents-with-Rmarkdown/certificate_template_pdf.Rmd">the R Markdown template for PDF output</a> and <a href="/post/2020-10-15-customized-documents-with-Rmarkdown/certificate_template_word.Rmd">the R Markdown template for Word output</a>, the <a href="/post/2020-10-15-customized-documents-with-Rmarkdown/certificate_generator.R">certificate generator script</a>, the files for <a href="/post/2020-10-15-customized-documents-with-Rmarkdown/fig1.png">figure 1</a> and <a href="/post/2020-10-15-customized-documents-with-Rmarkdown/fig2.jpg">figure 2</a> as well as the <a href="/post/2020-10-15-customized-documents-with-Rmarkdown/wordstyletemplate.docx">word style file</a>. Place all files into a folder and run the <code>certificate_generator.R</code> function to produce either PDF or Word output.</p>
 </div>
 
 
