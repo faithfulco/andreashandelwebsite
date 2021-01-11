@@ -154,11 +154,11 @@ If a file is not listed in the `_navbar.yml` file, it is not accessible to users
 
 
 ### The `docs` folder
-This folder contains the html files that are created from your `Rmd` files and will be used by Github to display your website (we'll do that below). Note that you can change this in `_site.yml`, but I recommend leaving it as is, since `docs` is also the default location for Github to look for these files. 
+This folder is created and updated when you build the website. It contains the html files that are created from your `Rmd` files. Those files will be used by Github to display your website (we'll do that below). Note that you can change the folder name in `_site.yml`, but I recommend leaving it as is, since `docs` is also the default location for Github to look for these files. 
 
 
 ### Additional content
-Additional files are either for Github (e.g. `.gitignore` and `README.md`) or for RStudio (e.g. the `mywebsite.Rproj` file). Those should be there, but are not directly part of the website.
+Additional files are either for Github (e.g. `.gitignore` and `README.md`) or for RStudio (e.g. the `mywebsite.Rproj` file). Those should be there, and you might want to edit those at some point, especially the `README.md` file. But since they are not directly part of the website, I'll not further discuss them here.
 
 
 ### Beware!
@@ -169,15 +169,15 @@ Additional files are either for Github (e.g. `.gitignore` and `README.md`) or fo
 
 # Creating and editing content
 
-Making new content for your website is very easy, all you need to do is create new Rmd files. Note that if you don't use R code in your file, you could just use plain markdown/md files, but I find it easier for consistency to always use Rmd files, even if they don't contain R code. 
+Making new content for your website is very easy, all you need to do is create new Rmd files. Note that if you don't use R code in your file, you could just use plain Markdown/Md files, but I find it easier for consistency to always use Rmd files, even if they don't contain R code. 
 
-Let's create the missing documents. You can go to `File`, `New File`, `R Markdown` choose as output format `HTML document` and give it a title and name. A template will open, you can fill it and then save as say `project1.Rmd` into the main folder of your website.
+Let's create the missing documents. Go to `File`, `New File`, `R Markdown` choose as output format `HTML document` and give it a title and name. A template will open, you can fill it and then save as say `project1.Rmd` into the main folder of your website.
 
 Another option, which I usually use, is to go into the folder, make a copy of an existing file and rename. E.g. copy `project1.Rmd` to `project2.Rmd`, then open and edit. Either approach works.
 
-Use whichever approach you like to create Rmd versions of the 4 files that are listed in the `_navbar.yml` file, namely `aboutme.Rmd`, `project1.Rmd`, `project2.Rmd` and `contact.Rmd`. All files should be in the main folder. Edit those files as much or as little as you want.
+Use whichever approach you like to create Rmd versions of the 4 files that are listed in the `_navbar.yml` file, namely `aboutme.Rmd`, `project1.Rmd`, `project2.Rmd` and `contact.Rmd`. All files should be in the main folder. Edit the content in those files as much or as little as you want.
 
-Once created, rebuild the website. You should now be able to click on all menus in the preview and reach the pages you just created. (You'll find the html files in the `docs` folder.)
+Once created, rebuild the website. In the preview that shows up, you should now be able to click on all menus in the preview and reach the pages you just created. (You'll find the newly created html files in the `docs` folder.)
 
 
 # Making your site public.
@@ -185,7 +185,7 @@ Once created, rebuild the website. You should now be able to click on all menus 
 The final step involves getting your site public, which is easy. 
 
 * Once you are done editing your content (for now), go to Gitkraken (or your preferred Git client) and push your changes to Github.
-* Go to Github.com into your repository. On the bar at the top, in the right corner there should be the `Settings` button. Click on it. Scroll down until you find the `GitHub Pages` section. Under `Source`, select `Main` and then choose `/docs` as the folder. Don't choose a theme since we are using our own. Save those changes. Now if you look right underneath the `GitHub Pages` section, there should be something like `Your site is ready to be published at https://andreashandel.github.io/mywebsite/`. Click on the link. If everything works, your website is now live and public! 
+* Go to Github.com and find the repository for this website. On the bar at the top, in the right corner there should be the `Settings` button. Click on it. Scroll down until you find the `GitHub Pages` section. Under `Source`, select `Main` and then choose `/docs` as the folder. Don't choose a theme since we are using our own. Save those changes. Now if you look right underneath the `GitHub Pages` section, there should be something like `Your site is ready to be published at https://andreashandel.github.io/mywebsite/`. Click on the link. If everything works, your website is now live and public! 
 
 **That's basically it. Now the hard part starts, creating good content. `r emo::ji('smile')` **
 
@@ -207,19 +207,15 @@ Here are some thoughts and suggestions that I've learned by using this setup for
 
 * The setup described here works well for fairly simple sites. If you want your content structured in a more complex way and more features, you probably want to use the [blogdown/hugo setup](/post/blogdown-website-1/). Similarly, while you can customize the layout  by trying different themes and by including your own CSS (see links above), if you want to start making it look exactly how you want, you'll likely be wasting a lot of time and might be better off using a different setup (e.g. blogdown/hugo).
 
-* Every time you build your website, everything gets recompiled. If you have simple content, and no/little R code, that's ok. If you are having things that take long to run (e.g. complex R code inside your website), my suggestion would be to take the R code out of the Rmd file, have it run on its own and save its results into files (figures/tables/Rdata files), which you then just load into your Rmd file.
+* Every time you build your website, everything gets recompiled. If you have simple content, and no/little R code, that's ok. If you are having things that take long to run (e.g. complex R code inside your website), I suggest to move the R code to a separate R script and save results from the code into files (figures/tables/Rdata files). You then just load thpse results into your Rmd file. This way you only need to run the time-consuming R code if those parts have changed, but on a standard website re-build the code won't need to run.
 
-* Sometimes when I build websites like this one on a Windows computer, things slow down markedly. It turns out that Windows Defender was not working right and I had to make some adjustments to prevent it from trying to scan all newly created files in real time while re-building my website. If you encounter things going very slow on a Windows machine, this could be the issue and you might want to chekc out [this discussion](https://community.rstudio.com/t/performance-issue-rstudio-windows-10/7608) and especially the provided link which explains how to potentially fix it.
+* Sometimes when I build websites like this one on a Windows computer, things slow down markedly. It turns out that Windows Defender is at times not working right and I have to make adjustments to prevent it from trying to scan all newly created files in real time while re-building my website. If you encounter a very slow re-build process on a Windows machine, this could be the issue and you might want to check out [this discussion](https://community.rstudio.com/t/performance-issue-rstudio-windows-10/7608) and especially the provided link which explains how to potentially fix it (the fix worked for me).
 
-* You can have files other than Rmd or Md in your folder, and you can have sub-folders. Those are ignored by `rmarkdown` when the site is built. Having those can be useful for storing additional materials. I generally have a `media` folder in which I place figures and other materials, and link to it from my Rmd files.
+* You can have files other than Rmd/Md in your main folder, and you can have files in sub-folders. Those are ignored by `rmarkdown` when the site is built. Having those can be useful for storing additional materials. I generally have a `media` folder in which I place figures and other materials, and link to it from my Rmd files.
 
-* If you use this setup for teaching and want to slowly release content to students (while still making edits to later parts of the course), I recommend using a `staging` setup. A simple way to do that is to make 2 repositories, the main one for the course, and one where you do the development. Note that even if you set this to a private repository, if you turn on `Github Pages`, students could find it. That's usually not a big deal, nobody is looking. But you might want to be aware of it. This way you can test/develop the course and make sure everything works in your staging repository, then every week or every few weeks when you want to release new content, you copy it over to the main repository, build it there and push it to the main course repo.
+* If you use this setup for teaching and want to slowly release content to students (while still making edits to later parts of the course), I recommend using a _staging_ setup. A simple way to do that is to make 2 repositories, the main one for the course, and one where you do the development. Note that even if you set this to a private repository, if you turn on `Github Pages`, students could find it. That's usually not a big deal, nobody is looking. But you might want to be aware of it. With 2 repositories, you can do the testing/development of the course in the _staging_ repository. Once things work and whenever you want to release new content to the students, you copy it over to the main repository, build it there and push it to the main course repo. Alternatively, you can do development in the main repository, as long as you don't make the files visible in the `_navbar.yml` file, students won't easily see them.
 
-* I like to be able to specify the date when a page was last changed. The problem is that all pages are always rebuild, so asking for 'current date' during rebuilding doesn't work. What I found out to work is to have this line in the YAML file header:
-```{r, eval = FALSE}
-date: "`r file.mtime(knitr::current_input())`"
-```
-It gets the 'last modified' time stamp of the file that is being processed and displays it. It's not perfect, e.g. if you recently cloned the files from Github to a new computer, it will show that date as the modified date. But it's good enough for me. If you want exact _last edited date_ time stamps, you'll probably have to do it manually.
+* I like to be able to specify the date when a page was last changed. The problem is that all pages are always rebuild, so asking for 'current date' during rebuilding doesn't work. What I found out to work is to have this line in the YAML file header: `file.mtime(knitr::current_input())`. It gets the 'last modified' time stamp of the file that is being processed and displays it. It's not perfect, e.g. if you recently cloned the files from Github to a new computer, it will show that date as the modified date. But it's good enough for me. If you want exact _last edited date_ time stamps, you'll probably have to do it manually.
 
 * It's easy to have broken links when creating any website and it's good to check that things are ok. There are simple free tools out there that let you check to make sure links are not broken. I like using [Dr Link Check](https://www.drlinkcheck.com/) or the [W3C Link Checker](https://validator.w3.org/checklink). I'm sure many others exist. 
  
@@ -229,7 +225,7 @@ It gets the 'last modified' time stamp of the file that is being processed and d
 
 The whole area of _use R Markdown to make websites_ is still under rapid development. Here are a few sources that - as of this writing - might be useful and not too outdated.
 
-* Since this setup is fully based on R Markdown, the [R Markdown book](https://bookdown.org/yihui/rmarkdown/) is very useful and contains lots of relevant information, especially [this section](https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html). There is also the newer [R Markdown cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/) which is more of a `how-to` guide, while the R Markdown book is more of a full reference book. Both are very useful sources of information.
+* Since this setup is fully based on R Markdown, the [R Markdown book](https://bookdown.org/yihui/rmarkdown/) is very useful and contains lots of relevant information, especially [this section](https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html). There is also the newer [R Markdown cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/) which is more of a how-to guide, while the R Markdown book is more of a full reference book. Both are very useful sources of information.
 
 * The R Studio folks have a package called [`distill`](https://rstudio.github.io/distill/) which is still under heavy development and which allows turning R Markdown into lots of outputs, including [basic websites](https://rstudio.github.io/distill/publish_website.html). This is still a work in progress, and while I tried distill in the past (and it couldn't quite do what I want), I haven't tried it lately. I find the setup I describe here works for my teaching needs, but if you need more/different features, I recommend checking out distill. There is aparently also a new package called [`postcards`](https://github.com/seankross/postcards) that works with distill to produce simple websites, very similar to the approach shown here. See e.g. [this blog post by Allison Hill](https://alison.rbind.io/post/2020-12-22-postcards-distill/) for an introduction. I expect these packages to develop and mature quickly.
 
