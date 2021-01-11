@@ -38,3 +38,7 @@ rsconnect/
 # For website, ignore directory of built
 public/
 .idea/
+
+#other files
+.DS_Store
+Thumbs.db
