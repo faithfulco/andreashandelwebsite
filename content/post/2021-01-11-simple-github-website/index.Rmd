@@ -106,7 +106,7 @@ With the above registration and installation bits out of the way, you can get st
 ### Github
 * Go to Github, log in if needed. 
 * Somewhere (usually on the left), you should find a green button that says _New_, click it to create a new repository. Give it the name of the webpage you want to create (e.g. `mywebsite`). Provide a brief description (e.g. _My first Github website_.)
-* Check the `add readme` and `add .gitignore` boxes and for the template chose `R`. You can keep the license box unchecked, or choose a license for your page.
+* Check the boxes `add readme` and `add .gitignore` and for the template chose `R`. You can keep the license box unchecked, or choose a license for your page.
 * Once done, create the new repository.
 
 ### Gitkraken
@@ -117,16 +117,15 @@ _I assume you'll be using Gitkraken, but if you have another way of using Git/Gi
 
 
 ### Starter files
-* Download the files [_navbar.yml](), [_site.yml]() and [index.Rmd](). Those are 3 files you need and I'm providing you with templates. Place all 3 files into the folder of your new website (e.g. ``C:\Users\yourname\Desktop\mywebsite`). 
+* Download the files [_navbar.yml](), [_site.yml]() and [index.Rmd](). You need those are 3 files to create your website and I'm providing you with simple templates. Place all 3 files into the folder of your new website (e.g. `C:\Users\yourname\Desktop\mywebsite`). 
 
 
 ### RStudio
 * Open RStudio.
-* Choose `File`, `New Project`, `Existing Directory` and find the directory/folder you just created on Github and copied to your local computer (e.g. ``C:\Users\yourname\Desktop\mywebsite`).
+* Choose `File`, `New Project`, `Existing Directory` and find the directory/folder you just created on Github and copied to your local computer (e.g. `C:\Users\yourname\Desktop\mywebsite`).
 * Based on the files you copied into the folder earlier, R Studio should recognize that you are making a website and in the top right pane there should be a `Build` tab. Click on it, then `Build Website.` If that doesn't work, you can also type `rmarkdown::render_site()` into the R console (bottom left pane in R Studio).
+* If you don't find the `Build Website` button or the `rmarkdown::render_site()` command produced an error message, something went wrong with the setup. You can try to close RStudio, navigate to the folder for your website and click on the `.Rproj` file, which should open RStudio and place you in the project. Maybe the `Build` tab and `Build Website` buttons are now there? If not, revisit the steps above and make sure you did them all, especially make sure the 3 starter files are in the same folder. 
 * If things work, a preview window should open with the beginning of your new website. You'll see a menu at the top, but if you click on the links, they won't work. We need to create those files first, which we'll do below.
-* Also note that when you created/built the site, a new folder called `docs` was created inside your website folder. If you look inside, you'll find an `index.html` file, and some additional files/folders that you can ignore. In the future, all new websites will be placed in the `docs` folder. Let's discuss this more.
-
 
 
 # A brief explanation of your new website
@@ -135,18 +134,23 @@ Your website is fairly simple and consists of these documents.
 
 
 ### The file `index.Rmd` 
-This is the main page of your website. It always needs to be there and you fill it with the content you want on your main page. It's a regular R Markdown site. If you are new to R Markdown, you can learn more about it [on the R Markdown website](https://rmarkdown.rstudio.com/). I also have a discussion of R Markdown and reproducibility [on one of my course pages](https://andreashandel.github.io/MADAcourse/1e_ToolsforReproducibility.html). You'll find additional links to potentially useful R Markdown (and Github) resources there.
+This is the main landing page of your website. It always needs to be there and you fill it with the content you want on your main page. It's a regular R Markdown site. If you are new to R Markdown, you can learn more about it [on the R Markdown website](https://rmarkdown.rstudio.com/). I also have a discussion of R Markdown and reproducibility [on one of my course pages](https://andreashandel.github.io/MADAcourse/1e_ToolsforReproducibility.html). You'll find additional links to potentially useful R Markdown (and Github) resources there.
 
 
 ### The file `_site.yml` 
-This short file contains the main settings for your site that control the styling. To change the layout the `theme` setting is the most important. R Markdown supports the Bootswatch theme library. Information on the themes you can choose and more configuration options you can place in this file [can be found here](https://bookdown.org/yihui/rmarkdown/html-document.html#appearance-and-style).
-Once you start playing with your website, you'll want to explore those options. You can even include your own style using CSS. [This whole section](https://bookdown.org/yihui/rmarkdown/html-document.html) of the R Markdown book is useful to read (at some point) to learn what you can do.
+This short file contains the main settings for your site that control the styling. To change the layout, the `theme` setting is the most important. R Markdown supports the [Bootswatch](https://bootswatch.com/) theme library. More information on themes and other configuration options for the `_site.yml` file [can be found here](https://bookdown.org/yihui/rmarkdown/html-document.html#appearance-and-style).
+Once you start playing with your website, you'll want to explore and probably adjust those options. You can even include your own style using CSS. [This whole section](https://bookdown.org/yihui/rmarkdown/html-document.html) of the R Markdown book is useful to read (at some point) to learn what you can do.
 
-For now, just to play briefly, open the `_site.yml` file (in R Studio or some other text editor) and replace `cerulean` with `spacelab`. Then rebuild the website. You should see the layout has changed.
+For now, just to give it a quick try, open the `_site.yml` file (in R Studio or some other text editor) and replace `cerulean` with `spacelab`. Save, then rebuild the website. You should see the layout has changed.
 
 
 ### The file `_navbar.yml`
-This file allows you to build a menu for your website. If you open the file, you'll see that I created a small menu. You see links to files `aboutme.html`, `project1.html`, `project2.html` and `contact.html`. Those files currently do not exist, thus if you click on those menus in the preview, you get an error message. You can have extra files in your repository, but if they are not listed in the `_navbar.yml` file, they are not accessible to users (unless they know the direct link to the file). This can be useful since it means you can have files in development in the Github repository, and they will only become visible once you link them. Of course since they can be found through a direct link or through browsing your Github repository, don't place anything private/confidential in this folder (e.g. if you use this four a course, keep the solutions to your homework problems offline until after the deadline `r emo::ji('smile')`).
+This file allows you to build a menu for your website. If you open the file, you'll see that I created a small menu. You see links to files `aboutme.html`, `project1.html`, `project2.html` and `contact.html`. Those files currently do not exist, thus if you click on those menus in the preview, you get an error message. You need to make sure that the files of your website match those listed in this menu file.
+
+You can find some more information on the `_navbar.yml` file and what settings are available [in this chapter of the R Markdown book](https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html). As you'll read, it is possible to have only a single `_site.yml` file which contains the `_navbar.yml` content, but I prefer to keep them separate.
+
+If a file is not listed in the `_navbar.yml` file, it is not accessible to users, unless they know the direct link to the file. This can be useful since it means you can have files in development in the Github repository, and they will only become visible once you link them. Of course since they can be found through a direct link or through browsing your Github repository, don't place anything private/confidential in this folder (e.g. if you use this four a course, keep the solutions to your homework problems offline until after the deadline `r emo::ji('smile')`).
+
 
 
 ### The `docs` folder
