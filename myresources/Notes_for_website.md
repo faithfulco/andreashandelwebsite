@@ -9,9 +9,6 @@ Note that it's important to run build_site() since Hugo/Netlify only do part of 
 Sometimes I might not want Rmd re-done, e.g. mainly lengthy posts. A hack is to rename them to .Rmdx, which means they'll be ignored by blogdown/rmarkdown. If at another time I want them processed, rename back to .Rmd. Another option is to use `hugo_build` instead of `build_site` but that means no Rmd are processed.
 
 # Ideas for new posts/content
-How to make a quick course website online on Github 
-  * mention 'date changed in yaml'
-  * staging idea
 
 Review of my technology stack for online courses
   * Github
@@ -29,4 +26,3 @@ My experience using github for teaching: workflow, exercises
 * quizgrader description
 
 * Reading/managing/publishing papers: turn my presentation and my text on the 'teaching-research-resources' list into a blog post.
-

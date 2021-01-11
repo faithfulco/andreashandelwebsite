@@ -2,7 +2,7 @@
 title: Automatically generate personalized certificates and other documents with R   
 subtitle: Examples for automatically creating customized PDF or Word documents using R and R Markdown 
 summary: ''
-author: Andreas Handel
+author: "[Andreas Handel](https://www.andreashandel.com)"
 date: '2020-10-15'
 slug: certificate-generation
 categories: []
