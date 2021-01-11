@@ -12,8 +12,9 @@ disable_jquery: no
 projects: []
 ---
 
-<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
-<link href="/rmarkdown-libs/lightable/lightable.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+<script src="{{< blogdown/postref >}}index_files/kePrint/kePrint.js"></script>
+<link href="{{< blogdown/postref >}}index_files/lightable/lightable.css" rel="stylesheet" />
 
 
 <div id="overview" class="section level1">
@@ -137,7 +138,7 @@ finally_what_is_your_gold_star_top_choice_number_one_recommendation_for_a_constr
 </table>
 <p>More cleaning</p>
 <pre class="r"><code>visdat::vis_dat(d) #missing values</code></pre>
-<p><img src="/post/2020-02-15-MADA-survey-analysis/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <pre class="r"><code>#looks like a few students left some entries blank. Should be ok. One student only answered 1 question. Quick look at entry.
 print(d[12,2])</code></pre>
 <pre><code>## # A tibble: 1 x 1
@@ -220,7 +221,7 @@ the_level_of_difficult_of_each_module_is
 ##                  NA&#39;s        :1   NA&#39;s         : 1</code></pre>
 <pre class="r"><code>plot(1:14,d$Q10, ylab = &#39;Time spent per week&#39;)
 lines(1:14,rep(12,14))</code></pre>
-<p><img src="/post/2020-02-15-MADA-survey-analysis/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>Based on answers to questions 4,6 and 8, the majority of students think the pace and level of difficulty of the course is right but the amount of material covered is too much. Based on answer to Q10, students spend more time than my target (12 hours, solid line). Even accounting for some “inflation factor” (people generally over-estimate the time they spend on tasks like these, counting all the other things they do at the same time e.g., texting/email/FB/drinknig coffee/…), the overall amount seems too high, and it agrees with Q6 answers about too much material.</p>
 <p><strong>First conclusion: Reduce weekly workload, probably best by reducing assigned reading (see text answers which I already glimpsed at 😃).</strong></p>
 </div>
@@ -674,7 +675,7 @@ d2 %&gt;% semi_join(negative) %&gt;% nrow()</code></pre>
   geom_bar( stat = &quot;identity&quot;) +
   coord_flip() +
   labs(y = &quot;Counts&quot;)</code></pre>
-<p><img src="/post/2020-02-15-MADA-survey-analysis/index_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p>About twice as many positive as negative words, i guess that’s good 😃. And the most frequent negative words do reflect that things are “too much”.</p>
 <p>Let’s look at sentiment per question. Higher values are more positive.</p>
 <pre class="r"><code>question_sentiment &lt;- d2 %&gt;%
@@ -685,7 +686,7 @@ d2 %&gt;% semi_join(negative) %&gt;% nrow()</code></pre>
 
 ggplot(question_sentiment, aes(question, sentiment)) +
   geom_bar(stat = &quot;identity&quot;, show.legend = FALSE) </code></pre>
-<p><img src="/post/2020-02-15-MADA-survey-analysis/index_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <p>Not surprising, the 1st question “what is working well” has lots of positive. Surprisingly, question 2, “what’s not working well” has fairly high positive sentiment. One problem could be that what I’m plotting is total counts, but I should probably normalize by total words written per question. Let’s try:</p>
 <pre class="r"><code>words_per_q &lt;- d2 %&gt;% group_by(question) %&gt;% count()
 print(words_per_q)</code></pre>
@@ -704,7 +705,7 @@ print(words_per_q)</code></pre>
 <pre class="r"><code>question_sentiment &lt;- question_sentiment %&gt;% mutate(sent_per_word = sentiment / words_per_q$n)
 ggplot(question_sentiment, aes(question, sent_per_word)) +
   geom_bar(stat = &quot;identity&quot;, show.legend = FALSE) </code></pre>
-<p><img src="/post/2020-02-15-MADA-survey-analysis/index_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <p>Ok, changed things a bit but not a lot. Q2 drop (expected) is most noticable change. Still, even for the “what’s not good” section, positive words dominate. That either means the course is quite good, or students are very optimistic or polite, or it might mean nothing at all.</p>
 </div>
 <div id="wordclouds" class="section level2">
@@ -716,7 +717,7 @@ inner_join(bing) %&gt;%
   acast(word ~ sentiment, value.var = &quot;n&quot;, fill = 0) %&gt;%
   wordcloud::comparison.cloud(colors = c(&quot;#F8766D&quot;, &quot;#00BFC4&quot;),
                    max.words = 100)</code></pre>
-<p><img src="/post/2020-02-15-MADA-survey-analysis/index_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <p>At this point, I ran out of ideas for further text analysis. I didn’t think analysis by word pairs, or sentences, or such alternatives would lead to any further interesting results. I looked in the <a href="https://www.tidytextmining.com/">Text Mining with R book</a> for some more ideas of what kind of analyses might be useful, but can’t come up with anything else. Not that the above ones are that useful either, but it was fun to try some text analysis, which is a type of data analysis I’m not very familiar with. So, I’ll stop this here. Feel free to play around yourself, you have access to the raw data and this script in the GitHub repository.</p>
 </div>
 </div>
