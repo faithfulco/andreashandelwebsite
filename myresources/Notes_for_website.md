@@ -10,19 +10,27 @@ Sometimes I might not want Rmd re-done, e.g. mainly lengthy posts. A hack is to 
 
 # Ideas for new posts/content
 
+## Science/Research
+
+* Reading/managing/publishing papers: turn my presentation and my text on the 'teaching-research-resources' list into a blog post.
+
+
+## Teaching/Tech
+
 Review of my technology stack for online courses
   * Github
   * Slack
   * gradingapp
   
-* gh_class package to manage class with github
-
-My experience using github for teaching: workflow, exercises
+* gh_class package to manage class with github and my experience using github for teaching: workflow, exercises
 
 * conceptual thought of usefulness of certain teaching aids like metaphors/examples/jokes that might confuse-enlighten or disengage-engage
 
-* staying mentally in good shape in grad school (and in general)
-
 * quizgrader description
 
-* Reading/managing/publishing papers: turn my presentation and my text on the 'teaching-research-resources' list into a blog post.
+
+## Others
+
+* staying mentally in good shape in grad school (and in general)
+
+* comparing mental exercise/meditation to physical exercise, where do analogies work and where do they not
