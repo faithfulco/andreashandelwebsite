@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Research | Andreas Handel</title>
+    <title>research | Andreas Handel</title>
     <link>https://www.andreashandel.com/category/research/</link>
       <atom:link href="https://www.andreashandel.com/category/research/index.xml" rel="self" type="application/rss+xml" />
-    <description>Research</description>
+    <description>research</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Wed, 02 Dec 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://www.andreashandel.com/media/logo.png</url>
-      <title>Research</title>
+      <title>research</title>
       <link>https://www.andreashandel.com/category/research/</link>
     </image>
     
@@ -97,20 +97,6 @@ International Symposium on the Prevention and Control of Infectious Diseases dur
       <guid>https://www.andreashandel.com/talk/2020-03-tb-superspreaders/</guid>
       <description>&lt;p&gt;These are slides for a talk discussing a recent TB superspreader project I did, as well as some general background on the topic. I gave the talk to the Epidemiology in Action group (Dr. Whalen&amp;rsquo;s research group) at UGA.
 &lt;a href=&#34;https://www.andreashandel.com/presentations/2020_03_EIA-Superspreader-Presentation.html&#34; target=&#34;_blank&#34;&gt;The presentation slides are here.&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Research and teaching resources website</title>
-      <link>https://www.andreashandel.com/post/resource-website/</link>
-      <pubDate>Wed, 08 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>https://www.andreashandel.com/post/resource-website/</guid>
-      <description>
-&lt;script src=&#34;https://www.andreashandel.com/post/resource-website/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;p&gt;I have been collecting lists of links related to research, teaching and (academic) career topics in a Github repository.
-I finally got around to doing some cleanup. I turned the repository into a small website. You can find this site &lt;a href=&#34;https://andreashandel.github.io/research-and-teaching-resources/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     

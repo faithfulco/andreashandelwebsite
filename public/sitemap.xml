@@ -158,6 +158,21 @@
   </url>
   
   <url>
+    <loc>https://www.andreashandel.com/post/word-formatting-rmarkdown/</loc>
+    <lastmod>2020-10-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.andreashandel.com/tag/rmarkdown/</loc>
+    <lastmod>2020-10-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.andreashandel.com/tag/word/</loc>
+    <lastmod>2020-10-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.andreashandel.com/talk/2020-09-ubc/</loc>
     <lastmod>2020-09-30T00:00:00+00:00</lastmod>
   </url>
@@ -278,47 +293,17 @@
   </url>
   
   <url>
-    <loc>https://www.andreashandel.com/post/blogdown-website-2/</loc>
-    <lastmod>2020-05-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.andreashandel.com/tag/blogdown/</loc>
-    <lastmod>2020-01-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.andreashandel.com/post/blogdown-website-1/</loc>
-    <lastmod>2020-01-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.andreashandel.com/tag/hugo/</loc>
-    <lastmod>2020-01-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.andreashandel.com/tag/research/</loc>
-    <lastmod>2020-01-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.andreashandel.com/post/resource-website/</loc>
-    <lastmod>2020-01-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.andreashandel.com/talk/2019-10-paris/</loc>
     <lastmod>2019-10-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.andreashandel.com/category/talk/</loc>
+    <loc>https://www.andreashandel.com/tag/research/</loc>
     <lastmod>2019-10-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.andreashandel.com/post/mada-survey-analysis/</loc>
+    <loc>https://www.andreashandel.com/category/talk/</loc>
     <lastmod>2019-10-23T00:00:00+00:00</lastmod>
   </url>
   
@@ -510,10 +495,6 @@
   <url>
     <loc>https://www.andreashandel.com/publication/conference-paper/</loc>
     <lastmod>2013-07-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.andreashandel.com/post/2020-10-07-custom-word-format/word_formatting_example/</loc>
   </url>
   
 </urlset>

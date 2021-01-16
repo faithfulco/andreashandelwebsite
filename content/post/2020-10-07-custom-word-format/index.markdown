@@ -18,16 +18,13 @@ projects: []
 ---
 
 
-```{r, include = FALSE}
-#remotes::install_github('emo')
-library('emo')
-```
+
 
 # Background
 
 A good while back (around 2 years as of this writing), I needed the feature to turn an R Markdown document into a Word document (that's easy) and to apply custom styles to specific parts of the Word document (that was trickier). I found some good information [in this RStudio article](https://rmarkdown.rstudio.com/articles_docx.html), but it didn't quite address everything I was looking for.
 
-Specifically, I wanted to find a way to format certain parts of the R Markdown document in a specific style. I asked online and [got some help](https://rmarkdown.rstudio.com/articles_docx.html#comment-4105255981) from [JJ Allaire](https://rstudio.com/speakers/j.j.-allaire/) (yes, the guy who started RStudio `r emo::ji('star-struck')`). Then recently, [Dean Attali](https://deanattali.com/) (yes, the guy who does a lot of cool Shiny stuff `r emo::ji('sparkles')`) posted a reply asking for an example. I tried to dig out the 2 year old project (it turns out I ended up not needing it for that project and haven't used it since).
+Specifically, I wanted to find a way to format certain parts of the R Markdown document in a specific style. I asked online and [got some help](https://rmarkdown.rstudio.com/articles_docx.html#comment-4105255981) from [JJ Allaire](https://rstudio.com/speakers/j.j.-allaire/) (yes, the guy who started RStudio 🤩). Then recently, [Dean Attali](https://deanattali.com/) (yes, the guy who does a lot of cool Shiny stuff ✨) posted a reply asking for an example. I tried to dig out the 2 year old project (it turns out I ended up not needing it for that project and haven't used it since).
 
 As I was trying to contemplate how to best share the example with Dean, I figured I'll write a brief blog post, which might benefit others, too. So here it goes.
 
@@ -40,9 +37,7 @@ As I was trying to contemplate how to best share the example with Dean, I figure
 * Repeat to create as many custom styles as you want, save the word document into the folder of your RMarkdown file.
 
 
-```{r word-template, echo = FALSE, warning=FALSE, fig.align='center', out.width="100%"}
-knitr::include_graphics("wordscreenshot.png")
-```
+<img src="wordscreenshot.png" width="100%" style="display: block; margin: auto;" />
 
 
 # RMarkdown setup
@@ -110,9 +105,7 @@ Note that the header formatting is overwritten.
 
 The resulting word document looks like this:
 
-```{r word-output, echo = FALSE, warning=FALSE, fig.align='center', out.width="100%"}
-knitr::include_graphics("wordoutput.png")
-```
+<img src="wordoutput.png" width="100%" style="display: block; margin: auto;" />
 
 
 # Some notes
