@@ -1,21 +1,30 @@
-+++
-# Contact widget.
-widget = "contact"  # See https://sourcethemes.com/academic/docs/page-builder/
-headless = true  # This file represents a page section.
-active = true  # Activate this widget? true/false
-weight = 130  # Order that this section will appear.
+---
+# An instance of the Contact widget.
+# Documentation: https://sourcethemes.com/academic/docs/page-builder/
+widget: contact
 
-title = "Get in touch"
-subtitle = ""
+# This file represents a page section.
+headless: true
 
-# Automatically link email and phone?
-autolink = false
+# Order that this section appears on the page.
+weight: 130
 
-# Email form provider
-#   0: Disable email form
-#   1: Netlify (requires that the site is hosted by Netlify)
-#   2: formspree.io
-email_form = 2
-+++
+title: Contact
+subtitle:
 
-If for some reason this form does not work for you, it should be fairly easy to find my email address online.
+content:
+  # Automatically link email and phone or display as text?
+  autolink: true
+  
+  # Email form provider
+  form:
+    provider: formspree
+    formspree:
+      id: andreashandelwebsite
+    netlify:
+      # Enable CAPTCHA challenge to reduce spam?
+      captcha: true
+  
+design:
+  columns: '2'
+---

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mechanistic Models | Andreas Handel</title>
+    <link>https://www.andreashandel.com/tag/mechanistic-models/</link>
+      <atom:link href="https://www.andreashandel.com/tag/mechanistic-models/index.xml" rel="self" type="application/rss+xml" />
+    <description>Mechanistic Models</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Fri, 15 Mar 2019 00:00:00 -0400</lastBuildDate>
+    <image>
+      <url>https://www.andreashandel.com/media/logo.png</url>
+      <title>Mechanistic Models</title>
+      <link>https://www.andreashandel.com/tag/mechanistic-models/</link>
+    </image>
+    
+    <item>
+      <title>modelbuilder - Building and analysis of compartmental mechanistic models without coding</title>
+      <link>https://www.andreashandel.com/my-projects/modelbuilder/</link>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 -0400</pubDate>
+      <guid>https://www.andreashandel.com/my-projects/modelbuilder/</guid>
+      <description>&lt;p&gt;We are developing an R package that allows users to build and analyze compartmental, dynamical, mechanistic models (implemented as differential equations, discrete-time or stochastic), without the need to write computer code. Learn more about it &lt;a href=&#34;https://ahgroup.github.io/modelbuilder/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on the package website&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

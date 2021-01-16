@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>COVID-19 | Andreas Handel</title>
+    <link>https://www.andreashandel.com/category/covid-19/</link>
+      <atom:link href="https://www.andreashandel.com/category/covid-19/index.xml" rel="self" type="application/rss+xml" />
+    <description>COVID-19</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Wed, 18 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://www.andreashandel.com/media/logo.png</url>
+      <title>COVID-19</title>
+      <link>https://www.andreashandel.com/category/covid-19/</link>
+    </image>
+    
+    <item>
+      <title>Simulation modeling to inform COVID-19 control and vaccination strategies</title>
+      <link>https://www.andreashandel.com/talk/2020-11-pudong/</link>
+      <pubDate>Wed, 18 Nov 2020 00:00:00 +0000</pubDate>
+      <guid>https://www.andreashandel.com/talk/2020-11-pudong/</guid>
+      <description>&lt;p&gt;These are slides for a talk discussing some recent projects on modeling COVID-19 spread and control. I gave a pre-recorded online talk as part of the 
+International Symposium on the Prevention and Control of Infectious Diseases during the Pandemic of COVID-19 - The 4th Pudong Health Forum and the Yangtze River Delta Regional Public Health Symposium. &lt;a href=&#34;https://www.andreashandel.com/presentations/2020-11-pudong.html&#34; target=&#34;_blank&#34;&gt;The presentation slides are here.&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>An overview of COVID-19 vaccines and modeling</title>
+      <link>https://www.andreashandel.com/talk/2020-10-uga-pha/</link>
+      <pubDate>Thu, 22 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>https://www.andreashandel.com/talk/2020-10-uga-pha/</guid>
+      <description>&lt;p&gt;These are slides for a brief presentation on COVID-19 vaccines and how to model their deployment. &lt;a href=&#34;https://www.andreashandel.com/presentations/2020-10-PHA-UGA.html&#34; target=&#34;_blank&#34;&gt;The presentation slides are here.&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>COVID-19: Modeling, Visualization and Data Analysis</title>
+      <link>https://www.andreashandel.com/talk/2020-10-vt/</link>
+      <pubDate>Wed, 07 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>https://www.andreashandel.com/talk/2020-10-vt/</guid>
+      <description>&lt;p&gt;These are slides for a talk discussing some COVID-19 projects. I gave the talk (online) at Virginia Tech.
+&lt;a href=&#34;https://www.andreashandel.com/presentations/2020-10-vt.html&#34; target=&#34;_blank&#34;&gt;The presentation slides are here.&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Modeling COVID-19</title>
+      <link>https://www.andreashandel.com/talk/2020-09-ubc/</link>
+      <pubDate>Wed, 30 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>https://www.andreashandel.com/talk/2020-09-ubc/</guid>
+      <description>&lt;p&gt;These are slides for a talk discussing some COVID-19 modeling projects. I gave the talk (online) at UBC.
+&lt;a href=&#34;https://www.andreashandel.com/presentations/2020-09-ubc.html&#34; target=&#34;_blank&#34;&gt;The presentation slides are here.&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Population-level patterns of COVID-19 and Flu: What should we expect?</title>
+      <link>https://www.andreashandel.com/talk/2020-09-mjh/</link>
+      <pubDate>Tue, 15 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>https://www.andreashandel.com/talk/2020-09-mjh/</guid>
+      <description>&lt;p&gt;Short talk for an online webinar hosted by MJH life sciences on the topic &lt;a href=&#34;https://globalmeet.webcasts.com/starthere.jsp?ei=1369490&amp;amp;tp_key=972e333d5c&amp;amp;sti=mjh_corp&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;em&gt;Battling Dual Threats: Flu and COVID-19 Converge&lt;/em&gt;&lt;/a&gt;. My talk was titled &lt;em&gt;Population-level patterns of COVID-19 and Flu: What should we expect?&lt;/em&gt; &lt;a href=&#34;https://www.andreashandel.com/presentations/2020-09-mjh-flucovid.pdf&#34; target=&#34;_blank&#34;&gt;The presentation slides are here.&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Studying COVID-19 Spread and Control</title>
+      <link>https://www.andreashandel.com/talk/2020-08-uga-ghi/</link>
+      <pubDate>Thu, 27 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>https://www.andreashandel.com/talk/2020-08-uga-ghi/</guid>
+      <description>&lt;p&gt;These are slides for a talk discussing some recent COVID-19 projects. I gave the talk (online) as part of UGA&amp;rsquo;s Global Health Institute seminar series.
+&lt;a href=&#34;https://www.andreashandel.com/presentations/2020-08-uga-ghi.html&#34; target=&#34;_blank&#34;&gt;The presentation slides are here.&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Some recent analysis and modeling applied to COVID-19</title>
+      <link>https://www.andreashandel.com/talk/2020-04-gasouthern-covid/</link>
+      <pubDate>Mon, 20 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://www.andreashandel.com/talk/2020-04-gasouthern-covid/</guid>
+      <description>&lt;p&gt;These are slides for a talk discussing some recent COVID-19 projects. I gave the talk (online) at GA Southern.
+&lt;a href=&#34;https://www.andreashandel.com/presentations/2020_04_GASouthern_COVID_Presentation.html&#34; target=&#34;_blank&#34;&gt;The presentation slides are here.&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

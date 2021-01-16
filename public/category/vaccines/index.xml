@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>vaccines | Andreas Handel</title>
+    <link>https://www.andreashandel.com/category/vaccines/</link>
+      <atom:link href="https://www.andreashandel.com/category/vaccines/index.xml" rel="self" type="application/rss+xml" />
+    <description>vaccines</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Wed, 02 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://www.andreashandel.com/media/logo.png</url>
+      <title>vaccines</title>
+      <link>https://www.andreashandel.com/category/vaccines/</link>
+    </image>
+    
+    <item>
+      <title>The Role of Influenza Vaccine Dose Towards Homologous and Heterologous Protection</title>
+      <link>https://www.andreashandel.com/talk/2020-12-isv/</link>
+      <pubDate>Wed, 02 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>https://www.andreashandel.com/talk/2020-12-isv/</guid>
+      <description>&lt;p&gt;These are slides for a talk discussing a recent project that investigated the impact of standard-dose versus high-dose influenza vaccine on immune responses. I gave the talk during the ISV Virtual Congress North America Influenza Vaccine Symposium. &lt;a href=&#34;https://www.andreashandel.com/presentations/2020_12_ISV.html&#34; target=&#34;_blank&#34;&gt;The presentation slides are here.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The organizers also recorded the event, the video recording of my presentation &lt;a href=&#34;https://www.youtube.com/watch?v=t_Lx6Q9jT0o&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;can be found here.&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>An overview of COVID-19 vaccines and modeling</title>
+      <link>https://www.andreashandel.com/talk/2020-10-uga-pha/</link>
+      <pubDate>Thu, 22 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>https://www.andreashandel.com/talk/2020-10-uga-pha/</guid>
+      <description>&lt;p&gt;These are slides for a brief presentation on COVID-19 vaccines and how to model their deployment. &lt;a href=&#34;https://www.andreashandel.com/presentations/2020-10-PHA-UGA.html&#34; target=&#34;_blank&#34;&gt;The presentation slides are here.&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
