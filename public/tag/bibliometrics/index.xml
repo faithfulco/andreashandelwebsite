@@ -17,58 +17,50 @@
       <link>https://www.andreashandel.com/post/publications-analysis-2/</link>
       <pubDate>Sun, 02 Feb 2020 00:00:00 +0000</pubDate>
       <guid>https://www.andreashandel.com/post/publications-analysis-2/</guid>
-      <description>
-&lt;script src=&#34;https://www.andreashandel.com/post/publications-analysis-2/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;div id=&#34;overview&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Overview&lt;/h1&gt;
-&lt;p&gt;I needed some information on all my publications for “bean counting” purposes related to preparing my promotion materials. In the past, I also needed similar information for NSF grant applications.&lt;/p&gt;
-&lt;p&gt;Instead of doing things by hand, there are nicer/faster ways using R. in &lt;a href=&#34;https://www.andreashandel.com/post/publications-analysis-1/&#34;&gt;part 1&lt;/a&gt;, I did a few things using the &lt;code&gt;scholar&lt;/code&gt; package.
-While some parts worked nicely, I encountered 2 problems. First, since my Google Scholar record lists items other than peer-reviewed journal articles, they show up in the analysis and need to be cleaned out. Second, Google Scholar doesn’t like automated queries through the API and is quick to block, at which point things don’t work anymore.&lt;/p&gt;
-&lt;p&gt;To get around these issues, I decided to give a different R package a try, namely &lt;a href=&#34;https://www.bibliometrix.org/&#34;&gt;&lt;code&gt;bibliometrix&lt;/code&gt;&lt;/a&gt;. The workflow is somewhat different.&lt;/p&gt;
-&lt;p&gt;The RMarkdown file to run this analysis &lt;a href=&#34;index.Rmd&#34;&gt;is here&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;required-packages&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Required packages&lt;/h1&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr)
+      <description>&lt;h1 id=&#34;overview&#34;&gt;Overview&lt;/h1&gt;
+&lt;p&gt;I needed some information on all my publications for &amp;ldquo;bean counting&amp;rdquo; purposes related to preparing my promotion materials. In the past, I also needed similar information for NSF grant applications.&lt;/p&gt;
+&lt;p&gt;Instead of doing things by hand, there are nicer/faster ways using R. in &lt;a href=&#34;https://www.andreashandel.com/post/publications-analysis-1/&#34;&gt;part 1&lt;/a&gt;, I did a few things using the &lt;code&gt;scholar&lt;/code&gt; package. 
+While some parts worked nicely, I encountered 2 problems. First, since my Google Scholar record lists items other than peer-reviewed journal articles, they show up in the analysis and need to be cleaned out. Second, Google Scholar doesn&amp;rsquo;t like automated queries through the API and is quick to block, at which point things don&amp;rsquo;t work anymore.&lt;/p&gt;
+&lt;p&gt;To get around these issues, I decided to give a different R package a try, namely &lt;a href=&#34;https://www.bibliometrix.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;bibliometrix&lt;/code&gt;&lt;/a&gt;. The workflow is somewhat different.&lt;/p&gt;
+&lt;p&gt;The RMarkdown file to run this analysis &lt;a href=&#34;https://www.andreashandel.com/post/2020-02-01-publications-analysis-2/index.Rmarkdown&#34;&gt;is here&lt;/a&gt;.&lt;/p&gt;
+&lt;h1 id=&#34;required-packages&#34;&gt;Required packages&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(dplyr)
 library(knitr)
-library(bibliometrix)&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;loading-data&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Loading data&lt;/h1&gt;
-&lt;p&gt;&lt;strong&gt;Old:&lt;/strong&gt; I keep all references to my published papers in a BibTeX file, managed through Zotero/Jabref. I know this file is clean and correct. I’m loading it here for processing. If you don’t have such a file, make one using your favorite reference manager. Or create it through a saved search on a bibliographic database, as described &lt;a href=&#34;https://cran.r-project.org/web/packages/bibliometrix/vignettes/bibliometrix-vignette.html&#34;&gt;in the bibliometrix vignette&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;New:&lt;/strong&gt; In the current version of &lt;code&gt;bibliometrix&lt;/code&gt;, reading in my bibtex file failed. A fairly good alternative is to go to your NIH “My Bibliography” (which anyone with NIH funding needs to have anyway) and export it in MEDLINE format. Then read in the file with the code below. As of the time of writing this, it requires the Github version of &lt;code&gt;bibliometrix&lt;/code&gt;.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#read bib file, turn file of references into data frame
-pubs &amp;lt;- bibliometrix::convert2df(&amp;quot;medline.txt&amp;quot;, dbsource=&amp;quot;pubmed&amp;quot;,format=&amp;quot;pubmed&amp;quot;) &lt;/code&gt;&lt;/pre&gt;
+library(bibliometrix)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;loading-data&#34;&gt;Loading data&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Old:&lt;/strong&gt; I keep all references to my published papers in a BibTeX file, managed through Zotero/Jabref. I know this file is clean and correct. I&amp;rsquo;m loading it here for processing. If you don&amp;rsquo;t have such a file, make one using your favorite reference manager. Or create it through a saved search on a bibliographic database, as described &lt;a href=&#34;https://cran.r-project.org/web/packages/bibliometrix/vignettes/bibliometrix-vignette.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;in the bibliometrix vignette&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;New:&lt;/strong&gt; In the current version of &lt;code&gt;bibliometrix&lt;/code&gt;, reading in my bibtex file failed. A fairly good alternative is to go to your NIH &amp;ldquo;My Bibliography&amp;rdquo; (which anyone with NIH funding needs to have anyway) and export it in MEDLINE format. Then read in the file with the code below. As of the time of writing this, it requires the Github version of &lt;code&gt;bibliometrix&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;#read bib file, turn file of references into data frame
+pubs &amp;lt;- bibliometrix::convert2df(&amp;quot;medline.txt&amp;quot;, dbsource=&amp;quot;pubmed&amp;quot;,format=&amp;quot;pubmed&amp;quot;) 
+&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 
 ## Converting your pubmed collection into a bibliographic dataframe
 ## 
 ## Done!
 ## 
 ## 
-## Generating affiliation field tag AU_UN from C1:  Done!&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Each row of the data frame created by the &lt;code&gt;convert2df&lt;/code&gt; function is a publication, the columns contain information for each publication.
-For a list of what each column variable codes for, see &lt;a href=&#34;https://cran.r-project.org/web/packages/bibliometrix/vignettes/bibliometrix-vignette.html&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;analyzing-2-time-periods&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Analyzing 2 time periods&lt;/h1&gt;
+## Generating affiliation field tag AU_UN from C1:  Done!
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Each row of the data frame created by the &lt;code&gt;convert2df&lt;/code&gt; function is a publication, the columns contain information for each publication. 
+For a list of what each column variable codes for, see &lt;a href=&#34;https://cran.r-project.org/web/packages/bibliometrix/vignettes/bibliometrix-vignette.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h1 id=&#34;analyzing-2-time-periods&#34;&gt;Analyzing 2 time periods&lt;/h1&gt;
 &lt;p&gt;For my purpose, I want to analyze 2 different time periods and compare them.
 Therefore, I split the data frame containing publications, then run the analysis on each.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#get all pubs for an author (or multiple)
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;#get all pubs for an author (or multiple)
 period_1_start = 2009
 period_2_start = 2015
 #here I want to separately look at publications in the 2 time periods I defined above
 pubs_old &amp;lt;- data.frame(pubs) %&amp;gt;% dplyr::filter((PY&amp;gt;=period_1_start &amp;amp; PY&amp;lt;period_2_start ))
 pubs_new &amp;lt;- data.frame(pubs) %&amp;gt;% dplyr::filter(PY&amp;gt;=period_2_start)
 res_old &amp;lt;- bibliometrix::biblioAnalysis(pubs_old, sep = &amp;quot;;&amp;quot;) #perform analysis
-res_new &amp;lt;- bibliometrix::biblioAnalysis(pubs_new, sep = &amp;quot;;&amp;quot;) #perform analysis&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;general-information&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;General information&lt;/h1&gt;
+res_new &amp;lt;- bibliometrix::biblioAnalysis(pubs_new, sep = &amp;quot;;&amp;quot;) #perform analysis
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;general-information&#34;&gt;General information&lt;/h1&gt;
 &lt;p&gt;The &lt;code&gt;summary&lt;/code&gt; functions provide a lot of information in a fairly readable format. I apply them here to both time periods so I can compare.&lt;/p&gt;
 &lt;p&gt;Time period 1&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(res_old, k = 10)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;summary(res_old, k = 10)
+&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 
 ## 
 ## MAIN INFORMATION ABOUT DATA
@@ -82,20 +74,20 @@ res_new &amp;lt;- bibliometrix::biblioAnalysis(pubs_new, sep = &amp;quot;;&amp;q
 ##  References                            1 
 ##  
 ## DOCUMENT TYPES                     
-##  clinical trial;journal article;research support, non-u.s. gov&amp;#39;t                                               1 
-##  comparative study;journal article;research support, n.i.h., extramural;research support, non-u.s. gov&amp;#39;t                                               1 
+##  clinical trial;journal article;research support, non-u.s. gov&#39;t                                               1 
+##  comparative study;journal article;research support, n.i.h., extramural;research support, non-u.s. gov&#39;t                                               1 
 ##  journal article                                               2 
 ##  journal article;research support, n.i.h., extramural                                               5 
-##  journal article;research support, n.i.h., extramural;research support, non-u.s. gov&amp;#39;t                                               3 
-##  journal article;research support, n.i.h., extramural;research support, non-u.s. gov&amp;#39;t;research support, u.s. gov&amp;#39;t, non-p.h.s.                               1 
-##  journal article;research support, n.i.h., extramural;research support, non-u.s. gov&amp;#39;t;research support, u.s. gov&amp;#39;t, non-p.h.s.;review;systematic review      1 
-##  journal article;research support, non-u.s. gov&amp;#39;t                                               3 
-##  journal article;research support, non-u.s. gov&amp;#39;t;research support, u.s. gov&amp;#39;t, non-p.h.s.;research support, u.s. gov&amp;#39;t, p.h.s.                               1 
+##  journal article;research support, n.i.h., extramural;research support, non-u.s. gov&#39;t                                               3 
+##  journal article;research support, n.i.h., extramural;research support, non-u.s. gov&#39;t;research support, u.s. gov&#39;t, non-p.h.s.                               1 
+##  journal article;research support, n.i.h., extramural;research support, non-u.s. gov&#39;t;research support, u.s. gov&#39;t, non-p.h.s.;review;systematic review      1 
+##  journal article;research support, non-u.s. gov&#39;t                                               3 
+##  journal article;research support, non-u.s. gov&#39;t;research support, u.s. gov&#39;t, non-p.h.s.;research support, u.s. gov&#39;t, p.h.s.                               1 
 ##  journal article;review                                               1 
 ##  
 ## DOCUMENT CONTENTS
 ##  Keywords Plus (ID)                    148 
-##  Author&amp;#39;s Keywords (DE)                148 
+##  Author&#39;s Keywords (DE)                148 
 ##  
 ## AUTHORS
 ##  Authors                               45 
@@ -154,7 +146,7 @@ res_new &amp;lt;- bibliometrix::biblioAnalysis(pubs_new, sep = &amp;quot;;&amp;q
 ## 10 DESAI R, 2012, CLIN INFECT DIS            10.1093/CID/CIS372            0         0
 ## 
 ## 
-## Corresponding Author&amp;#39;s Countries
+## Corresponding Author&#39;s Countries
 ## 
 ##     Country Articles   Freq SCP MCP MCP_Ratio
 ## 1 USA             14 0.7778  11   3     0.214
@@ -213,9 +205,11 @@ res_new &amp;lt;- bibliometrix::biblioAnalysis(pubs_new, sep = &amp;quot;;&amp;q
 ## 7       FEMALE                      3   FEMALE                      3
 ## 8       MICE                        3   MICE                        3
 ## 9       MUTATION                    3   MUTATION                    3
-## 10      AMINO ACID SEQUENCE         2   AMINO ACID SEQUENCE         2&lt;/code&gt;&lt;/pre&gt;
+## 10      AMINO ACID SEQUENCE         2   AMINO ACID SEQUENCE         2
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Time period 2&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(res_new, k = 10)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;summary(res_new, k = 10)
+&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 
 ## 
 ## MAIN INFORMATION ABOUT DATA
@@ -229,22 +223,22 @@ res_new &amp;lt;- bibliometrix::biblioAnalysis(pubs_new, sep = &amp;quot;;&amp;q
 ##  References                            1 
 ##  
 ## DOCUMENT TYPES                     
-##  comparative study;journal article;research support, n.i.h., extramural;research support, non-u.s. gov&amp;#39;t                             1 
+##  comparative study;journal article;research support, n.i.h., extramural;research support, non-u.s. gov&#39;t                             1 
 ##  journal article                                               7 
 ##  journal article;multicenter study;research support, n.i.h., extramural                                               1 
 ##  journal article;research support, n.i.h., extramural                                               5 
-##  journal article;research support, n.i.h., extramural;research support, non-u.s. gov&amp;#39;t                                               5 
-##  journal article;research support, n.i.h., extramural;research support, non-u.s. gov&amp;#39;t;review                                        1 
-##  journal article;research support, n.i.h., extramural;research support, u.s. gov&amp;#39;t, non-p.h.s.                                       1 
-##  journal article;research support, n.i.h., extramural;research support, u.s. gov&amp;#39;t, non-p.h.s.;review                                1 
-##  journal article;research support, non-u.s. gov&amp;#39;t                                               4 
-##  journal article;research support, non-u.s. gov&amp;#39;t;research support, n.i.h., extramural                                               1 
-##  journal article;research support, non-u.s. gov&amp;#39;t;research support, u.s. gov&amp;#39;t, non-p.h.s.;research support, n.i.h., extramural      1 
+##  journal article;research support, n.i.h., extramural;research support, non-u.s. gov&#39;t                                               5 
+##  journal article;research support, n.i.h., extramural;research support, non-u.s. gov&#39;t;review                                        1 
+##  journal article;research support, n.i.h., extramural;research support, u.s. gov&#39;t, non-p.h.s.                                       1 
+##  journal article;research support, n.i.h., extramural;research support, u.s. gov&#39;t, non-p.h.s.;review                                1 
+##  journal article;research support, non-u.s. gov&#39;t                                               4 
+##  journal article;research support, non-u.s. gov&#39;t;research support, n.i.h., extramural                                               1 
+##  journal article;research support, non-u.s. gov&#39;t;research support, u.s. gov&#39;t, non-p.h.s.;research support, n.i.h., extramural      1 
 ##  letter                                               1 
 ##  
 ## DOCUMENT CONTENTS
 ##  Keywords Plus (ID)                    198 
-##  Author&amp;#39;s Keywords (DE)                198 
+##  Author&#39;s Keywords (DE)                198 
 ##  
 ## AUTHORS
 ##  Authors                               209 
@@ -303,7 +297,7 @@ res_new &amp;lt;- bibliometrix::biblioAnalysis(pubs_new, sep = &amp;quot;;&amp;q
 ## 10 CASTELLANOS ME, 2018, INT J TUBERC LUNG DIS                       10.5588/IJTLD.18.0073          0         0
 ## 
 ## 
-## Corresponding Author&amp;#39;s Countries
+## Corresponding Author&#39;s Countries
 ## 
 ##     Country Articles  Freq SCP MCP MCP_Ratio
 ## 1 USA             16 0.696   7   9     0.562
@@ -362,418 +356,411 @@ res_new &amp;lt;- bibliometrix::biblioAnalysis(pubs_new, sep = &amp;quot;;&amp;q
 ## 7  CHILD                                   5 CHILD                                   5
 ## 8  ADOLESCENT                              4 ADOLESCENT                              4
 ## 9  ANTIVIRAL AGENTS/THERAPEUTIC USE        4 ANTIVIRAL AGENTS/THERAPEUTIC USE        4
-## 10 CHILD PRESCHOOL                         4 CHILD PRESCHOOL                         4&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Note that some values are reported as NA, e.g. the citations. Depending on which source you got the original data from, that information might be included or not. In my case, it is not.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;getting-a-table-of-co-authors&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Getting a table of co-authors&lt;/h1&gt;
+## 10 CHILD PRESCHOOL                         4 CHILD PRESCHOOL                         4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Note that some values are reported as NA, e.g. the citations. Depending on which source you got the original data from, that information might be included or not. In my case, it is not.&lt;/p&gt;
+&lt;h1 id=&#34;getting-a-table-of-co-authors&#34;&gt;Getting a table of co-authors&lt;/h1&gt;
 &lt;p&gt;This can be useful for NSF applications. For reasons nobody understands, that agency still asks for a list of all co-authors. An insane request in the age of modern science. If one wanted to do that, the following gives a table.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; I have since created a short blog post describing how to do just that part in a bit more detail. It has a few additional components that might be useful, if interested &lt;a href=&#34;https://www.andreashandel.com/post/conflict-of-interest-form/&#34;&gt;check it out here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Here is the full table of my co-authors in the first period dataset.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#removing the 1st one since that&amp;#39;s me
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;#removing the 1st one since that&#39;s me
 authortable = data.frame(res_old$Authors[-1])
-colnames(authortable) = c(&amp;#39;Co-author name&amp;#39;, &amp;#39;Number of publications&amp;#39;)
-knitr::kable(authortable)&lt;/code&gt;&lt;/pre&gt;
+colnames(authortable) = c(&#39;Co-author name&#39;, &#39;Number of publications&#39;)
+knitr::kable(authortable)
+&lt;/code&gt;&lt;/pre&gt;
 &lt;table&gt;
 &lt;thead&gt;
-&lt;tr class=&#34;header&#34;&gt;
-&lt;th align=&#34;left&#34;&gt;Co-author name&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;Number of publications&lt;/th&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Co-author name&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Number of publications&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;ANTIA R&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;6&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;ANTIA R&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;6&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;DOHERTY PC&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;3&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;DOHERTY PC&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;3&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;LA GRUTA NL&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;3&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;LA GRUTA NL&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;3&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;LONGINI IM JR&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;3&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;LONGINI IM JR&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;3&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;THOMAS PG&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;3&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;THOMAS PG&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;3&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;PILYUGIN SS&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;2&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PILYUGIN SS&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;ROHANI P&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;2&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;ROHANI P&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;STALLKNECHT D&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;2&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;STALLKNECHT D&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;TURNER SJ&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;2&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;TURNER SJ&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;AKIN V&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;AKIN V&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;BEAUCHEMIN CA&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;BEAUCHEMIN CA&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;BIRD NL&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;BIRD NL&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;BROWN J&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;BROWN J&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;CHADDERTON J&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;CHADDERTON J&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;CUKALAC T&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;CUKALAC T&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;DESAI R&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;DESAI R&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;DICKEY BW&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;DICKEY BW&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;FUNG IC&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;FUNG IC&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;HALL AJ&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;HALL AJ&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;HALL D&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;HALL D&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;HEMBREE CD&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;HEMBREE CD&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;JACKWOOD MW&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;JACKWOOD MW&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;KEDZIERSKA K&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;KEDZIERSKA K&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;KJER-NIELSEN L&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;KJER-NIELSEN L&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;KOTSIMBOS TC&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;KOTSIMBOS TC&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;LEBARBENCHON C&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;LEBARBENCHON C&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;LEON JS&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;LEON JS&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;LEVIN BR&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;LEVIN BR&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;LI Y&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;LI Y&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;LOPMAN B&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;LOPMAN B&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;MARGOLIS E&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;MARGOLIS E&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;MATTHEWS JE&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;MATTHEWS JE&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;MCDONALD S&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;MCDONALD S&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;MIFSUD NA&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;MIFSUD NA&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;MOFFAT JM&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;MOFFAT JM&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;NGUYEN TH&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;NGUYEN TH&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;PARASHAR UD&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PARASHAR UD&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;PELLICCI DG&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PELLICCI DG&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;ROWNTREE LC&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;ROWNTREE LC&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;ROZEN DE&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;ROZEN DE&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;WHALEN CC&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;WHALEN CC&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;YATES A&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;YATES A&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;ZARNITSYNA V&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;ZARNITSYNA V&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;ZHENG N&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;ZHENG N&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;Since I have many more co-authors in the second period, I’m not printing a table with all, instead I’m just doing those with whom I have more than 2 joint publications.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#removing the 1st one since that&amp;#39;s me
+&lt;p&gt;Since I have many more co-authors in the second period, I&amp;rsquo;m not printing a table with all, instead I&amp;rsquo;m just doing those with whom I have more than 2 joint publications.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;#removing the 1st one since that&#39;s me
 authortable = data.frame(res_new$Authors[-1])
 authortable &amp;lt;- authortable %&amp;gt;% dplyr::filter(Freq&amp;gt;2)
-colnames(authortable) = c(&amp;#39;Co-author name&amp;#39;, &amp;#39;Number of publications&amp;#39;)
-knitr::kable(authortable)&lt;/code&gt;&lt;/pre&gt;
+colnames(authortable) = c(&#39;Co-author name&#39;, &#39;Number of publications&#39;)
+knitr::kable(authortable)
+&lt;/code&gt;&lt;/pre&gt;
 &lt;table&gt;
 &lt;thead&gt;
-&lt;tr class=&#34;header&#34;&gt;
-&lt;th align=&#34;left&#34;&gt;Co-author name&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;Number of publications&lt;/th&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Co-author name&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Number of publications&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;WHALEN CC&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;WHALEN CC&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;ANTIA R&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;5&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;ANTIA R&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;5&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;MARTINEZ L&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;5&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;MARTINEZ L&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;5&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;SHEN Y&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;5&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;SHEN Y&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;5&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;LA GRUTA NL&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;4&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;LA GRUTA NL&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;4&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;MCKAY B&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;4&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;MCKAY B&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;4&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;THOMAS PG&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;4&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;THOMAS PG&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;4&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;ZALWANGO S&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;4&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;ZALWANGO S&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;4&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;DENHOLM JT&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;3&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;DENHOLM JT&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;3&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;EBELL M&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;3&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;EBELL M&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;3&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;MCBRYDE ES&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;3&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;MCBRYDE ES&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;3&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;SUMNER T&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;3&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;SUMNER T&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;3&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;TRAUER JM&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;3&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;TRAUER JM&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;3&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/div&gt;
-&lt;div id=&#34;making-a-table-of-journals&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Making a table of journals&lt;/h1&gt;
-&lt;p&gt;It can be useful to get a list of all journals in which you published. I’m doing this here for the second time period. With just the &lt;code&gt;bibliometrix&lt;/code&gt; package, I can get a list of publications and how often I have published in each.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;journaltable = data.frame(res_new$Sources)
-#knitr::kable(journaltable) #uncomment this to print the table&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;It might also be nice to get some journal metrics, such as impact factors. While this is possible with the &lt;code&gt;scholar&lt;/code&gt; package, the &lt;code&gt;bibliometrix&lt;/code&gt; package doesn’t have it.&lt;/p&gt;
-&lt;p&gt;However, the &lt;code&gt;scholar&lt;/code&gt; package doesn’t really get that data from Google Scholar, instead it has an internal spreadsheet/table with impact factors (according to the documentation, taken - probably not fully legally - from some spreadsheet posted on ResearchGate). We can thus access those impact factors stored in the &lt;code&gt;scholar&lt;/code&gt; package without having to connect to Google Scholar. As long as the journal names stored in the &lt;code&gt;scholar&lt;/code&gt; package are close to the ones we have here, we might get matches.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(scholar)
+&lt;h1 id=&#34;making-a-table-of-journals&#34;&gt;Making a table of journals&lt;/h1&gt;
+&lt;p&gt;It can be useful to get a list of all journals in which you published. I&amp;rsquo;m doing this here for the second time period. With just the &lt;code&gt;bibliometrix&lt;/code&gt; package, I can get a list of publications and how often I have published in each.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;journaltable = data.frame(res_new$Sources)
+#knitr::kable(journaltable) #uncomment this to print the table
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It might also be nice to get some journal metrics, such as impact factors. While this is possible with the &lt;code&gt;scholar&lt;/code&gt; package, the &lt;code&gt;bibliometrix&lt;/code&gt; package doesn&amp;rsquo;t have it.&lt;/p&gt;
+&lt;p&gt;However, the &lt;code&gt;scholar&lt;/code&gt; package doesn&amp;rsquo;t really get that data from Google Scholar, instead it has an internal spreadsheet/table with impact factors (according to the documentation, taken - probably not fully legally - from some spreadsheet posted on ResearchGate). We can thus access those impact factors stored in the &lt;code&gt;scholar&lt;/code&gt; package without having to connect to Google Scholar. As long as the journal names stored in the &lt;code&gt;scholar&lt;/code&gt; package are close to the ones we have here, we might get matches.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(scholar)
 ifvalues = scholar::get_impactfactor(journaltable[,1], max.distance = 0.1)
 journaltable = cbind(journaltable, ifvalues$ImpactFactor)
-colnames(journaltable) = c(&amp;#39;Journal&amp;#39;,&amp;#39;Number of Pubs&amp;#39;,&amp;#39;Impact Factor&amp;#39;)
-knitr::kable(journaltable)&lt;/code&gt;&lt;/pre&gt;
+colnames(journaltable) = c(&#39;Journal&#39;,&#39;Number of Pubs&#39;,&#39;Impact Factor&#39;)
+knitr::kable(journaltable)
+&lt;/code&gt;&lt;/pre&gt;
 &lt;table&gt;
-&lt;colgroup&gt;
-&lt;col width=&#34;83%&#34; /&gt;
-&lt;col width=&#34;8%&#34; /&gt;
-&lt;col width=&#34;7%&#34; /&gt;
-&lt;/colgroup&gt;
 &lt;thead&gt;
-&lt;tr class=&#34;header&#34;&gt;
-&lt;th align=&#34;left&#34;&gt;Journal&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;Number of Pubs&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;Impact Factor&lt;/th&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Journal&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Number of Pubs&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Impact Factor&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;PLOS ONE&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;4&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;2.766&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PLOS ONE&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2.766&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;PLOS COMPUTATIONAL BIOLOGY&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;2&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;3.955&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PLOS COMPUTATIONAL BIOLOGY&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;3.955&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;THE INTERNATIONAL JOURNAL OF TUBERCULOSIS AND LUNG DISEASE : THE OFFICIAL JOURNAL OF THE INTERNATIONAL UNION AGAINST TUBERCULOSIS AND LUNG DISEASE&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;2&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;NA&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;THE INTERNATIONAL JOURNAL OF TUBERCULOSIS AND LUNG DISEASE : THE OFFICIAL JOURNAL OF THE INTERNATIONAL UNION AGAINST TUBERCULOSIS AND LUNG DISEASE&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;NA&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;THE LANCET. GLOBAL HEALTH&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;2&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;NA&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;THE LANCET. GLOBAL HEALTH&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;NA&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;THE LANCET. RESPIRATORY MEDICINE&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;2&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;NA&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;THE LANCET. RESPIRATORY MEDICINE&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;NA&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;AMERICAN JOURNAL OF RESPIRATORY AND CRITICAL CARE MEDICINE&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;15.239&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;AMERICAN JOURNAL OF RESPIRATORY AND CRITICAL CARE MEDICINE&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;15.239&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;BMC INFECTIOUS DISEASES&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;2.620&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;BMC INFECTIOUS DISEASES&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2.620&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;BULLETIN OF MATHEMATICAL BIOLOGY&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1.484&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;BULLETIN OF MATHEMATICAL BIOLOGY&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1.484&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;ELIFE&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;7.616&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;ELIFE&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.616&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;EPIDEMICS&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;3.364&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;EPIDEMICS&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;3.364&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;EPIDEMIOLOGY AND INFECTION&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;2.044&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;EPIDEMIOLOGY AND INFECTION&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2.044&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;FRONTIERS IN IMMUNOLOGY&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;5.511&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;FRONTIERS IN IMMUNOLOGY&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;5.511&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;JOURNAL OF APPLIED STATISTICS&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.699&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;JOURNAL OF APPLIED STATISTICS&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.699&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;JOURNAL OF THE AMERICAN BOARD OF FAMILY MEDICINE : JABFM&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;NA&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;JOURNAL OF THE AMERICAN BOARD OF FAMILY MEDICINE : JABFM&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;NA&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;NATURE&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;41.577&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;NATURE&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;41.577&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;NATURE COMMUNICATIONS&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;12.353&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;NATURE COMMUNICATIONS&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;12.353&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;NATURE REVIEWS. IMMUNOLOGY&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;41.982&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;NATURE REVIEWS. IMMUNOLOGY&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;41.982&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;PHILOSOPHICAL TRANSACTIONS OF THE ROYAL SOCIETY OF LONDON. SERIES B BIOLOGICAL SCIENCES&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;NA&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PHILOSOPHICAL TRANSACTIONS OF THE ROYAL SOCIETY OF LONDON. SERIES B BIOLOGICAL SCIENCES&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;NA&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;PLOS BIOLOGY&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;9.163&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PLOS BIOLOGY&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;9.163&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;PROCEEDINGS OF THE NATIONAL ACADEMY OF SCIENCES OF THE UNITED STATES OF AMERICA&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;9.504&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PROCEEDINGS OF THE NATIONAL ACADEMY OF SCIENCES OF THE UNITED STATES OF AMERICA&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;9.504&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;PROCEEDINGS. BIOLOGICAL SCIENCES&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;NA&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PROCEEDINGS. BIOLOGICAL SCIENCES&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;NA&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;THE JOURNAL OF INFECTIOUS DISEASES&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;5.186&lt;/td&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;THE JOURNAL OF INFECTIOUS DISEASES&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;5.186&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;Ok that worked somewhat. It couldn’t find several journals. The reported IF seem reasonable. But since I don’t know what year those IF are from, and if the rest is fully reliable, I would take this with a grain of salt.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;discussion&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Discussion&lt;/h1&gt;
-&lt;p&gt;The &lt;code&gt;bibliometrix&lt;/code&gt; package doesn’t suffer from the problems that I encountered in &lt;a href=&#34;https://www.andreashandel.com/post/publications-analysis-1/&#34;&gt;part 1&lt;/a&gt; of this post when I tried the &lt;code&gt;scholar&lt;/code&gt; package (and Google Scholar). The downside is that I can’t get some of the information, e.g. my annual citations. So it seems there is not (yet) a comprehensive solution, and using both packages seems best.&lt;/p&gt;
-&lt;p&gt;A larger overall problem is that a lot of this information is controlled by corporations (Google, Elsevier, Clarivate Analytics, etc.), which might or might not allow R packages and individual users (who don’t subscribe to their offerings) to access certain information. As such, R packages accessing this information will need to adjust to whatever the companies allow.&lt;/p&gt;
-&lt;/div&gt;
+&lt;p&gt;Ok that worked somewhat. It couldn&amp;rsquo;t find several journals. The reported IF seem reasonable. But since I don&amp;rsquo;t know what year those IF are from, and if the rest is fully reliable, I would take this with a grain of salt.&lt;/p&gt;
+&lt;h1 id=&#34;discussion&#34;&gt;Discussion&lt;/h1&gt;
+&lt;p&gt;The &lt;code&gt;bibliometrix&lt;/code&gt; package doesn&amp;rsquo;t suffer from the problems that I encountered in &lt;a href=&#34;https://www.andreashandel.com/post/publications-analysis-1/&#34;&gt;part 1&lt;/a&gt; of this post when I tried  the &lt;code&gt;scholar&lt;/code&gt; package (and Google Scholar). The downside is that I can&amp;rsquo;t get some of the information, e.g. my annual citations. So it seems there is not (yet) a comprehensive solution, and using both packages seems best.&lt;/p&gt;
+&lt;p&gt;A larger overall problem is that a lot of this information is controlled by corporations (Google, Elsevier, Clarivate Analytics, etc.), which might or might not allow R packages and individual users (who don&amp;rsquo;t subscribe to their offerings) to access certain information. As such, R packages accessing this information will need to adjust to whatever the companies allow.&lt;/p&gt;
 </description>
     </item>
     

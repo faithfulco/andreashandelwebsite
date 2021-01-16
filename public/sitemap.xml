@@ -158,21 +158,6 @@
   </url>
   
   <url>
-    <loc>https://www.andreashandel.com/post/word-formatting-rmarkdown/</loc>
-    <lastmod>2020-10-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.andreashandel.com/tag/rmarkdown/</loc>
-    <lastmod>2020-10-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.andreashandel.com/tag/word/</loc>
-    <lastmod>2020-10-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.andreashandel.com/talk/2020-09-ubc/</loc>
     <lastmod>2020-09-30T00:00:00+00:00</lastmod>
   </url>
@@ -525,6 +510,10 @@
   <url>
     <loc>https://www.andreashandel.com/publication/conference-paper/</loc>
     <lastmod>2013-07-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.andreashandel.com/post/2020-10-07-custom-word-format/word_formatting_example/</loc>
   </url>
   
 </urlset>
