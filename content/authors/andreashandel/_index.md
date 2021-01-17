@@ -1,17 +1,27 @@
 ---
-name: Andreas Handel
+# Display name
+name: 
+
+# Username (this should match the folder name)
+title: Andreas Handel
+
 authors:
 - andreashandel
 superuser: true
+
 role: Associate Professor
 organizations:
   - name: University of Georgia 
   - url: https://www.uga.edu
 bio: Data analysis and modeling with a focus on infectious diseases.  
 interests:
-- Infectious Disease Modeling
-- Data Science
-- R Package Development
+- Research
+- Teaching
+- Infectious Diseases 
+- Modeling
+- Data Analysis
+- Educational Tools Development
+
 education:
   courses:
   - course: Postdoc in Computational Biology
@@ -23,6 +33,7 @@ education:
   - course: BSc (equiv) in Physics
     institution: University of Stuttgart
     year: 1996-1999
+
 social:
 - icon: globe
   icon_pack: fas
@@ -55,10 +66,10 @@ user_groups:
 - Current Members
 ---
 
-Welcome to the website of Andreas Handel. I am currently an Associate Professor in the [Department of Epidemiology and Biostatistics](https://publichealth.uga.edu/departments/epidemiology-biostatistics/),
+I am currently an Associate Professor in the [Department of Epidemiology and Biostatistics](https://publichealth.uga.edu/departments/epidemiology-biostatistics/),
 [College of Public Health](https://www.publichealth.uga.edu/), at the [University of Georgia (UGA)](https://www.uga.edu/). 
-My research focuses on data analysis and modeling in public health, wihth a focus on infectious diseases. 
-This website contains some information [about myself](/aboutme/) and my individual activities (teaching, presentations, blog posts, etc.). 
+My research focuses on data analysis and modeling of infectious diseases, mainly influenza, norovirus, tuberculosis and recently COVID-19. 
+This website contains some information [about myself](/aboutme/) and my activities (teaching, presentations, blog posts, etc.). 
 More details regarding the research done in my group, as well as links to publications, can be found [on my research group site](https://handelgroup.uga.edu/). 
 Some overlap between the two sites might occur.
 
