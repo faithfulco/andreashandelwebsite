@@ -58,7 +58,7 @@ social:
   link: https://orcid.org/0000-0002-4622-1146
 - icon: envelope
   icon_pack: fas
-  link: '/contact'  # For a direct email link, use "mailto:test@example.org".
+  link: 'mailto:andreas.handel@gmail.com'  
 
 # Organizational groups that you belong to (for People widget)
 #   Set this to `[]` or comment out if you are not using People widget.  
