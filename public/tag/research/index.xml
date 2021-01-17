@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>research | Andreas Handel</title>
+    <title>Research | Andreas Handel</title>
     <link>https://www.andreashandel.com/tag/research/</link>
       <atom:link href="https://www.andreashandel.com/tag/research/index.xml" rel="self" type="application/rss+xml" />
-    <description>research</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Wed, 23 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <description>Research</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Wed, 08 Jan 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://www.andreashandel.com/media/logo.png</url>
-      <title>research</title>
+      <title>Research</title>
       <link>https://www.andreashandel.com/tag/research/</link>
     </image>
+    
+    <item>
+      <title>Research and teaching resources website</title>
+      <link>https://www.andreashandel.com/post/resource-website/</link>
+      <pubDate>Wed, 08 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://www.andreashandel.com/post/resource-website/</guid>
+      <description>&lt;p&gt;I have been collecting lists of links related to research, teaching and (academic) career topics in a Github repository.
+I finally got around to doing some cleanup. I turned the repository into a small website. You can find this site &lt;a href=&#34;https://andreashandel.github.io/research-and-teaching-resources/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Model-based optimization of vaccine inoculum dose</title>

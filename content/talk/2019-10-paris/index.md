@@ -6,8 +6,6 @@ abstract: ""
 event: 4th Workshop on Virus Dynamics
 location: Paris, France
 authors: ["andreashandel"]
-tags: []
-
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
@@ -22,6 +20,7 @@ categories:
 
 tags:
 - research
+- infectious disease
 
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder. 

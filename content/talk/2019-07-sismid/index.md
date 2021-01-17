@@ -11,7 +11,6 @@ date_end: "2019-07-19"
 all_day: true
 
 authors: ["andreashandel"]
-tags: []
 
 # Is this a featured talk? (true/false)
 featured: true

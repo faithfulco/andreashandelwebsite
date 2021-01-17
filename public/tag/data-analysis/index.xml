@@ -22,7 +22,7 @@
 &lt;p&gt;Instead of doing things by hand, there are nicer/faster ways using R. in &lt;a href=&#34;https://www.andreashandel.com/post/publications-analysis-1/&#34;&gt;part 1&lt;/a&gt;, I did a few things using the &lt;code&gt;scholar&lt;/code&gt; package. 
 While some parts worked nicely, I encountered 2 problems. First, since my Google Scholar record lists items other than peer-reviewed journal articles, they show up in the analysis and need to be cleaned out. Second, Google Scholar doesn&amp;rsquo;t like automated queries through the API and is quick to block, at which point things don&amp;rsquo;t work anymore.&lt;/p&gt;
 &lt;p&gt;To get around these issues, I decided to give a different R package a try, namely &lt;a href=&#34;https://www.bibliometrix.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;bibliometrix&lt;/code&gt;&lt;/a&gt;. The workflow is somewhat different.&lt;/p&gt;
-&lt;p&gt;The RMarkdown file to run this analysis &lt;a href=&#34;https://www.andreashandel.com/post/2020-02-01-publications-analysis-2/index.Rmarkdown&#34;&gt;is here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The RMarkdown file to run this analysis &lt;a href=&#34;https://www.andreashandel.com/post/2020-02-02-publications-analysis-2/index.Rmarkdown&#34;&gt;is here&lt;/a&gt;.&lt;/p&gt;
 &lt;h1 id=&#34;required-packages&#34;&gt;Required packages&lt;/h1&gt;
 &lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(dplyr)
 library(knitr)
