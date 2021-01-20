@@ -3,62 +3,57 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://www.andreashandel.com/courses/example/example1/</loc>
-    <lastmod>2019-05-05T00:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.andreashandel.com/courses/example/</loc>
-    <lastmod>2018-09-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.andreashandel.com/courses/example/example2/</loc>
-    <lastmod>2019-05-05T00:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.andreashandel.com/</loc>
-    <lastmod>2021-01-14T00:00:00+00:00</lastmod>
+    <lastmod>2021-01-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.andreashandel.com/author/andreas-handel/</loc>
-    <lastmod>2021-01-14T00:00:00+00:00</lastmod>
+    <lastmod>2021-01-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.andreashandel.com/authors/</loc>
-    <lastmod>2021-01-14T00:00:00+00:00</lastmod>
+    <lastmod>2021-01-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.andreashandel.com/talk/2021-01-building-your-brand/</loc>
+    <lastmod>2021-01-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.andreashandel.com/category/career/</loc>
-    <lastmod>2021-01-14T00:00:00+00:00</lastmod>
+    <lastmod>2021-01-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.andreashandel.com/categories/</loc>
-    <lastmod>2021-01-14T00:00:00+00:00</lastmod>
+    <lastmod>2021-01-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.andreashandel.com/talk/2021-01-idp/</loc>
-    <lastmod>2021-01-14T00:00:00+00:00</lastmod>
+    <loc>https://www.andreashandel.com/category/online-presence/</loc>
+    <lastmod>2021-01-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.andreashandel.com/category/presentation/</loc>
-    <lastmod>2021-01-14T00:00:00+00:00</lastmod>
+    <lastmod>2021-01-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.andreashandel.com/talk/</loc>
-    <lastmod>2021-01-14T00:00:00+00:00</lastmod>
+    <lastmod>2021-01-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.andreashandel.com/category/teaching/</loc>
+    <lastmod>2021-01-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.andreashandel.com/talk/2021-01-idp/</loc>
     <lastmod>2021-01-14T00:00:00+00:00</lastmod>
   </url>
   
@@ -358,41 +353,6 @@
   </url>
   
   <url>
-    <loc>https://www.andreashandel.com/courses/</loc>
-    <lastmod>2019-05-05T00:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.andreashandel.com/publication-type/3/</loc>
-    <lastmod>2019-04-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.andreashandel.com/author/admin/</loc>
-    <lastmod>2019-04-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.andreashandel.com/publication/preprint/</loc>
-    <lastmod>2019-04-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.andreashandel.com/publication_types/</loc>
-    <lastmod>2019-04-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.andreashandel.com/publication/</loc>
-    <lastmod>2019-04-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.andreashandel.com/tag/source-themes/</loc>
-    <lastmod>2019-04-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.andreashandel.com/tag/mechanistic-models/</loc>
     <lastmod>2019-03-15T00:00:00-04:00</lastmod>
   </url>
@@ -438,27 +398,12 @@
   </url>
   
   <url>
-    <loc>https://www.andreashandel.com/slides/</loc>
-    <lastmod>2019-02-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.andreashandel.com/slides/example/</loc>
-    <lastmod>2019-02-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.andreashandel.com/my-projects/madacourse/</loc>
     <lastmod>2019-01-15T00:00:00-05:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.andreashandel.com/aboutme/</loc>
-    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.andreashandel.com/contact/</loc>
     <lastmod>2019-01-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -478,53 +423,7 @@
   </url>
   
   <url>
-    <loc>https://www.andreashandel.com/tag/deep-learning/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.andreashandel.com/tag/demo/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.andreashandel.com/project/external-project/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.andreashandel.com/project/internal-project/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.andreashandel.com/project/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.andreashandel.com/publication-type/2/</loc>
-    <lastmod>2015-09-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.andreashandel.com/publication/journal-article/</loc>
-    <lastmod>2015-09-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.andreashandel.com/author/robert-ford/</loc>
-    <lastmod>2015-09-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.andreashandel.com/publication-type/1/</loc>
-    <lastmod>2013-07-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.andreashandel.com/publication/conference-paper/</loc>
-    <lastmod>2013-07-01T00:00:00+00:00</lastmod>
+    <loc>https://www.andreashandel.com/publication_types/</loc>
   </url>
   
 </urlset>
