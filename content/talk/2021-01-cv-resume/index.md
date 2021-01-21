@@ -1,8 +1,8 @@
 ---
-title: Thoughts and tips on CVs and resumes
+title: Tips for writing a (hopefully good) CV or resume
 summary: A presentation for our departmental PhD and MS students on how to create CVs and resumes
 abstract: ""
-event: PhD Seminar
+event: Graduate Seminar
 location: Athens, US
 authors: ["andreashandel"]
 
@@ -12,8 +12,7 @@ date: "2021-01-28"
 all_day: true
 
 # Schedule page publish date (NOT talk date).
-publishDate: "2021-01-21T00:00:00Z"
-
+publishDate: "2021-01-28T00:00:00Z"
 
 # Is this a featured talk? (true/false)
 featured: true
@@ -21,7 +20,7 @@ featured: true
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder. 
 image:
-  caption: 
+  caption: Photo by [Tobias Herrmann](https://pixabay.com/users/5138153-5138153/)/Pixabay
   focal_point: Right
   preview_only: false
 
@@ -32,6 +31,8 @@ math: false
 categories:
   - presentation
   - career
+  - CV
+  - resume
 ---
 
 These are slides for a talk/discussion I led with our graduate students discussing CVs and resumes and how to create good ones. 

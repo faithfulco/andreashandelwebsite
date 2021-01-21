@@ -14,7 +14,6 @@ all_day: true
 # Schedule page publish date (NOT talk date).
 publishDate: "2021-01-18T00:00:00Z"
 
-
 # Is this a featured talk? (true/false)
 featured: true
 
