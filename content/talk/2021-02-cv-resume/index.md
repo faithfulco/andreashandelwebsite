@@ -8,11 +8,11 @@ authors: ["andreashandel"]
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
-date: "2021-01-28"
+date: "2021-02-18"
 all_day: true
 
 # Schedule page publish date (NOT talk date).
-publishDate: "2021-01-28T00:00:00Z"
+publishDate: "2021-02-14T00:00:00Z"
 
 # Is this a featured talk? (true/false)
 featured: true
@@ -36,4 +36,4 @@ categories:
 ---
 
 These are slides for a talk/discussion I led with our graduate students discussing CVs and resumes and how to create good ones. 
-<a href="/presentations/2021_01_CV_Resume.html" target="_blank">The presentation slides are here.</a>
+<a href="/presentations/2021_02_CV_Resume.html" target="_blank">The presentation slides are here.</a>
