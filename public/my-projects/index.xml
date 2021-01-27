@@ -29,6 +29,7 @@ All course materials (or links to the materials) are available in the form of a 
       <pubDate>Mon, 15 Jun 2020 00:00:00 -0400</pubDate>
       <guid>https://www.andreashandel.com/my-projects/smicourse/</guid>
       <description>&lt;p&gt;Simulation Modeling in Immunology (SMI) is an annual workshop that I co-teach with my colleague Paul Thomas. It usually occurs each year in July in Seattle. In 2020 we taught it online. All course materials are available in the form of a simple GitHub website and can be used by anyone for self-learning. You can find the course &lt;a href=&#34;https://andreashandel.github.io/SMIcourse/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on this site&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The course makes heavy use of my &lt;a href=&#34;https://ahgroup.github.io/DSAIRM/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DSAIRM R package&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
@@ -46,7 +47,7 @@ All course materials (or links to the materials) are available in the form of a 
       <link>https://www.andreashandel.com/my-projects/dsairm/</link>
       <pubDate>Thu, 07 Mar 2019 00:00:00 -0500</pubDate>
       <guid>https://www.andreashandel.com/my-projects/dsairm/</guid>
-      <description>&lt;p&gt;We developed an R package that provides immunologists and other bench scientists a user-friendly introduction to dynamical modeling of within-host infection, without the need to write computer code.  Learn more about it &lt;a href=&#34;https://ahgroup.github.io/DSAIRM/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on the package website&lt;/a&gt;.&lt;/p&gt;
+      <description>&lt;p&gt;We developed an R package that provides immunologists and other bench scientists a user-friendly introduction to simulation modeling of within-host infection, without the need to write computer code. Learn more about it &lt;a href=&#34;https://ahgroup.github.io/DSAIRM/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on the package website&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
@@ -55,7 +56,7 @@ All course materials (or links to the materials) are available in the form of a 
       <link>https://www.andreashandel.com/my-projects/dsaide/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 -0500</pubDate>
       <guid>https://www.andreashandel.com/my-projects/dsaide/</guid>
-      <description>&lt;p&gt;We developed an R package that teaches a modern, model-based approach to infectious disease epidemiolgy without the need to write computer code. Learn more about it &lt;a href=&#34;https://ahgroup.github.io/DSAIDE/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on the package website&lt;/a&gt;.&lt;/p&gt;
+      <description>&lt;p&gt;We developed an R package that teaches a modern, model-based approach to infectious disease epidemiology, without the need to write computer code. Learn more about it &lt;a href=&#34;https://ahgroup.github.io/DSAIDE/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on the package website&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     

@@ -18,6 +18,7 @@
       <pubDate>Mon, 15 Jun 2020 00:00:00 -0400</pubDate>
       <guid>https://www.andreashandel.com/my-projects/smicourse/</guid>
       <description>&lt;p&gt;Simulation Modeling in Immunology (SMI) is an annual workshop that I co-teach with my colleague Paul Thomas. It usually occurs each year in July in Seattle. In 2020 we taught it online. All course materials are available in the form of a simple GitHub website and can be used by anyone for self-learning. You can find the course &lt;a href=&#34;https://andreashandel.github.io/SMIcourse/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on this site&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The course makes heavy use of my &lt;a href=&#34;https://ahgroup.github.io/DSAIRM/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DSAIRM R package&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     

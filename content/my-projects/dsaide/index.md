@@ -6,7 +6,7 @@ title = "DSAIDE - Dynamical Systems Approach to Infectious Disease Epidemiology"
 date = 2019-03-01
 
 # Project summary to display on homepage.
-summary = "R package that teaches modern infectious disease epidemiology in a user-friendly way."
+summary = "R package that teaches model-based infectious disease epidemiology in a user-friendly way."
 
 # Tags: can be used for filtering projects.
 tags = ["Infectious Disease Models", "R Package", "Teaching Resource", "software"]
@@ -29,4 +29,4 @@ url_custom = [{icon_pack = "fab", icon="github", name="Project Site", url = "htt
   focal_point = "Smart"
 +++
 
-We developed an R package that teaches a modern, model-based approach to infectious disease epidemiolgy without the need to write computer code. Learn more about it [on the package website](https://ahgroup.github.io/DSAIDE/).
+We developed an R package that teaches a modern, model-based approach to infectious disease epidemiology, without the need to write computer code. Learn more about it [on the package website](https://ahgroup.github.io/DSAIDE/).
