@@ -39,7 +39,7 @@ library(bibliometrix)
 
 # Loading data
 
-**Old:** I keep all references to my published papers in a BibTeX file, managed through Zotero/Jabref. I know this file is clean and correct. I'm loading it here for processing. If you don't have such a file, make one using your favorite reference manager. Or create it through a saved search on a bibliographic database, as described [in the bibliometrix vignette](https://cran.r-project.org/web/packages/bibliometrix/vignettes/bibliometrix-vignette.html).
+**Old:** I keep all references to my published papers in a BibTeX file, managed through Zotero/Jabref. I know this file is clean and correct. I'm loading it here for processing. If you don't have such a file, make one using your favorite reference manager. Or create it through a saved search on a bibliographic database, as explained on the [bibliometrix website](https://www.bibliometrix.org/).
 
 **New:** In the current version of `bibliometrix`, reading in my bibtex file failed. A fairly good alternative is to go to your NIH "My Bibliography" (which anyone with NIH funding needs to have anyway) and export it in MEDLINE format. Then read in the file with the code below. As of the time of writing this, it requires the Github version of `bibliometrix`.
 

@@ -45,7 +45,7 @@ pubs <- bibliometrix::convert2df("medline.txt", dbsource="pubmed",format="pubmed
 ```
 
 Each row of the data frame created by the `convert2df` function is a publication, the columns contain information for each publication. 
-For a list of what each column variable codes for, see [here](https://cran.r-project.org/web/packages/bibliometrix/vignettes/bibliometrix-vignette.html).
+For a list of what each column variable codes for, see the [bibliometrix website](https://www.bibliometrix.org/).
 
 # Getting the right time period
 
@@ -84,7 +84,7 @@ Finally, I'm using the `flextable` package to make a decent looking table and sa
 
 ```{r}
 ft <- flextable::flextable(authortable)
-ft
+flextable::autofit(ft)
 flextable::save_as_docx("my table" = ft, path = "COItable.docx")
 ```
 

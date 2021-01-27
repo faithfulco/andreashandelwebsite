@@ -40,7 +40,7 @@ library(bibliometrix)
 
 # Loading data
 
-**Old:** I keep all references to my published papers in a BibTeX file, managed through Zotero/Jabref. I know this file is clean and correct. I'm loading it here for processing. If you don't have such a file, make one using your favorite reference manager. Or create it through a saved search on a bibliographic database, as described [in the bibliometrix vignette](https://cran.r-project.org/web/packages/bibliometrix/vignettes/bibliometrix-vignette.html).
+**Old:** I keep all references to my published papers in a BibTeX file, managed through Zotero/Jabref. I know this file is clean and correct. I'm loading it here for processing. If you don't have such a file, make one using your favorite reference manager. Or create it through a saved search on a bibliographic database, as explained on the [bibliometrix website](https://www.bibliometrix.org/).
 
 **New:** In the current version of `bibliometrix`, reading in my bibtex file failed. A fairly good alternative is to go to your NIH "My Bibliography" (which anyone with NIH funding needs to have anyway) and export it in MEDLINE format. Then read in the file with the code below. As of the time of writing this, it requires the Github version of `bibliometrix`.
 
@@ -165,17 +165,17 @@ summary(res_old, k = 10)
 ## 
 ## Top manuscripts per citations
 ## 
-##                               Paper                                   DOI TC TCperYear
-## 1  ZHENG N, 2014, PLOS ONE                   10.1371/JOURNAL.PONE.0105721  0         0
-## 2  HANDEL A, 2014, PROC BIOL SCI             10.1098/RSPB.2013.3051        0         0
-## 3  NGUYEN TH, 2014, J IMMUNOL                10.4049/JIMMUNOL.1303147      0         0
-## 4  LI Y, 2014, J THEOR BIOL                  10.1016/J.JTBI.2014.01.008    0         0
-## 5  HANDEL A, 2014, J R SOC INTERFACE         10.1098/RSIF.2013.1083        0         0
-## 6  CUKALAC T, 2014, PROC NATL ACAD SCI U S A 10.1073/PNAS.1323736111       0         0
-## 7  HANDEL A, 2013, PLOS COMPUT BIOL          10.1371/JOURNAL.PCBI.1002989  0         0
-## 8  THOMAS PG, 2013, PROC NATL ACAD SCI U S A 10.1073/PNAS.1222149110       0         0
-## 9  JACKWOOD MW, 2012, INFECT GENET EVOL      10.1016/J.MEEGID.2012.05.003  0         0
-## 10 DESAI R, 2012, CLIN INFECT DIS            10.1093/CID/CIS372            0         0
+##                               Paper                                   DOI TC TCperYear NTC
+## 1  ZHENG N, 2014, PLOS ONE                   10.1371/JOURNAL.PONE.0105721  0         0 NaN
+## 2  HANDEL A, 2014, PROC BIOL SCI             10.1098/RSPB.2013.3051        0         0 NaN
+## 3  NGUYEN TH, 2014, J IMMUNOL                10.4049/JIMMUNOL.1303147      0         0 NaN
+## 4  LI Y, 2014, J THEOR BIOL                  10.1016/J.JTBI.2014.01.008    0         0 NaN
+## 5  HANDEL A, 2014, J R SOC INTERFACE         10.1098/RSIF.2013.1083        0         0 NaN
+## 6  CUKALAC T, 2014, PROC NATL ACAD SCI U S A 10.1073/PNAS.1323736111       0         0 NaN
+## 7  HANDEL A, 2013, PLOS COMPUT BIOL          10.1371/JOURNAL.PCBI.1002989  0         0 NaN
+## 8  THOMAS PG, 2013, PROC NATL ACAD SCI U S A 10.1073/PNAS.1222149110       0         0 NaN
+## 9  JACKWOOD MW, 2012, INFECT GENET EVOL      10.1016/J.MEEGID.2012.05.003  0         0 NaN
+## 10 DESAI R, 2012, CLIN INFECT DIS            10.1093/CID/CIS372            0         0 NaN
 ## 
 ## 
 ## Corresponding Author's Countries
@@ -321,17 +321,17 @@ summary(res_new, k = 10)
 ## 
 ## Top manuscripts per citations
 ## 
-##                                                       Paper                                    DOI TC TCperYear
-## 1  MCKAY B, 2020, PROC BIOL SCI                                      10.1098/RSPB.2020.0496         0         0
-## 2  MOORE JR, 2020, BULL MATH BIOL                                    10.1007/S11538-020-00711-4     0         0
-## 3  HANDEL A, 2020, NAT REV IMMUNOL                                   10.1038/S41577-019-0235-3      0         0
-## 4  MARTINEZ L, 2019, J INFECT DIS                                    10.1093/INFDIS/JIZ328          0         0
-## 5  WU T, 2019, NAT COMMUN                                            10.1038/S41467-019-10661-8     0         0
-## 6  MCKAY B, 2019, PLOS ONE                                           10.1371/JOURNAL.PONE.0217219   0         0
-## 7  DALE AP, 2019, J AM BOARD FAM MED SOCIOLOGICAL METHODS & RESEARCH 10.3122/JABFM.2019.02.180183   0         0
-## 8  WOLDU H, 2019, J APPL STAT                                        10.1080/02664763.2018.1470231  0         0
-## 9  HANDEL A, 2018, PLOS COMPUT BIOL                                  10.1371/JOURNAL.PCBI.1006505   0         0
-## 10 CASTELLANOS ME, 2018, INT J TUBERC LUNG DIS                       10.5588/IJTLD.18.0073          0         0
+##                                                       Paper                                    DOI TC TCperYear NTC
+## 1  MCKAY B, 2020, PROC BIOL SCI                                      10.1098/RSPB.2020.0496         0         0 NaN
+## 2  MOORE JR, 2020, BULL MATH BIOL                                    10.1007/S11538-020-00711-4     0         0 NaN
+## 3  HANDEL A, 2020, NAT REV IMMUNOL                                   10.1038/S41577-019-0235-3      0         0 NaN
+## 4  MARTINEZ L, 2019, J INFECT DIS                                    10.1093/INFDIS/JIZ328          0         0 NaN
+## 5  WU T, 2019, NAT COMMUN                                            10.1038/S41467-019-10661-8     0         0 NaN
+## 6  MCKAY B, 2019, PLOS ONE                                           10.1371/JOURNAL.PONE.0217219   0         0 NaN
+## 7  DALE AP, 2019, J AM BOARD FAM MED SOCIOLOGICAL METHODS & RESEARCH 10.3122/JABFM.2019.02.180183   0         0 NaN
+## 8  WOLDU H, 2019, J APPL STAT                                        10.1080/02664763.2018.1470231  0         0 NaN
+## 9  HANDEL A, 2018, PLOS COMPUT BIOL                                  10.1371/JOURNAL.PCBI.1006505   0         0 NaN
+## 10 CASTELLANOS ME, 2018, INT J TUBERC LUNG DIS                       10.5588/IJTLD.18.0073          0         0 NaN
 ## 
 ## 
 ## Corresponding Author's Countries
