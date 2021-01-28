@@ -12,7 +12,7 @@ date: "2021-02-18"
 all_day: true
 
 # Schedule page publish date (NOT talk date).
-publishDate: "2021-02-14T00:00:00Z"
+publishDate: "2021-02-14"
 
 # Is this a featured talk? (true/false)
 featured: true
