@@ -1,6 +1,6 @@
 ---
 title:  Building and curating your brand (online presence)
-summary: Slides for a discussionn with our departmental PhD and MS students on how to build their online brand and presence
+summary: Slides for a discussion with our departmental PhD and MS students on how to build an online brand and presence
 abstract: ""
 event: Graduate Seminar
 location: Athens, US

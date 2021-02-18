@@ -1,6 +1,6 @@
 ---
 title:  Introduction to Individual Development Plans and the AAAS myIDP
-summary: A presentation for our departmental PhD and MS students to start of a semester-long IDP development project
+summary: A presentation for our departmental PhD and MS students to kick off a semester-long IDP development 
 abstract: ""
 event: PhD Seminar
 location: Athens, US
