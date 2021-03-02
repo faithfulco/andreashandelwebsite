@@ -2,15 +2,17 @@
 title: Model-based optimization of vaccine inoculum dose
 summary: Some recent research exploring the role of dose for infection and vaccination.
 abstract: ""
-
+draft: false
 event: 4th Workshop on Virus Dynamics
 location: Paris, France
 authors: ["andreashandel"]
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
-date: "2019-10-23"
-all_day: true
+date: "2019-10-23T17:00:00Z"
+all_day: false
+publishdate: "2019-10-23T17:00:00Z"
+lastmod: '2019-10-23T17:00:00'
 
 # Is this a featured talk? (true/false)
 featured: true

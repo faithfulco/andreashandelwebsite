@@ -5,7 +5,7 @@ summary: This is part 2/2 of the website development posts, where we'll move the
 author: Andreas Handel
 draft: false
 publishDate: 2020-01-20
-lastmod: 2020-05-15
+lastmod: 2020-03-01
 slug: blogdown-website-2
 categories: []
 tags: []
@@ -17,6 +17,7 @@ image:
   preview_only: no
 projects: []
 ---
+
 
 
 
