@@ -50,7 +50,9 @@
   </defs>
   <g
      id="Layer_3"
-     data-name="Layer 3">
+     data-name="Layer 3"
+     inkscape:export-xdpi="300.207"
+     inkscape:export-ydpi="300.207">
     <polygon
        class="cls-1"
        points="291.8 84.71 140.2 84.71 64.39 216 140.2 347.29 291.8 347.29 367.61 216 291.8 84.71"
@@ -96,7 +98,9 @@
      style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none"
      x="147.57143"
      y="340.85715"
-     id="text856"><tspan
+     id="text856"
+     inkscape:export-xdpi="300.207"
+     inkscape:export-ydpi="300.207"><tspan
        sodipodi:role="line"
        id="tspan854"
        x="147.57143"
