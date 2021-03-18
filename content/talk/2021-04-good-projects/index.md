@@ -8,7 +8,7 @@ authors: ["andreashandel"]
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
-date: "2021-03-25"
+date: "2021-04-01"
 all_day: true
 
 # Schedule page publish date (NOT talk date).
@@ -34,4 +34,4 @@ categories:
   - project management
 ---
 
-These are slides for a talk/discussion I led with our graduate students discussing how to come up and organize projects in a good way. The talk covered both projects in general and academic projects in particular. <a href="/presentations/2021_02_finding_good_research_topics.html" target="_blank">The presentation slides are here.</a>
+These are slides for a talk/discussion I led with our graduate students discussing how to come up and organize projects in a good way. The talk covered both projects in general and academic projects in particular. <a href="/presentations/2021_04_finding_good_research_topics.html" target="_blank">The presentation slides are here.</a>
