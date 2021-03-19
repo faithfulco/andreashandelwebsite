@@ -20,7 +20,7 @@ projects: []
 
 
 ```{r, include = FALSE}
-#remotes::install_github('emo')
+#remotes::install_github('hadley/emo')
 library('emo')
 ```
 

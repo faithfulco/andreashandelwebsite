@@ -10,6 +10,11 @@
 ## General
 * Any information that applies to this site and handelgroup is not repeated here, see the handelgroup notes file
 
+## Needed R packages
+This is a hopefully complete list of all R packages needed to recompile all the posts of the website:
+cowplot, geosphere, hadley/emo, scholar, bibliometrix, 
+
+
 ## To deploy site
 Run build_site(). This command keeps changing, might need to manually build Rmarkdown to markdown.
 push to github. Netlify will automatically build and serve site.
