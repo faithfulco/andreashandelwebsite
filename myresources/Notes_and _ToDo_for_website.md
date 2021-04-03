@@ -12,7 +12,15 @@
 
 ## Needed R packages
 This is a hopefully complete list of all R packages needed to recompile all the posts of the website:
-cowplot, geosphere, hadley/emo, scholar, bibliometrix, 
+install.packages(c('cowplot', 
+	'geosphere',
+	'hadley/emo', 
+	'scholar', 
+	'bibliometrix',
+	'tidytext',
+	'visdat',
+	'kableExtra',
+ ))
 
 
 ## To deploy site
