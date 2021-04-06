@@ -20,7 +20,7 @@ featured: true
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder. 
 image:
-  caption: Photo by Carlos Alvarenga](https://pixabay.com/users/carlosalvarenga-2116392/)/Pixabay
+  caption: Photo by [Carlos Alvarenga](https://pixabay.com/users/carlosalvarenga-2116392/)/Pixabay
   focal_point: Right
   preview_only: false
 
