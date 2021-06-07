@@ -72,7 +72,7 @@ So if you are interested in getting -- very infrequent -- emails from me announc
 <!--End mc_embed_signup-->
 
         
-You'll receive an email to confirm that you really want to subscribe. Don't forget to confirm (unless you changed your mind). And of course you can unsubscribe at any time.        
+You might receive an email to confirm that you really want to subscribe. Don't forget to confirm (unless you changed your mind). And of course you can unsubscribe at any time.        
         
 It goes without saying (but I say it anyway 😃) that I won't use your email for any other purpose. I use [MailChimp](https://mailchimp.com/) for this. I assume they know how to keep their servers safe so your email doesn't get leaked. (And if it did, would it matter? Aren't all our email addresses already on a million spam lists anyway? 🤷 I've given up trying to fight it - fortunately most spam filters are pretty good these days.)
 
