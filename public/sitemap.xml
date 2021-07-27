@@ -12,16 +12,16 @@
     <lastmod>2021-04-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.andreashandel.com/</loc>
-    <lastmod>2021-04-28T00:00:00+00:00</lastmod>
+    <lastmod>2021-05-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.andreashandel.com/author/andreashandel/</loc>
+    <loc>https://www.andreashandel.com/author/andreas-handel/</loc>
     <lastmod>2021-04-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.andreashandel.com/authors/</loc>
     <lastmod>2021-04-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.andreashandel.com/categories/</loc>
-    <lastmod>2021-04-28T00:00:00+00:00</lastmod>
+    <lastmod>2021-05-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.andreashandel.com/category/influenza/</loc>
     <lastmod>2021-04-28T00:00:00+00:00</lastmod>
@@ -69,15 +69,21 @@
     <lastmod>2021-03-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.andreashandel.com/posts/</loc>
-    <lastmod>2021-03-21T00:00:00+00:00</lastmod>
+    <lastmod>2021-05-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.andreashandel.com/tag/r/</loc>
-    <lastmod>2021-03-21T00:00:00+00:00</lastmod>
+    <lastmod>2021-05-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/category/r/</loc>
+    <lastmod>2021-05-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.andreashandel.com/tags/</loc>
-    <lastmod>2021-03-21T00:00:00+00:00</lastmod>
+    <lastmod>2021-05-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.andreashandel.com/tag/website/</loc>
+    <lastmod>2021-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/category/website/</loc>
     <lastmod>2021-03-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.andreashandel.com/presentations/2021-02-u01/</loc>
@@ -110,8 +116,41 @@
     <loc>https://www.andreashandel.com/posts/github-website/</loc>
     <lastmod>2021-01-11T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://www.andreashandel.com/tag/course/</loc>
+    <lastmod>2021-01-01T00:00:00-05:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/category/course/</loc>
+    <lastmod>2021-01-01T00:00:00-05:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/tag/epidemiology/</loc>
+    <lastmod>2021-01-01T00:00:00-05:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/tag/infectious-disease/</loc>
+    <lastmod>2021-01-01T00:00:00-05:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/my-projects/idemacourse/</loc>
+    <lastmod>2021-01-01T00:00:00-05:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/tag/modeling/</loc>
+    <lastmod>2021-01-01T00:00:00-05:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/my-projects/</loc>
+    <lastmod>2021-01-01T00:00:00-05:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/tag/teaching/</loc>
+    <lastmod>2021-01-01T00:00:00-05:00</lastmod>
+  </url><url>
     <loc>https://www.andreashandel.com/presentations/2020-12-isv/</loc>
     <lastmod>2020-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/tag/book/</loc>
+    <lastmod>2020-12-01T00:00:00-05:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/category/book/</loc>
+    <lastmod>2020-12-01T00:00:00-05:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/my-projects/idemabook/</loc>
+    <lastmod>2020-12-01T00:00:00-05:00</lastmod>
   </url><url>
     <loc>https://www.andreashandel.com/category/modeling/</loc>
     <lastmod>2020-11-23T00:00:00+00:00</lastmod>
@@ -127,6 +166,21 @@
   </url><url>
     <loc>https://www.andreashandel.com/presentations/2020-11-pudong/</loc>
     <lastmod>2020-11-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/my-projects/dsaide/</loc>
+    <lastmod>2020-11-01T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/tag/infectious-disease-models/</loc>
+    <lastmod>2020-11-01T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/tag/r-package/</loc>
+    <lastmod>2020-11-01T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/tag/software/</loc>
+    <lastmod>2020-11-01T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/tag/teaching-resource/</loc>
+    <lastmod>2020-11-01T00:00:00-04:00</lastmod>
   </url><url>
     <loc>https://www.andreashandel.com/presentations/2020-10-uga-pha/</loc>
     <lastmod>2020-10-22T00:00:00+00:00</lastmod>
@@ -146,41 +200,32 @@
     <loc>https://www.andreashandel.com/tag/word/</loc>
     <lastmod>2020-10-07T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://www.andreashandel.com/my-projects/dsairm/</loc>
+    <lastmod>2020-10-01T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/tag/immunology/</loc>
+    <lastmod>2020-10-01T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/my-projects/smicourse/</loc>
+    <lastmod>2020-10-01T00:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/tag/within-host-models/</loc>
+    <lastmod>2020-10-01T00:00:00-04:00</lastmod>
+  </url><url>
     <loc>https://www.andreashandel.com/presentations/2020-09-ubc/</loc>
     <lastmod>2020-09-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.andreashandel.com/tag/course/</loc>
-    <lastmod>2020-09-15T00:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://www.andreashandel.com/tag/epidemiology/</loc>
-    <lastmod>2020-09-15T00:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://www.andreashandel.com/tag/infectious-disease/</loc>
-    <lastmod>2020-09-15T00:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://www.andreashandel.com/my-projects/idemacourse/</loc>
-    <lastmod>2020-09-15T00:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://www.andreashandel.com/tag/modeling/</loc>
-    <lastmod>2020-09-15T00:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://www.andreashandel.com/my-projects/</loc>
-    <lastmod>2020-09-15T00:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://www.andreashandel.com/tag/teaching/</loc>
-    <lastmod>2020-09-15T00:00:00-04:00</lastmod>
   </url><url>
     <loc>https://www.andreashandel.com/presentations/2020-09-mjh/</loc>
     <lastmod>2020-09-15T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://www.andreashandel.com/tag/data-analysis/</loc>
+    <lastmod>2021-05-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/my-projects/madacourse/</loc>
+    <lastmod>2020-09-01T00:00:00-04:00</lastmod>
+  </url><url>
     <loc>https://www.andreashandel.com/presentations/2020-08-uga-ghi/</loc>
     <lastmod>2020-08-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.andreashandel.com/tag/immunology/</loc>
-    <lastmod>2020-06-15T00:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://www.andreashandel.com/my-projects/smicourse/</loc>
-    <lastmod>2020-06-15T00:00:00-04:00</lastmod>
   </url><url>
     <loc>https://www.andreashandel.com/posts/conflict-of-interest-form/</loc>
     <lastmod>2020-06-04T00:00:00+00:00</lastmod>
@@ -197,15 +242,6 @@
     <loc>https://www.andreashandel.com/presentations/2020-03-tb-superspreaders/</loc>
     <lastmod>2020-03-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.andreashandel.com/my-projects/yact/</loc>
-    <lastmod>2020-03-01T00:00:00-05:00</lastmod>
-  </url><url>
-    <loc>https://www.andreashandel.com/tag/shiny/</loc>
-    <lastmod>2020-03-01T00:00:00-05:00</lastmod>
-  </url><url>
-    <loc>https://www.andreashandel.com/tag/software/</loc>
-    <lastmod>2020-03-01T00:00:00-05:00</lastmod>
-  </url><url>
     <loc>https://www.andreashandel.com/category/academia/</loc>
     <lastmod>2020-02-20T00:00:00+00:00</lastmod>
   </url><url>
@@ -213,13 +249,16 @@
     <lastmod>2020-02-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.andreashandel.com/tag/bibliometrics/</loc>
-    <lastmod>2020-05-15T00:00:00+00:00</lastmod>
+    <lastmod>2021-05-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.andreashandel.com/tag/data-analysis/</loc>
-    <lastmod>2020-05-15T00:00:00+00:00</lastmod>
+    <loc>https://www.andreashandel.com/category/bibliometrics/</loc>
+    <lastmod>2021-05-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/category/data-analysis/</loc>
+    <lastmod>2021-05-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.andreashandel.com/posts/publications-analysis-2/</loc>
-    <lastmod>2020-05-15T00:00:00+00:00</lastmod>
+    <lastmod>2021-05-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.andreashandel.com/posts/publications-analysis-1/</loc>
     <lastmod>2020-05-15T00:00:00+00:00</lastmod>
@@ -269,50 +308,35 @@
     <loc>https://www.andreashandel.com/license/</loc>
     <lastmod>2019-06-28T00:00:00+01:00</lastmod>
   </url><url>
+    <loc>https://www.andreashandel.com/my-projects/quizgrader/</loc>
+    <lastmod>2019-04-01T00:00:00-04:00</lastmod>
+  </url><url>
     <loc>https://www.andreashandel.com/tag/mechanistic-models/</loc>
     <lastmod>2019-03-15T00:00:00-04:00</lastmod>
   </url><url>
     <loc>https://www.andreashandel.com/my-projects/modelbuilder/</loc>
     <lastmod>2019-03-15T00:00:00-04:00</lastmod>
   </url><url>
-    <loc>https://www.andreashandel.com/tag/r-package/</loc>
-    <lastmod>2019-03-15T00:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://www.andreashandel.com/tag/teaching-resource/</loc>
-    <lastmod>2019-03-15T00:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://www.andreashandel.com/my-projects/dsairm/</loc>
-    <lastmod>2019-03-07T00:00:00-05:00</lastmod>
-  </url><url>
-    <loc>https://www.andreashandel.com/tag/within-host-models/</loc>
-    <lastmod>2019-03-07T00:00:00-05:00</lastmod>
-  </url><url>
-    <loc>https://www.andreashandel.com/my-projects/dsaide/</loc>
-    <lastmod>2019-03-01T00:00:00-05:00</lastmod>
-  </url><url>
     <loc>https://www.andreashandel.com/my-projects/flowdiagramr/</loc>
     <lastmod>2019-03-01T00:00:00-05:00</lastmod>
   </url><url>
-    <loc>https://www.andreashandel.com/my-projects/iblir/</loc>
+    <loc>https://www.andreashandel.com/tag/visualization/</loc>
     <lastmod>2019-03-01T00:00:00-05:00</lastmod>
-  </url><url>
-    <loc>https://www.andreashandel.com/my-projects/quizgrader/</loc>
-    <lastmod>2019-03-01T00:00:00-05:00</lastmod>
-  </url><url>
-    <loc>https://www.andreashandel.com/tag/infectious-disease-models/</loc>
-    <lastmod>2019-03-01T00:00:00-05:00</lastmod>
-  </url><url>
-    <loc>https://www.andreashandel.com/my-projects/madacourse/</loc>
-    <lastmod>2019-01-15T00:00:00-05:00</lastmod>
   </url><url>
     <loc>https://www.andreashandel.com/about/</loc>
     <lastmod>2019-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.andreashandel.com/tag/book/</loc>
-    <lastmod>2018-07-15T00:00:00-04:00</lastmod>
+    <loc>https://www.andreashandel.com/tag/biostatistics/</loc>
+    <lastmod>2017-03-01T00:00:00-05:00</lastmod>
   </url><url>
-    <loc>https://www.andreashandel.com/my-projects/idemabook/</loc>
-    <lastmod>2018-07-15T00:00:00-04:00</lastmod>
+    <loc>https://www.andreashandel.com/my-projects/iblir/</loc>
+    <lastmod>2017-03-01T00:00:00-05:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/my-projects/yact/</loc>
+    <lastmod>2012-03-01T00:00:00-05:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/tag/shiny/</loc>
+    <lastmod>2012-03-01T00:00:00-05:00</lastmod>
   </url><url>
     <loc>https://www.andreashandel.com/publication_types/</loc>
   </url>

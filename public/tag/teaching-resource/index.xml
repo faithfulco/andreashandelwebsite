@@ -5,7 +5,7 @@
     <link>https://www.andreashandel.com/tag/teaching-resource/</link>
       <atom:link href="https://www.andreashandel.com/tag/teaching-resource/index.xml" rel="self" type="application/rss+xml" />
     <description>Teaching Resource</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Fri, 15 Mar 2019 00:00:00 -0400</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Sun, 01 Nov 2020 00:00:00 -0400</lastBuildDate>
     <image>
       <url>https://www.andreashandel.com/media/logo_hu5aa01ef3f5a2b4ecf2f7517df7c485bf_90212_300x300_fit_lanczos_3.png</url>
       <title>Teaching Resource</title>
@@ -13,7 +13,34 @@
     </image>
     
     <item>
-      <title>modelbuilder - Building and analysis of compartmental mechanistic models without coding</title>
+      <title>DSAIDE - Dynamical Systems Approach to Infectious Disease Epidemiology</title>
+      <link>https://www.andreashandel.com/my-projects/dsaide/</link>
+      <pubDate>Sun, 01 Nov 2020 00:00:00 -0400</pubDate>
+      <guid>https://www.andreashandel.com/my-projects/dsaide/</guid>
+      <description>&lt;p&gt;We developed an R package that teaches a modern, model-based approach to infectious disease epidemiology, without the need to write computer code. Learn more about it &lt;a href=&#34;https://ahgroup.github.io/DSAIDE/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on the package website&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>DSAIRM - Dynamical Systems Approach to Immune Response Modeling</title>
+      <link>https://www.andreashandel.com/my-projects/dsairm/</link>
+      <pubDate>Thu, 01 Oct 2020 00:00:00 -0400</pubDate>
+      <guid>https://www.andreashandel.com/my-projects/dsairm/</guid>
+      <description>&lt;p&gt;We developed an R package that provides immunologists and other bench scientists a user-friendly introduction to simulation modeling of within-host infection, without the need to write computer code. Learn more about it &lt;a href=&#34;https://ahgroup.github.io/DSAIRM/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on the package website&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>quizgrader</title>
+      <link>https://www.andreashandel.com/my-projects/quizgrader/</link>
+      <pubDate>Mon, 01 Apr 2019 00:00:00 -0400</pubDate>
+      <guid>https://www.andreashandel.com/my-projects/quizgrader/</guid>
+      <description>&lt;p&gt;This - still in development - R package allows teachers to easily administer and auto-grade quizzes that students submit online. It replaces the functionality often found in learning management systems (LMS). Student submissions can be fully analyzed to gain insights into problem areas. Learn more about it &lt;a href=&#34;https://andreashandel.github.io/quizgrader/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on the package website&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>modelbuilder</title>
       <link>https://www.andreashandel.com/my-projects/modelbuilder/</link>
       <pubDate>Fri, 15 Mar 2019 00:00:00 -0400</pubDate>
       <guid>https://www.andreashandel.com/my-projects/modelbuilder/</guid>
@@ -22,47 +49,11 @@
     </item>
     
     <item>
-      <title>DSAIRM - Dynamical Systems Approach to Immune Response Modeling</title>
-      <link>https://www.andreashandel.com/my-projects/dsairm/</link>
-      <pubDate>Thu, 07 Mar 2019 00:00:00 -0500</pubDate>
-      <guid>https://www.andreashandel.com/my-projects/dsairm/</guid>
-      <description>&lt;p&gt;We developed an R package that provides immunologists and other bench scientists a user-friendly introduction to simulation modeling of within-host infection, without the need to write computer code. Learn more about it &lt;a href=&#34;https://ahgroup.github.io/DSAIRM/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on the package website&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>DSAIDE - Dynamical Systems Approach to Infectious Disease Epidemiology</title>
-      <link>https://www.andreashandel.com/my-projects/dsaide/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0500</pubDate>
-      <guid>https://www.andreashandel.com/my-projects/dsaide/</guid>
-      <description>&lt;p&gt;We developed an R package that teaches a modern, model-based approach to infectious disease epidemiology, without the need to write computer code. Learn more about it &lt;a href=&#34;https://ahgroup.github.io/DSAIDE/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on the package website&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>DSAIDE - Dynamical Systems Approach to Infectious Disease Epidemiology</title>
-      <link>https://www.andreashandel.com/my-projects/flowdiagramr/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0500</pubDate>
-      <guid>https://www.andreashandel.com/my-projects/flowdiagramr/</guid>
-      <description>&lt;p&gt;We developed an R package that teaches a modern, model-based approach to infectious disease epidemiology, without the need to write computer code. Learn more about it &lt;a href=&#34;https://ahgroup.github.io/DSAIDE/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on the package website&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>DSAIDE - Dynamical Systems Approach to Infectious Disease Epidemiology</title>
+      <title>iblir - Introduction to Biostatistics Labs in R</title>
       <link>https://www.andreashandel.com/my-projects/iblir/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0500</pubDate>
+      <pubDate>Wed, 01 Mar 2017 00:00:00 -0500</pubDate>
       <guid>https://www.andreashandel.com/my-projects/iblir/</guid>
-      <description>&lt;p&gt;We developed an R package that teaches a modern, model-based approach to infectious disease epidemiology, without the need to write computer code. Learn more about it &lt;a href=&#34;https://ahgroup.github.io/DSAIDE/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on the package website&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>DSAIDE - Dynamical Systems Approach to Infectious Disease Epidemiology</title>
-      <link>https://www.andreashandel.com/my-projects/quizgrader/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0500</pubDate>
-      <guid>https://www.andreashandel.com/my-projects/quizgrader/</guid>
-      <description>&lt;p&gt;We developed an R package that teaches a modern, model-based approach to infectious disease epidemiology, without the need to write computer code. Learn more about it &lt;a href=&#34;https://ahgroup.github.io/DSAIDE/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on the package website&lt;/a&gt;.&lt;/p&gt;
+      <description>&lt;p&gt;An R package that contains several Shiny/learnr based tutorials that teach introductory aspects of biostatistics in an interactive way. Learn more about it &lt;a href=&#34;https://andreashandel.github.io/iblir/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on the package website&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     

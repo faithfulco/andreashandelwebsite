@@ -5,7 +5,7 @@
     <link>https://www.andreashandel.com/tag/infectious-disease/</link>
       <atom:link href="https://www.andreashandel.com/tag/infectious-disease/index.xml" rel="self" type="application/rss+xml" />
     <description>Infectious Disease</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Tue, 15 Sep 2020 00:00:00 -0400</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Fri, 01 Jan 2021 00:00:00 -0500</lastBuildDate>
     <image>
       <url>https://www.andreashandel.com/media/logo_hu5aa01ef3f5a2b4ecf2f7517df7c485bf_90212_300x300_fit_lanczos_3.png</url>
       <title>Infectious Disease</title>
@@ -15,7 +15,7 @@
     <item>
       <title>Infectious Disease Epidemiology - A model-based approach</title>
       <link>https://www.andreashandel.com/my-projects/idemacourse/</link>
-      <pubDate>Tue, 15 Sep 2020 00:00:00 -0400</pubDate>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 -0500</pubDate>
       <guid>https://www.andreashandel.com/my-projects/idemacourse/</guid>
       <description>&lt;p&gt;Infectious Disease Epidemiology - A model-based approach (IDEMA) is an online course I teach at the University of Georgia.
 All course materials (or links to the materials) are available in the form of a simple GitHub website and can be used by anyone. You can find the course &lt;a href=&#34;https://andreashandel.github.io/IDEMAcourse/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on this site&lt;/a&gt;.&lt;/p&gt;
@@ -24,13 +24,12 @@ All course materials (or links to the materials) are available in the form of a 
     </item>
     
     <item>
-      <title>COVID-19 tracker</title>
-      <link>https://www.andreashandel.com/my-projects/yact/</link>
-      <pubDate>Sun, 01 Mar 2020 00:00:00 -0500</pubDate>
-      <guid>https://www.andreashandel.com/my-projects/yact/</guid>
-      <description>&lt;p&gt;An R/Shiny app that visualizes COVID-19 cases, hospitalizations, deaths and tests for US states and counties, as well as countries around the world. 
-This app was created by &lt;a href=&#34;https://github.com/williamnorfolk&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;William Norfolk&lt;/a&gt;, &lt;a href=&#34;https://rlrichards.github.io&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Robbie Richards&lt;/a&gt; and &lt;a href=&#34;https://www.andreashandel.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Andreas Handel.&lt;/a&gt; 
-&lt;a href=&#34;https://shiny.ovpr.uga.edu/yact/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Check out the app here.&lt;/a&gt; The &lt;em&gt;About&lt;/em&gt; section of the app contains more information.&lt;/p&gt;
+      <title>Infectious Disease Epidemiology - a Model-based Approach</title>
+      <link>https://www.andreashandel.com/my-projects/idemabook/</link>
+      <pubDate>Tue, 01 Dec 2020 00:00:00 -0500</pubDate>
+      <guid>https://www.andreashandel.com/my-projects/idemabook/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://andreashandel.github.io/IDEMAbook/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;An online book (perpetually under construction) convering infectious disease epidemiology using a model-based approach.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Some parts of the book are fairly readable and complete enough that I use it when I teach a course on that topic. Other sections are currently only templates/outlines. While I try to ensure that what I write is correct, the whole book is not thoroughly fact-checked, error-corrected, properly referenced, etc. While I have been considering the idea of turning this into a full/real book, in my current thinking the cost-benefit analysis doesn&amp;rsquo;t pan out. I thus plan to leave it online for free as is, with occasional updates and fixes, but without an attempt to make it polished and complete enough for a printed book.&lt;/p&gt;
 </description>
     </item>
     
@@ -98,12 +97,13 @@ This app was created by &lt;a href=&#34;https://github.com/williamnorfolk&#34; t
     </item>
     
     <item>
-      <title>Infectious Disease Epidemiology - a Model-based Approach</title>
-      <link>https://www.andreashandel.com/my-projects/idemabook/</link>
-      <pubDate>Sun, 15 Jul 2018 00:00:00 -0400</pubDate>
-      <guid>https://www.andreashandel.com/my-projects/idemabook/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://andreashandel.github.io/IDEMAbook/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;An online book (perpetually under construction) convering infectious disease epidemiology using a model-based approach.&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Some parts of the book are fairly readable and complete enough that I use it when I teach a course on that topic. Other sections are currently only templates/outlines. While I try to ensure that what I write is correct, the whole book is not thoroughly fact-checked, error-corrected, properly referenced, etc. While I have been considering the idea of turning this into a full/real book, in my current thinking the cost-benefit analysis doesn&amp;rsquo;t pan out. I thus plan to leave it online for free as is, with occasional updates and fixes, but without an attempt to make it polished and complete enough for a printed book.&lt;/p&gt;
+      <title>COVID-19 tracker</title>
+      <link>https://www.andreashandel.com/my-projects/yact/</link>
+      <pubDate>Thu, 01 Mar 2012 00:00:00 -0500</pubDate>
+      <guid>https://www.andreashandel.com/my-projects/yact/</guid>
+      <description>&lt;p&gt;An R/Shiny app that visualizes COVID-19 cases, hospitalizations, deaths and tests for US states and counties, as well as countries around the world.
+This app was created by &lt;a href=&#34;https://github.com/williamnorfolk&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;William Norfolk&lt;/a&gt;, &lt;a href=&#34;https://rlrichards.github.io&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Robbie Richards&lt;/a&gt; and &lt;a href=&#34;https://www.andreashandel.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Andreas Handel.&lt;/a&gt;
+&lt;a href=&#34;https://shiny.ovpr.uga.edu/yact/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Check out the app here.&lt;/a&gt; The &lt;em&gt;About&lt;/em&gt; section of the app contains more information.&lt;/p&gt;
 </description>
     </item>
     

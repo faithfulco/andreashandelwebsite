@@ -5,7 +5,7 @@
     <link>https://www.andreashandel.com/tag/immunology/</link>
       <atom:link href="https://www.andreashandel.com/tag/immunology/index.xml" rel="self" type="application/rss+xml" />
     <description>Immunology</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Mon, 15 Jun 2020 00:00:00 -0400</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Thu, 01 Oct 2020 00:00:00 -0400</lastBuildDate>
     <image>
       <url>https://www.andreashandel.com/media/logo_hu5aa01ef3f5a2b4ecf2f7517df7c485bf_90212_300x300_fit_lanczos_3.png</url>
       <title>Immunology</title>
@@ -15,7 +15,7 @@
     <item>
       <title>Simulation Modeling in Immunology</title>
       <link>https://www.andreashandel.com/my-projects/smicourse/</link>
-      <pubDate>Mon, 15 Jun 2020 00:00:00 -0400</pubDate>
+      <pubDate>Thu, 01 Oct 2020 00:00:00 -0400</pubDate>
       <guid>https://www.andreashandel.com/my-projects/smicourse/</guid>
       <description>&lt;p&gt;Simulation Modeling in Immunology (SMI) is an annual workshop that I co-teach with my colleague Paul Thomas. It usually occurs each year in July in Seattle. In 2020 we taught it online. All course materials are available in the form of a simple GitHub website and can be used by anyone for self-learning. You can find the course &lt;a href=&#34;https://andreashandel.github.io/SMIcourse/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on this site&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The course makes heavy use of my &lt;a href=&#34;https://ahgroup.github.io/DSAIRM/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DSAIRM R package&lt;/a&gt;.&lt;/p&gt;

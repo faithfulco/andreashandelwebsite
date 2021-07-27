@@ -5,12 +5,21 @@
     <link>https://www.andreashandel.com/tag/data-analysis/</link>
       <atom:link href="https://www.andreashandel.com/tag/data-analysis/index.xml" rel="self" type="application/rss+xml" />
     <description>Data Analysis</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Sun, 02 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Tue, 01 Sep 2020 00:00:00 -0400</lastBuildDate>
     <image>
       <url>https://www.andreashandel.com/media/logo_hu5aa01ef3f5a2b4ecf2f7517df7c485bf_90212_300x300_fit_lanczos_3.png</url>
       <title>Data Analysis</title>
       <link>https://www.andreashandel.com/tag/data-analysis/</link>
     </image>
+    
+    <item>
+      <title>Modern Applied Data Analysis</title>
+      <link>https://www.andreashandel.com/my-projects/madacourse/</link>
+      <pubDate>Tue, 01 Sep 2020 00:00:00 -0400</pubDate>
+      <guid>https://www.andreashandel.com/my-projects/madacourse/</guid>
+      <description>&lt;p&gt;Modern Applied Data Analysis (MADA) is a course I regularly teach online. All course materials are available in the form of a simple GitHub website and can be used by anyone for self-learning. You can find the course &lt;a href=&#34;https://andreashandel.github.io/MADAcourse/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on this site&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Using R to analyze publications - part 2</title>
@@ -1130,15 +1139,6 @@ if (file.exists(&#39;allauthors.Rds&#39;))
 &lt;/ul&gt;
 &lt;p&gt;I do keep all my published, peer-reviewed papers in a BibTeX bibliography file in my reference manager (I&amp;rsquo;m using Zotero and/or Jabref). I know that file is clean and only contains peer-reviewed papers. Unfortunately, the &lt;code&gt;scholar&lt;/code&gt; package can&amp;rsquo;t read in such data. In &lt;a href=&#34;https://www.andreashandel.com/post/publications-analysis-2/&#34;&gt;part 2&lt;/a&gt; of this post series, I&amp;rsquo;ll use a different R package to produce the journal and author tables I tried making above.&lt;/p&gt;
 &lt;p&gt;The one feature only available through Google Scholar is the citation record and the analysis I did at the beginning if this post.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Modern Applied Data Analysis Course</title>
-      <link>https://www.andreashandel.com/my-projects/madacourse/</link>
-      <pubDate>Tue, 15 Jan 2019 00:00:00 -0500</pubDate>
-      <guid>https://www.andreashandel.com/my-projects/madacourse/</guid>
-      <description>&lt;p&gt;Modern Applied Data Analysis (MADA) is a course I regularly teach online. All course materials are available in the form of a simple GitHub website and can be used by anyone for self-learning. You can find the course &lt;a href=&#34;https://andreashandel.github.io/MADAcourse/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on this site&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
