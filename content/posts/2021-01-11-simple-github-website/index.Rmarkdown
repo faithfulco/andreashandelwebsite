@@ -28,7 +28,7 @@ The following blog post provides step-by-step instructions for creating a simple
 
 # Motivation
 
-Previously, I wrote a 2-series blog post with instructions for creating your own website using [blogdown](https://bookdown.org/yihui/blogdown/), [Hugo](https://gohugo.io/) and [Netlify](https://www.netlify.com/). (Here are [Part 1](/post/blogdown-website-1/) and [part 2](/post/blogdown-website-2/)). 
+Previously, I wrote a 2-series blog post with instructions for creating your own website using [blogdown](https://bookdown.org/yihui/blogdown/), [Hugo](https://gohugo.io/) and [Netlify](https://www.netlify.com/). (Here are [Part 1](/post/blogdown-website-1/) and [part 2](/posts/blogdown-website-2/)). 
 
 The blogdown/Hugo setup is fairly flexible and powerful, but sometimes more complex than what is needed. At least I find this to be the case. While I'm using Hugo/blogdown for my [personal website](https://www.andreashandel.com) I am currently hosting my online courses using a simpler setup, the one I'll be describing here. 
 
@@ -134,7 +134,7 @@ Your website is fairly simple and consists of these documents.
 
 
 ### The file `index.Rmd` 
-This is the main landing page of your website. It always needs to be there and you fill it with the content you want on your main page. It's a regular R Markdown site. If you are new to R Markdown, you can learn more about it [on the R Markdown website](https://rmarkdown.rstudio.com/). I also have a discussion of R Markdown and reproducibility [on one of my course pages](https://andreashandel.github.io/MADAcourse/1e_ToolsforReproducibility.html). You'll find additional links to potentially useful R Markdown (and Github) resources there.
+This is the main landing page of your website. It always needs to be there and you fill it with the content you want on your main page. It's a regular R Markdown site. If you are new to R Markdown, you can learn more about it [on the R Markdown website](https://rmarkdown.rstudio.com/). I also have a discussion of R Markdown and reproducibility [on one of my course pages](https://andreashandel.github.io/MADAcourse/ToolsforReproducibility.html). You'll find additional links to potentially useful R Markdown (and Github) resources there.
 
 
 ### The file `_site.yml` 
@@ -205,7 +205,7 @@ This process is fairly simple, you just need to remember to go through all the s
 
 Here are some thoughts and suggestions that I've learned by using this setup for several online courses.
 
-* The setup described here works well for fairly simple sites. If you want your content structured in a more complex way and more features, you probably want to use the [blogdown/hugo setup](/post/blogdown-website-1/). Similarly, while you can customize the layout  by trying different themes and by including your own CSS (see links above), if you want to start making it look exactly how you want, you'll likely be wasting a lot of time and might be better off using a different setup (e.g. blogdown/hugo).
+* The setup described here works well for fairly simple sites. If you want your content structured in a more complex way and more features, you probably want to use the [blogdown/hugo setup](/posts/blogdown-website-1/). Similarly, while you can customize the layout  by trying different themes and by including your own CSS (see links above), if you want to start making it look exactly how you want, you'll likely be wasting a lot of time and might be better off using a different setup (e.g. blogdown/hugo).
 
 * Every time you build your website, everything gets recompiled. If you have simple content, and no/little R code, that's ok. If you are having things that take long to run (e.g. complex R code inside your website), I suggest to move the R code to a separate R script and save results from the code into files (figures/tables/Rdata files). You then just load thpse results into your Rmd file. This way you only need to run the time-consuming R code if those parts have changed, but on a standard website re-build the code won't need to run.
 
@@ -227,7 +227,7 @@ The whole area of _use R Markdown to make websites_ is still under rapid develop
 
 * Since this setup is fully based on R Markdown, the [R Markdown book](https://bookdown.org/yihui/rmarkdown/) is very useful and contains lots of relevant information, especially [this section](https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html). There is also the newer [R Markdown cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/) which is more of a how-to guide, while the R Markdown book is more of a full reference book. Both are very useful sources of information.
 
-* The R Studio folks have a package called [`distill`](https://rstudio.github.io/distill/) which is still under heavy development and which allows turning R Markdown into lots of outputs, including [basic websites](https://rstudio.github.io/distill/publish_website.html). This is still a work in progress, and while I tried distill in the past (and it couldn't quite do what I want), I haven't tried it lately. I find the setup I describe here works for my teaching needs, but if you need more/different features, I recommend checking out distill. There is aparently also a new package called [`postcards`](https://github.com/seankross/postcards) that works with distill to produce simple websites, very similar to the approach shown here. See e.g. [this blog post by Allison Hill](https://alison.rbind.io/post/2020-12-22-postcards-distill/) for an introduction. I expect these packages to develop and mature quickly.
+* The R Studio folks have a package called [`distill`](https://rstudio.github.io/distill/) which is still under heavy development and which allows turning R Markdown into lots of outputs, including [basic websites](https://rstudio.github.io/distill/publish_website.html). This is still a work in progress, and while I tried distill in the past (and it couldn't quite do what I want), I haven't tried it lately. I find the setup I describe here works for my teaching needs, but if you need more/different features, I recommend checking out distill. There is aparently also a new package called [`postcards`](https://github.com/seankross/postcards) that works with distill to produce simple websites, very similar to the approach shown here. See e.g. [this blog post by Allison Hill](https://alison.rbind.io/blog/2020-12-postcards-distill/) for an introduction. I expect these packages to develop and mature quickly.
 
 * In my teaching, I use the Github/R Markdown workflow, so students are exposed to it. Therefore, I have a good bit of information and links on that topic. You can browse through [the website of this 
 course](https://andreashandel.github.io/MADAcourse/index.html) and look for relevant content. A lot of the exercises also teach parts of Github and making webpages (even simpler ones than described here).  

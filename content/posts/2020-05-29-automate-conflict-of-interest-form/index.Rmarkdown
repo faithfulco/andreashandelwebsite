@@ -21,9 +21,9 @@ projects: []
 
 While most of my grant proposals go to the NIH, which thankfully does not require an arcane conflict of interest (COI) document, I am sometimes part of a grant proposal that goes to the NSF or another agency that require a COI. Instead of just asking for any actual conflicts of interest, these documents ask one to list every co-author in the last N years, which is fairly stupid these days when most papers in the biomedical sciences have many co-authors. I hope the agencies get rid of this in my opinion pointless document soon. Until then, I have to do it.
 
-I don't want to retrieve all my co-authors and fill the form by hand. In a previous post, I showed how one can use the [`bibliometrix`](https://www.bibliometrix.org/) R package to [do an analysis of a set of publications](/post/publications-analysis-2/). Among other things, this approach returns all co-authors, which I will use here to make the COI table almost completely automated.
+I don't want to retrieve all my co-authors and fill the form by hand. In a previous post, I showed how one can use the [`bibliometrix`](https://www.bibliometrix.org/) R package to [do an analysis of a set of publications](/posts/publications-analysis-2/). Among other things, this approach returns all co-authors, which I will use here to make the COI table almost completely automated.
 
-The RMarkdown file to run this analysis [is here](/post/2020-05-29-automate-conflict-of-interest-form/index.Rmarkdown).
+The RMarkdown file to run this analysis [is here](/posts/2020-05-29-automate-conflict-of-interest-form/index.Rmarkdown).
 
 # Required packages
 
@@ -37,7 +37,7 @@ library(bibliometrix)
 
 # Loading data
 
-As explained [in a previous post](/post/publications-analysis-2/), the currently best way to get all my papers is to download them from NIH's "My Bibliography" and export it in MEDLINE format. Then read in the file with the code below. 
+As explained [in a previous post](/posts/publications-analysis-2/), the currently best way to get all my papers is to download them from NIH's "My Bibliography" and export it in MEDLINE format. Then read in the file with the code below. 
 
 ```{r, message=FALSE}
 #read bib file, turn file of references into data frame
