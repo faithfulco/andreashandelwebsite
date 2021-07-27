@@ -3,7 +3,7 @@
 title = "DSAIRM - Dynamical Systems Approach to Immune Response Modeling"
 
 # Date this page was created.
-date = 2019-03-07
+date = 2020-10-01
 
 # Project summary to display on homepage.
 summary = "R package that teaches modeling for within-host infection and immunology."

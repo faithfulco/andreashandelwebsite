@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mentoring | Andreas Handel</title>
+    <link>https://www.andreashandel.com/category/mentoring/</link>
+      <atom:link href="https://www.andreashandel.com/category/mentoring/index.xml" rel="self" type="application/rss+xml" />
+    <description>mentoring</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Thu, 22 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://www.andreashandel.com/media/logo_hu5aa01ef3f5a2b4ecf2f7517df7c485bf_90212_300x300_fit_lanczos_3.png</url>
+      <title>mentoring</title>
+      <link>https://www.andreashandel.com/category/mentoring/</link>
+    </image>
+    
+    <item>
+      <title>How to be a good mentee and mentor</title>
+      <link>https://www.andreashandel.com/presentations/2021-04-mentorship/</link>
+      <pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate>
+      <guid>https://www.andreashandel.com/presentations/2021-04-mentorship/</guid>
+      <description>&lt;p&gt;These are slides for a talk/discussion I led with our graduate students discussing mentorship, both how to be a good mentee and mentor. &lt;a href=&#34;https://www.andreashandel.com/presentations/2021_04_mentor_mentee.html&#34; target=&#34;_blank&#34;&gt;The presentation slides are here.&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

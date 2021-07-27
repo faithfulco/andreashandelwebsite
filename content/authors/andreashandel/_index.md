@@ -1,15 +1,14 @@
 ---
 # Display name
-name: 
+name: Andreas Handel
 
-# Username (this should match the folder name)
 title: Andreas Handel
 
 authors:
 - andreashandel
 superuser: true
 
-role: Associate Professor
+role: Professor
 organizations:
   - name: University of Georgia 
   - url: https://www.uga.edu
@@ -63,13 +62,15 @@ user_groups:
 - Current Members
 ---
 
-I am currently an Associate Professor in the [Department of Epidemiology and Biostatistics](https://publichealth.uga.edu/departments/epidemiology-biostatistics/),
+I am a Professor in the [Department of Epidemiology and Biostatistics](https://publichealth.uga.edu/departments/epidemiology-biostatistics/),
 [College of Public Health](https://www.publichealth.uga.edu/), at the [University of Georgia (UGA)](https://www.uga.edu/). 
-My research focuses on data analysis and modeling of infectious diseases, mainly influenza, norovirus, tuberculosis and recently COVID-19. 
-This website contains some information [about myself](/aboutme/) and my activities (teaching, presentations, blog posts, etc.). 
-More details regarding the research done in my group, as well as links to publications, can be found [on my research group site](https://handelgroup.uga.edu/). 
+
+This website contains [a short bio](/about/) and products such as [blog posts](/posts/), [presentations](/presentations/), and [various tools and resources related to teaching and research](/projects/). 
+
+More research related details can be found [on my research group site](https://handelgroup.uga.edu/). 
 Some overlap between the two sites might occur.
 
+I send out a monthly (or less frequent) newsletter with updates and musings on my various projects. If interested, [you can subscribe here.](/subscribe/)
 
 
 

@@ -1,12 +1,12 @@
 +++
 # Project title.
-title = "modelbuilder - Building and analysis of compartmental mechanistic models without coding"
+title = "modelbuilder"
 
 # Date this page was created.
 date = 2019-03-15
 
 # Project summary to display on homepage.
-summary = "R package that allows building and analysis of dynamical models without the need to write code."
+summary = "R package that allows building and analysis of simulation models without the need to write code."
 
 # Tags: can be used for filtering projects.
 tags = ["Mechanistic Models", "R Package", "Teaching Resource","software"]

@@ -1,0 +1,1351 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.3.0 for Hugo" />
+  
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="andreashandel" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="The following are step-by-step instructions for creating your own website using [blogdown](https://bookdown.org/yihui/blogdown/), [Hugo](https://gohugo.io/) and [Netlify](https://www.netlify.com/)." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://www.andreashandel.com/posts/blogdown-website-1/" />
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css" integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous" media="print" onload="this.media='all'">
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.f0cf03b20998d63e314819fa4a90c13f.css" />
+
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-48442618-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-48442618-4', {});
+  gtag('set', {'cookie_flags': 'SameSite=None;Secure'});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hu5aa01ef3f5a2b4ecf2f7517df7c485bf_90212_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu5aa01ef3f5a2b4ecf2f7517df7c485bf_90212_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://www.andreashandel.com/posts/blogdown-website-1/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image" />
+  
+    <meta property="twitter:site" content="@andreashandel" />
+    <meta property="twitter:creator" content="@andreashandel" />
+  
+  <meta property="og:site_name" content="Andreas Handel" />
+  <meta property="og:url" content="https://www.andreashandel.com/posts/blogdown-website-1/" />
+  <meta property="og:title" content="Creating a website in less than 1 hour - part 1 | Andreas Handel" />
+  <meta property="og:description" content="The following are step-by-step instructions for creating your own website using [blogdown](https://bookdown.org/yihui/blogdown/), [Hugo](https://gohugo.io/) and [Netlify](https://www.netlify.com/)." /><meta property="og:image" content="https://www.andreashandel.com/posts/blogdown-website-1/featured.jpg" />
+    <meta property="twitter:image" content="https://www.andreashandel.com/posts/blogdown-website-1/featured.jpg" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2020-01-19T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2021-03-01T00:00:00&#43;00:00">
+  
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Creating a website in less than 1 hour - part 1 | Andreas Handel</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="c13bdb169f66f761551bc3c121766997" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.8988fb2a4bba758785868cfcb5244555.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container-xl">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/"><img src="/media/logo_hu5aa01ef3f5a2b4ecf2f7517df7c485bf_90212_0x70_resize_lanczos_3.png" alt="Andreas Handel"></a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/"><img src="/media/logo_hu5aa01ef3f5a2b4ecf2f7517df7c485bf_90212_0x70_resize_lanczos_3.png" alt="Andreas Handel"></a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/about"><span>About</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/presentations"><span>Presentations</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/projects"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/subscribe"><span>Subscribe</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+      
+
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+
+<div class="article-container pt-3">
+  <h1>Creating a website in less than 1 hour - part 1</h1>
+
+  
+  <p class="page-subtitle">Part 1 - blogdown, Hugo and Netlify</p>
+  
+
+  
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    Mar 1, 2021
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+  
+
+
+
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 478px;">
+  <div style="position: relative">
+    <img src="/posts/blogdown-website-1/featured_hu3d03a01dcc18bc5be0e67db3d8d209a6_1100011_720x0_resize_q75_lanczos.jpg" alt="" class="featured-image">
+    <span class="article-header-caption">Photo by Agence Olloweb on Unsplash</span>
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <p><em>Update 2021-03-01: Hugo and the Academic (now Wowchemy) theme keep changing rapidly. Since I originally posted this, things changed. I tried to update things to reflect some of the changes. If you find things not working, let me know so I can update.</em></p>
+<p>The following are step-by-step instructions for creating your own website using <a href="https://bookdown.org/yihui/blogdown/" target="_blank" rel="noopener">blogdown</a>, <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> and <a href="https://www.netlify.com/" target="_blank" rel="noopener">Netlify</a>.</p>
+<p>In <a href="/post/blogdown-website-2/">part 2</a>, you will learn how to add <a href="https://GitHub.com" target="_blank" rel="noopener">GitHub</a> to your workflow to make things even more automated and efficient.</p>
+<h1 id="required-skills">Required skills</h1>
+<p>I assume that you have general computer literacy, but no experience with any of the tools that will be used. Also, no coding, web-development or related experience is expected.</p>
+<h1 id="what-this-document-covers">What this document covers</h1>
+<p>This document is meant to provide you with the minimum required instructions to get your own website up and running quickly. As such, instructions and background information are kept at a minimum. I used a <em>recipe-like</em> approach by giving hopefully detailed and specific enough instructions to get things to work. I&rsquo;m not covering any <em>why</em> here or provide much further explanations. If you decide you like to use this setup for your website, you will likely want to go beyond this document and learn a bit more about the various tools involved in the process. To that end, links to further resources are provided. Those resources also discuss a bit why you would want this setup versus something like e.g. Wordpress.</p>
+<h1 id="who-this-is-not-for">Who this is (not) for</h1>
+<p><strong>This way of making and hosting a website might be for you if:</strong></p>
+<ul>
+<li>You are (or would like to be) an R, RMarkdown and GitHub user. This is a method of creating a website using those tools which very efficiently fits into such a workflow.</li>
+<li>You want a way to host a website where all the content is fully controlled by you, and the website can be hosted without much resources (and for free).</li>
+<li>You are curious about R/RMarkdown/GitHub, how to use it to build a website, and you&rsquo;ve got a bit of time to spare and want to give it a try.</li>
+</ul>
+<p><strong>This way of making and hosting a website might not be for you if:</strong></p>
+<ul>
+<li>Your main workflow is MS Word, Powerpoint, etc. and you are not interested in R/Markdown/GitHub.</li>
+<li>You want everything accessible through a graphical interface.</li>
+</ul>
+<h1 id="motivating-examples">Motivating Examples</h1>
+<p>If you want to see a few nice examples of websites written with blogdown/Hugo, check these out:</p>
+<ul>
+<li><a href="https://alison.rbind.io/" target="_blank" rel="noopener">Allison Hill</a></li>
+<li><a href="https://amber.rbind.io/" target="_blank" rel="noopener">Amber Thomas</a></li>
+<li><a href="https://malco.io/" target="_blank" rel="noopener">Malcolm Barrett</a></li>
+<li><a href="https://theory.ucr.edu/flip/" target="_blank" rel="noopener">Flip Tanedo</a></li>
+</ul>
+<p>Many more examples of blogdown/Hugo websites are out there. See e.g. <a href="https://awesome-blogdown.com/" target="_blank" rel="noopener">here</a>.</p>
+<p>Pointers to more resources and alternative tutorials (should you not like this one) can be found at the bottom of this post.</p>
+<h1 id="quick-tool-overview">Quick tool overview</h1>
+<p>A few different software tools are working together for this website built. <strong>In most cases, they play nicely together and you don&rsquo;t need to worry about details!</strong> But it is still good to know the names of the different components.</p>
+<p><strong><a href="https://www.r-project.org/" target="_blank" rel="noopener">R</a></strong> and <strong><a href="https://rstudio.com/products/rstudio/download/" target="_blank" rel="noopener">RStudio</a></strong> we won&rsquo;t really use those for their normal purpose as statistics/coding software/platform, but since blogdown is part of the RMarkdown family of packages, we need to use R and RStudio to access blogdown.</p>
+<p><strong><a href="https://bookdown.org/yihui/blogdown/" target="_blank" rel="noopener">blogdown</a></strong> is an R package that interfaces with Hugo and allows you to create websites easily using RMarkdown syntax.</p>
+<p><strong><a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a></strong> is software that operates in the background. It takes all the content you create for your website (your text, your pictures, etc.), applies layout to your site based on a chosen theme, and turns everything into files that can be placed on Netlify and read by anyone&rsquo;s web browser. You will likely not have to think or learn much about Hugo, at least not initially.</p>
+<p><strong><a href="https://www.netlify.com/" target="_blank" rel="noopener">Netlify</a></strong> is the service we&rsquo;ll use to host the website. It offers a free plan, which is great for a starter website (you can always upgrade once you become famous and everyone visits your website. 
+Netlify is very easy to set up and use, and it can automatically pull information from GitHub to build your site every time you update it (see part 2 for this).</p>
+<p>While Netlify and RStudio have paid options, for our purpose we can use their free versions. Hugo, blogdown and R are completely free.</p>
+<h1 id="pre-requisites">Pre-requisites</h1>
+<p>First, you need to set up accounts and install some software for the tools we will be using.</p>
+<h2 id="get-a-netlify-account">Get a Netlify account</h2>
+<p>Go to <a href="https://www.netlify.com/" target="_blank" rel="noopener">the Netlify website</a> and sign up for an account. Follow the sign-up steps to set up your account.</p>
+<h2 id="install-r-and-rstudio">Install R and RStudio</h2>
+<p>If you don&rsquo;t already have it on your computer, <a href="https://www.r-project.org/" target="_blank" rel="noopener">install R first</a>. You can pick any mirror you like. If you already have R installed, make sure it is a fairly recent version. If yours is old, I suggest you update (install a new R version).</p>
+<p>Once you have R installed, install the free version of <a href="https://www.rstudio.com/products/rstudio/download/" target="_blank" rel="noopener">RStudio Desktop</a>. Again, make sure it&rsquo;s a recent version. If you have an older version of RStudio, you should update.</p>
+<p>Installing R and RStudio should be fairly straightforward. If you want some more details or need instructions, see <a href="https://andreashandel.GitHub.io/MADAcourse/1c_RandRStudio.html" target="_blank" rel="noopener">this page</a> (which is part of an online course I teach).</p>
+<h1 id="starting-your-website">Starting your website</h1>
+<p>With the above registration and installation bits out of the way, you can get started with your website. To do so, follow these steps:</p>
+<ul>
+<li>Open RStudio. Install the blogdown package by typing <code>install.packages('blogdown')</code> in the R console (the lower left window in RStudio). Note that all <code>R</code> commands are case sensitive. You need to be online for this to work. You should see <code>blogdown</code> and several other packages being installed. You only need to do this step once, unless you upgrade R or change computers. If for some reason you already had <code>blogdown</code> installed, make sure it&rsquo;s current and if needed, update it to the latest version. You can update this (and all) R packages by clicking on the <code>Packages</code> tab in the bottom right window of RStudio, then <code>Update</code>.</li>
+<li>Load <code>blogdown</code> by typing <code>library(blogdown)</code> into the R console (you need to do this every time you open/re-load R/RStudio).</li>
+<li>Under <code>File</code>, choose <code>New Project</code>, <code>New Directory</code>, <code>Website using blogdown</code>. On the following screen, specify a meaningful directory name (e.g. YOURNAMEWEBSITE), place it somewhere on your computer, check all boxes. In the Hugo theme box, enter <code>wowchemy/starter-academic</code>.</li>
+</ul>
+<p>The figure below shows the screen and choices you should make. Adjust for your own setup.</p>
+<p><img src="startwebsite.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>Now click <code>Create Project</code>. This creates a new website and installs and sets up the chosen theme, complete with a small sample site. Be patient, it might take some time. As long as you see a little red stop sign in the top left corner of the R Console window, you know things are still running. Once everything is done, you will see a lot of new files have shown up in your project/repository folder.</p>
+<p>The command above installed a small example website. We can build the site and look at it. First, make sure <code>blogdown</code> has been loaded with <code>library(blogdown)</code>. The build the site by typing <code>build_site()</code> into the R console. Follow that with <code>serve_site()</code> to see a live preview of the site. If everything works, the bottom right window, which is the RStudio viewer, shows your new website.</p>
+<p><img src="servesite.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>Click on the symbol next to the broom in the top left corner of that window to see the website in your browser. This is your new site. Now it&rsquo;s time to customize and create content.</p>
+<h1 id="a-word-about-themes">A word about themes</h1>
+<p>Pretty much all modern websites follow the concept of splitting content from layout and only merging them at some point in the process of building a website. The formatting that gives a site a specific layout is often called a <strong>theme</strong>. The theme determines the look of your website. Hugo has a lot and quickly growing <a href="https://themes.gohugo.io/" target="_blank" rel="noopener">number of themes</a> (though not as many as Wordpress). The idea is that you can switch themes and thus layout without too much difficulty. In practice, there is still often a good bit of adjustment needed when you go from one theme to another. Thus, it is worth spending some time deciding on a theme before you go &ldquo;all in&rdquo;.</p>
+<p>The default theme <code>hugo-lithium</code> is a rather basic one. I don&rsquo;t actually know too many websites that use it. A popular theme is <a href="https://wowchemy.com/" target="_blank" rel="noopener">Wowchemy</a> (formerly called <em>Academic</em>). I use it for both my personal and research group sites. I&rsquo;m using it for this tutorial too. The <code>Wowchemy</code> theme has a lot of features and customization options. But it has downsides. First, it is fairly complex. Second, it is currently changing rapidly, and those changes often break things. I hope that when you read this, it works. If not, let me know. 
+There are other promising themes in the works, such as <a href="https://github.com/yihui/hugo-prose" target="_blank" rel="noopener">Hugo Prose</a> and <a href="https://github.com/hugo-apero/hugo-apero" target="_blank" rel="noopener">Hugo Apero</a>, made by the same folks who are involved with the <code>blogdown</code> development. I wouldn&rsquo;t be surprised if in the future a lot of folks, including myself, will switch to one of those themes.</p>
+<h1 id="a-brief-explanation-of-your-new-website">A brief explanation of your new website</h1>
+<p>The previous steps have given you a website with some example starter content. Any complex website has a certain structure consisting of folders and files. These files and folders either live only on a website server and you never see them (e.g. <a href="https://wordpress.com/" target="_blank" rel="noopener">Wordpress</a>), or they exist locally, as is the case for <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> (and similar such website generators, e.g. <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a>.)</p>
+<p>Some of the files and folders you do not need to care much about, others you will need to interact with. To get a bit of an idea what lives where, here is a quick overview. Some of this depends on the Hugo theme you are using, but most of them have a rather similar structure. Open the directory where you placed your website, either through the <code>Files</code> pane in RStudio, or by using File Explorer (or whatever that is called on a Mac\Linux 😃).</p>
+<ul>
+<li>The folder <code>config</code> contains files that control some of the overall website look and feel. We&rsquo;ll visit them later. In Hugo, those files that control configuration are called either <code>TOML</code> or <code>YAML</code> files. The current trend for <em>Hugo</em> is to switch everything to YAML, but you&rsquo;ll keep seeing a mix for a while. Many files have bits of TOML/YAML and other content in them, as you will see below.</li>
+<li>The folder <code>content</code> and its subfolders contain almost all the actual content for your website. We&rsquo;ll edit some of that soon.</li>
+<li>The folder <code>public</code> is the one that contains your finished website once Hugo has processed your content and applied the layout from your chosen theme. That folder is the one which you will place online e.g. on Netlify.</li>
+<li>The folder <code>static</code> contains subfolders where you can store images and other media (e.g. pdf files or video/audio, etc) that you want to be part of your site.</li>
+<li>The folder <code>themes</code> includes the different Hugo themes you installed. You can have several themes installed and switch between them. Note however that themes differ in their details of how they do things, so it is a good idea to check out a few themes first, then settle on one and build your website <em>for real</em> once you picked one.</li>
+<li>The other folders that might exist are ones you don&rsquo;t need to worry about, at least not initially. Some of those folders can contain your own formatting and layout choices overwriting the main theme. We won&rsquo;t discuss them here but once you really want to start configuring your site, those will become important.</li>
+</ul>
+<h1 id="editing-content">Editing content</h1>
+<p>Now that you know a little bit how your website is structured, let&rsquo;s dig in and add and modify it. We&rsquo;ll start with some modifications, followed by creating new content.</p>
+<h2 id="playing-with-widgets">Playing with widgets</h2>
+<p>All (or at least most) content goes into the <code>content</code> folder and its subfolders. Content is generally written in (R)Markdown. For this tutorial, you don&rsquo;t need to know much Rmarkdown, but at some point you will have to learn it. Fortunately, (R)Markdown is very easy to learn. See e.g. the RMarkdown section on <a href="https://andreashandel.github.io/MADAcourse/1e_ToolsforReproducibility.html" target="_blank" rel="noopener">this page</a>, check out <a href="https://www.markdowntutorial.com/" target="_blank" rel="noopener">this nice interactive tutorial</a> or this <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank" rel="noopener">cheatsheet</a>.</p>
+<p>The Wowchemy/Academic theme, and many other modern websites, use a layout that employs <strong>widgets</strong>, which are components of a website that are individually formatted and styled. On the demo site you just created, you see many different sections, each is a widget. Which widgets you want is controlled by files in the <code>/content/home/</code> folder. Go into that folder (from within RStudio) and open the <code>demo.md</code> file. You will see a bunch of text. Some commands are between <code>+++</code> signs, this is called the TOML (or YAML if it&rsquo;s 3 <code>---</code>) header. These are instructions for the layout. The text below is what is actually shown on the site.</p>
+<p>As you stare at the content of the file, you might recognize that it corresponds to the 2nd block of the demo website with the dark bubble content. Let&rsquo;s say you don&rsquo;t want this particular widget on your home page. The easiest way is to set <code>active = false</code>. (You can also delete the whole file if you are sure you don&rsquo;t want it). Do that. You should notice 2 things. In the bottom-left RStudio window (the R console) you should see a bit of code showing that the website was re-built and updated in real time. If you re-load the page in your browser, the widget and its content should be gone. You can try turning off other sections of the main page using this approach.</p>
+<h2 id="making-things-personal">Making things personal</h2>
+<p>Now let&rsquo;s open the <code>about.md</code> file. You will notice that it doesn&rsquo;t really contain any content. Instead, it pulls the content from another location, namely content in the <code>authors</code> folder. Go into <code>/content/authors/admin/</code> and open the <code>_index.md</code> file. There you see the content that is displayed on the main page. Modify it with your personal information. Once you save your changes, you should see the website automatically being rebuilt. If you have, add a picture of yourself and replace the current <code>avatar.jpg</code> file. (Your picture needs to have that name). Also, while not required, you might want to rename the folder from <code>admin</code> to your name. Make sure this corresponds to the name you list in the <code>_index.md</code> file.</p>
+<h2 id="cleaning-up-for-now">Cleaning up for now</h2>
+<p>Let&rsquo;s turn off all other parts of the main site apart from the <code>about</code> widget. The easiest way is to remove all files apart from the <code>index.md</code> and <code>about.md</code> files. You probably don&rsquo;t want to completely delete them (since you might want to use them later), thus I recommend you move them to some other folder on your computer. For instance you can make a folder called <code>myfiles</code> as a subfolder of your website folder and move the files into that folder.</p>
+<p>If all of this worked, there should be a main page containing only a brief description of yourself.</p>
+<h2 id="a-word-on-error-messages">A word on error messages.</h2>
+<p>If you make some changes that break the site, you will see an error message in the R console and the site won&rsquo;t re-compile until you fix the problem. You often have to be careful to write things exactly as specified, and often with the right indentation, etc. Some fiddling is at times required. If you are stuck and think you broke it too badly, you can either look in the <a href="https://wowchemy.com/docs/" target="_blank" rel="noopener">Wowchemy theme documentation</a> or go into the <code>themes/starter-academic/exampleSite</code> folder and find the corresponding file you are editing there and see how it needs to look.</p>
+<h1 id="editing-settings">Editing settings</h1>
+<h2 id="configyaml">config.yaml</h2>
+<p>I mentioned above that TOML/YAML is a language/structure used by Hugo to control all kinds of things. Most files have some TOML/YAML part, a few files are nothing but TOML and control a lot of settings. Let&rsquo;s look at the most important files. The first one is <code>config.yaml</code> (sometimes also called <code>config.toml</code>) located in the main website folder. Find and open it. You will see that it lists as title <em>Academic</em>. Change that to e.g. <em>Website of YOURNAME</em>. You will see this change show up on the main site. You can try what happens if you write something in the <code>copyright</code> section. The rest of this file doesn&rsquo;t need further editing for now.</p>
+<h2 id="menustoml">menus.toml</h2>
+<p>Let&rsquo;s go into the <code>config/_default/</code> folder and open the <code>menus.toml</code> file. You&rsquo;ll see that those correspond to the menu buttons on the main page. Most of them don&rsquo;t work since we removed the widgets. For now, let&rsquo;s go ahead and disable (by placing <code>#</code> symbols in front) all entries apart from the <code>Posts</code> block of text.</p>
+<h2 id="paramstoml">params.toml</h2>
+<p>Open <code>params.toml</code>. This file lets you specify and control a lot of things. Try setting a different theme. Then read through the other parts. We won&rsquo;t change them for now, but you might want to come back to them.</p>
+<h1 id="create-new-content">Create new content</h1>
+<p>Let&rsquo;s create a blog post. First, let&rsquo;s move the <code>posts.md</code> file back into the <code>home</code> folder. If successful, you should see several blog posts show up on the site. The actual files containing those posts are in the <code>content/post</code> folder. (Academic is unfortunately not very good about consistently using singular or plural). You will see one file (both <code>.Rmd</code> and <code>.html</code>) in the main <code>/post</code> folder. That file was placed there by RStudio/blogdown. You will also see several folders, each contain a <code>.md</code> file and one or more images. Those are placed there by the creator of Academic. Both ways of placing blog posts is ok but separate folders tends to be more organized. Let&rsquo;s first remove the existing posts. You can either delete them, or to be safe, move everything (apart from the <code>_index.md</code> file) to the folder you created earlier. You should see all posts disappear from the main page.</p>
+<p>Now let&rsquo;s create our first blog post. We can use an RStudio addin for this. Since I have found that sometimes the <code>serve_site()</code> command interferes with the addin functionality, let&rsquo;s stop the serving (continuous building and displaying) of the website for now by restarting <code>R</code> (under <code>Session</code>).</p>
+<p>Once you have restarted <code>R</code>, go to the <code>Addins</code> button (approximately under the <code>Tools</code> button) and choose <code>New Post</code>. Add a title for your blog post. You can leave all other settings as they are. At some point you will want to think more about the way you want to set up your website, including what kind of file format you want. See the <em>More Information</em> section below. For now, just give it a title and use the defaults for the rest.</p>
+<p>Once you click <code>done</code>, the file should open. You will see that the things you specified in the boxes show up in the YANL area. Write some text below that area (below the <code>---</code>). The text you write should be formatted as (R)Markdown. For now, you can just write some plain text. Or try some Markdown formatting using the cheat sheet listed above.</p>
+<p>Once you finished writing your new blog post, save your changes, then start the server again by re-loading the blogdown package (<code>library(blogdown)</code>), then type <code>serve_site()</code> into the <code>R</code> console.</p>
+<h2 id="more-edits">More edits</h2>
+<p>Congratulations, you have built a website and wrote a blog post! Of course there is a lot you can do next. Write more posts, look at all the different elements/widgets you can turn on and modify, etc. As mentioned, the Academic theme has a lot of features. If you like what you see, continue exploring. If you think you want something simpler, check out other Hugo themes until you find one you like, then customize it. A lot of things are very similar across all Hugo themes (e.g. the TOML/YAML bits and the folder structure), but some details differ, so it&rsquo;s good to pick a theme before you really start customizing it.</p>
+<p>But for now, we&rsquo;ll leave it at this. There is one more crucial step missing though.</p>
+<h1 id="making-your-website-public">Making your website public</h1>
+<p>So far, everything happened on your local computer. In a final step, we want to put the website online so everyone can see it. With Netlify, this is fairly simple. Log into your Netlify account. Under <code>Sites</code>, you should see a white box that says &ldquo;drag and drop your site folder here&rdquo;. Take the folder named <code>public</code> inside your website folder and drag it into that box. If things work right, after a few seconds you should see that your site is deployed. It will have a weird name and a URL (mine when I tried it just now was called <code>https://cranky-lamport-fff53a.netlify.com/</code>). Click on it and you will see your new website publicly online for everyone to see!</p>
+<p>If you want, you can change the name of your site under <code>Site settings</code>. More advanced (not free but also not too expensive and not that hard) is to get your domain name, e.g. <code>www.yourname.com</code> or something like that.</p>
+<p>If you want to add GitHub to the mix and have the deployment of your website automated, move on to <a href="/post/blogdown-website-2/">part 2</a> of this post.</p>
+<h1 id="more-information">More Information</h1>
+<p>This post is just to get you up and running. If you like what you see and want to keep using blogdown/Hugo, you&rsquo;ll likely need to learn more. There is a lot of good information on blogdown/Hugo/Academic available. I recommend the following:</p>
+<ul>
+<li>A short introductory course is Alison Hill&rsquo;s <a href="https://alison.rbind.io/project/summer-of-blogdown/" target="_blank" rel="noopener">summer of blogdown</a>. Alison also has several blog posts on her website discussing more advanced concepts of Hugo. A <a href="https://alison.rbind.io/post/new-year-new-blogdown/" target="_blank" rel="noopener">recent post from her</a> is very helpful and covers similar ground to what I&rsquo;m describing, though in a somewhat different order.</li>
+<li>A lot of details and further information can be found in <a href="https://bookdown.org/yihui/blogdown/" target="_blank" rel="noopener">the blogdown book</a>.</li>
+<li>For the Wowchemy theme, check out <a href="https://wowchemy.com/docs/" target="_blank" rel="noopener">the docs for the theme</a>. While they could be improved and at times a bit confusing, they are still a good source of information.</li>
+</ul>
+<p>Further information and tutorials can easily be found with some online searching. Let me know if you find any especially helpful ones and I&rsquo;ll add them here.</p>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/r/">R</a>
+  
+  <a class="badge badge-light" href="/tag/blogdown/">blogdown</a>
+  
+  <a class="badge badge-light" href="/tag/hugo/">hugo</a>
+  
+  <a class="badge badge-light" href="/tag/wowchemy/">wowchemy</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://www.andreashandel.com/posts/blogdown-website-1/&amp;text=Creating%20a%20website%20in%20less%20than%201%20hour%20-%20part%201" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://www.andreashandel.com/posts/blogdown-website-1/&amp;t=Creating%20a%20website%20in%20less%20than%201%20hour%20-%20part%201" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Creating%20a%20website%20in%20less%20than%201%20hour%20-%20part%201&amp;body=https://www.andreashandel.com/posts/blogdown-website-1/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://www.andreashandel.com/posts/blogdown-website-1/&amp;title=Creating%20a%20website%20in%20less%20than%201%20hour%20-%20part%201" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Creating%20a%20website%20in%20less%20than%201%20hour%20-%20part%201%20https://www.andreashandel.com/posts/blogdown-website-1/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://www.andreashandel.com/posts/blogdown-website-1/&amp;title=Creating%20a%20website%20in%20less%20than%201%20hour%20-%20part%201" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://www.andreashandel.com/"><img class="avatar mr-3 avatar-circle" src="/author/andreashandel/avatar_hu55f54e78a4232ec20a6487b1ce16fd22_418898_270x270_fill_q75_lanczos_center.jpg" alt="andreashandel"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://www.andreashandel.com/">andreashandel</a></h5>
+      <h6 class="card-subtitle">Professor</h6>
+      <p class="card-text">Data analysis and modeling with a focus on infectious diseases.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.andreashandel.com" target="_blank" rel="noopener">
+        <i class="fas fa-globe"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/andreashandel" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/andreashandel" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/andreashandel/" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.com/citations?user=bruHK0YAAAAJ&amp;hl=en" target="_blank" rel="noopener">
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://impactstory.org/u/0000-0002-4622-1146" target="_blank" rel="noopener">
+        <i class="ai ai-impactstory"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://orcid.org/0000-0002-4622-1146" target="_blank" rel="noopener">
+        <i class="ai ai-orcid"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+<script src="https://utteranc.es/client.js"
+        repo="andreashandel/andreashandelwebsite"
+        issue-term="pathname"
+        label="comments"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+  
+  <p class="powered-by">
+    <a href="/license/">LICENSE: CC-BY-NC-SA <br> <i class="fab fa-creative-commons fa-2x"></i><i class="fab fa-creative-commons-by fa-2x"></i><i class="fab fa-creative-commons-sa fa-2x"></i><i class="fab fa-creative-commons-nc fa-2x"></i> </a><br>
+  </p>
+  
+
+  <p class="powered-by">
+    ©  Andreas Handel, 2021 &middot; 
+
+    Created with <a href="https://github.com/rstudio/blogdown" target="_blank" rel="noopener">blogdown</a>, and the
+    <a href="https://wowchemy.com/" target="_blank" rel="noopener">Wowchemy theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>. <br>
+	Lot's of inspiration and code snippets taken from <a href="https://alison.rbind.io/" target="_blank" rel="noopener">Alison Hill's website</a>. <a href="https://github.com/andreashandel/andreashandelwebsite" target="_blank" rel="noopener">GitHub repo.</a> 
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/python.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    <script src="/js/bootstrap.bundle.min.6aed84840afc03ab4d5750157f69c120.js"></script>
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.8859d3cf6e5d748215fea2814e2e9c7f.js"></script>
+
+    
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+
+
+</body>
+</html>

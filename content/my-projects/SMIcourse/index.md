@@ -3,13 +3,14 @@
 title = "Simulation Modeling in Immunology"
 
 # Date this page was created.
-date = 2020-06-15
+date = 2020-10-01
 
 # Project summary to display on homepage.
-summary = "Complete materials of an online workshop on simulation modeling in immunology."
+summary = "Materials of an online course on simulation modeling in immunology."
 
 # Tags: can be used for filtering projects.
 tags = ["Modeling", "Immunology", "Teaching", "Course"]
+categories = ["Course"]
 
 # Custom links (optional).
 #   Uncomment line below to enable. For multiple links, use the form `[{...}, {...}, {...}]`.

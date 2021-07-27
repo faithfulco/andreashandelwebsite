@@ -3,7 +3,7 @@
 title = "COVID-19 tracker"
 
 # Date this page was created.
-date = 2020-03-01
+date = 2012-03-01
 
 # Project summary to display on homepage.
 summary = "An R/Shiny app that visualizes COVID-19 data."

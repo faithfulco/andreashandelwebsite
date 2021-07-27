@@ -1,15 +1,16 @@
 +++
 # Project title.
-title = "Modern Applied Data Analysis Course"
+title = "Modern Applied Data Analysis"
 
 # Date this page was created.
-date = 2019-01-15
+date = 2020-09-01
 
 # Project summary to display on homepage.
 summary = "Complete materials of an online course on Modern Applied Data Analysis I teach."
 
 # Tags: can be used for filtering projects.
 tags = ["Data Analysis", "Teaching", "Course"]
+categories = ["Course"]
 
 # Custom links (optional).
 #   Uncomment line below to enable. For multiple links, use the form `[{...}, {...}, {...}]`.

@@ -3,13 +3,14 @@
 title = "Infectious Disease Epidemiology - a Model-based Approach"
 
 # Date this page was created.
-date = 2018-07-15
+date = 2020-12-01
 
 # Project summary to display on homepage.
 summary = "An online book (perpetually under construction) covering infectious disease epidemiology from a model-based perspective."
 
 # Tags: can be used for filtering projects.
 tags = ["Infectious Disease", "Epidemiology", "Modeling", "Teaching", "Book"]
+categories = ["Book"]
 
 # Custom links (optional).
 #   Uncomment line below to enable. For multiple links, use the form `[{...}, {...}, {...}]`.
