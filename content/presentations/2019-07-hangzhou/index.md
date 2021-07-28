@@ -30,7 +30,9 @@ image:
 math: true
 
 categories:
-- talk
+- Presentation
+- teaching
+- Infectious disease modeling
 
 tags:
 - teaching

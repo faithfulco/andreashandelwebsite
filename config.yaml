@@ -38,7 +38,8 @@ enableRobotsTXT: true
 footnotereturnlinkcontents: <sup>^</sup>
 ignoreFiles: [\.ipynb$, .ipynb_checkpoints$, \.Rmd$, \.Rmarkdown$, _cache$, "\\.knit\\.md$", "\\.utf8\\.md$"]
 permalinks:
-  event: '/talk/:slug/'
+  event: '/presentations/:slug/'
+  post: '/posts/:slug/'
   authors: '/author/:slug/'
   tags: '/tag/:slug/'
   categories: '/category/:slug/'
@@ -57,6 +58,7 @@ taxonomies:
   category: categories
   publication_type: publication_types
   author: authors
+  post: posts
 related:
   threshold: 80
   includeNewer: true

@@ -28,7 +28,7 @@ _Update 2021-03-01: Hugo and the Academic (now Wowchemy) theme keep changing rap
 
 The following are step-by-step instructions for creating your own website using [blogdown](https://bookdown.org/yihui/blogdown/), [Hugo](https://gohugo.io/) and [Netlify](https://www.netlify.com/).
 
-In [part 2](/post/blogdown-website-2/), you will learn how to add [GitHub](https://GitHub.com) to your workflow to make things even more automated and efficient.
+In [part 2](/posts/blogdown-website-2/), you will learn how to add [GitHub](https://GitHub.com) to your workflow to make things even more automated and efficient.
 
 
 # Required skills
