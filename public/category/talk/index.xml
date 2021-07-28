@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>talk | Andreas Handel</title>
+    <link>https://www.andreashandel.com/category/talk/</link>
+      <atom:link href="https://www.andreashandel.com/category/talk/index.xml" rel="self" type="application/rss+xml" />
+    <description>talk</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Wed, 23 Oct 2019 17:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://www.andreashandel.com/media/logo_hu5aa01ef3f5a2b4ecf2f7517df7c485bf_90212_300x300_fit_lanczos_3.png</url>
+      <title>talk</title>
+      <link>https://www.andreashandel.com/category/talk/</link>
+    </image>
+    
+    <item>
+      <title>Model-based optimization of vaccine inoculum dose</title>
+      <link>https://www.andreashandel.com/presentations/2019-10-paris/</link>
+      <pubDate>Wed, 23 Oct 2019 17:00:00 +0000</pubDate>
+      <guid>https://www.andreashandel.com/presentations/2019-10-paris/</guid>
+      <description>&lt;p&gt;We described some of our past and ongoing work in using a combination of models and data to understand the role of inoculum dose on vaccination and infection outcomes. The &lt;a href=&#34;https://www.andreashandel.com/presentations/2019_10_Paris_Slides.pdf&#34;&gt;presentation slides (as pdf) are here&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Introduction to within-host modeling</title>
+      <link>https://www.andreashandel.com/presentations/2019-07-sismid/</link>
+      <pubDate>Wed, 17 Jul 2019 00:00:00 +0000</pubDate>
+      <guid>https://www.andreashandel.com/presentations/2019-07-sismid/</guid>
+      <description>&lt;h1 id=&#34;preparation&#34;&gt;Preparation&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Install R and (optional) Rstudio.&lt;/li&gt;
+&lt;li&gt;Install the DSAIRM R package and take a brief look. &lt;a href=&#34;https://ahgroup.github.io/DSAIRM/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;This website provides instructions.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;outline&#34;&gt;Outline&lt;/h1&gt;
+&lt;p&gt;I cover the following topics in this workshop (my co-teacher Paul Thomas covers the immunology part):&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Introduction to modeling&lt;/li&gt;
+&lt;li&gt;Some example models&lt;/li&gt;
+&lt;li&gt;How to use simulation models&lt;/li&gt;
+&lt;li&gt;Sources of uncertainty&lt;/li&gt;
+&lt;li&gt;Types of models&lt;/li&gt;
+&lt;li&gt;How to build (good) models&lt;/li&gt;
+&lt;li&gt;How to assess modeling studies&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;presentation-slides&#34;&gt;Presentation Slides&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.andreashandel.com/presentations/2019SISMID_Slides.zip&#34;&gt;All pdf slides as zip file&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

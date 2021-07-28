@@ -1,0 +1,1635 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Analysis | Andreas Handel</title>
+    <link>https://www.andreashandel.com/tag/data-analysis/</link>
+      <atom:link href="https://www.andreashandel.com/tag/data-analysis/index.xml" rel="self" type="application/rss+xml" />
+    <description>Data Analysis</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Tue, 01 Sep 2020 00:00:00 -0400</lastBuildDate>
+    <image>
+      <url>https://www.andreashandel.com/media/logo_hu5aa01ef3f5a2b4ecf2f7517df7c485bf_90212_300x300_fit_lanczos_3.png</url>
+      <title>Data Analysis</title>
+      <link>https://www.andreashandel.com/tag/data-analysis/</link>
+    </image>
+    
+    <item>
+      <title>Modern Applied Data Analysis</title>
+      <link>https://www.andreashandel.com/my-projects/madacourse/</link>
+      <pubDate>Tue, 01 Sep 2020 00:00:00 -0400</pubDate>
+      <guid>https://www.andreashandel.com/my-projects/madacourse/</guid>
+      <description>&lt;p&gt;Modern Applied Data Analysis (MADA) is a course I regularly teach online. All course materials are available in the form of a simple GitHub website and can be used by anyone for self-learning. You can find the course &lt;a href=&#34;https://andreashandel.github.io/MADAcourse/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on this site&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Using R to analyze publications - part 2</title>
+      <link>https://www.andreashandel.com/posts/publications-analysis-2/</link>
+      <pubDate>Sun, 02 Feb 2020 00:00:00 +0000</pubDate>
+      <guid>https://www.andreashandel.com/posts/publications-analysis-2/</guid>
+      <description>&lt;h1 id=&#34;overview&#34;&gt;Overview&lt;/h1&gt;
+&lt;p&gt;I needed some information on all my publications for &amp;ldquo;bean counting&amp;rdquo; purposes related to preparing my promotion materials. In the past, I also needed similar information for NSF grant applications.&lt;/p&gt;
+&lt;p&gt;Instead of doing things by hand, there are nicer/faster ways using R. in &lt;a href=&#34;https://www.andreashandel.com/posts/publications-analysis-1/&#34;&gt;part 1&lt;/a&gt;, I did a few things using the &lt;code&gt;scholar&lt;/code&gt; package. 
+While some parts worked nicely, I encountered 2 problems. First, since my Google Scholar record lists items other than peer-reviewed journal articles, they show up in the analysis and need to be cleaned out. Second, Google Scholar doesn&amp;rsquo;t like automated queries through the API and is quick to block, at which point things don&amp;rsquo;t work anymore.&lt;/p&gt;
+&lt;p&gt;To get around these issues, I decided to give a different R package a try, namely &lt;a href=&#34;https://www.bibliometrix.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;bibliometrix&lt;/code&gt;&lt;/a&gt;. The workflow is somewhat different.&lt;/p&gt;
+&lt;p&gt;The RMarkdown file to run this analysis &lt;a href=&#34;https://www.andreashandel.com/post/2020-02-02-publications-analysis-2/index.Rmarkdown&#34;&gt;is here&lt;/a&gt;.&lt;/p&gt;
+&lt;h1 id=&#34;required-packages&#34;&gt;Required packages&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(dplyr)
+library(knitr)
+library(bibliometrix)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;loading-data&#34;&gt;Loading data&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Old:&lt;/strong&gt; I keep all references to my published papers in a BibTeX file, managed through Zotero/Jabref. I know this file is clean and correct. I&amp;rsquo;m loading it here for processing. If you don&amp;rsquo;t have such a file, make one using your favorite reference manager. Or create it through a saved search on a bibliographic database, as explained on the &lt;a href=&#34;https://www.bibliometrix.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;bibliometrix website&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;New:&lt;/strong&gt; In the current version of &lt;code&gt;bibliometrix&lt;/code&gt;, reading in my bibtex file failed. A fairly good alternative is to go to your NIH &amp;ldquo;My Bibliography&amp;rdquo; (which anyone with NIH funding needs to have anyway) and export it in MEDLINE format. Then read in the file with the code below. As of the time of writing this, it requires the Github version of &lt;code&gt;bibliometrix&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;#read bib file, turn file of references into data frame
+pubs &amp;lt;- bibliometrix::convert2df(&amp;quot;medline.txt&amp;quot;, dbsource=&amp;quot;pubmed&amp;quot;,format=&amp;quot;pubmed&amp;quot;) 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Converting your pubmed collection into a bibliographic dataframe
+## 
+## Done!
+## 
+## 
+## Generating affiliation field tag AU_UN from C1:  Done!
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Each row of the data frame created by the &lt;code&gt;convert2df&lt;/code&gt; function is a publication, the columns contain information for each publication. 
+For a list of what each column variable codes for, see the &lt;a href=&#34;https://www.bibliometrix.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;bibliometrix documentation&lt;/a&gt;.&lt;/p&gt;
+&lt;h1 id=&#34;analyzing-2-time-periods&#34;&gt;Analyzing 2 time periods&lt;/h1&gt;
+&lt;p&gt;For my purpose, I want to analyze 2 different time periods and compare them.
+Therefore, I split the data frame containing publications, then run the analysis on each.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;#get all pubs for an author (or multiple)
+period_1_start = 2009
+period_2_start = 2015
+#here I want to separately look at publications in the 2 time periods I defined above
+pubs_old &amp;lt;- data.frame(pubs) %&amp;gt;% dplyr::filter((PY&amp;gt;=period_1_start &amp;amp; PY&amp;lt;period_2_start ))
+pubs_new &amp;lt;- data.frame(pubs) %&amp;gt;% dplyr::filter(PY&amp;gt;=period_2_start)
+res_old &amp;lt;- bibliometrix::biblioAnalysis(pubs_old, sep = &amp;quot;;&amp;quot;) #perform analysis
+res_new &amp;lt;- bibliometrix::biblioAnalysis(pubs_new, sep = &amp;quot;;&amp;quot;) #perform analysis
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;general-information&#34;&gt;General information&lt;/h1&gt;
+&lt;p&gt;The &lt;code&gt;summary&lt;/code&gt; functions provide a lot of information in a fairly readable format. I apply them here to both time periods so I can compare.&lt;/p&gt;
+&lt;p&gt;Time period 1&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;summary(res_old, k = 10)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## 
+## MAIN INFORMATION ABOUT DATA
+## 
+##  Timespan                              2009 : 2014 
+##  Sources (Journals, Books, etc)        12 
+##  Documents                             19 
+##  Average years from publication        9.32 
+##  Average citations per documents       0 
+##  Average citations per year per doc    0 
+##  References                            1 
+##  
+## DOCUMENT TYPES                     
+##  clinical trial;journal article;research support, non-u.s. gov&#39;t                                               1 
+##  comparative study;journal article;research support, n.i.h., extramural;research support, non-u.s. gov&#39;t                                               1 
+##  journal article                                               2 
+##  journal article;research support, n.i.h., extramural                                               5 
+##  journal article;research support, n.i.h., extramural;research support, non-u.s. gov&#39;t                                               3 
+##  journal article;research support, n.i.h., extramural;research support, non-u.s. gov&#39;t;research support, u.s. gov&#39;t, non-p.h.s.                               1 
+##  journal article;research support, n.i.h., extramural;research support, non-u.s. gov&#39;t;research support, u.s. gov&#39;t, non-p.h.s.;review;systematic review      1 
+##  journal article;research support, non-u.s. gov&#39;t                                               3 
+##  journal article;research support, non-u.s. gov&#39;t;research support, u.s. gov&#39;t, non-p.h.s.;research support, u.s. gov&#39;t, p.h.s.                               1 
+##  journal article;review                                               1 
+##  
+## DOCUMENT CONTENTS
+##  Keywords Plus (ID)                    148 
+##  Author&#39;s Keywords (DE)                148 
+##  
+## AUTHORS
+##  Authors                               45 
+##  Author Appearances                    80 
+##  Authors of single-authored documents  0 
+##  Authors of multi-authored documents   45 
+##  
+## AUTHORS COLLABORATION
+##  Single-authored documents             0 
+##  Documents per Author                  0.422 
+##  Authors per Document                  2.37 
+##  Co-Authors per Documents              4.21 
+##  Collaboration Index                   2.37 
+##  
+## 
+## Annual Scientific Production
+## 
+##  Year    Articles
+##     2009        5
+##     2010        2
+##     2011        1
+##     2012        3
+##     2013        2
+##     2014        6
+## 
+## Annual Percentage Growth Rate 3.713729 
+## 
+## 
+## Most Productive Authors
+## 
+##    Authors        Articles Authors        Articles Fractionalized
+## 1   HANDEL A            19  HANDEL A                         5.55
+## 2   ANTIA R              6  ANTIA R                          1.78
+## 3   DOHERTY PC           3  LONGINI IM JR                    1.00
+## 4   LA GRUTA NL          3  DOHERTY PC                       0.56
+## 5   LONGINI IM JR        3  LA GRUTA NL                      0.56
+## 6   THOMAS PG            3  THOMAS PG                        0.56
+## 7   PILYUGIN SS          2  BEAUCHEMIN CA                    0.50
+## 8   ROHANI P             2  LI Y                             0.50
+## 9   STALLKNECHT D        2  ROHANI P                         0.50
+## 10  TURNER SJ            2  ROZEN DE                         0.50
+## 
+## 
+## Top manuscripts per citations
+## 
+##                               Paper                                   DOI TC TCperYear NTC
+## 1  ZHENG N, 2014, PLOS ONE                   10.1371/JOURNAL.PONE.0105721  0         0 NaN
+## 2  HANDEL A, 2014, PROC BIOL SCI             10.1098/RSPB.2013.3051        0         0 NaN
+## 3  NGUYEN TH, 2014, J IMMUNOL                10.4049/JIMMUNOL.1303147      0         0 NaN
+## 4  LI Y, 2014, J THEOR BIOL                  10.1016/J.JTBI.2014.01.008    0         0 NaN
+## 5  HANDEL A, 2014, J R SOC INTERFACE         10.1098/RSIF.2013.1083        0         0 NaN
+## 6  CUKALAC T, 2014, PROC NATL ACAD SCI U S A 10.1073/PNAS.1323736111       0         0 NaN
+## 7  HANDEL A, 2013, PLOS COMPUT BIOL          10.1371/JOURNAL.PCBI.1002989  0         0 NaN
+## 8  THOMAS PG, 2013, PROC NATL ACAD SCI U S A 10.1073/PNAS.1222149110       0         0 NaN
+## 9  JACKWOOD MW, 2012, INFECT GENET EVOL      10.1016/J.MEEGID.2012.05.003  0         0 NaN
+## 10 DESAI R, 2012, CLIN INFECT DIS            10.1093/CID/CIS372            0         0 NaN
+## 
+## 
+## Corresponding Author&#39;s Countries
+## 
+##     Country Articles   Freq SCP MCP MCP_Ratio
+## 1 USA             14 0.7778  11   3     0.214
+## 2 AUSTRALIA        3 0.1667   2   1     0.333
+## 3 CANADA           1 0.0556   1   0     0.000
+## 
+## 
+## SCP: Single Country Publications
+## 
+## MCP: Multiple Country Publications
+## 
+## 
+## Total Citations per Country
+## 
+##   Country      Total Citations Average Article Citations
+## 1    AUSTRALIA               0                         0
+## 2    CANADA                  0                         0
+## 3    USA                     0                         0
+## 
+## 
+## Most Relevant Sources
+## 
+##                                                                                                           Sources       
+## 1  JOURNAL OF THE ROYAL SOCIETY INTERFACE                                                                               
+## 2  JOURNAL OF THEORETICAL BIOLOGY                                                                                       
+## 3  JOURNAL OF IMMUNOLOGY (BALTIMORE MD. : 1950)                                                                         
+## 4  PLOS ONE                                                                                                             
+## 5  PROCEEDINGS OF THE NATIONAL ACADEMY OF SCIENCES OF THE UNITED STATES OF AMERICA                                      
+## 6  BMC EVOLUTIONARY BIOLOGY                                                                                             
+## 7  BMC PUBLIC HEALTH                                                                                                    
+## 8  CLINICAL INFECTIOUS DISEASES : AN OFFICIAL PUBLICATION OF THE INFECTIOUS DISEASES SOCIETY OF AMERICA                 
+## 9  EPIDEMICS                                                                                                            
+## 10 INFECTION GENETICS AND EVOLUTION : JOURNAL OF MOLECULAR EPIDEMIOLOGY AND EVOLUTIONARY GENETICS IN INFECTIOUS DISEASES
+##    Articles
+## 1         3
+## 2         3
+## 3         2
+## 4         2
+## 5         2
+## 6         1
+## 7         1
+## 8         1
+## 9         1
+## 10        1
+## 
+## 
+## Most Relevant Keywords
+## 
+##    Author Keywords (DE)      Articles Keywords-Plus (ID)     Articles
+## 1       HUMANS                     13   HUMANS                     13
+## 2       MODELS BIOLOGICAL           8   MODELS BIOLOGICAL           8
+## 3       ANIMALS                     7   ANIMALS                     7
+## 4       COMPUTER SIMULATION         5   COMPUTER SIMULATION         5
+## 5       BIOLOGICAL EVOLUTION        4   BIOLOGICAL EVOLUTION        4
+## 6       MODELS IMMUNOLOGICAL        4   MODELS IMMUNOLOGICAL        4
+## 7       FEMALE                      3   FEMALE                      3
+## 8       MICE                        3   MICE                        3
+## 9       MUTATION                    3   MUTATION                    3
+## 10      AMINO ACID SEQUENCE         2   AMINO ACID SEQUENCE         2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Time period 2&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;summary(res_new, k = 10)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## 
+## MAIN INFORMATION ABOUT DATA
+## 
+##  Timespan                              2015 : 2020 
+##  Sources (Journals, Books, etc)        22 
+##  Documents                             29 
+##  Average years from publication        3.72 
+##  Average citations per documents       0 
+##  Average citations per year per doc    0 
+##  References                            1 
+##  
+## DOCUMENT TYPES                     
+##  comparative study;journal article;research support, n.i.h., extramural;research support, non-u.s. gov&#39;t                             1 
+##  journal article                                               7 
+##  journal article;multicenter study;research support, n.i.h., extramural                                               1 
+##  journal article;research support, n.i.h., extramural                                               5 
+##  journal article;research support, n.i.h., extramural;research support, non-u.s. gov&#39;t                                               5 
+##  journal article;research support, n.i.h., extramural;research support, non-u.s. gov&#39;t;review                                        1 
+##  journal article;research support, n.i.h., extramural;research support, u.s. gov&#39;t, non-p.h.s.                                       1 
+##  journal article;research support, n.i.h., extramural;research support, u.s. gov&#39;t, non-p.h.s.;review                                1 
+##  journal article;research support, non-u.s. gov&#39;t                                               4 
+##  journal article;research support, non-u.s. gov&#39;t;research support, n.i.h., extramural                                               1 
+##  journal article;research support, non-u.s. gov&#39;t;research support, u.s. gov&#39;t, non-p.h.s.;research support, n.i.h., extramural      1 
+##  letter                                               1 
+##  
+## DOCUMENT CONTENTS
+##  Keywords Plus (ID)                    198 
+##  Author&#39;s Keywords (DE)                198 
+##  
+## AUTHORS
+##  Authors                               209 
+##  Author Appearances                    332 
+##  Authors of single-authored documents  1 
+##  Authors of multi-authored documents   208 
+##  
+## AUTHORS COLLABORATION
+##  Single-authored documents             1 
+##  Documents per Author                  0.139 
+##  Authors per Document                  7.21 
+##  Co-Authors per Documents              11.4 
+##  Collaboration Index                   7.43 
+##  
+## 
+## Annual Scientific Production
+## 
+##  Year    Articles
+##     2015        5
+##     2016        7
+##     2017        3
+##     2018        6
+##     2019        5
+##     2020        3
+## 
+## Annual Percentage Growth Rate -9.711955 
+## 
+## 
+## Most Productive Authors
+## 
+##    Authors        Articles Authors        Articles Fractionalized
+## 1     HANDEL A          29    HANDEL A                      5.494
+## 2     WHALEN CC          7    ANTIA R                       0.810
+## 3     ANTIA R            5    SHEN Y                        0.723
+## 4     MARTINEZ L         5    WHALEN CC                     0.651
+## 5     SHEN Y             5    MCKAY B                       0.629
+## 6     LA GRUTA NL        4    EBELL MH                      0.571
+## 7     MCKAY B            4    THOMAS PG                     0.571
+## 8     THOMAS PG          4    LA GRUTA NL                   0.540
+## 9     ZALWANGO S         4    ROHANI P                      0.500
+## 10    DENHOLM JT         3    MARTINEZ L                    0.485
+## 
+## 
+## Top manuscripts per citations
+## 
+##                                                       Paper                                    DOI TC TCperYear NTC
+## 1  MCKAY B, 2020, PROC BIOL SCI                                      10.1098/RSPB.2020.0496         0         0 NaN
+## 2  MOORE JR, 2020, BULL MATH BIOL                                    10.1007/S11538-020-00711-4     0         0 NaN
+## 3  HANDEL A, 2020, NAT REV IMMUNOL                                   10.1038/S41577-019-0235-3      0         0 NaN
+## 4  MARTINEZ L, 2019, J INFECT DIS                                    10.1093/INFDIS/JIZ328          0         0 NaN
+## 5  WU T, 2019, NAT COMMUN                                            10.1038/S41467-019-10661-8     0         0 NaN
+## 6  MCKAY B, 2019, PLOS ONE                                           10.1371/JOURNAL.PONE.0217219   0         0 NaN
+## 7  DALE AP, 2019, J AM BOARD FAM MED SOCIOLOGICAL METHODS &amp;amp; RESEARCH 10.3122/JABFM.2019.02.180183   0         0 NaN
+## 8  WOLDU H, 2019, J APPL STAT                                        10.1080/02664763.2018.1470231  0         0 NaN
+## 9  HANDEL A, 2018, PLOS COMPUT BIOL                                  10.1371/JOURNAL.PCBI.1006505   0         0 NaN
+## 10 CASTELLANOS ME, 2018, INT J TUBERC LUNG DIS                       10.5588/IJTLD.18.0073          0         0 NaN
+## 
+## 
+## Corresponding Author&#39;s Countries
+## 
+##     Country Articles  Freq SCP MCP MCP_Ratio
+## 1 USA             16 0.696   7   9     0.562
+## 2 AUSTRALIA        5 0.217   1   4     0.800
+## 3 GEORGIA          2 0.087   0   2     1.000
+## 
+## 
+## SCP: Single Country Publications
+## 
+## MCP: Multiple Country Publications
+## 
+## 
+## Total Citations per Country
+## 
+##   Country      Total Citations Average Article Citations
+## 1    AUSTRALIA               0                         0
+## 2    GEORGIA                 0                         0
+## 3    USA                     0                         0
+## 
+## 
+## Most Relevant Sources
+## 
+##                                                                                                                                        Sources       
+## 1  PLOS ONE                                                                                                                                          
+## 2  PLOS COMPUTATIONAL BIOLOGY                                                                                                                        
+## 3  THE INTERNATIONAL JOURNAL OF TUBERCULOSIS AND LUNG DISEASE : THE OFFICIAL JOURNAL OF THE INTERNATIONAL UNION AGAINST TUBERCULOSIS AND LUNG DISEASE
+## 4  THE LANCET. GLOBAL HEALTH                                                                                                                         
+## 5  THE LANCET. RESPIRATORY MEDICINE                                                                                                                  
+## 6  AMERICAN JOURNAL OF RESPIRATORY AND CRITICAL CARE MEDICINE                                                                                        
+## 7  BMC INFECTIOUS DISEASES                                                                                                                           
+## 8  BULLETIN OF MATHEMATICAL BIOLOGY                                                                                                                  
+## 9  ELIFE                                                                                                                                             
+## 10 EPIDEMICS                                                                                                                                         
+##    Articles
+## 1         4
+## 2         2
+## 3         2
+## 4         2
+## 5         2
+## 6         1
+## 7         1
+## 8         1
+## 9         1
+## 10        1
+## 
+## 
+## Most Relevant Keywords
+## 
+##           Author Keywords (DE)      Articles           Keywords-Plus (ID)     Articles
+## 1  HUMANS                                 23 HUMANS                                 23
+## 2  ANIMALS                                 8 ANIMALS                                 8
+## 3  FEMALE                                  7 FEMALE                                  7
+## 4  MALE                                    7 MALE                                    7
+## 5  MICE                                    6 MICE                                    6
+## 6  ADULT                                   5 ADULT                                   5
+## 7  CHILD                                   5 CHILD                                   5
+## 8  ADOLESCENT                              4 ADOLESCENT                              4
+## 9  ANTIVIRAL AGENTS/THERAPEUTIC USE        4 ANTIVIRAL AGENTS/THERAPEUTIC USE        4
+## 10 CHILD PRESCHOOL                         4 CHILD PRESCHOOL                         4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Note that some values are reported as NA, e.g. the citations. Depending on which source you got the original data from, that information might be included or not. In my case, it is not.&lt;/p&gt;
+&lt;h1 id=&#34;getting-a-table-of-co-authors&#34;&gt;Getting a table of co-authors&lt;/h1&gt;
+&lt;p&gt;This can be useful for NSF applications. For reasons nobody understands, that agency still asks for a list of all co-authors. An insane request in the age of modern science. If one wanted to do that, the following gives a table.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; I have since created a short blog post describing how to do just that part in a bit more detail. It has a few additional components that might be useful, if interested &lt;a href=&#34;https://www.andreashandel.com/posts/conflict-of-interest-form/&#34;&gt;check it out here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Here is the full table of my co-authors in the first period dataset.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;#removing the 1st one since that&#39;s me
+authortable = data.frame(res_old$Authors[-1])
+colnames(authortable) = c(&#39;Co-author name&#39;, &#39;Number of publications&#39;)
+knitr::kable(authortable)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Co-author name&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Number of publications&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;ANTIA R&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;6&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;DOHERTY PC&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;LA GRUTA NL&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;LONGINI IM JR&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;THOMAS PG&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PILYUGIN SS&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;ROHANI P&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;STALLKNECHT D&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;TURNER SJ&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;AKIN V&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;BEAUCHEMIN CA&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;BIRD NL&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;BROWN J&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;CHADDERTON J&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;CUKALAC T&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;DESAI R&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;DICKEY BW&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;FUNG IC&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;HALL AJ&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;HALL D&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;HEMBREE CD&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;JACKWOOD MW&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;KEDZIERSKA K&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;KJER-NIELSEN L&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;KOTSIMBOS TC&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;LEBARBENCHON C&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;LEON JS&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;LEVIN BR&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;LI Y&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;LOPMAN B&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;MARGOLIS E&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;MATTHEWS JE&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;MCDONALD S&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;MIFSUD NA&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;MOFFAT JM&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;NGUYEN TH&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PARASHAR UD&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PELLICCI DG&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;ROWNTREE LC&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;ROZEN DE&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;WHALEN CC&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;YATES A&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;ZARNITSYNA V&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;ZHENG N&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Since I have many more co-authors in the second period, I&amp;rsquo;m not printing a table with all, instead I&amp;rsquo;m just doing those with whom I have more than 2 joint publications.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;#removing the 1st one since that&#39;s me
+authortable = data.frame(res_new$Authors[-1])
+authortable &amp;lt;- authortable %&amp;gt;% dplyr::filter(Freq&amp;gt;2)
+colnames(authortable) = c(&#39;Co-author name&#39;, &#39;Number of publications&#39;)
+knitr::kable(authortable)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Co-author name&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Number of publications&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;WHALEN CC&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;ANTIA R&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;MARTINEZ L&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;SHEN Y&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;LA GRUTA NL&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;MCKAY B&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;THOMAS PG&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;ZALWANGO S&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;DENHOLM JT&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;EBELL M&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;MCBRYDE ES&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;SUMNER T&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;TRAUER JM&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;making-a-table-of-journals&#34;&gt;Making a table of journals&lt;/h1&gt;
+&lt;p&gt;It can be useful to get a list of all journals in which you published. I&amp;rsquo;m doing this here for the second time period. With just the &lt;code&gt;bibliometrix&lt;/code&gt; package, I can get a list of publications and how often I have published in each.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;journaltable = data.frame(res_new$Sources)
+#knitr::kable(journaltable) #uncomment this to print the table
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It might also be nice to get some journal metrics, such as impact factors. While this is possible with the &lt;code&gt;scholar&lt;/code&gt; package, the &lt;code&gt;bibliometrix&lt;/code&gt; package doesn&amp;rsquo;t have it.&lt;/p&gt;
+&lt;p&gt;However, the &lt;code&gt;scholar&lt;/code&gt; package doesn&amp;rsquo;t really get that data from Google Scholar, instead it has an internal spreadsheet/table with impact factors (according to the documentation, taken - probably not fully legally - from some spreadsheet posted on ResearchGate). We can thus access those impact factors stored in the &lt;code&gt;scholar&lt;/code&gt; package without having to connect to Google Scholar. As long as the journal names stored in the &lt;code&gt;scholar&lt;/code&gt; package are close to the ones we have here, we might get matches.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(scholar)
+ifvalues = scholar::get_impactfactor(journaltable[,1], max.distance = 0.1)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The impact factor data is out-of-date and we may remove this function in future release.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;journaltable = cbind(journaltable, ifvalues$ImpactFactor)
+colnames(journaltable) = c(&#39;Journal&#39;,&#39;Number of Pubs&#39;,&#39;Impact Factor&#39;)
+knitr::kable(journaltable)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Journal&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Number of Pubs&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Impact Factor&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PLOS ONE&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2.766&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PLOS COMPUTATIONAL BIOLOGY&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;3.955&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;THE INTERNATIONAL JOURNAL OF TUBERCULOSIS AND LUNG DISEASE : THE OFFICIAL JOURNAL OF THE INTERNATIONAL UNION AGAINST TUBERCULOSIS AND LUNG DISEASE&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;NA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;THE LANCET. GLOBAL HEALTH&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;NA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;THE LANCET. RESPIRATORY MEDICINE&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;NA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;AMERICAN JOURNAL OF RESPIRATORY AND CRITICAL CARE MEDICINE&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;15.239&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;BMC INFECTIOUS DISEASES&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2.620&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;BULLETIN OF MATHEMATICAL BIOLOGY&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1.484&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;ELIFE&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.616&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;EPIDEMICS&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;3.364&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;EPIDEMIOLOGY AND INFECTION&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2.044&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;FRONTIERS IN IMMUNOLOGY&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;5.511&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;JOURNAL OF APPLIED STATISTICS&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.699&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;JOURNAL OF THE AMERICAN BOARD OF FAMILY MEDICINE : JABFM&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;NA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;NATURE&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;41.577&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;NATURE COMMUNICATIONS&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;12.353&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;NATURE REVIEWS. IMMUNOLOGY&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;41.982&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PHILOSOPHICAL TRANSACTIONS OF THE ROYAL SOCIETY OF LONDON. SERIES B BIOLOGICAL SCIENCES&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;NA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PLOS BIOLOGY&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;9.163&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PROCEEDINGS OF THE NATIONAL ACADEMY OF SCIENCES OF THE UNITED STATES OF AMERICA&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;9.504&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PROCEEDINGS. BIOLOGICAL SCIENCES&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;NA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;THE JOURNAL OF INFECTIOUS DISEASES&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;5.186&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Ok that worked somewhat. It couldn&amp;rsquo;t find several journals. The reported IF seem reasonable. But since I don&amp;rsquo;t know what year those IF are from, and if the rest is fully reliable, I would take this with a grain of salt.&lt;/p&gt;
+&lt;h1 id=&#34;discussion&#34;&gt;Discussion&lt;/h1&gt;
+&lt;p&gt;The &lt;code&gt;bibliometrix&lt;/code&gt; package doesn&amp;rsquo;t suffer from the problems that I encountered in &lt;a href=&#34;https://www.andreashandel.com/posts/publications-analysis-1/&#34;&gt;part 1&lt;/a&gt; of this post when I tried  the &lt;code&gt;scholar&lt;/code&gt; package (and Google Scholar). The downside is that I can&amp;rsquo;t get some of the information, e.g. my annual citations. So it seems there is not (yet) a comprehensive solution, and using both packages seems best.&lt;/p&gt;
+&lt;p&gt;A larger overall problem is that a lot of this information is controlled by corporations (Google, Elsevier, Clarivate Analytics, etc.), which might or might not allow R packages and individual users (who don&amp;rsquo;t subscribe to their offerings) to access certain information. As such, R packages accessing this information will need to adjust to whatever the companies allow.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Using R to analyze publications - part 1</title>
+      <link>https://www.andreashandel.com/posts/publications-analysis-1/</link>
+      <pubDate>Sat, 01 Feb 2020 00:00:00 +0000</pubDate>
+      <guid>https://www.andreashandel.com/posts/publications-analysis-1/</guid>
+      <description>&lt;h1 id=&#34;overview&#34;&gt;Overview&lt;/h1&gt;
+&lt;p&gt;I needed some information on all my publications for &amp;ldquo;bean counting&amp;rdquo; purposes related to preparing my promotion materials. In the past, I also needed similar information for NSF grant applications.&lt;/p&gt;
+&lt;p&gt;Instead of doing things by hand, there are nicer/faster ways using R. The following shows a few things one can do with the &lt;a href=&#34;https://cran.r-project.org/package=scholar&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;scholar&lt;/code&gt; package&lt;/a&gt;. I describe an alternative approach using the &lt;a href=&#34;https://www.bibliometrix.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;bibliometrix&lt;/code&gt; package&lt;/a&gt; in &lt;a href=&#34;https://www.andreashandel.com/posts/publications-analysis-2/&#34;&gt;part 2&lt;/a&gt; of this post.&lt;/p&gt;
+&lt;p&gt;The RMarkdown file to run this analysis &lt;a href=&#34;https://www.andreashandel.com/post/2020-02-01-publications-analysis-1/index.Rmarkdown&#34;&gt;is here&lt;/a&gt;.&lt;/p&gt;
+&lt;h1 id=&#34;notes&#34;&gt;Notes&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;As of this writing, the &lt;code&gt;scholar&lt;/code&gt; R package seems semi-dormant and not under active development. If Google changes their API for Scholar and the package isn&amp;rsquo;t updated, the below code might stop working.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A problem I keep encountering with Google Scholar is that it starts blocking requests, even after what I consider are not that many attempts to retrieve data. I notice that when I try to pull references from Google Scholar using &lt;code&gt;JabRef&lt;/code&gt; and also with the code below. If that happens to you, try a different computer, or clear cookies. This is a well known problem and if you search online, you find others complaining about it. I haven&amp;rsquo;t found a great solution yet, other than not using the Google Scholar data. I describe such an approach in &lt;a href=&#34;https://www.andreashandel.com/posts/publications-analysis-2/&#34;&gt;part 2&lt;/a&gt; of this post. However, some analyses are only able with Google Scholar information.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;To minimize chances of getting locked out by Google, I wrote the code below such that it only sends a request if there isn&amp;rsquo;t a local file already containing that data. To refresh data, delete the local files.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;required-packages&#34;&gt;Required packages&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(scholar)
+library(dplyr)
+library(tidyr)
+library(knitr)
+library(ggplot2)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;get-all-citations-for-an-individual&#34;&gt;Get all citations for an individual&lt;/h1&gt;
+&lt;p&gt;First, I&amp;rsquo;m using Google Scholar to get all citations for a specific author (in this case, myself).&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;#Define the person to analyze
+scholar_id=&amp;quot;bruHK0YAAAAJ&amp;quot; 
+#either load existing file of publications
+#or get a new one from Google Scholar
+#delete the file to force an update
+if (file.exists(&#39;citations.Rds&#39;))
+{
+  cites &amp;lt;- readRDS(&#39;citations.Rds&#39;)
+} else {
+  #get citations
+  cites &amp;lt;- scholar::get_citation_history(scholar_id) 
+  saveRDS(cites,&#39;citations.Rds&#39;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;compare-citations-for-different-time-periods&#34;&gt;Compare citations for different time periods&lt;/h1&gt;
+&lt;p&gt;For my purpose, I want to compare citations between 2 time periods (my Assistant Professor time and my Associate Professor time). I&amp;rsquo;m splitting them into 2.
+I&amp;rsquo;m doing this analysis at the beginning of 2020 and want only full years. The code snippets below give me what I need, two time periods 2009-2014 and 2014-2019.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;period_1_start = 2009
+period_2_start = 2015
+cites_1 &amp;lt;- cites %&amp;gt;% dplyr::filter((year&amp;gt;=period_1_start &amp;amp; year&amp;lt;period_2_start ))
+#remove last year since it&#39;s not a full year
+cites_2 &amp;lt;- cites %&amp;gt;% dplyr::filter((year&amp;gt;=period_2_start &amp;amp; year&amp;lt;2020 )) 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Fitting a linear model to both time segments to look at increase in citations over both periods.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;fit1=lm(cites ~ year, data = cites_1)
+fit2=lm(cites ~ year, data = cites_2)
+inc1 = fit1$coefficients[&amp;quot;year&amp;quot;]
+inc2 = fit2$coefficients[&amp;quot;year&amp;quot;] 
+print(sprintf(&#39;Annual increase for periods 1 and 2 are %f, %f&#39;,inc1,inc2))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;Annual increase for periods 1 and 2 are 22.257143, 43.100000&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Making a figure to show citation count increases&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;# combine data above into single data frame
+#add a variable to indicate period 1 and period 2
+cites_1$group = &amp;quot;1&amp;quot;
+cites_2$group = &amp;quot;2&amp;quot;
+cites_df = rbind(cites_1,cites_2)
+xlabel = cites_df$year[seq(1,nrow(cites_df),by=2)]
+#make the plot and show linear fit lines
+p1 &amp;lt;- ggplot(data = cites_df, aes(year, cites, colour=group, shape=group)) + 
+      geom_point(size = I(4)) + 
+      geom_smooth(method=&amp;quot;lm&amp;quot;,aes(group = group), se = F, size=1.5) + 
+      scale_x_continuous(name = &amp;quot;Year&amp;quot;, breaks = xlabel, labels = xlabel) +     scale_y_continuous(&amp;quot;Citations according to Google Scholar&amp;quot;) +
+      theme_bw(base_size=14) + theme(legend.position=&amp;quot;none&amp;quot;) + 
+      geom_text(aes(NULL,NULL),x=2010.8,y=150,label=&amp;quot;Average annual \n increase 22%&amp;quot;,color=&amp;quot;black&amp;quot;,size=5.5) +
+      geom_text(aes(NULL,NULL),x=2017,y=150,label=&amp;quot;Average annual \n increase 43%&amp;quot;,color=&amp;quot;black&amp;quot;,size=5.5) 
+
+#open a new graphics window
+#note that this is Windows specific. Use quartz() for MacOS
+ww=5; wh=5; 
+windows(width=ww, height=wh)					
+print(p1)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## `geom_smooth()` using formula &#39;y ~ x&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.andreashandel.com/posts/publications-analysis-1/index_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;dev.print(device=png,width=ww,height=wh,units=&amp;quot;in&amp;quot;,res=600,file=&amp;quot;citations.png&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## png 
+##   2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;getting-list-of-publications&#34;&gt;Getting list of publications&lt;/h1&gt;
+&lt;p&gt;Above I got citations, but not publications. This function retrieves all publications for a specific author and returns it as a data frame.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;#get all pubs for an author (or multiple)
+if (file.exists(&#39;publications.Rds&#39;))
+{
+  publications &amp;lt;- readRDS(&#39;publications.Rds&#39;)
+} else {
+  #get citations
+  publications &amp;lt;- scholar::get_publications(scholar_id) 
+  saveRDS(publications,&#39;publications.Rds&#39;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;quick-peek-at-publications&#34;&gt;Quick peek at publications&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;glimpse(publications)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Rows: 90
+## Columns: 8
+## $ title   &amp;lt;fct&amp;gt; &amp;quot;Severe outcomes are associated with genogroup 2 genotype 4 no~
+## $ author  &amp;lt;fct&amp;gt; &amp;quot;R Desai, CD Hembree, A Handel, JE Matthews, BW Dickey, S McDo~
+## $ journal &amp;lt;fct&amp;gt; &amp;quot;Clinical infectious diseases&amp;quot;, &amp;quot;BMC public health&amp;quot;, &amp;quot;Journal ~
+## $ number  &amp;lt;fct&amp;gt; &amp;quot;55 (2), 189-193&amp;quot;, &amp;quot;11 (S1), S7&amp;quot;, &amp;quot;7 (42), 35-47&amp;quot;, &amp;quot;3 (12)&amp;quot;, &amp;quot;~
+## $ cites   &amp;lt;dbl&amp;gt; 163, 158, 129, 124, 123, 115, 105, 89, 71, 71, 55, 53, 52, 49,~
+## $ year    &amp;lt;dbl&amp;gt; 2012, 2011, 2010, 2007, 2006, 2012, 2006, 2017, 2016, 2008, 20~
+## $ cid     &amp;lt;fct&amp;gt; 1979732925283755485, 10982184786304722425, 1038596204985444772~
+## $ pubid   &amp;lt;fct&amp;gt; 5nxA0vEk-isC, _FxGoFyzp5QC, 9yKSN-GCB0IC, d1gkVwhDpl0C, u5HHmV~
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This shows the variables obtained in the data frame. One thing I notice is that this contains more entries than I have peer-reviewed publications. Since most people&amp;rsquo;s Google Scholar profile (including my own) list items beyond peer-reviewed journal articles, one likely needs to do some manual cleaning before analysis. That is not ideal. I&amp;rsquo;ll do/show a few more possible analyses, but decided to do the analyses below using the approach &lt;a href=&#34;https://www.andreashandel.com/posts/publications-analysis-2/&#34;&gt;in part 2&lt;/a&gt;.&lt;/p&gt;
+&lt;h1 id=&#34;making-a-table-of-journals-and-impact-factors&#34;&gt;Making a table of journals and impact factors&lt;/h1&gt;
+&lt;p&gt;The &lt;code&gt;scholar&lt;/code&gt; package has a function that allows one to get impact factors for journals. This data doesn&amp;rsquo;t actually come from Google Scholar, instead the package comes with an internal spreadsheet/table with impact factors. Looking a bit into the &lt;code&gt;scholar&lt;/code&gt; package indicates that the data was taken from some spreadsheet posted on ResearchGate (probably not fully legal). Either way, let&amp;rsquo;s give it a try.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;#here I only want publications since 2015
+pub_reduced &amp;lt;- publications %&amp;gt;% dplyr::filter(year&amp;gt;2014)
+ifdata &amp;lt;- scholar::get_impactfactor(pub_reduced$journal) 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The impact factor data is out-of-date and we may remove this function in future release.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;#Google SCholar collects all kinds of &#39;publications&#39;
+#including items other than standard peer-reviewed papers
+#this sorts and removes some non-journal entries  
+iftable &amp;lt;- ifdata %&amp;gt;% dplyr::arrange(desc(ImpactFactor) ) %&amp;gt;% tidyr::drop_na()
+knitr::kable(iftable)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Journal&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Cites&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;ImpactFactor&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Eigenfactor&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;CA-A CANCER JOURNAL FOR CLINICIANS&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;28839&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;244.585&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.06603&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;NATURE REVIEWS IMMUNOLOGY&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;39215&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;41.982&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.08536&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;NATURE&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;710766&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;41.577&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1.35581&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;AMERICAN JOURNAL OF RESPIRATORY AND CRITICAL CARE MEDICINE&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;61024&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;15.239&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.08683&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Nature Communications&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;178348&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;12.353&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.92656&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PLOS BIOLOGY&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;28750&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;9.163&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.05868&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;eLife&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;25592&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.616&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.19592&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;eLife&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;25592&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7.616&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.19592&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PHILOSOPHICAL TRANSACTIONS OF THE ROYAL SOCIETY B-BIOLOGICAL SCIENCES&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;41872&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;5.666&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.07129&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Frontiers in Immunology&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;16999&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;5.511&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.06747&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;RHEUMATOLOGY&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;18744&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;5.245&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.03381&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;RHEUMATOLOGY&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;18744&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;5.245&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.03381&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PROCEEDINGS OF THE ROYAL SOCIETY B-BIOLOGICAL SCIENCES&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;51704&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;4.847&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.08756&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PROCEEDINGS OF THE ROYAL SOCIETY B-BIOLOGICAL SCIENCES&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;51704&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;4.847&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.08756&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PLoS Computational Biology&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;23758&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;3.955&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.08279&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PLoS Computational Biology&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;23758&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;3.955&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.08279&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;SOCIOLOGICAL METHODS &amp;amp; RESEARCH&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;4177&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;3.625&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.00462&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Epidemics&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;576&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;3.364&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.00241&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PATHOLOGY&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2638&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;3.068&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.00446&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PLoS One&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;582877&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2.766&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1.86235&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PLoS One&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;582877&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2.766&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1.86235&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PLoS One&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;582877&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2.766&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1.86235&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PLoS One&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;582877&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2.766&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1.86235&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PLoS One&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;582877&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2.766&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1.86235&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PLoS One&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;582877&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2.766&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1.86235&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;BMC INFECTIOUS DISEASES&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;13612&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2.620&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.04109&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;BMC IMMUNOLOGY&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1784&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2.615&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.00321&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;NEPHROLOGY&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;3115&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2.178&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.00605&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;BULLETIN OF MATHEMATICAL BIOLOGY&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;3736&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1.484&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.00447&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;JAPANESE JOURNAL OF INFECTIOUS DISEASES&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1722&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1.014&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.00242&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;COMPUTATIONAL STATISTICS&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;958&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.828&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.00337&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;JOURNAL OF APPLIED STATISTICS&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2352&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.699&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.00379&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;OK so this doesn&amp;rsquo;t quite work. I know for instance that I didn&amp;rsquo;t publish anything in &lt;em&gt;Cancer Journal for Clinicians&lt;/em&gt; and the 2 &lt;em&gt;Rheumatology&lt;/em&gt; entries are workshop presentations. Oddly, when I look at &lt;code&gt;publications$journal&lt;/code&gt; there is no Cancer Journal listed. Somehow this is a bug created by the &lt;code&gt;get_impactfactor()&lt;/code&gt; function. I could fix that by hand. The bigger problem is what to do with all those publications that are not peer-reviewed papers. I could remove them from my Google scholar profile. But I kind of want to keep them there since some of them link to useful stuff. I could alternatively manually clean things at this step. This somewhat defeats the purpose of automation.&lt;/p&gt;
+&lt;h1 id=&#34;getting-list-of-co-authors&#34;&gt;Getting list of co-authors&lt;/h1&gt;
+&lt;p&gt;Another useful piece of information to have, e.g. for NSF grants, is a table with all co-authors.
+Unfortunately, &lt;code&gt;get_publications()&lt;/code&gt; only pulls from the main Google Scholar page, which cuts off the author list. To get all authors, one needs to run through each paper using &lt;code&gt;get_complete_authors()&lt;/code&gt;. 
+The problem is that Google cuts off access if one sends too many queries. If you get error messages, it might be that Google blocked you. See the &lt;em&gt;Notes&lt;/em&gt; section.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;allauthors = list()
+if (file.exists(&#39;allauthors.Rds&#39;))
+{
+  allauthors &amp;lt;- readRDS(&#39;allauthors.Rds&#39;)
+} else {
+  for (n in 1:nrow(publications)) 
+  {
+    allauthors[[n]] = get_complete_authors(id = scholar_id, pubid = publications[n,]$pubid)
+  }
+  saveRDS(allauthors,&#39;allauthors.Rds&#39;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Theoretically, if the above code runs without Google blocking things, I should end up with a list of all co-authors which I could then turn into a table. The problem is still that it pulls all entries on my Google Scholar profile, and not just peer-reviewed papers. With a bit of cleaning I could get what I need. But overall I don&amp;rsquo;t like this approach too much.&lt;/p&gt;
+&lt;h1 id=&#34;discussion&#34;&gt;Discussion&lt;/h1&gt;
+&lt;p&gt;While the &lt;code&gt;scholar&lt;/code&gt; package has some nice features, it has 2 major problems:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Google blocking the script if it decides too many requests are made (that can happen quickly).&lt;/li&gt;
+&lt;li&gt;Since most people&amp;rsquo;s Google Scholar profile (including my own) list items beyond peer-reviewed journal articles, one likely needs to do some manual cleaning before analysis.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I do keep all my published, peer-reviewed papers in a BibTeX bibliography file in my reference manager (I&amp;rsquo;m using Zotero and/or Jabref). I know that file is clean and only contains peer-reviewed papers. Unfortunately, the &lt;code&gt;scholar&lt;/code&gt; package can&amp;rsquo;t read in such data. In &lt;a href=&#34;https://www.andreashandel.com/posts/publications-analysis-2/&#34;&gt;part 2&lt;/a&gt; of this post series, I&amp;rsquo;ll use a different R package to produce the journal and author tables I tried making above.&lt;/p&gt;
+&lt;p&gt;The one feature only available through Google Scholar is the citation record and the analysis I did at the beginning if this post.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Analysis of pizza restaurants</title>
+      <link>https://www.andreashandel.com/posts/tidytuesday-analysis/</link>
+      <pubDate>Sat, 12 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>https://www.andreashandel.com/posts/tidytuesday-analysis/</guid>
+      <description>&lt;script src=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/plotly-binding/plotly.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/typedarray/typedarray.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/jquery/jquery.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/crosstalk/css/crosstalk.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/crosstalk/js/crosstalk.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/plotly-htmlwidgets-css/plotly-htmlwidgets.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/plotly-main/plotly-latest.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/plotly-binding/plotly.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/typedarray/typedarray.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/jquery/jquery.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/crosstalk/css/crosstalk.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/crosstalk/js/crosstalk.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/plotly-htmlwidgets-css/plotly-htmlwidgets.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/plotly-main/plotly-latest.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/plotly-binding/plotly.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/typedarray/typedarray.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/jquery/jquery.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/crosstalk/css/crosstalk.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/crosstalk/js/crosstalk.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/plotly-htmlwidgets-css/plotly-htmlwidgets.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/plotly-main/plotly-latest.min.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;This analysis was performed as part of an exercise for my &lt;a href=&#34;https://andreashandel.github.io/MADAcourse/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Modern Applied Data Analysis course&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;When I taught the course in fall 2019, one of the weekly assignments for the students was to participate in &lt;a href=&#34;https://github.com/rfordatascience/tidytuesday&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;TidyTuesday&lt;/a&gt;. I did the exercise as well, this is my product. You can get the R Markdown file to re-run the analysis &lt;a href=&#34;https://www.andreashandel.com/post/2019-10-02-tidy-tuesday-exploration/index.Rmarkdown&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;If you are not familiar with TidyTuesdays, take a quick look &lt;a href=&#34;https://andreashandel.github.io/MADAcourse/Exercise_Tidy_Tuesday_1.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;at the instructions for this exercise&lt;/a&gt;, which contain a very short description.&lt;/p&gt;
+&lt;p&gt;This week’s data was all about Pizza. More on the data &lt;a href=&#34;https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-01&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;is here&lt;/a&gt;.&lt;/p&gt;
+&lt;h1 id=&#34;loading-packages&#34;&gt;Loading packages&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(&#39;readr&#39;)
+library(&#39;ggplot2&#39;)
+library(&amp;quot;dplyr&amp;quot;)
+library(&amp;quot;cowplot&amp;quot;)
+library(&amp;quot;plotly&amp;quot;)
+library(&amp;quot;forcats&amp;quot;)
+library(&amp;quot;geosphere&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;data-loading&#34;&gt;Data loading&lt;/h1&gt;
+&lt;p&gt;Load date following &lt;a href=&#34;https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-01&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;TidyTueday instructions&lt;/a&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;pizza_jared &amp;lt;- readr::read_csv(&amp;quot;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-10-01/pizza_jared.csv&amp;quot;)
+pizza_barstool &amp;lt;- readr::read_csv(&amp;quot;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-10-01/pizza_barstool.csv&amp;quot;)
+pizza_datafiniti &amp;lt;- readr::read_csv(&amp;quot;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-10-01/pizza_datafiniti.csv&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;analysis-ideas&#34;&gt;Analysis Ideas&lt;/h1&gt;
+&lt;p&gt;See the TidyTuesday website for a codebook. These are 3 datasets. Looks like the 1st dataset is ratings of pizza places through some (online?) survey/poll, the 2nd dataset again has ratings of pizza places from various sources, and the 3rd dataset seems to have fairly overlapping information to the 2nd dataset.&lt;/p&gt;
+&lt;p&gt;Note: When I looked at the website, the codebook for the 3rd dataset seemed mislabeled. Might be fixed by now.&lt;/p&gt;
+&lt;p&gt;Possibly interesting questions I can think of:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;For a given pizza restaurant, how do the different ratings/scores agree or differ?&lt;/li&gt;
+&lt;li&gt;Are more expensive restaurants overall rated higher?&lt;/li&gt;
+&lt;li&gt;Is there some systematic dependence of rating on location? Do restaurants located in a certain area in general get rated higher/lower compared to others?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I think those are good enough questions to figure out, let’s see how far we get.&lt;/p&gt;
+&lt;h1 id=&#34;initial-data-exploration&#34;&gt;Initial data exploration&lt;/h1&gt;
+&lt;p&gt;Start with a quick renaming and general check.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;#saves typing
+d1 &amp;lt;- pizza_jared 
+d2 &amp;lt;- pizza_barstool 
+d3 &amp;lt;- pizza_datafiniti 
+glimpse(d1)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Rows: 375
+## Columns: 9
+## $ polla_qid   &amp;lt;dbl&amp;gt; 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5~
+## $ answer      &amp;lt;chr&amp;gt; &amp;quot;Excellent&amp;quot;, &amp;quot;Good&amp;quot;, &amp;quot;Average&amp;quot;, &amp;quot;Poor&amp;quot;, &amp;quot;Never Again&amp;quot;, &amp;quot;Ex~
+## $ votes       &amp;lt;dbl&amp;gt; 0, 6, 4, 1, 2, 1, 1, 3, 1, 1, 4, 2, 1, 1, 0, 1, 1, 0, 3, 0~
+## $ pollq_id    &amp;lt;dbl&amp;gt; 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5~
+## $ question    &amp;lt;chr&amp;gt; &amp;quot;How was Pizza Mercato?&amp;quot;, &amp;quot;How was Pizza Mercato?&amp;quot;, &amp;quot;How w~
+## $ place       &amp;lt;chr&amp;gt; &amp;quot;Pizza Mercato&amp;quot;, &amp;quot;Pizza Mercato&amp;quot;, &amp;quot;Pizza Mercato&amp;quot;, &amp;quot;Pizza ~
+## $ time        &amp;lt;dbl&amp;gt; 1344361527, 1344361527, 1344361527, 1344361527, 1344361527~
+## $ total_votes &amp;lt;dbl&amp;gt; 13, 13, 13, 13, 13, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 5, 5, 5,~
+## $ percent     &amp;lt;dbl&amp;gt; 0.0000, 0.4615, 0.3077, 0.0769, 0.1538, 0.1429, 0.1429, 0.~
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;glimpse(d2)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Rows: 463
+## Columns: 22
+## $ name                                 &amp;lt;chr&amp;gt; &amp;quot;Pugsley&#39;s Pizza&amp;quot;, &amp;quot;Williamsburg ~
+## $ address1                             &amp;lt;chr&amp;gt; &amp;quot;590 E 191st St&amp;quot;, &amp;quot;265 Union Ave&amp;quot;~
+## $ city                                 &amp;lt;chr&amp;gt; &amp;quot;Bronx&amp;quot;, &amp;quot;Brooklyn&amp;quot;, &amp;quot;New York&amp;quot;, ~
+## $ zip                                  &amp;lt;dbl&amp;gt; 10458, 11211, 10017, 10036, 10003~
+## $ country                              &amp;lt;chr&amp;gt; &amp;quot;US&amp;quot;, &amp;quot;US&amp;quot;, &amp;quot;US&amp;quot;, &amp;quot;US&amp;quot;, &amp;quot;US&amp;quot;, &amp;quot;US~
+## $ latitude                             &amp;lt;dbl&amp;gt; 40.85877, 40.70808, 40.75370, 40.~
+## $ longitude                            &amp;lt;dbl&amp;gt; -73.88484, -73.95090, -73.97411, ~
+## $ price_level                          &amp;lt;dbl&amp;gt; 1, 1, 1, 2, 2, 1, 1, 1, 2, 2, 1, ~
+## $ provider_rating                      &amp;lt;dbl&amp;gt; 4.5, 3.0, 4.0, 4.0, 3.0, 3.5, 3.0~
+## $ provider_review_count                &amp;lt;dbl&amp;gt; 121, 281, 118, 1055, 143, 28, 95,~
+## $ review_stats_all_average_score       &amp;lt;dbl&amp;gt; 8.011111, 7.774074, 5.666667, 5.6~
+## $ review_stats_all_count               &amp;lt;dbl&amp;gt; 27, 27, 9, 2, 1, 4, 5, 17, 14, 6,~
+## $ review_stats_all_total_score         &amp;lt;dbl&amp;gt; 216.3, 209.9, 51.0, 11.2, 7.1, 16~
+## $ review_stats_community_average_score &amp;lt;dbl&amp;gt; 7.992000, 7.742308, 5.762500, 0.0~
+## $ review_stats_community_count         &amp;lt;dbl&amp;gt; 25, 26, 8, 0, 0, 3, 4, 16, 13, 4,~
+## $ review_stats_community_total_score   &amp;lt;dbl&amp;gt; 199.8, 201.3, 46.1, 0.0, 0.0, 13.~
+## $ review_stats_critic_average_score    &amp;lt;dbl&amp;gt; 8.8, 0.0, 0.0, 4.3, 0.0, 0.0, 0.0~
+## $ review_stats_critic_count            &amp;lt;dbl&amp;gt; 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, ~
+## $ review_stats_critic_total_score      &amp;lt;dbl&amp;gt; 8.8, 0.0, 0.0, 4.3, 0.0, 0.0, 0.0~
+## $ review_stats_dave_average_score      &amp;lt;dbl&amp;gt; 7.7, 8.6, 4.9, 6.9, 7.1, 3.2, 6.1~
+## $ review_stats_dave_count              &amp;lt;dbl&amp;gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ~
+## $ review_stats_dave_total_score        &amp;lt;dbl&amp;gt; 7.7, 8.6, 4.9, 6.9, 7.1, 3.2, 6.1~
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;glimpse(d3)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Rows: 10,000
+## Columns: 10
+## $ name            &amp;lt;chr&amp;gt; &amp;quot;Shotgun Dans Pizza&amp;quot;, &amp;quot;Sauce Pizza Wine&amp;quot;, &amp;quot;Mios Pizzer~
+## $ address         &amp;lt;chr&amp;gt; &amp;quot;4203 E Kiehl Ave&amp;quot;, &amp;quot;25 E Camelback Rd&amp;quot;, &amp;quot;3703 Paxton ~
+## $ city            &amp;lt;chr&amp;gt; &amp;quot;Sherwood&amp;quot;, &amp;quot;Phoenix&amp;quot;, &amp;quot;Cincinnati&amp;quot;, &amp;quot;Madison Heights&amp;quot;~
+## $ country         &amp;lt;chr&amp;gt; &amp;quot;US&amp;quot;, &amp;quot;US&amp;quot;, &amp;quot;US&amp;quot;, &amp;quot;US&amp;quot;, &amp;quot;US&amp;quot;, &amp;quot;US&amp;quot;, &amp;quot;US&amp;quot;, &amp;quot;US&amp;quot;, &amp;quot;US&amp;quot;, ~
+## $ province        &amp;lt;chr&amp;gt; &amp;quot;AR&amp;quot;, &amp;quot;AZ&amp;quot;, &amp;quot;OH&amp;quot;, &amp;quot;MI&amp;quot;, &amp;quot;MD&amp;quot;, &amp;quot;MD&amp;quot;, &amp;quot;CA&amp;quot;, &amp;quot;CA&amp;quot;, &amp;quot;FL&amp;quot;, ~
+## $ latitude        &amp;lt;dbl&amp;gt; 34.83230, 33.50927, 39.14488, 42.51667, 39.28663, 39.2~
+## $ longitude       &amp;lt;dbl&amp;gt; -92.18380, -112.07304, -84.43269, -83.10663, -76.56698~
+## $ categories      &amp;lt;chr&amp;gt; &amp;quot;Pizza,Restaurant,American restaurants,Pizza Place,Res~
+## $ price_range_min &amp;lt;dbl&amp;gt; 0, 0, 0, 25, 0, 0, 0, 0, 0, 0, 25, 25, 25, 25, 0, 0, 0~
+## $ price_range_max &amp;lt;dbl&amp;gt; 25, 25, 25, 40, 25, 25, 25, 25, 25, 25, 40, 40, 40, 40~
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The first question I have is if the pizza places in the 3 datasets are the same or at least if there is decent overlap. If not, then one can’t combine the data.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;d1names = unique(d1$place)
+d2names = unique(d2$name)
+d3names = unique(d3$name)
+sum(d1names %in% d2names) #check how many restaurants in d1 are also in d2. Note that this assumes exact spelling.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 22
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;sum(d1names %in% d3names) #check how many restaurants in d1 are also in d2. Note that this assumes exact spelling.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 9
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;sum(d2names %in% d3names)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 66
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;22 restaurants out of 56 in dataset 1 are also in dataset 2. Only 9 overlap between dataset 1 and 3. 66 are shared between datasets 2 and 3.&lt;/p&gt;
+&lt;p&gt;The last dataset has no ratings, and if I look at the overlap of dataset 1 and 2, I only get a few observations. So I think for now I’ll focus on dataset 2 and see if I can address the 3 questions I posed above with just that dataset. Maybe I’ll have ideas for the other 2 datasets as I go along (would be a shame to not use them.)&lt;/p&gt;
+&lt;h1 id=&#34;ratings-agreement-analysis&#34;&gt;Ratings agreement analysis&lt;/h1&gt;
+&lt;p&gt;Ok, I’ll focus on dataset 2 now and look closer at the scores/rating. From the codebook, it’s not quite clear to me what the different scores and counts in dataset 2 actually mean, so let’s look closer to try and figure that out.&lt;/p&gt;
+&lt;p&gt;From the glimpse function above, I can’t see much of a difference between average and total score. Let’s look at that. Here are a few plots comparing the different score-related variables.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;plot(d2$review_stats_community_total_score,d2$review_stats_community_average_score)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/figure-html/score-explore-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;plot(d2$review_stats_community_total_score - d2$review_stats_community_average_score* d2$review_stats_community_count)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/figure-html/score-explore-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;plot(d2$review_stats_critic_total_score-d2$review_stats_critic_average_score)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/figure-html/score-explore-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;plot(d2$review_stats_dave_total_score-d2$review_stats_dave_average_score)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/figure-html/score-explore-4.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;plot(d2$review_stats_all_total_score- (d2$review_stats_community_total_score+d2$review_stats_critic_total_score+d2$review_stats_dave_total_score))  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/figure-html/score-explore-5.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Ok, so based on the plots above, and a few other things I tried, it seems that average score is total score divided by number of counts, and the &lt;em&gt;all&lt;/em&gt; score is just the sum of &lt;em&gt;dave&lt;/em&gt;, &lt;em&gt;critic&lt;/em&gt; and &lt;em&gt;community&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;So to address my first question, I’ll look at correlations between average scores for the 3 types of reviewers, namely &lt;em&gt;dave&lt;/em&gt;, &lt;em&gt;critic&lt;/em&gt; and &lt;em&gt;community&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;However, while playing around with the data in the last section, I noticed a problem. Look at the counts for say critics and the average score.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;table(d2$review_stats_critic_count)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+##   0   1   5 
+## 401  61   1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;table(d2$review_stats_critic_average_score)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+##    0    4  4.3  4.5  4.8    5  5.1  5.4  5.5  5.7  5.8  5.9 5.96    6  6.2 6.31 
+##  401    1    1    1    1    3    1    1    1    1    1    1    1    1    1    1 
+##  6.5  6.6  6.7 6.76  6.8  6.9    7  7.2  7.3  7.4  7.6 7.76  7.8  7.9    8  8.1 
+##    3    1    1    1    2    1    5    2    2    1    1    1    2    1    4    2 
+##  8.5  8.7  8.8    9  9.3  9.4  9.8   10   11 
+##    3    1    1    1    1    2    1    4    1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A lot of restaurants did not get reviewed by critics, and the score is coded as 0. That’s a problem since if we take averages and such, it will mess up things. This should really be counted as NA. So let’s create new average scores such that any restaurant with no visits/reviews gets an NA as score.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;d2 &amp;lt;- d2 %&amp;gt;% mutate( comm_score = ifelse(review_stats_community_count == 0 ,NA,review_stats_community_average_score)) %&amp;gt;%
+             mutate( crit_score = ifelse(review_stats_critic_count == 0 ,NA,review_stats_critic_average_score)) %&amp;gt;%
+             mutate( dave_score = ifelse(review_stats_dave_count == 0 ,NA,review_stats_dave_average_score)) 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now let’s plot the 3.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;p1 &amp;lt;- d2 %&amp;gt;% ggplot(aes(x=comm_score, y = crit_score)) + geom_point() + geom_smooth(method = &amp;quot;lm&amp;quot;)
+p2 &amp;lt;- d2 %&amp;gt;% ggplot(aes(x=comm_score, y = dave_score)) + geom_point() + geom_smooth(method = &amp;quot;lm&amp;quot;)
+p3 &amp;lt;- d2 %&amp;gt;% ggplot(aes(x=crit_score, y = dave_score)) + geom_point() + geom_smooth(method = &amp;quot;lm&amp;quot;)
+cowplot::plot_grid(p1, p2, p3, labels = c(&#39;A&#39;, &#39;B&#39;,&#39;C&#39;), label_size = 12)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## `geom_smooth()` using formula &#39;y ~ x&#39;
+## `geom_smooth()` using formula &#39;y ~ x&#39;
+## `geom_smooth()` using formula &#39;y ~ x&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/figure-html/plot-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Looks like there is some agreement between Dave, the critics and the community on the ratings of various pizza places, though there is a good bit of variation.&lt;/p&gt;
+&lt;p&gt;I think it would be fun to be able to click on specific points to see for a given score which restaurant that is. For instance I’m curious which restaurant has a close to zero score from both the community and Dave (bottom left of plot B).&lt;/p&gt;
+&lt;p&gt;I think that can be done with plotly, let’s google it.&lt;/p&gt;
+&lt;p&gt;Ok, figured it out. This re-creates the 3 scatterplots from above and when one moves over the dots, it shows restaurant name.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;plot_ly(d2, x = ~comm_score, y = ~crit_score, text = ~paste(&#39;Restaurant: &#39;, name))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## No trace type specified:
+##   Based on info supplied, a &#39;scatter&#39; trace seems appropriate.
+##   Read more about this trace type -&amp;gt; https://plotly.com/r/reference/#scatter
+
+## No scatter mode specifed:
+##   Setting the mode to markers
+##   Read more about this attribute -&amp;gt; https://plotly.com/r/reference/#scatter-mode
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;htmlwidget-1&#34; style=&#34;width:672px;height:480px;&#34; class=&#34;plotly html-widget&#34;&gt;&lt;/div&gt;
+&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-1&#34;&gt;{&#34;x&#34;:{&#34;visdat&#34;:{&#34;318175f782c&#34;:[&#34;function () &#34;,&#34;plotlyVisDat&#34;]},&#34;cur_data&#34;:&#34;318175f782c&#34;,&#34;attrs&#34;:{&#34;318175f782c&#34;:{&#34;x&#34;:{},&#34;y&#34;:{},&#34;text&#34;:{},&#34;alpha_stroke&#34;:1,&#34;sizes&#34;:[10,100],&#34;spans&#34;:[1,20]}},&#34;layout&#34;:{&#34;margin&#34;:{&#34;b&#34;:40,&#34;l&#34;:60,&#34;t&#34;:25,&#34;r&#34;:10},&#34;xaxis&#34;:{&#34;domain&#34;:[0,1],&#34;automargin&#34;:true,&#34;title&#34;:&#34;comm_score&#34;},&#34;yaxis&#34;:{&#34;domain&#34;:[0,1],&#34;automargin&#34;:true,&#34;title&#34;:&#34;crit_score&#34;},&#34;hovermode&#34;:&#34;closest&#34;,&#34;showlegend&#34;:false},&#34;source&#34;:&#34;A&#34;,&#34;config&#34;:{&#34;showSendToCloud&#34;:false},&#34;data&#34;:[{&#34;x&#34;:[7.992,6.725,6.5,6.55,5.9,6.8125,6.25,6.375,3,7.45,7.625,6.1,6.675,5.725,6.75,6.475,4.4,5.1,7.00392156862745,6.5,7.77142857142857,6.36428571428571,7.25,7.14285714285714,6.8,8.85862068965517,5.76666666666667,7.4,5.95,5.25,7.3,8.46,5.97272727272727,8.23333333333333,7.025,7.16,6.75,6.4,7.13684210526316,8.28571428571429,8.45,7.63333333333333,7.62307692307692,7.8,8.6,7.55555555555555,7.15,6.85,8.40504201680672,5.92,6.46666666666667,6.0625,7.3,8.225,5.87894736842105,7.2,6.9],&#34;y&#34;:[8.8,6.2,4.5,5.8,8.7,8,5,4,6.6,6,9.4,7.2,6.5,10,6.8,7.4,8,8,10,6.31,8.1,7,7.6,8.5,4.8,8.1,5,6.76,10,9,5,7.76,5.5,7.2,6.5,6.8,10,8.5,8,6.7,8.5,7.8,9.3,9.8,11,5.96,5.1,7.3,7.8,7,7,6.9,5.7,9.4,7.3,6.5,7],&#34;text&#34;:[&#34;Restaurant:  Pugsley&#39;s Pizza&#34;,&#34;Restaurant:  Bond 45&#34;,&#34;Restaurant:  Dulono&#39;s Pizza&#34;,&#34;Restaurant:  Fat Lorenzo&#39;s&#34;,&#34;Restaurant:  Red&#39;s Savoy Pizza&#34;,&#34;Restaurant:  Frank From Philly &amp; Andrea Pizza&#34;,&#34;Restaurant:  LA Traviata Pizzeria&#34;,&#34;Restaurant:  Percy&#39;s Pizza&#34;,&#34;Restaurant:  Mediterraneo Restaurant&#34;,&#34;Restaurant:  Tre Sorelle&#34;,&#34;Restaurant:  Napolese Pizzeria&#34;,&#34;Restaurant:  Bearno&#39;s By the Bridge&#34;,&#34;Restaurant:  The Original Impellizeri&#39;s Pizza&#34;,&#34;Restaurant:  Marcello&#39;s Pizza &amp; Subs&#34;,&#34;Restaurant:  Piu Bello Pizzeria Restaurant&#34;,&#34;Restaurant:  Buckhead Pizza&#34;,&#34;Restaurant:  Picasso Pizza&#34;,&#34;Restaurant:  Pomodoro Pizza&#34;,&#34;Restaurant:  Majestic Pizza&#34;,&#34;Restaurant:  Friendly Gourmet Pizza&#34;,&#34;Restaurant:  Harry&#39;s Italian&#34;,&#34;Restaurant:  Little Italy Pizza&#34;,&#34;Restaurant:  Phil&#39;s Pizza&#34;,&#34;Restaurant:  Kesté Pizza &amp; Vino&#34;,&#34;Restaurant:  Napoli Pizza&#34;,&#34;Restaurant:  Lucali&#34;,&#34;Restaurant:  Snacks&#34;,&#34;Restaurant:  Canal Pizza&#34;,&#34;Restaurant:  Melani Pizzeria&#34;,&#34;Restaurant:  Il Piccolo Bufalo&#34;,&#34;Restaurant:  Pomodoro Ristorante &amp; Pizzeria&#34;,&#34;Restaurant:  Santarpio&#39;s Pizza&#34;,&#34;Restaurant:  Regina Pizzeria&#34;,&#34;Restaurant:  Nick&#39;s Pizza&#34;,&#34;Restaurant:  PQR&#34;,&#34;Restaurant:  Vinnie&#39;s Pizzeria&#34;,&#34;Restaurant:  La Mia Pizza&#34;,&#34;Restaurant:  Manhattan Brick Oven Pizza&#34;,&#34;Restaurant:  Francesco&#39;s Pizzeria&#34;,&#34;Restaurant:  Arturo&#39;s&#34;,&#34;Restaurant:  Song E Napule&#34;,&#34;Restaurant:  Sfila Pizza&#34;,&#34;Restaurant:  Merilu Pizza Al Metro&#34;,&#34;Restaurant:  Bricco Ristorante Italiano&#34;,&#34;Restaurant:  Serafina Broadway&#34;,&#34;Restaurant:  Don Antonio&#34;,&#34;Restaurant:  Daniela Trattoria&#34;,&#34;Restaurant:  Patzeria Perfect Pizza&#34;,&#34;Restaurant:  John&#39;s of Times Square&#34;,&#34;Restaurant:  Radio City Pizza&#34;,&#34;Restaurant:  Kiss My Slice&#34;,&#34;Restaurant:  Cassiano&#39;s Pizza&#34;,&#34;Restaurant:  Angelo Bellini&#34;,&#34;Restaurant:  Jiannetto&#39;s Pizza Truck&#34;,&#34;Restaurant:  Prova Pizzabar&#34;,&#34;Restaurant:  Giuseppe&#39;s Pizza&#34;,&#34;Restaurant:  Posto&#34;],&#34;type&#34;:&#34;scatter&#34;,&#34;mode&#34;:&#34;markers&#34;,&#34;marker&#34;:{&#34;color&#34;:&#34;rgba(31,119,180,1)&#34;,&#34;line&#34;:{&#34;color&#34;:&#34;rgba(31,119,180,1)&#34;}},&#34;error_y&#34;:{&#34;color&#34;:&#34;rgba(31,119,180,1)&#34;},&#34;error_x&#34;:{&#34;color&#34;:&#34;rgba(31,119,180,1)&#34;},&#34;line&#34;:{&#34;color&#34;:&#34;rgba(31,119,180,1)&#34;},&#34;xaxis&#34;:&#34;x&#34;,&#34;yaxis&#34;:&#34;y&#34;,&#34;frame&#34;:null}],&#34;highlight&#34;:{&#34;on&#34;:&#34;plotly_click&#34;,&#34;persistent&#34;:false,&#34;dynamic&#34;:false,&#34;selectize&#34;:false,&#34;opacityDim&#34;:0.2,&#34;selected&#34;:{&#34;opacity&#34;:1},&#34;debounce&#34;:0},&#34;shinyEvents&#34;:[&#34;plotly_hover&#34;,&#34;plotly_click&#34;,&#34;plotly_selected&#34;,&#34;plotly_relayout&#34;,&#34;plotly_brushed&#34;,&#34;plotly_brushing&#34;,&#34;plotly_clickannotation&#34;,&#34;plotly_doubleclick&#34;,&#34;plotly_deselect&#34;,&#34;plotly_afterplot&#34;,&#34;plotly_sunburstclick&#34;],&#34;base_url&#34;:&#34;https://plot.ly&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;plot_ly(d2, x = ~comm_score, y = ~dave_score, text = ~paste(&#39;Restaurant: &#39;, name))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## No trace type specified:
+##   Based on info supplied, a &#39;scatter&#39; trace seems appropriate.
+##   Read more about this trace type -&amp;gt; https://plotly.com/r/reference/#scatter
+## No scatter mode specifed:
+##   Setting the mode to markers
+##   Read more about this attribute -&amp;gt; https://plotly.com/r/reference/#scatter-mode
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;htmlwidget-2&#34; style=&#34;width:672px;height:480px;&#34; class=&#34;plotly html-widget&#34;&gt;&lt;/div&gt;
+&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-2&#34;&gt;{&#34;x&#34;:{&#34;visdat&#34;:{&#34;3184a3bd61&#34;:[&#34;function () &#34;,&#34;plotlyVisDat&#34;]},&#34;cur_data&#34;:&#34;3184a3bd61&#34;,&#34;attrs&#34;:{&#34;3184a3bd61&#34;:{&#34;x&#34;:{},&#34;y&#34;:{},&#34;text&#34;:{},&#34;alpha_stroke&#34;:1,&#34;sizes&#34;:[10,100],&#34;spans&#34;:[1,20]}},&#34;layout&#34;:{&#34;margin&#34;:{&#34;b&#34;:40,&#34;l&#34;:60,&#34;t&#34;:25,&#34;r&#34;:10},&#34;xaxis&#34;:{&#34;domain&#34;:[0,1],&#34;automargin&#34;:true,&#34;title&#34;:&#34;comm_score&#34;},&#34;yaxis&#34;:{&#34;domain&#34;:[0,1],&#34;automargin&#34;:true,&#34;title&#34;:&#34;dave_score&#34;},&#34;hovermode&#34;:&#34;closest&#34;,&#34;showlegend&#34;:false},&#34;source&#34;:&#34;A&#34;,&#34;config&#34;:{&#34;showSendToCloud&#34;:false},&#34;data&#34;:[{&#34;x&#34;:[7.992,7.74230769230769,5.7625,4.36666666666667,6.125,7.45,7.35384615384615,6.725,5.79,5.7,6.725,7.23333333333333,8.44444444444444,8.06153846153846,7.47777777777778,8.35714285714286,6.5,5,6.55,5.9,6.8125,8.15454545454545,7.33684210526316,5.72857142857143,7.4,8.14666666666667,6.25,6.375,7.31428571428571,5.94166666666667,5.4,3,7.36666666666667,7.45,5.3,7.1625,6.88,8.4,6.3,6.25,7.92777777777778,4.6,3.1,9.16923076923077,8.07575757575758,6.97857142857143,7.75581395348837,3.33333333333333,7.77777777777778,8.00454545454545,7.425,7.77222222222222,5.2375,7.625,7.73333333333333,10,6.1,6.675,6.92,4.925,5.76666666666667,6.77142857142857,5.42857142857143,8.05,8.1,6.9625,6.97222222222222,6.9,7.6,7.89333333333333,8.01071428571429,7.61428571428571,7.8,6.1,8.1,7.65714285714286,4.25,7.99130434782609,8.16923076923077,7.6,7.8,5.725,6.75,6.475,7.2625,7.2,8.27708333333333,6.1,7.13333333333333,6.3,7.83636363636364,7.48181818181818,6.17894736842105,8.07948717948718,7.84444444444444,8.28141592920354,5.525,7.80606060606061,8.41538461538462,7.75,8.35681818181818,7.6125,6.2,8.29189189189189,7.48888888888889,7.2,8.03076923076923,8.2125,8.44444444444444,7.58684210526316,6.79523809523809,7.73846153846154,4.4,5.1,7.9,3.95714285714286,7.2,5.95,5.82857142857143,6.8,7.64,7.23636363636364,5.8,6.70588235294118,7.00392156862745,7.21666666666667,7.38,6.77333333333333,6.5,6.8,7.77142857142857,7.7,6.36428571428571,9.07380952380952,7.5,4.63333333333333,7.4,7.25,7.97692307692308,7.878125,7.71,7.71111111111111,7.05,7.32826086956522,8.05,7.775,8.88236331569665,7.56666666666667,7.9,8.8,7.14285714285714,6.7,7.54666666666667,7.03846153846154,7.07777777777778,6.44,7.80740740740741,6.8,7.70833333333333,7.6,8.85862068965517,8.53478260869565,5.82857142857143,8.875,8.79473684210526,8.34823529411765,8.92535211267606,6.34,6.97333333333333,8.412,5.16666666666667,5.925,7.84523809523809,7.88181818181818,4.825,4.08181818181818,6.78888888888889,6.12105263157895,5.76666666666667,3.2,7.4,8.19,6.21666666666667,7.10285714285714,5.13333333333333,7.53333333333333,8.4,6.675,6.45,6.82,7.80666666666667,7.47272727272727,7.5,7.25,7.88108108108108,8.40526315789474,8.35694444444444,8.17818181818182,7.64545454545454,8.6,7.78333333333333,5,8.57619047619048,7.85454545454546,7.64545454545454,7.475,7.58333333333333,7.95238095238095,8.52056074766355,8.43703703703704,8.264,8.34590163934426,9.1,4.4,7.26666666666667,7.4,5.95,8.36,7.55454545454545,8.11612903225806,3.65,5.9,7.51111111111111,7.075,6.14545454545454,6.63333333333333,8.2,4.15,5.25,7.2,4.5,7.80714285714286,7.73793103448276,8.1,8.25,7.71818181818182,7.2,7.3,8.60567375886525,8.7025641025641,7.29090909090909,7.8,7.15,7.53684210526316,7.29,8.30697674418605,8.66923076923077,7.63333333333333,8.125,6.8375,8.125,7.58571428571429,8.32,7.24285714285714,7.4,8.1,7.3,6.3,8.06,7.89,8.14,8.70769230769231,6.4,5.95,4.2,8.46,7.5,6.73888888888889,8.1,7.25333333333333,8.71076923076923,7.56666666666667,6.91666666666667,7.50123456790124,7.70416666666667,8.1037037037037,6.68333333333333,7.47619047619048,7.94285714285714,8.67941176470588,3.3625,6.7,8.94117647058824,8.25185185185185,8.545,8.66818181818182,8.2,6.9,6.225,5.97272727272727,8.65443786982248,8.72331606217617,8.94117647058824,7.89791666666667,7.44615384615385,8.02083333333333,9.06363636363636,7.44285714285714,8.23333333333333,7.42,6.7,7.025,7.16,7.80909090909091,6.75,7.25,6.7,7.45769230769231,5.8,7.14285714285714,6.63076923076923,6.4,5.67142857142857,8.08717948717949,7.95714285714286,3.55,5.96666666666667,7.64,8.33333333333333,7.60909090909091,7.13684210526316,5.725,8.38571428571429,8.28571428571429,8.45,7.16666666666667,8.16129032258065,8.29583333333333,7.9,7.63333333333333,7.76521739130435,7.62307692307692,7.8,6.83333333333333,5.6,7.70555555555555,7.975,6.4,7,5.46666666666667,6.86666666666667,8.6,6.55,7.55555555555555,8.63055555555556,4.15,7.5,5.58,3.11666666666667,7.71578947368421,7.15,8.03333333333333,6.85,6.5,8.40504201680672,5.92,4,7.46153846153846,8.94233870967742,3.7,7.88333333333333,7.7,7.225,8.4,4.95,6.16666666666667,6.9,5.6,6.375,7.65,4.03333333333333,5.76666666666667,6.0625,6.3,7.95,6.53333333333333,6.46666666666667,7.62142857142857,7.54444444444445,7.7,6.88571428571429,6.0625,6.0875,4.725,7.73333333333333,6.01111111111111,7.88828828828829,6.3,5.7,6.02857142857143,6.3,6.25,7.3,7.2,6.775,7.2125,6.6,8.36666666666667,6.5,8.225,6.22307692307692,5.02,6.81764705882353,5.87894736842105,7.2,7.64,7.53214285714286,7.86875,6.964,6.1,1,8.2,8.50761904761905,6.18333333333333,6.9,7.68571428571429,7.37,5.23333333333333,6.64,7.721875,6.15,7.03333333333333],&#34;y&#34;:[7.7,8.6,4.9,3.2,6.1,7.2,6.8,6.5,6.5,6.4,6.6,7.5,8.6,7.8,7.2,7.5,6.3,3.4,4.1,7.1,6.3,7.6,6.8,5.3,6.8,7.1,5.4,6.1,7.6,4.2,6.2,5.8,7.1,6.7,3.4,6.8,6.9,7.2,6.7,6.3,7.7,8.5,3.2,6.8,8.4,6.2,8.2,1.1,7.1,7.4,7.1,8.1,5.1,4.1,7.1,5.2,6.4,5.8,0.2,3.1,5.4,6.8,1.2,7.6,7.8,5.4,6.9,6.4,1.2,7.4,7.8,6.5,6.1,6.4,7.2,7.1,7.2,8.3,7.1,6.8,6.1,7.4,5.9,7.2,7.1,7.2,8.3,6.8,6.4,6.6,7.5,7.5,6.5,8.3,7.5,8.9,1.9,7.5,7.9,6.6,8.1,7.8,7.2,7.9,6.8,6.8,6.2,7.2,7.6,8.1,6.8,7.4,4.2,4.2,6.8,2.2,7.4,3.3,6.4,5.9,7.4,4.8,2.5,7.1,7.1,5.9,8.1,7.4,4.8,7.2,7.7,7.8,6.3,9.3,7.9,3.4,7.8,7.7,8.2,7.9,8.2,7.2,6.2,6.9,7.6,8.1,9.3,7.4,7.8,8.2,6.4,2.4,7.1,5.8,4.8,5.5,7.9,6.6,5.1,6.9,8.1,8.9,6.9,2.2,8.1,7.4,9.4,7.5,7.4,8.1,6.7,5.4,8.3,8.2,3.2,3.2,6.2,3.4,5,7.8,5.6,7.2,5.9,7.3,7.8,8.2,8.6,7.4,6.1,7.3,8.1,7.2,6.3,7.2,7.9,8.1,7.8,8.6,7.4,6.7,7.4,6.6,8,6.8,7.8,6.7,7.9,7.9,9.1,8,6.9,8.7,7.4,6.2,7.4,1.7,6.8,7.3,8.3,8.6,2.4,6.1,8,5.8,5.1,6.2,7.4,4.8,7.4,5.8,5.9,8.5,8.1,7.4,7.3,6.2,8.1,4.2,8.6,8.1,7.2,8.1,4.8,8.2,7.3,8,8.4,6.6,7.1,7.3,7.7,7.5,9.3,8,7.4,8.6,7.2,5.9,6.2,7.6,10,8.2,6.8,3.8,6.1,8.2,6.9,6.7,6.6,5.8,9.1,7.74,6.8,9.2,8.2,9.2,5.2,7.1,6.7,8,2.4,6.2,8.5,7.5,9,9.4,8.5,6.6,6.4,6.4,8.8,8.5,9.2,7.4,8.2,8.4,9.1,6.2,6.6,7.3,6.9,6.1,7.1,7.8,6.7,7.7,6.2,8.4,1.8,4,7.2,7.9,6.5,8.5,7.9,7.1,6.2,8.1,8.3,8.1,8.1,6.2,7.6,7.9,7.7,7,9,8.5,7.2,7.7,8.1,8.2,6.8,7.1,3.7,8.4,8.1,6.3,7.1,5.8,2.1,7.3,6.4,6.4,9.3,3.1,4.8,4.1,4.1,8.1,3.6,7.1,5,4.8,8.4,6.1,6.3,8.4,9.1,8.1,7.8,7.7,4.6,6.9,6.9,6.2,6.9,1.7,1.4,6.9,4.2,6.2,7.8,6.6,7.4,7.3,6.3,7.3,7.4,7.9,7.3,6.6,6.7,6.4,7.1,7.8,8.2,7.7,7.9,5.4,5.2,4.3,5.7,6.6,6.2,7.8,6.8,8.6,8.4,8.1,5.1,4.9,7.5,7.4,6.2,6.8,7.1,8.1,7.4,5.7,0.08,8.1,9.3,2.8,6.8,7.9,7.7,5.9,3.9,8.2,6.8,8.2],&#34;text&#34;:[&#34;Restaurant:  Pugsley&#39;s Pizza&#34;,&#34;Restaurant:  Williamsburg Pizza&#34;,&#34;Restaurant:  99 Cent Fresh Pizza&#34;,&#34;Restaurant:  La Gusto Pizza&#34;,&#34;Restaurant:  Cheesy Pizza&#34;,&#34;Restaurant:  Sal &amp; Carmine&#39;s Pizza&#34;,&#34;Restaurant:  MAMA&#39;S TOO!&#34;,&#34;Restaurant:  Bond 45&#34;,&#34;Restaurant:  Casa D&#39;amici&#34;,&#34;Restaurant:  Pizza Al&#39;s&#34;,&#34;Restaurant:  Colasante&#39;s Ristorante &amp; Pub&#34;,&#34;Restaurant:  Love &amp; Dough&#34;,&#34;Restaurant:  Patsy&#39;s Pizzeria&#34;,&#34;Restaurant:  Louie &amp; Ernie&#39;s Pizza&#34;,&#34;Restaurant:  Pizza Barn&#34;,&#34;Restaurant:  Mama&#39;s Pizza&#34;,&#34;Restaurant:  Dulono&#39;s Pizza&#34;,&#34;Restaurant:  Cheetah Pizza&#34;,&#34;Restaurant:  Fat Lorenzo&#39;s&#34;,&#34;Restaurant:  Red&#39;s Savoy Pizza&#34;,&#34;Restaurant:  Frank From Philly &amp; Andrea Pizza&#34;,&#34;Restaurant:  Young Joni&#34;,&#34;Restaurant:  Cossetta Alimentari&#34;,&#34;Restaurant:  Pizza Luce&#34;,&#34;Restaurant:  Football Pizza&#34;,&#34;Restaurant:  Star Tavern&#34;,&#34;Restaurant:  LA Traviata Pizzeria&#34;,&#34;Restaurant:  Percy&#39;s Pizza&#34;,&#34;Restaurant:  Pizza Land&#34;,&#34;Restaurant:  Little Italy Pizza&#34;,&#34;Restaurant:  B &amp; W Deli &amp; Pizzeria&#34;,&#34;Restaurant:  Mediterraneo Restaurant&#34;,&#34;Restaurant:  La Bellezza Pizza&#34;,&#34;Restaurant:  Tre Sorelle&#34;,&#34;Restaurant:  Justino&#39;s Pizzeria&#34;,&#34;Restaurant:  Casabianca Pizzeria&#34;,&#34;Restaurant:  Mariella Pizza&#34;,&#34;Restaurant:  Bella Blu&#34;,&#34;Restaurant:  John &amp; Tony&#39;s&#34;,&#34;Restaurant:  Il Forno Pizza&#34;,&#34;Restaurant:  Scarr&#39;s Pizza&#34;,&#34;Restaurant:  Double Zero&#34;,&#34;Restaurant:  Rico&#39;s Pizza&#34;,&#34;Restaurant:  Palermo&#39;s 95th&#34;,&#34;Restaurant:  Giordano&#39;s&#34;,&#34;Restaurant:  Gino&#39;s East - Magnificent Mile&#34;,&#34;Restaurant:  Lou Malnati&#39;s Pizzeria&#34;,&#34;Restaurant:  Georgio&#39;s Gourmet Pizza&#34;,&#34;Restaurant:  Armand&#39;s Pizzeria&#34;,&#34;Restaurant:  Pequod&#39;s Pizzeria&#34;,&#34;Restaurant:  Geo&#39;s Pizza&#34;,&#34;Restaurant:  Goodfellas Pizzeria&#34;,&#34;Restaurant:  BazbeauxPizza&#34;,&#34;Restaurant:  Napolese Pizzeria&#34;,&#34;Restaurant:  The Wig &amp; Pen Pizza Pub&#34;,&#34;Restaurant:  Casey&#39;s General Store&#34;,&#34;Restaurant:  Bearno&#39;s By the Bridge&#34;,&#34;Restaurant:  The Original Impellizeri&#39;s Pizza&#34;,&#34;Restaurant:  The Post&#34;,&#34;Restaurant:  Cottage Inn Pizza - Ann Arbor&#34;,&#34;Restaurant:  New York Pizza Depot&#34;,&#34;Restaurant:  Pizza House&#34;,&#34;Restaurant:  Backroom Pizza&#34;,&#34;Restaurant:  Buddy&#39;s Pizza&#34;,&#34;Restaurant:  Leone&#39;s Pizza&#34;,&#34;Restaurant:  Adriatico&#39;s New York Style Pizza&#34;,&#34;Restaurant:  Sicilia Fine Italian Specialties&#34;,&#34;Restaurant:  The O Patio &amp; Pub&#34;,&#34;Restaurant:  Catfish Biff&#39;s Pizza &amp; Subs&#34;,&#34;Restaurant:  GoreMade Pizza&#34;,&#34;Restaurant:  Pies &amp; Pints - Lexington&#34;,&#34;Restaurant:  Pazzo&#39;s Pizza Pub&#34;,&#34;Restaurant:  PieTana&#34;,&#34;Restaurant:  Bruno Bros Pizza&#34;,&#34;Restaurant:  Wedgewood Fernando&#39;s Pizza - Austintown&#34;,&#34;Restaurant:  Avalon Downtown Pizzeria&#34;,&#34;Restaurant:  Sparky&#39;s Pizzeria and Grill&#34;,&#34;Restaurant:  Black Sheep Pizza - Minneapolis&#34;,&#34;Restaurant:  Benny Marzano&#39;s&#34;,&#34;Restaurant:  Imperial Pizza&#34;,&#34;Restaurant:  Mellow Mushroom&#34;,&#34;Restaurant:  Marcello&#39;s Pizza &amp; Subs&#34;,&#34;Restaurant:  Piu Bello Pizzeria Restaurant&#34;,&#34;Restaurant:  Buckhead Pizza&#34;,&#34;Restaurant:  Cosmo&#39;s Original Little Italy Pizza&#34;,&#34;Restaurant:  Fellini&#39;s Pizza&#34;,&#34;Restaurant:  Antico Pizza&#34;,&#34;Restaurant:  Slice Downtown&#34;,&#34;Restaurant:  Hawthorne&#39;s NY Pizza &amp; Bar&#34;,&#34;Restaurant:  Pizza Joint&#34;,&#34;Restaurant:  Empire Slice House&#34;,&#34;Restaurant:  Santucci&#39;s Original Square Pizza&#34;,&#34;Restaurant:  Lorenzo &amp; Sons Pizza&#34;,&#34;Restaurant:  Santillo&#39;s Brick Oven Pizza&#34;,&#34;Restaurant:  Kinchley&#39;s Tavern&#34;,&#34;Restaurant:  Ralph&#39;s Pizzeria&#34;,&#34;Restaurant:  Costco&#34;,&#34;Restaurant:  Pizza Town USA&#34;,&#34;Restaurant:  Brother&#39;s Pizzeria&#34;,&#34;Restaurant:  Mama Rosa Pizza and Pasta&#34;,&#34;Restaurant:  Denino&#39;s Pizzeria Tavern&#34;,&#34;Restaurant:  The New Park Tavern&#34;,&#34;Restaurant:  Vesta Wood Fired Pizza &amp; Bar&#34;,&#34;Restaurant:  Lee&#39;s Tavern&#34;,&#34;Restaurant:  The Original Goodfella&#39;s Brick Oven Pizza&#34;,&#34;Restaurant:  Tony Boloney&#39;s&#34;,&#34;Restaurant:  Krispy Pizza&#34;,&#34;Restaurant:  Mario&#39;s Classic Pizza&#34;,&#34;Restaurant:  Johnny Pepperoni&#34;,&#34;Restaurant:  Basile&#39;s Pizza&#34;,&#34;Restaurant:  Benny Tudino&#39;s Pizzeria&#34;,&#34;Restaurant:  Napoli&#39;s Brick Oven Pizza&#34;,&#34;Restaurant:  Picasso Pizza&#34;,&#34;Restaurant:  Pomodoro Pizza&#34;,&#34;Restaurant:  SIMÒ PIZZA&#34;,&#34;Restaurant:  Steve&#39;s Pizza&#34;,&#34;Restaurant:  The Woodstock&#34;,&#34;Restaurant:  The Grotto Pizzeria &amp; Ristorante&#34;,&#34;Restaurant:  Georgio Pizzeria&#34;,&#34;Restaurant:  Pranzo Pizza &amp; Pasta&#34;,&#34;Restaurant:  Justino&#39;s Pizzeria&#34;,&#34;Restaurant:  Adrienne&#39;s Pizzabar&#34;,&#34;Restaurant:  Da Vinci Pizza&#34;,&#34;Restaurant:  Cucina Bene&#34;,&#34;Restaurant:  Majestic Pizza&#34;,&#34;Restaurant:  Underground Pizza&#34;,&#34;Restaurant:  Neapolitan Express&#34;,&#34;Restaurant:  Stage Door Pizza&#34;,&#34;Restaurant:  Friendly Gourmet Pizza&#34;,&#34;Restaurant:  Dona Bella Pizza&#34;,&#34;Restaurant:  Harry&#39;s Italian&#34;,&#34;Restaurant:  Adoro Lei&#34;,&#34;Restaurant:  Little Italy Pizza&#34;,&#34;Restaurant:  Lucali&#34;,&#34;Restaurant:  Il Mattone West Village&#34;,&#34;Restaurant:  5 Boroughs Pizza&#34;,&#34;Restaurant:  Serafina Meatpacking&#34;,&#34;Restaurant:  Phil&#39;s Pizza&#34;,&#34;Restaurant:  Saluggi&#39;s&#34;,&#34;Restaurant:  Artichoke Basille&#39;s Pizza&#34;,&#34;Restaurant:  Brunetti Pizza&#34;,&#34;Restaurant:  Emily - West Village&#34;,&#34;Restaurant:  Black Square Pizza&#34;,&#34;Restaurant:  Bleecker Street Pizza&#34;,&#34;Restaurant:  Enzo Bruni La Pizza Gourmet&#34;,&#34;Restaurant:  Famous Ben&#39;s Pizza&#34;,&#34;Restaurant:  John&#39;s of Bleecker Street&#34;,&#34;Restaurant:  Filaga Pizzeria&#34;,&#34;Restaurant:  Emmett&#39;s&#34;,&#34;Restaurant:  Numero 28 Pizzeria - West Village&#34;,&#34;Restaurant:  Kesté Pizza &amp; Vino&#34;,&#34;Restaurant:  King&#39;s Pizza&#34;,&#34;Restaurant:  Eddie &amp; Sam&#39;s NY Pizza&#34;,&#34;Restaurant:  Home Slice Pizza&#34;,&#34;Restaurant:  Big Lou&#39;s Pizza&#34;,&#34;Restaurant:  Pizzarita&#39;s&#34;,&#34;Restaurant:  Julian&#39;s Italian Pizzeria &amp; Kitchen&#34;,&#34;Restaurant:  Napoli Pizza&#34;,&#34;Restaurant:  Biggie&#39;s Pizza&#34;,&#34;Restaurant:  Steve&#39;s Pizza&#34;,&#34;Restaurant:  Lucali&#34;,&#34;Restaurant:  Mister O1- South Beach&#34;,&#34;Restaurant:  Pizza Girls WPB&#34;,&#34;Restaurant:  Pizza Al Fresco&#34;,&#34;Restaurant:  Totonno&#39;s&#34;,&#34;Restaurant:  L &amp; B Spumoni Gardens&#34;,&#34;Restaurant:  Di Fara Pizza&#34;,&#34;Restaurant:  Da Nonna Rosa&#34;,&#34;Restaurant:  Ciro&#39;s Pizzeria &amp; Beerhouse&#34;,&#34;Restaurant:  Bronx Pizza&#34;,&#34;Restaurant:  Filippi&#39;s Pizza Grotto Pacific Beach&#34;,&#34;Restaurant:  Manhattan Pizzeria&#34;,&#34;Restaurant:  Joe&#39;s Pizza&#34;,&#34;Restaurant:  Vito&#39;s Pizza&#34;,&#34;Restaurant:  Bonanno&#39;s New York Pizzeria&#34;,&#34;Restaurant:  Bonanno&#39;s New York Pizzeria&#34;,&#34;Restaurant:  Five50 Pizza Bar&#34;,&#34;Restaurant:  Secret Pizza&#34;,&#34;Restaurant:  Snacks&#34;,&#34;Restaurant:  XS Nightclub&#34;,&#34;Restaurant:  Naked City Pizza Shop&#34;,&#34;Restaurant:  Good Pie&#34;,&#34;Restaurant:  Evel Pie&#34;,&#34;Restaurant:  Pizza Rock&#34;,&#34;Restaurant:  Acquolina&#34;,&#34;Restaurant:  Pope&#39;s Italian Restaurant&#34;,&#34;Restaurant:  Nove Italian Restaurant&#34;,&#34;Restaurant:  Mama Mia&#39;s Restaurant&#34;,&#34;Restaurant:  Marino&#39;s Pizza&#34;,&#34;Restaurant:  Gennaro&#39;s Pizza Parlor&#34;,&#34;Restaurant:  Caputo&#39;s Pizzeria&#34;,&#34;Restaurant:  Corner Slice&#34;,&#34;Restaurant:  Francesca&#39;s Restaurant &amp; Pizzeria&#34;,&#34;Restaurant:  Café Crust&#34;,&#34;Restaurant:  Borrelli&#39;s&#34;,&#34;Restaurant:  King Umberto&#39;s of Elmont&#34;,&#34;Restaurant:  New Park Pizza&#34;,&#34;Restaurant:  Umberto&#39;s Pizzeria &amp; Restaurant&#34;,&#34;Restaurant:  Dani&#39;s House of Pizza&#34;,&#34;Restaurant:  Rosa&#39;s Pizza&#34;,&#34;Restaurant:  Brooklyn&#39;s Homeslice Pizzeria&#34;,&#34;Restaurant:  Not Ray&#39;s Pizza&#34;,&#34;Restaurant:  Roberta&#39;s&#34;,&#34;Restaurant:  Little Vincent&#39;s Pizza&#34;,&#34;Restaurant:  Carmine&#39;s Pizzeria&#34;,&#34;Restaurant:  Sal&#39;s Pizzeria&#34;,&#34;Restaurant:  Tony&#39;s Pizza&#34;,&#34;Restaurant:  L&#39;industrie Pizzeria&#34;,&#34;Restaurant:  Best Pizza&#34;,&#34;Restaurant:  Grimaldi&#39;s&#34;,&#34;Restaurant:  Juliana&#39;s Pizza&#34;,&#34;Restaurant:  Ignazio&#39;s&#34;,&#34;Restaurant:  La Nonna Krispy Krust Pizza&#34;,&#34;Restaurant:  Alphonso&#39;s Pizzeria &amp; Trattoria&#34;,&#34;Restaurant:  Paulie Gee&#39;s Slice Shop&#34;,&#34;Restaurant:  Canal Pizza&#34;,&#34;Restaurant:  Melani Pizzeria&#34;,&#34;Restaurant:  Paulie Gee&#39;s&#34;,&#34;Restaurant:  Speedy Romeo&#34;,&#34;Restaurant:  Rizzo&#39;s Fine Pizza&#34;,&#34;Restaurant:  Stanton Pizza&#34;,&#34;Restaurant:  Solo Pizza&#34;,&#34;Restaurant:  La Margarita Pizza&#34;,&#34;Restaurant:  Luna Ristorante&#34;,&#34;Restaurant:  Rosario&#39;s Pizza&#34;,&#34;Restaurant:  Da Gennaro&#34;,&#34;Restaurant:  Margherita NYC&#34;,&#34;Restaurant:  Yankee Pizza&#34;,&#34;Restaurant:  Il Piccolo Bufalo&#34;,&#34;Restaurant:  Da Nico Ristorante&#34;,&#34;Restaurant:  Little Gio&#39;s Pizza&#34;,&#34;Restaurant:  Lil&#39; Frankie&#39;s&#34;,&#34;Restaurant:  Sal&#39;s Little Italy&#34;,&#34;Restaurant:  Gnocco&#34;,&#34;Restaurant:  Pasquale Jones&#34;,&#34;Restaurant:  Lombardi&#39;s Pizza&#34;,&#34;Restaurant:  Champion Pizza&#34;,&#34;Restaurant:  Pomodoro Ristorante &amp; Pizzeria&#34;,&#34;Restaurant:  Prince Street Pizza&#34;,&#34;Restaurant:  Rubirosa&#34;,&#34;Restaurant:  Proto&#39;s Pizza&#34;,&#34;Restaurant:  310 Bowery Bar&#34;,&#34;Restaurant:  La Rossa&#34;,&#34;Restaurant:  Stromboli Pizza&#34;,&#34;Restaurant:  Baker&#39;s Pizza&#34;,&#34;Restaurant:  East Village Pizza&#34;,&#34;Restaurant:  Joe &amp; Pat&#39;s Pizzeria&#34;,&#34;Restaurant:  Muzzarella Pizza&#34;,&#34;Restaurant:  Sorbillo Pizzeria&#34;,&#34;Restaurant:  Joey&#39;s Pizzeria&#34;,&#34;Restaurant:  Pizza Barbone&#34;,&#34;Restaurant:  Palio Pizzeria&#34;,&#34;Restaurant:  Oath Pizza - Nantucket&#34;,&#34;Restaurant:  Steamboat Wharf Pizza&#34;,&#34;Restaurant:  Fusaro&#39;s&#34;,&#34;Restaurant:  Pi Pizzeria&#34;,&#34;Restaurant:  Sophie T&#39;s Pizza&#34;,&#34;Restaurant:  Muse Pizza&#34;,&#34;Restaurant:  Moto Pizza&#34;,&#34;Restaurant:  Poopsie&#39;s&#34;,&#34;Restaurant:  Monte&#39;s Restaurant&#34;,&#34;Restaurant:  Bianchi&#39;s Pizza&#34;,&#34;Restaurant:  Giordano&#39;s Restaurant&#34;,&#34;Restaurant:  Slice Of Edgartown&#34;,&#34;Restaurant:  Isola&#34;,&#34;Restaurant:  Santarpio&#39;s Pizza&#34;,&#34;Restaurant:  Rocco&#39;s Pizzeria&#34;,&#34;Restaurant:  Rinas Pizzeria &amp; Cafe&#34;,&#34;Restaurant:  Galleria Umberto&#34;,&#34;Restaurant:  Pushcart Pizzeria&#34;,&#34;Restaurant:  Regina Pizzeria&#34;,&#34;Restaurant:  Ducali&#34;,&#34;Restaurant:  1000 Degrees Neapolitan Pizzeria&#34;,&#34;Restaurant:  Halftime Pizza&#34;,&#34;Restaurant:  Florina Pizzeria &amp; Paninoteca&#34;,&#34;Restaurant:  Rosie&#39;s Subs and Pizza&#34;,&#34;Restaurant:  Felcaro Pizzeria&#34;,&#34;Restaurant:  Dirty Water Dough&#34;,&#34;Restaurant:  Eataly Boston&#34;,&#34;Restaurant:  Lynwood Cafe&#34;,&#34;Restaurant:  Fenway Park&#34;,&#34;Restaurant:  Baldie&#39;s Pizza &amp; Subs&#34;,&#34;Restaurant:  Cape Cod Cafe&#34;,&#34;Restaurant:  Louie&#39;s Pizza&#34;,&#34;Restaurant:  Town Spa Pizza&#34;,&#34;Restaurant:  Frank Pepe Pizzeria Napoletana - Chestnut Hill&#34;,&#34;Restaurant:  Tony&#39;s Place&#34;,&#34;Restaurant:  Chilmark General Store&#34;,&#34;Restaurant:  Bill&#39;s Pizzeria Kitchen + Grille&#34;,&#34;Restaurant:  Regina Pizzeria&#34;,&#34;Restaurant:  Modern Apizza&#34;,&#34;Restaurant:  Frank Pepe Pizzeria Napoletana&#34;,&#34;Restaurant:  Sally&#39;s Apizza&#34;,&#34;Restaurant:  BAR&#34;,&#34;Restaurant:  Riko&#39;s Pizza&#34;,&#34;Restaurant:  Colony Grill&#34;,&#34;Restaurant:  Johnny&#39;s Pizzeria&#34;,&#34;Restaurant:  Full Moon Pizzeria&#34;,&#34;Restaurant:  Nick&#39;s Pizza&#34;,&#34;Restaurant:  Pie Pie Pizza&#34;,&#34;Restaurant:  Mama&#39;s Pizzeria&#34;,&#34;Restaurant:  PQR&#34;,&#34;Restaurant:  Vinnie&#39;s Pizzeria&#34;,&#34;Restaurant:  Salvo&#39;s Pizzabar&#34;,&#34;Restaurant:  La Mia Pizza&#34;,&#34;Restaurant:  Italian Village Pizzeria&#34;,&#34;Restaurant:  Broadway Pizza &amp; Restaurant&#34;,&#34;Restaurant:  Saba&#39;s Pizza&#34;,&#34;Restaurant:  Cafe Viva&#34;,&#34;Restaurant:  Pizza Park&#34;,&#34;Restaurant:  Pizza Pete&#39;s&#34;,&#34;Restaurant:  Manhattan Brick Oven Pizza&#34;,&#34;Restaurant:  Oath Pizza - East 67th Street&#34;,&#34;Restaurant:  Brooklyn Pizza Masters&#34;,&#34;Restaurant:  Made In New York Pizza&#34;,&#34;Restaurant:  Kiss My Slice&#34;,&#34;Restaurant:  Farinella Bakery Pizza&#34;,&#34;Restaurant:  Cafe Daniello&#39;s&#34;,&#34;Restaurant:  Gato&#34;,&#34;Restaurant:  Freddie &amp; Pepper&#39;s&#34;,&#34;Restaurant:  Francesco&#39;s Pizzeria&#34;,&#34;Restaurant:  Iggy&#39;s Pizzeria&#34;,&#34;Restaurant:  Motorino&#34;,&#34;Restaurant:  Arturo&#39;s&#34;,&#34;Restaurant:  Song E Napule&#34;,&#34;Restaurant:  Fiore&#39;s Pizza&#34;,&#34;Restaurant:  Denino&#39;s Greenwich Village&#34;,&#34;Restaurant:  Joe&#39;s Pizza&#34;,&#34;Restaurant:  Cafe Fiorello&#34;,&#34;Restaurant:  Sfila Pizza&#34;,&#34;Restaurant:  Sacco Pizza&#34;,&#34;Restaurant:  Merilu Pizza Al Metro&#34;,&#34;Restaurant:  Bricco Ristorante Italiano&#34;,&#34;Restaurant:  New York Sal&#39;s Pizza&#34;,&#34;Restaurant:  Mariella Pizza&#34;,&#34;Restaurant:  Luigi&#39;s Pizza&#34;,&#34;Restaurant:  Luigi&#39;s Gourmet Grill&#34;,&#34;Restaurant:  B Side Pizza &amp; Wine Bar&#34;,&#34;Restaurant:  Uncle Mario&#39;s Brick Oven Pizza&#34;,&#34;Restaurant:  Bella Vita Pizzeria&#34;,&#34;Restaurant:  IPizzaNY&#34;,&#34;Restaurant:  Serafina Broadway&#34;,&#34;Restaurant:  Claudio Pizzeria&#34;,&#34;Restaurant:  Don Antonio&#34;,&#34;Restaurant:  Angelo&#39;s Coal Oven Pizzeria&#34;,&#34;Restaurant:  Z Deli Pizzeria&#34;,&#34;Restaurant:  Pazza Notte&#34;,&#34;Restaurant:  Carve&#34;,&#34;Restaurant:  A Slice of New York&#34;,&#34;Restaurant:  PizzArte&#34;,&#34;Restaurant:  Daniela Trattoria&#34;,&#34;Restaurant:  Capizzi&#34;,&#34;Restaurant:  Patzeria Perfect Pizza&#34;,&#34;Restaurant:  Pasta Lovers&#34;,&#34;Restaurant:  John&#39;s of Times Square&#34;,&#34;Restaurant:  Radio City Pizza&#34;,&#34;Restaurant:  Tavola&#34;,&#34;Restaurant:  Vinny Vincenz&#34;,&#34;Restaurant:  Sauce Pizzeria&#34;,&#34;Restaurant:  Pisa Pizza&#34;,&#34;Restaurant:  Frank&#39;s Trattoria&#34;,&#34;Restaurant:  Pepe Giallo&#34;,&#34;Restaurant:  Don Giovanni Ristorante&#34;,&#34;Restaurant:  Ovest Pizzoteca by Luzzo&#39;s&#34;,&#34;Restaurant:  10th Avenue Pizza &amp; Cafe&#34;,&#34;Restaurant:  Stella&#39;s Pizza&#34;,&#34;Restaurant:  Gotham Pizza&#34;,&#34;Restaurant:  Highline Pizza&#34;,&#34;Restaurant:  Rocky&#39;s Pizza 14th St&#34;,&#34;Restaurant:  Village Pizza&#34;,&#34;Restaurant:  Pizza Italia&#34;,&#34;Restaurant:  Famous Original Ray&#39;s Pizza&#34;,&#34;Restaurant:  Rivoli Pizza&#34;,&#34;Restaurant:  Pizza Rollio&#34;,&#34;Restaurant:  Rosemary&#39;s Pizza&#34;,&#34;Restaurant:  Teresa&#39;s Brick Oven Pizza &amp; Cafe&#34;,&#34;Restaurant:  Kiss My Slice&#34;,&#34;Restaurant:  Harry&#39;s Italian Pizza Bar&#34;,&#34;Restaurant:  Upside Pizza&#34;,&#34;Restaurant:  Sofia Pizza Shoppe&#34;,&#34;Restaurant:  Marinara Pizza&#34;,&#34;Restaurant:  Cassiano&#39;s Pizza&#34;,&#34;Restaurant:  Primavera Pizza &amp; Pasta&#34;,&#34;Restaurant:  Belmora Pizza &amp; Restaurant&#34;,&#34;Restaurant:  Zia Maria-Chelsea&#34;,&#34;Restaurant:  Joe&#39;s Pizza&#34;,&#34;Restaurant:  NY Pizza Suprema&#34;,&#34;Restaurant:  3 Giovani&#34;,&#34;Restaurant:  Rock Pizza Scissors&#34;,&#34;Restaurant:  Ben&#39;s Pizzeria&#34;,&#34;Restaurant:  Olio e Piú&#34;,&#34;Restaurant:  My Pie Pizzeria Romana&#34;,&#34;Restaurant:  Angelo Bellini&#34;,&#34;Restaurant:  Pizza By Certé&#34;,&#34;Restaurant:  La Vera Pizzeria &amp; Restaurant&#34;,&#34;Restaurant:  La Bellezza&#34;,&#34;Restaurant:  La Trattoria&#34;,&#34;Restaurant:  Patsy&#39;s Pizzeria&#34;,&#34;Restaurant:  Picciotto NYC&#34;,&#34;Restaurant:  Jiannetto&#39;s Pizza Truck&#34;,&#34;Restaurant:  Uncle Paul&#39;s Pizza&#34;,&#34;Restaurant:  Previti Pizza&#34;,&#34;Restaurant:  Royal Pizza&#34;,&#34;Restaurant:  Prova Pizzabar&#34;,&#34;Restaurant:  Giuseppe&#39;s Pizza&#34;,&#34;Restaurant:  Garlic New York Pizza Bar&#34;,&#34;Restaurant:  Lions &amp; Tigers &amp; Squares Detroit Pizza&#34;,&#34;Restaurant:  Lombardi&#39;s pizza&#34;,&#34;Restaurant:  Famous Famiglia Pizzeria&#34;,&#34;Restaurant:  Famous Amadeus Pizza&#34;,&#34;Restaurant:  Amtrak&#34;,&#34;Restaurant:  Nicoletta Pizzeria&#34;,&#34;Restaurant:  Lazzara&#39;s Pizza&#34;,&#34;Restaurant:  Rocky&#39;s Number II&#34;,&#34;Restaurant:  Posto&#34;,&#34;Restaurant:  Patrizia&#39;s Pizza and Pasta&#34;,&#34;Restaurant:  Mike&#39;s Pizza&#34;,&#34;Restaurant:  Joey Pepperoni&#39;s Pizza&#34;,&#34;Restaurant:  Libretto&#39;s Pizzeria&#34;,&#34;Restaurant:  Brick Oven Pizza 33&#34;,&#34;Restaurant:  J&#39;s Pizza&#34;,&#34;Restaurant:  Rocco&#39;s Pizza Joint&#34;],&#34;type&#34;:&#34;scatter&#34;,&#34;mode&#34;:&#34;markers&#34;,&#34;marker&#34;:{&#34;color&#34;:&#34;rgba(31,119,180,1)&#34;,&#34;line&#34;:{&#34;color&#34;:&#34;rgba(31,119,180,1)&#34;}},&#34;error_y&#34;:{&#34;color&#34;:&#34;rgba(31,119,180,1)&#34;},&#34;error_x&#34;:{&#34;color&#34;:&#34;rgba(31,119,180,1)&#34;},&#34;line&#34;:{&#34;color&#34;:&#34;rgba(31,119,180,1)&#34;},&#34;xaxis&#34;:&#34;x&#34;,&#34;yaxis&#34;:&#34;y&#34;,&#34;frame&#34;:null}],&#34;highlight&#34;:{&#34;on&#34;:&#34;plotly_click&#34;,&#34;persistent&#34;:false,&#34;dynamic&#34;:false,&#34;selectize&#34;:false,&#34;opacityDim&#34;:0.2,&#34;selected&#34;:{&#34;opacity&#34;:1},&#34;debounce&#34;:0},&#34;shinyEvents&#34;:[&#34;plotly_hover&#34;,&#34;plotly_click&#34;,&#34;plotly_selected&#34;,&#34;plotly_relayout&#34;,&#34;plotly_brushed&#34;,&#34;plotly_brushing&#34;,&#34;plotly_clickannotation&#34;,&#34;plotly_doubleclick&#34;,&#34;plotly_deselect&#34;,&#34;plotly_afterplot&#34;,&#34;plotly_sunburstclick&#34;],&#34;base_url&#34;:&#34;https://plot.ly&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;plot_ly(d2, x = ~crit_score, y = ~dave_score, text = ~paste(&#39;Restaurant: &#39;, name))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## No trace type specified:
+##   Based on info supplied, a &#39;scatter&#39; trace seems appropriate.
+##   Read more about this trace type -&amp;gt; https://plotly.com/r/reference/#scatter
+## No scatter mode specifed:
+##   Setting the mode to markers
+##   Read more about this attribute -&amp;gt; https://plotly.com/r/reference/#scatter-mode
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;htmlwidget-3&#34; style=&#34;width:672px;height:480px;&#34; class=&#34;plotly html-widget&#34;&gt;&lt;/div&gt;
+&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-3&#34;&gt;{&#34;x&#34;:{&#34;visdat&#34;:{&#34;3182ef929fc&#34;:[&#34;function () &#34;,&#34;plotlyVisDat&#34;]},&#34;cur_data&#34;:&#34;3182ef929fc&#34;,&#34;attrs&#34;:{&#34;3182ef929fc&#34;:{&#34;x&#34;:{},&#34;y&#34;:{},&#34;text&#34;:{},&#34;alpha_stroke&#34;:1,&#34;sizes&#34;:[10,100],&#34;spans&#34;:[1,20]}},&#34;layout&#34;:{&#34;margin&#34;:{&#34;b&#34;:40,&#34;l&#34;:60,&#34;t&#34;:25,&#34;r&#34;:10},&#34;xaxis&#34;:{&#34;domain&#34;:[0,1],&#34;automargin&#34;:true,&#34;title&#34;:&#34;crit_score&#34;},&#34;yaxis&#34;:{&#34;domain&#34;:[0,1],&#34;automargin&#34;:true,&#34;title&#34;:&#34;dave_score&#34;},&#34;hovermode&#34;:&#34;closest&#34;,&#34;showlegend&#34;:false},&#34;source&#34;:&#34;A&#34;,&#34;config&#34;:{&#34;showSendToCloud&#34;:false},&#34;data&#34;:[{&#34;x&#34;:[8.8,4.3,6.2,4.5,5.8,8.7,8,5,4,7.9,6.6,6,7,9.4,7.2,6.5,10,6.8,7.4,8,8,10,6.31,8.1,7,7.6,8.5,4.8,8.1,5,5.4,6.76,10,9,5,7.76,5.5,7.2,6.5,6.8,10,8.5,8,6.7,8.5,7.8,9.3,9.8,11,5.96,5.1,7.3,7.8,7,7,6.9,5.7,9.4,5.9,7.3,6.5,7],&#34;y&#34;:[7.7,6.9,6.5,6.3,4.1,7.1,6.3,5.4,6.1,7.1,5.8,6.7,1.2,4.1,6.4,5.8,7.4,5.9,7.2,4.2,4.2,7.1,4.8,7.7,6.3,7.7,6.4,6.6,8.1,5,5.4,1.7,6.8,7.4,4.2,8.2,6.4,6.6,6.1,7.1,6.7,7.9,8.1,7.9,7.7,7.7,8.2,6.8,7.3,6.4,3.6,5,8.4,6.1,6.3,6.6,5.7,8.1,6.1,7.4,6.2,6.8],&#34;text&#34;:[&#34;Restaurant:  Pugsley&#39;s Pizza&#34;,&#34;Restaurant:  Nino&#39;s 46&#34;,&#34;Restaurant:  Bond 45&#34;,&#34;Restaurant:  Dulono&#39;s Pizza&#34;,&#34;Restaurant:  Fat Lorenzo&#39;s&#34;,&#34;Restaurant:  Red&#39;s Savoy Pizza&#34;,&#34;Restaurant:  Frank From Philly &amp; Andrea Pizza&#34;,&#34;Restaurant:  LA Traviata Pizzeria&#34;,&#34;Restaurant:  Percy&#39;s Pizza&#34;,&#34;Restaurant:  Re Sette&#34;,&#34;Restaurant:  Mediterraneo Restaurant&#34;,&#34;Restaurant:  Tre Sorelle&#34;,&#34;Restaurant:  Buca di Beppo Italian Restaurant&#34;,&#34;Restaurant:  Napolese Pizzeria&#34;,&#34;Restaurant:  Bearno&#39;s By the Bridge&#34;,&#34;Restaurant:  The Original Impellizeri&#39;s Pizza&#34;,&#34;Restaurant:  Marcello&#39;s Pizza &amp; Subs&#34;,&#34;Restaurant:  Piu Bello Pizzeria Restaurant&#34;,&#34;Restaurant:  Buckhead Pizza&#34;,&#34;Restaurant:  Picasso Pizza&#34;,&#34;Restaurant:  Pomodoro Pizza&#34;,&#34;Restaurant:  Majestic Pizza&#34;,&#34;Restaurant:  Friendly Gourmet Pizza&#34;,&#34;Restaurant:  Harry&#39;s Italian&#34;,&#34;Restaurant:  Little Italy Pizza&#34;,&#34;Restaurant:  Phil&#39;s Pizza&#34;,&#34;Restaurant:  Kesté Pizza &amp; Vino&#34;,&#34;Restaurant:  Napoli Pizza&#34;,&#34;Restaurant:  Lucali&#34;,&#34;Restaurant:  Snacks&#34;,&#34;Restaurant:  42nd Street Pizza&#34;,&#34;Restaurant:  Canal Pizza&#34;,&#34;Restaurant:  Melani Pizzeria&#34;,&#34;Restaurant:  Il Piccolo Bufalo&#34;,&#34;Restaurant:  Pomodoro Ristorante &amp; Pizzeria&#34;,&#34;Restaurant:  Santarpio&#39;s Pizza&#34;,&#34;Restaurant:  Regina Pizzeria&#34;,&#34;Restaurant:  Nick&#39;s Pizza&#34;,&#34;Restaurant:  PQR&#34;,&#34;Restaurant:  Vinnie&#39;s Pizzeria&#34;,&#34;Restaurant:  La Mia Pizza&#34;,&#34;Restaurant:  Manhattan Brick Oven Pizza&#34;,&#34;Restaurant:  Francesco&#39;s Pizzeria&#34;,&#34;Restaurant:  Arturo&#39;s&#34;,&#34;Restaurant:  Song E Napule&#34;,&#34;Restaurant:  Sfila Pizza&#34;,&#34;Restaurant:  Merilu Pizza Al Metro&#34;,&#34;Restaurant:  Bricco Ristorante Italiano&#34;,&#34;Restaurant:  Serafina Broadway&#34;,&#34;Restaurant:  Don Antonio&#34;,&#34;Restaurant:  Daniela Trattoria&#34;,&#34;Restaurant:  Patzeria Perfect Pizza&#34;,&#34;Restaurant:  John&#39;s of Times Square&#34;,&#34;Restaurant:  Radio City Pizza&#34;,&#34;Restaurant:  Kiss My Slice&#34;,&#34;Restaurant:  Cassiano&#39;s Pizza&#34;,&#34;Restaurant:  Angelo Bellini&#34;,&#34;Restaurant:  Jiannetto&#39;s Pizza Truck&#34;,&#34;Restaurant:  Deli On Madison&#34;,&#34;Restaurant:  Prova Pizzabar&#34;,&#34;Restaurant:  Giuseppe&#39;s Pizza&#34;,&#34;Restaurant:  Posto&#34;],&#34;type&#34;:&#34;scatter&#34;,&#34;mode&#34;:&#34;markers&#34;,&#34;marker&#34;:{&#34;color&#34;:&#34;rgba(31,119,180,1)&#34;,&#34;line&#34;:{&#34;color&#34;:&#34;rgba(31,119,180,1)&#34;}},&#34;error_y&#34;:{&#34;color&#34;:&#34;rgba(31,119,180,1)&#34;},&#34;error_x&#34;:{&#34;color&#34;:&#34;rgba(31,119,180,1)&#34;},&#34;line&#34;:{&#34;color&#34;:&#34;rgba(31,119,180,1)&#34;},&#34;xaxis&#34;:&#34;x&#34;,&#34;yaxis&#34;:&#34;y&#34;,&#34;frame&#34;:null}],&#34;highlight&#34;:{&#34;on&#34;:&#34;plotly_click&#34;,&#34;persistent&#34;:false,&#34;dynamic&#34;:false,&#34;selectize&#34;:false,&#34;opacityDim&#34;:0.2,&#34;selected&#34;:{&#34;opacity&#34;:1},&#34;debounce&#34;:0},&#34;shinyEvents&#34;:[&#34;plotly_hover&#34;,&#34;plotly_click&#34;,&#34;plotly_selected&#34;,&#34;plotly_relayout&#34;,&#34;plotly_brushed&#34;,&#34;plotly_brushing&#34;,&#34;plotly_clickannotation&#34;,&#34;plotly_doubleclick&#34;,&#34;plotly_deselect&#34;,&#34;plotly_afterplot&#34;,&#34;plotly_sunburstclick&#34;],&#34;base_url&#34;:&#34;https://plot.ly&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
+&lt;p&gt;So apparently the lousy restaurant that got a 1 from the community and almost 0 from Dave is called &lt;em&gt;Amtrak&lt;/em&gt;. I’m wondering if that refers to pizza on Amtrak trains? Just for the heck of it and because I’m curious, let’s look at that entry.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;d2 %&amp;gt;% filter(name == &amp;quot;Amtrak&amp;quot;) %&amp;gt;% knitr::kable()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;name&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;address1&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;city&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;zip&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;country&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;latitude&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;longitude&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;price_level&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;provider_rating&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;provider_review_count&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;review_stats_all_average_score&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;review_stats_all_count&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;review_stats_all_total_score&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;review_stats_community_average_score&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;review_stats_community_count&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;review_stats_community_total_score&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;review_stats_critic_average_score&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;review_stats_critic_count&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;review_stats_critic_total_score&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;review_stats_dave_average_score&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;review_stats_dave_count&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;review_stats_dave_total_score&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;comm_score&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;crit_score&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;dave_score&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Amtrak&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;234 W 31st St&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;New York&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;10001&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;US&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;40.74965&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;-73.9934&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;3&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;345&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.54&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1.08&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.08&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.08&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;NA&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;0.08&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;I googled the address, and it seems to be indeed Amtrak. Note to self: Never order pizza on an Amtrak train.&lt;/p&gt;
+&lt;h1 id=&#34;price-vs-ratings-analysis&#34;&gt;Price vs ratings analysis&lt;/h1&gt;
+&lt;p&gt;Next, let’s look at possible impact of restaurant price level on rating.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;table(d2$price_level)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+##   0   1   2   3 
+##  21 216 218   8
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;There isn’t much spread, most pizza places are in the middle. Maybe not too surprising. Let’s look at a few plots to see if there is a pattern. First, we should recode price level as a factor.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;d2 &amp;lt;- d2 %&amp;gt;% mutate(price = as.factor(price_level))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;p1 &amp;lt;- d2 %&amp;gt;% ggplot(aes(x=price, y=comm_score)) + geom_violin() + geom_point()
+p2 &amp;lt;- d2 %&amp;gt;% ggplot(aes(x=price, y=crit_score)) + geom_violin() + geom_point()
+p3 &amp;lt;- d2 %&amp;gt;% ggplot(aes(x=price, y=dave_score)) + geom_violin() + geom_point()
+cowplot::plot_grid(p1, p2, p3, labels = c(&#39;A&#39;, &#39;B&#39;,&#39;C&#39;), label_size = 12)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/figure-html/price-plot-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Hard to tell if there’s a trend. Could do some stats to look in more detail, but since this exercise focuses on exploring, I won’t do that. Instead I’ll leave it at that.&lt;/p&gt;
+&lt;h1 id=&#34;rating-versus-location&#34;&gt;Rating versus location&lt;/h1&gt;
+&lt;p&gt;Ok, on to the last of the questions I started out with. Maybe there are some areas where restaurants are in general better? Or maybe an area where diners are more critical? Let’s see if there is some correlation between ratings and location.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;table(d2$country)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+##  US 
+## 463
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;sort(table(d2$city))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+##         Alpharetta            Augusta             Austin         Austintown 
+##                  1                  1                  1                  1 
+##         Blacksburg          Braintree           Brockton            Buffalo 
+##                  1                  1                  1                  1 
+##         Charleston          Charlotte      Chestnut Hill           Chilmark 
+##                  1                  1                  1                  1 
+##         Clearwater            Clifton         Coralville      Daytona Beach 
+##                  1                  1                  1                  1 
+##           Dearborn        Dennis Port              DUMBO        East Meadow 
+##                  1                  1                  1                  1 
+##              Edina          Elizabeth             Elmont         Gansevoort 
+##                  1                  1                  1                  1 
+##               Gary       Hampton Bays          Hopkinton       Howard Beach 
+##                  1                  1                  1                  1 
+##         Huntington          Iowa City            Jackson Jacksonville Beach 
+##                  1                  1                  1                  1 
+##        Jersey City        Kew Gardens          Lakeville      Lawrenceville 
+##                  1                  1                  1                  1 
+##               Lynn    Manhattan Beach       Mashantucket              Miami 
+##                  1                  1                  1                  1 
+##     Middle Village       Mount Vernon      New Hyde Park      New York City 
+##                  1                  1                  1                  1 
+##    North Arlington             Nutley         Oak Bluffs           Oak Lawn 
+##                  1                  1                  1                  1 
+##      Oklahoma City             Orange         Palm Beach           Pembroke 
+##                  1                  1                  1                  1 
+##          Princeton             Ramsey           Randolph             Revere 
+##                  1                  1                  1                  1 
+##         Rutherford      San Francisco           Sandwich        Southampton 
+##                  1                  1                  1                  1 
+##          Stoughton              Tampa     Vineyard Haven     West Melbourne 
+##                  1                  1                  1                  1 
+##    West Palm Beach       West Roxbury             Woburn            Yonkers 
+##                  1                  1                  1                  1 
+##    East Rutherford          Edgartown       Elmwood Park            Hyannis 
+##                  2                  2                  2                  2 
+##        Miami Beach       Philadelphia         Saint Paul       Santa Monica 
+##                  2                  2                  2                  2 
+##           Stamford              Bronx       Indianapolis          Lexington 
+##                  2                  3                  3                  3 
+##         Morgantown        San Antonio          San Diego          Ann Arbor 
+##                  3                  3                  3                  4 
+##         Louisville          New Haven      Staten Island         Youngstown 
+##                  4                  4                  4                  4 
+##            Atlanta            Chicago           Columbus            Hoboken 
+##                  6                  6                  6                  6 
+##          Nantucket   Saratoga Springs        Minneapolis          Las Vegas 
+##                  6                  6                  8                 11 
+##             Boston           Brooklyn           New York 
+##                 13                 20                251
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ok so all restaurants are in the US, and most are in New York. We could look at NY versus “rest of the cities.” Though isn’t Brooklyn (the 2nd largest entry) basically a part of New York? I’m not enough of an expert on all things NY to be sure (&lt;strong&gt;for any real analysis, you need to know a good bit about the subject matter, or work closely with a subject matter expert. If not, more likely than not something dumb will happen&lt;/strong&gt;).&lt;/p&gt;
+&lt;p&gt;For now, I assume that it’s different enough, and make 2 categories, NY and “other” and see if there are differences. Let’s try.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;p1 &amp;lt;- d2 %&amp;gt;% dplyr::mutate(newcity = forcats::fct_lump(city, n = 1)) %&amp;gt;%
+              ggplot(aes(x=newcity, y = comm_score)) + geom_violin() + geom_point()
+p2 &amp;lt;- d2 %&amp;gt;% dplyr::mutate(newcity = forcats::fct_lump(city, n = 1)) %&amp;gt;%
+              ggplot(aes(x=newcity, y = crit_score)) + geom_violin() + geom_point()
+p3 &amp;lt;- d2 %&amp;gt;% dplyr::mutate(newcity = forcats::fct_lump(city, n = 1)) %&amp;gt;%
+              ggplot(aes(x=newcity, y = dave_score)) + geom_violin() + geom_point()
+cowplot::plot_grid(p1, p2, p3, labels = c(&#39;A&#39;, &#39;B&#39;,&#39;C&#39;), label_size = 12)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/figure-html/plot-location-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Looks like the community in NY gives lower scores compared to other locations, less noticeable difference for critics and Dave.&lt;/p&gt;
+&lt;p&gt;Ok, the next analysis might not make much sense, but why not check if there is a North-South or East-West trend related to ratings. Maybe restaurants are better in one of those directions? Or people in the South are more polite and give better scores? 😁. I’m mostly doing this because longitude and latitude are continuous variables, so I can make a few more scatterplots. I don’t have any real goal for this otherwise.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;p1 &amp;lt;- d2 %&amp;gt;%  ggplot(aes(x=longitude, y = comm_score)) + geom_point() + geom_smooth(method = &#39;lm&#39;)
+p2 &amp;lt;- d2 %&amp;gt;%  ggplot(aes(x=longitude, y = crit_score)) + geom_point() + geom_smooth(method = &#39;lm&#39;)
+p3 &amp;lt;- d2 %&amp;gt;%  ggplot(aes(x=longitude, y = dave_score)) + geom_point() + geom_smooth(method = &#39;lm&#39;)
+cowplot::plot_grid(p1, p2, p3, labels = c(&#39;A&#39;, &#39;B&#39;,&#39;C&#39;), label_size = 12)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## `geom_smooth()` using formula &#39;y ~ x&#39;
+## `geom_smooth()` using formula &#39;y ~ x&#39;
+## `geom_smooth()` using formula &#39;y ~ x&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/figure-html/plot-longitude-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;So as we go from the west (-120) to the east (-70), there is a trend in restaurants getting higher scores, by all 3 groups. I guess as we are moving closer to Italy, the pizza quality goes up? 😃.&lt;/p&gt;
+&lt;p&gt;Next, let’s look at latitude.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;p1 &amp;lt;- d2 %&amp;gt;%  ggplot(aes(x=latitude, y = comm_score)) + geom_point() + geom_smooth(method = &#39;lm&#39;)
+p2 &amp;lt;- d2 %&amp;gt;%  ggplot(aes(x=latitude, y = crit_score)) + geom_point() + geom_smooth(method = &#39;lm&#39;)
+p3 &amp;lt;- d2 %&amp;gt;%  ggplot(aes(x=latitude, y = dave_score)) + geom_point() + geom_smooth(method = &#39;lm&#39;)
+cowplot::plot_grid(p1, p2, p3, labels = c(&#39;A&#39;, &#39;B&#39;,&#39;C&#39;), label_size = 12)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## `geom_smooth()` using formula &#39;y ~ x&#39;
+## `geom_smooth()` using formula &#39;y ~ x&#39;
+## `geom_smooth()` using formula &#39;y ~ x&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/figure-html/plot-latitude-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;So doesn’t seem as much of a trend going from South (25) to North (45). That finding of course fully confirms our “closer to Italy” theory!&lt;/p&gt;
+&lt;p&gt;Ok, I was going to leave it at that with location, but since I’m already going down a crazy rabbit hole regarding Italy, let’s do it for real: We’ll take both longitude and latitude of each restaurant and use it compute the distance of each location to Naples, the home of Pizza. And then we’ll plot that and see.&lt;/p&gt;
+&lt;p&gt;Since I have no idea how to do that, I need Google. Fortunately, the first hit worked, found this one:
+&lt;a href=&#34;https://stackoverflow.com/questions/32363998/function-to-calculate-geospatial-distance-between-two-points-lat-long-using-r&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://stackoverflow.com/questions/32363998/function-to-calculate-geospatial-distance-between-two-points-lat-long-using-r&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Let’s try.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;coord_naples=cbind(rep(14.2,nrow(d2)),rep(40.8,nrow(d2)))  #location of naples
+coord_restaurants = cbind(d2$longitude,d2$latitude)
+distvec = rep(0,nrow(d2))
+for (n in 1:nrow(d2))
+{
+  distvec[n] = distm( coord_restaurants[n,], coord_naples[n,], fun = distGeo)
+}
+d2$distvec = distvec / 1609 #convert to miles since we are in the US :)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It’s not tidyverse style, which I tried first but couldn’t get it to work. The trusty old for-loop seems to always work for me. I checked the numbers in distvec, they look reasonable.&lt;/p&gt;
+&lt;p&gt;Ok, let’s redo the plots above, now with distance to Naples.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;p1 &amp;lt;- d2 %&amp;gt;%  ggplot(aes(x=distvec, y = comm_score)) + geom_point() + geom_smooth(method = &#39;lm&#39;)
+p2 &amp;lt;- d2 %&amp;gt;%  ggplot(aes(x=distvec, y = crit_score)) + geom_point() + geom_smooth(method = &#39;lm&#39;)
+p3 &amp;lt;- d2 %&amp;gt;%  ggplot(aes(x=distvec, y = dave_score)) + geom_point() + geom_smooth(method = &#39;lm&#39;)
+cowplot::plot_grid(p1, p2, p3, labels = c(&#39;A&#39;, &#39;B&#39;,&#39;C&#39;), label_size = 12, nrow = 3)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## `geom_smooth()` using formula &#39;y ~ x&#39;
+## `geom_smooth()` using formula &#39;y ~ x&#39;
+## `geom_smooth()` using formula &#39;y ~ x&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.andreashandel.com/posts/tidytuesday-analysis/index_files/figure-html/plot-naples-distance-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Hm ok, no smoking gun. Looks like there is a bit of a trend that the further away you are from Naples, the lower the score. But really not much.&lt;/p&gt;
+&lt;h1 id=&#34;hyping-our-result&#34;&gt;Hyping our result&lt;/h1&gt;
+&lt;p&gt;But since this distance-from-Naples makes such a good story, let’s see if I can hype it.&lt;/p&gt;
+&lt;p&gt;First, to increase potential statistical strength, I’ll combine all 3 scores into an overall mean, i.e. similar ot the &lt;code&gt;all&lt;/code&gt; variable in the original. I don’t trust that one since I don’t know if they averaged over 0 instead of properly treating it as NA. Of course I could check, but I’m just re-creating it here.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;d2$all_score = rowMeans(cbind(d2$dave_score,d2$crit_score,d2$comm_score),na.rm=TRUE)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ok, let’s check if correlation between this new score and distance is &lt;em&gt;significant!&lt;/em&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;#compute a linear fit and p-value (it&#39;s significant!)
+fit=lm(d2$all_score ~ d2$distvec, data = d2)
+summary(fit)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Call:
+## lm(formula = d2$all_score ~ d2$distvec, data = d2)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -6.7854 -0.5866  0.3027  0.9612  2.3686 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&amp;gt;|t|)    
+## (Intercept)  8.9895014  0.7008802  12.826  &amp;lt; 2e-16 ***
+## d2$distvec  -0.0004772  0.0001525  -3.129  0.00187 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.478 on 459 degrees of freedom
+##   (2 observations deleted due to missingness)
+## Multiple R-squared:  0.02089,    Adjusted R-squared:  0.01875 
+## F-statistic: 9.791 on 1 and 459 DF,  p-value: 0.001865
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;pval=anova(fit)$`Pr(&amp;gt;F)`[1]
+print(pval)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.001865357
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It is signficant, p&amp;lt;0.05! We hit pay dirt! Let’s make a great looking figure and go tell the press!&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;#make final plot
+p1 &amp;lt;- d2 %&amp;gt;%  ggplot(aes(x=distvec, y = all_score)) + geom_point(shape = 21, colour = &amp;quot;black&amp;quot;, fill = &amp;quot;red&amp;quot;,  size = 2 ) + geom_smooth(method = &#39;lm&#39;, se = TRUE, color = &amp;quot;darkgreen&amp;quot;, size = 2) + xlab(&#39;Distance from Naples (miles)&#39;) + ylab(&#39;Pizza Quality (score)&#39;) + ylim(c(2.5,max(d2$all_score))) + theme_bw() +theme(axis.text=element_text(size=12), axis.title=element_text(size=14,face=&amp;quot;bold&amp;quot;)) + annotate(&amp;quot;text&amp;quot;, x=6000, y=9, label= paste(&amp;quot;p =&amp;quot;,round(pval,4)),size = 12) 
+ggsave(&#39;pizzadistance.png&#39;)
+knitr::include_graphics(&amp;quot;pizzadistance.png&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;pizzadistance.png&#34; width=&#34;1050&#34; /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;the-press-release&#34;&gt;The “press release”&lt;/h1&gt;
+&lt;p&gt;A novel study of pizza restaurants in the US found a clear, statistically significant correlation between the distance of the restaurant to Naples and the quality of the pizza as determined by the community and expert restaurant critics. The study authors attribute the finding to the ability of restaurants that are closer to Naples to more easily get genuine fresh and high quality ingredients, such as the famous San Marzano tomatoes.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;pizzadistance.png&#34; width=&#34;1050&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;summary&#34;&gt;Summary&lt;/h1&gt;
+&lt;p&gt;That was a fun exploration. It was the first time I played with the tidyverse data. I had no idea which direction it was going to go, and ideas just came as I was doing it. I’m sure there is interesting stuff in datasets 1 and 3 as well, but I already spent several hours on this and will therefore call it quits now.&lt;/p&gt;
+&lt;p&gt;While the exercise was supposed to focus on cleaning/wrangling and visualizing, I couldn’t resist going all the way at the end and producing a &lt;strong&gt;statistically significant&lt;/strong&gt; and &lt;strong&gt;somewhat plausible sounding&lt;/strong&gt; finding. If this were a “real” study/analysis, such a nice result would be happily accepted by most analysts/authors, hyped by a university press release and - if the result is somewhat interesting/cute, picked up by various media outlets.&lt;/p&gt;
+&lt;p&gt;I had no idea at the beginning what I was going to analyze, I did that longitude/latitude analysis on a whim, and if I hadn’t found this correlation and had that crazy &lt;em&gt;distance to Italy&lt;/em&gt; idea, nothing would have happened. But now that I have a &lt;strong&gt;significant&lt;/strong&gt; result and a good story to go with, I can publish! It’s not really much sillier than the &lt;a href=&#34;https://www.nejm.org/doi/full/10.1056/NEJMon1211064&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Chocolate and Nobel Laureates paper&lt;/a&gt; paper &lt;a href=&#34;https://andreashandel.github.io/MADAcourse/4a_Data_Analysis_Overview.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;we discussed here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;What I illustrated here (without having had any plan to do so), is a big, general problem in secondary data analysis. It’s perfectly ok to do secondary analyses, and computing significance is also (kinda) ok, but selling exploratory (fishing) results as inferential/causal/confirmatory is wrong - and incredibly widespread. If you want to sharpen your critical thinking skills related to all those supposed significant and &lt;em&gt;real&lt;/em&gt; findings in science we see a lot, a great (though at times sobering) read is &lt;a href=&#34;https://statmodeling.stat.columbia.edu/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Andrew Gelman’s blog&lt;/a&gt; where he regularly picks apart studies/results like the one I did here or the chocolate and Nobel laureates one. And now I’ll go eat some chocolate so I can increase my chances for a Nobel prize.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

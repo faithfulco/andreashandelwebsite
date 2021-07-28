@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Biostatistics | Andreas Handel</title>
+    <link>https://www.andreashandel.com/tag/biostatistics/</link>
+      <atom:link href="https://www.andreashandel.com/tag/biostatistics/index.xml" rel="self" type="application/rss+xml" />
+    <description>Biostatistics</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Wed, 01 Mar 2017 00:00:00 -0500</lastBuildDate>
+    <image>
+      <url>https://www.andreashandel.com/media/logo_hu5aa01ef3f5a2b4ecf2f7517df7c485bf_90212_300x300_fit_lanczos_3.png</url>
+      <title>Biostatistics</title>
+      <link>https://www.andreashandel.com/tag/biostatistics/</link>
+    </image>
+    
+    <item>
+      <title>iblir - Introduction to Biostatistics Labs in R</title>
+      <link>https://www.andreashandel.com/my-projects/iblir/</link>
+      <pubDate>Wed, 01 Mar 2017 00:00:00 -0500</pubDate>
+      <guid>https://www.andreashandel.com/my-projects/iblir/</guid>
+      <description>&lt;p&gt;An R package that contains several Shiny/learnr based tutorials that teach introductory aspects of biostatistics in an interactive way. Learn more about it &lt;a href=&#34;https://andreashandel.github.io/iblir/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on the package website&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

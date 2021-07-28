@@ -1,0 +1,1720 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.3.0 for Hugo" />
+  
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Andreas Handel" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Some simple data analysis applied to a mid-semester student survey of my [Modern Applied Data Analysis course.](https://andreashandel.github.io/MADAcourse/)" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://www.andreashandel.com/posts/mada-survey-analysis/" />
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css" integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous" media="print" onload="this.media='all'">
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.f0cf03b20998d63e314819fa4a90c13f.css" />
+
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-48442618-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-48442618-4', {});
+  gtag('set', {'cookie_flags': 'SameSite=None;Secure'});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hu5aa01ef3f5a2b4ecf2f7517df7c485bf_90212_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu5aa01ef3f5a2b4ecf2f7517df7c485bf_90212_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://www.andreashandel.com/posts/mada-survey-analysis/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image" />
+  
+    <meta property="twitter:site" content="@andreashandel" />
+    <meta property="twitter:creator" content="@andreashandel" />
+  
+  <meta property="og:site_name" content="Andreas Handel" />
+  <meta property="og:url" content="https://www.andreashandel.com/posts/mada-survey-analysis/" />
+  <meta property="og:title" content="Text analysis of a mid-semester course survey | Andreas Handel" />
+  <meta property="og:description" content="Some simple data analysis applied to a mid-semester student survey of my [Modern Applied Data Analysis course.](https://andreashandel.github.io/MADAcourse/)" /><meta property="og:image" content="https://www.andreashandel.com/posts/mada-survey-analysis/featured.png" />
+    <meta property="twitter:image" content="https://www.andreashandel.com/posts/mada-survey-analysis/featured.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2019-10-23T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2019-10-23T00:00:00&#43;00:00">
+  
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Text analysis of a mid-semester course survey | Andreas Handel</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="d8ca62caa51b0d35776fc7698b3cd850" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.8988fb2a4bba758785868cfcb5244555.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container-xl">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/"><img src="/media/logo_hu5aa01ef3f5a2b4ecf2f7517df7c485bf_90212_0x70_resize_lanczos_3.png" alt="Andreas Handel"></a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/"><img src="/media/logo_hu5aa01ef3f5a2b4ecf2f7517df7c485bf_90212_0x70_resize_lanczos_3.png" alt="Andreas Handel"></a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/about"><span>About</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/presentations"><span>Presentations</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/projects"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/subscribe"><span>Subscribe</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+      
+
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+
+<div class="article-container pt-3">
+  <h1>Text analysis of a mid-semester course survey</h1>
+
+  
+
+  
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Oct 23, 2019
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+  
+
+
+
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 514px;">
+  <div style="position: relative">
+    <img src="/posts/mada-survey-analysis/featured_hu4c21a266686124beac615ff250d2119a_133207_720x0_resize_lanczos_3.png" alt="" class="featured-image">
+    
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <script src="https://www.andreashandel.com/posts/mada-survey-analysis/index_files/kePrint/kePrint.js"></script>
+<link href="https://www.andreashandel.com/posts/mada-survey-analysis/index_files/lightable/lightable.css" rel="stylesheet" />
+<script src="https://www.andreashandel.com/posts/mada-survey-analysis/index_files/kePrint/kePrint.js"></script>
+<link href="https://www.andreashandel.com/posts/mada-survey-analysis/index_files/lightable/lightable.css" rel="stylesheet" />
+<script src="https://www.andreashandel.com/posts/mada-survey-analysis/index_files/kePrint/kePrint.js"></script>
+<link href="https://www.andreashandel.com/posts/mada-survey-analysis/index_files/lightable/lightable.css" rel="stylesheet" />
+<script src="https://www.andreashandel.com/posts/mada-survey-analysis/index_files/kePrint/kePrint.js"></script>
+<link href="https://www.andreashandel.com/posts/mada-survey-analysis/index_files/lightable/lightable.css" rel="stylesheet" />
+<script src="https://www.andreashandel.com/posts/mada-survey-analysis/index_files/kePrint/kePrint.js"></script>
+<link href="https://www.andreashandel.com/posts/mada-survey-analysis/index_files/lightable/lightable.css" rel="stylesheet" />
+<h1 id="overview">Overview</h1>
+<p>Our center for teaching and learning administered a mid-semester survey to the students in my fall 2019 online <a href="https://andreashandel.github.io/MADAcourse/" target="_blank" rel="noopener">Modern Applied Data Analysis course.</a> I figured it would make for a nice and topical exercise if I performed some analysis of the survey results. Students agreed to have the - fully anonymous - results posted publicly. This is my quick and simple text analysis.</p>
+<h1 id="data-loading">Data loading</h1>
+<p>Load and take a look.</p>
+<pre><code class="language-r">data_raw &lt;- read_xlsx(&quot;Handel_CTL_Survey.xlsx&quot;)
+d &lt;- data_raw
+dim(d)
+</code></pre>
+<pre><code>## [1] 15 11
+</code></pre>
+<h2 id="some-cleaning-actions">Some cleaning actions</h2>
+<pre><code class="language-r">d &lt;- d %&gt;% clean_names() #clean column names, which are the full questions
+orig_quest &lt;- data.frame(Number = paste0('Q',1:11), Question = names(d)) #save names and replace with simpler ones for now
+names(d) = paste0('Q',1:11) #just call each column as Q1, Q2,... originallly asked question is stored in orig_quest
+kable(orig_quest) %&gt;% kable_styling() #print them here for further reference  
+</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Number </th>
+   <th style="text-align:left;"> Question </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Q1 </td>
+   <td style="text-align:left;"> whats_working_well_in_this_class_what_are_the_strengths_of_the_class_and_which_aspects_are_having_a_positive_impact_on_your_learning </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q2 </td>
+   <td style="text-align:left;"> what_aos_not_working_so_well_in_this_class_what_aspects_are_having_a_less_positive_impact_on_your_learning </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q3 </td>
+   <td style="text-align:left;"> what_specific_changes_do_you_think_should_be_made_to_improve_your_experience_in_this_class </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q4 </td>
+   <td style="text-align:left;"> i_think_the_pace_of_this_class_is </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q5 </td>
+   <td style="text-align:left;"> are_there_specific_modules_that_should_be_adjusted_and_how_5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q6 </td>
+   <td style="text-align:left;"> the_quantity_of_material_covered_in_each_module_is </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q7 </td>
+   <td style="text-align:left;"> are_there_specific_modules_that_should_be_adjusted_and_how_7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q8 </td>
+   <td style="text-align:left;"> the_level_of_difficult_of_each_module_is </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q9 </td>
+   <td style="text-align:left;"> are_there_specific_modules_that_should_be_adjusted_and_how_9 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q10 </td>
+   <td style="text-align:left;"> on_average_i_spend_this_many_hours_per_week_doing_work_for_this_course </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q11 </td>
+   <td style="text-align:left;"> finally_what_is_your_gold_star_top_choice_number_one_recommendation_for_a_constructive_change_your_instructor_can_make_in_this_course </td>
+  </tr>
+</tbody>
+</table>
+<p>More cleaning</p>
+<pre><code class="language-r">visdat::vis_dat(d) #missing values
+</code></pre>
+<p><img src="https://www.andreashandel.com/posts/mada-survey-analysis/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre><code class="language-r">#looks like a few students left some entries blank. Should be ok. One student only answered 1 question. Quick look at entry.
+print(d[12,2])
+</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##   Q2                                       
+##   &lt;chr&gt;                                    
+## 1 Elc system not work well for online class
+</code></pre>
+<pre><code class="language-r">#ok, not too useful (though I agree with the statement). Let's remove that student/observation.
+d&lt;- d[-12,]
+# most questions were free text, but some were specific choices, so should be grouped as factor.
+d &lt;- d %&gt;% dplyr::mutate_at(c(&quot;Q4&quot;, &quot;Q6&quot;,&quot;Q8&quot;), factor)
+#Q10 is number, should be numeric but was text field so different entries exist
+#small enough to print here
+print(d$Q10)
+</code></pre>
+<pre><code>##  [1] &quot;20&quot;             &quot;15-20&quot;          &quot;15 or more&quot;     &quot;15&quot;            
+##  [5] &quot;14-16&quot;          &quot;12&quot;             &quot;15&quot;             &quot;10&quot;            
+##  [9] &quot;30&quot;             &quot;20&quot;             &quot;10 to 12 hours&quot; &quot;&gt;10 hours&quot;     
+## [13] &quot;2&quot;              &quot;20&quot;
+</code></pre>
+<pre><code class="language-r">#ok, this is kinda bad style, but the dataset is so small that it's easiest to replace the non-numeric values by hand. I'll set them to their mean or the specified limit.
+d$Q10[c(2,3,5,11,12)] &lt;- c(17.5,15,15,11,10)
+d$Q10 &lt;- as.numeric(d$Q10)
+print(d$Q10)
+</code></pre>
+<pre><code>##  [1] 20.0 17.5 15.0 15.0 15.0 12.0 15.0 10.0 30.0 20.0 11.0 10.0  2.0 20.0
+</code></pre>
+<h2 id="drawing-first-conclusions">Drawing first conclusions</h2>
+<pre><code class="language-r">kable(orig_quest[c(4,6,8),]) %&gt;% kable_styling()
+</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:left;"> Number </th>
+   <th style="text-align:left;"> Question </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> Q4 </td>
+   <td style="text-align:left;"> i_think_the_pace_of_this_class_is </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> Q6 </td>
+   <td style="text-align:left;"> the_quantity_of_material_covered_in_each_module_is </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> Q8 </td>
+   <td style="text-align:left;"> the_level_of_difficult_of_each_module_is </td>
+  </tr>
+</tbody>
+</table>
+<pre><code class="language-r">d %&gt;% dplyr::select(Q4, Q6, Q8) %&gt;% summary()
+</code></pre>
+<pre><code>##           Q4                Q6                Q8    
+##  just right:10   right amount:4   just right   :10  
+##  too fast  : 4   too much    :9   too difficult: 3  
+##                  NA's        :1   NA's         : 1
+</code></pre>
+<pre><code class="language-r">plot(1:14,d$Q10, ylab = 'Time spent per week')
+lines(1:14,rep(12,14))
+</code></pre>
+<p><img src="https://www.andreashandel.com/posts/mada-survey-analysis/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Based on answers to questions 4,6 and 8, the majority of students think the pace and level of difficulty of the course is right but the amount of material covered is too much. Based on answer to Q10, students spend more time than my target (12 hours, solid line). Even accounting for some &ldquo;inflation factor&rdquo; (people generally over-estimate the time they spend on tasks like these, counting all the other things they do at the same time e.g., texting/email/FB/drinknig coffee/&hellip;), the overall amount seems too high, and it agrees with Q6 answers about too much material.</p>
+<p><strong>First conclusion: Reduce weekly workload, probably best by reducing assigned reading (see text answers which I already glimpsed at 😃).</strong></p>
+<h2 id="manual-text-analysis">Manual text analysis</h2>
+<pre><code class="language-r">#dropping the question/variables analyzed above
+d &lt;- d %&gt;% dplyr::select( -c(&quot;Q4&quot;, &quot;Q6&quot;, &quot;Q8&quot;, &quot;Q10&quot;) )
+</code></pre>
+<p>Questions 5, 7 and 9 ask how modules should be adjusted regarding pace, quantity and difficulty, so it&rsquo;s worth looking at those questions on their own.</p>
+<pre><code class="language-r">d2 &lt;- d %&gt;% dplyr::select( Q5, Q7, Q9)
+is.na(d2) #some students didn't write anything for any of those questions, remove before printing content.
+</code></pre>
+<pre><code>##          Q5    Q7    Q9
+##  [1,] FALSE  TRUE FALSE
+##  [2,] FALSE FALSE FALSE
+##  [3,]  TRUE  TRUE  TRUE
+##  [4,] FALSE FALSE FALSE
+##  [5,] FALSE FALSE FALSE
+##  [6,]  TRUE  TRUE  TRUE
+##  [7,] FALSE FALSE FALSE
+##  [8,]  TRUE  TRUE  TRUE
+##  [9,]  TRUE  TRUE  TRUE
+## [10,]  TRUE  TRUE  TRUE
+## [11,] FALSE FALSE FALSE
+## [12,]  TRUE  TRUE  TRUE
+## [13,] FALSE  TRUE  TRUE
+## [14,]  TRUE FALSE  TRUE
+</code></pre>
+<pre><code class="language-r">d2 &lt;- d2[which(rowSums(is.na(d2)) != 3),] #remove all rows/obersvations that have NA to all 3 questions
+names(d2) &lt;- c('too fast','too much','too hard')
+knitr::kable(d2) %&gt;% kable_styling() ##show rest
+</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> too fast </th>
+   <th style="text-align:left;"> too much </th>
+   <th style="text-align:left;"> too hard </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> All of them are to long except for module 2. </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> The quizzes are becoming ridiculously difficult. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> None, I have enjoyed the pace. </td>
+   <td style="text-align:left;"> None, I think the content is appropriate. </td>
+   <td style="text-align:left;"> The toughest module thus far in the course was the strings module. Though it should be noted, I think the content was very appropriate to cover the concepts of this module as they are quite difficult. I really benefited from completing some of the Regex crosswords while working through this chapter. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> I think all modules need to be adjusted. </td>
+   <td style="text-align:left;"> Considering we have only done the first half of the class and the shortest amount of time I have spent in one week on this class was the first module and I still did more than 9 hours of work for what should have been a half week seems unreasonable. For all other modules I spend over 12 hours each week on this class sometimes upwards of 25 hours in a single week. </td>
+   <td style="text-align:left;"> I don't think the modules themselves are difficult just the content is being squeezed in and the time it takes doesn't correlate to the amount I feel like I'm learning, where I should be learning/proficient in much more than I currently am based on the amount of time spent. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> The visualization module is pretty hefty in terms of how much time is spent. But it's all the same topic so I don't know how that would be split up. </td>
+   <td style="text-align:left;"> see above </td>
+   <td style="text-align:left;"> The modules are just difficult enough that the first couple times I try I struggle and it's hard, but after giving it a go it becomes much easier and I get it. So its enjoyably difficult. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> I feel like I like the order and pace of the course materials. We can learn all of the material in the module in one week - it's just exhausting to do so. </td>
+   <td style="text-align:left;"> Trim the reading in the modules and add more exploratory exercises. </td>
+   <td style="text-align:left;"> I feel like the modules scale up in difficulty each week, but proportionally to the growth in our skills. I feel like I am really learning R for the first time! (After three other courses in R...) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> In the tidyverse module, we used ggplot, but then we actually learned about how to do ggplot which would have been helpful before tidyverse. The R module was definitely a lot of material and the coding exercise was a steep learning curve for the first true coding exercise of the course. I understand sometimes the best way to learn something is struggling through, but I think it can be difficult for new students to make the sudden leap from follow a specific script in a book chapter to make up your own code. Maybe something as in altering existing scripts first? </td>
+   <td style="text-align:left;"> While now there is a distinction on what is going to be on the quiz, there are multiple chapters and tutorials I haven‚Äôt read through yet. I‚Äôm actively searching to see what to prioritize first in a module. Module 4/5 also had a lot of (useful) material to work through. </td>
+   <td style="text-align:left;"> I think working through the material for the quizzes themselves is just the right difficulty but the assessments range from not so difficult (Tidyverse) to spending a couple of hours googling and troubleshooting (first R and Visualization). While you said to spend no more than 1 or 2 hours on Visualization, it still took me 4 hours to figure out. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Not that I see so far. </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> Most modules waver between just the right amount and a little too much. However, this goes hand in hand with what I have identified also as a strength of the course (great curation of resources), so perhaps adjustment isn't necessary... maybe it would be useful to have a more organized list of required and optional readings. </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+</tbody>
+</table>
+<p><strong>Conclusions from anwers to those questions: Overall too much material (see above), level of difficulty overall ok but too fast/crowded. Again, solution is to reduce (required) material.</strong></p>
+<p>Next, let&rsquo;s look at &ldquo;whats working/not working&rdquo; questions.</p>
+<pre><code class="language-r">d2 &lt;- d %&gt;% dplyr::select( Q1, Q2)
+names(d2) &lt;- c('good','bad')
+knitr::kable(d2) %&gt;% kable_styling() 
+</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> good </th>
+   <th style="text-align:left;"> bad </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> The positive impact would be that I am learning completely new things I have had no exposure too. </td>
+   <td style="text-align:left;"> This class is extremely overwhelming. It is online and the professor is the worst time estimator I have ever seen. He assigns way to much with absolutely no emphasis on what is important. As he is the ‚Äúexpert‚Äù in this subject he should be able to narrow it down and make this course more reasonable. I should not be spending 20-25 hours a week on one course that is 3 credits. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> I really enjoy the exercises assigned for each module. I am receiving a good amount of background information from the modules/reading, however I feel I really start to understand the material once I have used it in practice. Additionally, a good portion of the exercises thus far are directly applicable to the analysis I will be using for my personal research which is excellent practice.
+<p>I also really appreciate that the structure of the course. I really struggled with the basic work flow of R scripts and GitHub initially as I am newer to the program. However, the progressive flow that this course has created has allowed me to learn the process step-by-step and frequently connected back to information that was previously used in an earlier module. As a result, I have become very comfortable with the basic usage/flow of R and I am excited to move into the more detailed functions of the program in the latter half of the semester! </td></p>
+   <td style="text-align:left;"> The only small issue I have encountered thus far with this course is with the quiz time limits. I am sometimes having trouble sifting through all of my notes quickly enough to properly answer the quiz questions. I take approximately 10-20 pages of notes on each module (depending on the size and amount of exercises) and I can sometime struggle to locate the specific material in my notes within these time constraints. I absolutely understand the need for a time limit with an online class structure, however 20 minutes can be a bit tight for some of the quizzes. A simple bump from a 20-30 minute time range to 30-40 minute time range would be more than enough to address all questions adequately, while still ensuring students review the module content beforehand. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> I love the tidyverse package and thanks to instructions on R primer.
+<p>I love R primer, because it raise the problem and then have a space to write code to try, and available solution. </td></p>
+   <td style="text-align:left;"> Some materials (R data science, IDS) are useful too. However, I do not like them. The reason is that they give me the knowledge, and explain some simple code. Then, I have exercise part with more complicated questions. I do not know how to do it sometimes and got stuck. One example is chapter about regular expressions.
+<p>Another thing is that this class took me so much time per week. It is one third of my week. I still have other three classes, and research duties.</p>
+<p>I expect that taking class is the quicker and better way to learn than learning by myself. This class is not what I expect. It is too time-consuming because I mainly have to learn by myself. </td></p>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> The R primers are very useful for understanding the material, the exercises you give us, and some of the exercises in the IDS book (however, they need to be narrowed down to what is actually important). </td>
+   <td style="text-align:left;"> Having 5+ chapters of reading each week isn't useful. The readings in general aren't useful for coding, at least for me. They should supplement and be a reference for the actual coding we are doing but not be the entire basis of the quizzes. I spend so much time reading and I don't actually understand any of it unless I'm doing the coding. However, expecting to do every exercise that comes with some of the reading isn't working because I currently spend at least 12 hours every week just doing the exercises that go with readings and I end up not retaining much because I'm overwhelmed. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> I really enjoy having a structured way to learn r for data analysis instead of just learning it on my own. It makes it much more manageable and mentally-forgiving when there are other people learning/struggling at the same time as you. All of the data/resources are in one place and present in a timeline that makes it easier to understand and learn. 
+<p>I also really enjoyed how he makes us go back to the other student&rsquo;s repositories and work with them. It helps foster the feeling/attitude that we&rsquo;re classmates and get to know each other more even though it&rsquo;s an online course. </td></p>
+   <td style="text-align:left;"> The resources are a lot to work through. I don't have previous R experience but this class is taking a lot of my time to work through the R for data science book. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> The amount of information available. Strengths of the class are being able to work with other students to complete assignments and get ideas from one another. </td>
+   <td style="text-align:left;"> The amount of work we have to do every week, including reading, quizzes, and lengthy assignments. Someone new to coding might find this extremely overwhelming considering they have other classes to work on as well as their own laboratory work. The quizzes make me feel like I have not learned anything because they are very weird, specific questions that I have to spend a long time going back through the reading to hunt for. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> The course website is very thorough. It is very clear that Dr. Handel has put a lot of thought and effort into building the materials and course for this class. The writing is very clear and accessible. The site and materials are very consistent, which is helpful. 
+<p>The RPrimers, IDS, and R4DS chapters are helpful (in that order, respectively). The class exercises are very helpful. I am finding myself coding more often and drafting unique codes, which was my goal from the start. This is the most well-rounded course in R I have taken.</p>
+<p>Dr. Handel&rsquo;s exercises are by far the most helpful. We get to think through the material and use resources as-needed. These are exercises I will need in my own analysis. I have been using these codes as guidelines for working through my own data sets.</p>
+<p>I love the R-Primers as an introduction, and then the Exercises. I think we could take a stab at the exercises without the IDS and R4DS readings, or have those readings embedded into the exercise.</p>
+<p>Such as&hellip;&ldquo;Try to make this figure&rdquo; If you are stuck, Chapter 4.5 might be a good a reference. </td></p>
+   <td style="text-align:left;"> I'm lucky in that there are a five or six students in my department all taking this course. Since we see each other regularly, we can help each other along and make sense of the material. I can't imagine working through this course alone, with no face-to-face interaction. The group dynamic helps me read into what is important and helps trouble-shoot when there are problems. The eLC discussion board is not great for connecting with others...
+<p>Outside of these few people that I am lucky to see in person, I think it is hard to connect with the other students to gauge if I am &ldquo;on the right track&rdquo; or &ldquo;falling behind&rdquo; or plain bad at coding. We don&rsquo;t engage much with other students, so it&rsquo;s hard to tell if they&rsquo;re succeeding or struggling as much as we are.  I keep thinking - &ldquo;am I the only one feeling this way?&rdquo;</p>
+<p>The modules seem to be thick/dense for just one week&rsquo;s worth of work. As soon as I finish a module, I am exhausted by the material, but then have to start right back up again. I don&rsquo;t feel like I have enough time to play around with all of the functions we just learned before it&rsquo;s time to start learning new ones. I&rsquo;d like more time to apply them to data sets in example exercises.</p>
+<p>I&rsquo;ve been to a few meetings with my advisor now where I say that most of my week has been taken up with this course. Perhaps I need to work on my own time management and expectations for this course work. Of course, I do think the time investment will pay off! I am excited to start analyzing my own data set!</p>
+<p>To get by, I feel like I have started skimming the readings, or reading them &ldquo;diagonally&rdquo; as some people may say. I have &ldquo;CTRL-F&rdquo; through the readings just for the quizzes. I don&rsquo;t think this is ideal, and I&rsquo;m sure Dr. Handel wouldn&rsquo;t want us to resort to this. </td></p>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> I like the exercises in R. While my lack of previous experience means I have to spend more time trying to understand how to put complex displays together, what I learn from this stays with me a lot better. </td>
+   <td style="text-align:left;"> I know that I review the material quite a bit for the quizzes yet continue to be surprised at what actually shows up on the quiz. This may be a personal problem as the class distribution shows that other individuals are doing well. However, I know that it continues to be frustrating. Also, the MADA course on GitHub is still a bit difficult to navigate and the info given for each module is a lot to absorb without there being an application element. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> The supplementary readings are useful, but that's about all that's having a positive impact on my learning in this class. </td>
+   <td style="text-align:left;"> The class being online is convenient, but if the class were in person and I could see step by step instructions, and everything would make more sense. Yes I understand you learn by making mistakes but taking 20+ hours every single time I do an assignment or reading is absolutely ridiculous due to the fact that all of my instructions are typed out, and there's no "teaching" in my opinion. This class structure is not conducive to my learning style. There aren't even any videos of the professor lecturing and walking us through lessons. I'm not absorbing any material by reading over 50+ pages then being thrown an assignment and an overly detailed quiz that doesn't even focus on main points but extremely detailed findings that DO NOT showcase what I've learned. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> The class is quite well structured with nice use of different video resources. </td>
+   <td style="text-align:left;"> Some of the assignments are very much like busy work and are time consuming without being particularly helpful and just end up putting one under pressure during the week whenever there are so many other draws on ones time at graduate school. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> I do like the material we cover since it‚Äôs mostly relevant, I feel like I‚Äôm learning more of the ins and outs of R each week! I think the set up of the class with readings then an assessment works well. </td>
+   <td style="text-align:left;"> There is a lot of material to cover each week. While I enjoy it and I‚Äôm interested, it is all mostly new to me and I feel like I have to rush through the readings to do the quiz by Friday. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> This class requires a lot of coding, and I had no previous experience with coding, but we were provided with a lot of resources and exercises to start from the beginning. </td>
+   <td style="text-align:left;"> There are too much reading assignments. It really takes a lot of time for this class. I cold barely finish these assignments every week, not alone to digest them and use them. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> I think this course is set up very well. The modules are constructed in a manner that makes the content accessible and the exercises are well guided. </td>
+   <td style="text-align:left;"> I would say that nothing related to the class is having a negative impact on my learning. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> We receive a ton of excellent resources. Dr. Handel is very responsive to my feedback, which I greatly appreciate. I was very apprehensive about taking an online course, but my fears have been completely assuaged. This class has already been incredibly beneficial to me. </td>
+   <td style="text-align:left;"> As I've already shared with Dr. Handel, the online quizzes are sometimes frustrating in that we are only asked 6 to 7 very specific questions on a great deal of material. I don't feel we're given enough time to complete it, and partial credit isn't awarded. However, as I mentioned above, Dr. Handel is very receptive to feedback and I have already spoken with him about my concerns with this issues. </td>
+  </tr>
+</tbody>
+</table>
+<p><strong>Conclusions from anwers to those questions: Overall too much material, especially too much reading. R primers are good. Other resources are hit or miss. Quizzes are not working, need to be ditched or altered. Maybe more exercises. Find better alternative to eLC.</strong></p>
+<p>Finally, the 2 remaining questions are about improvements, phrased in 2 different ways. Let&rsquo;s look at them together.</p>
+<pre><code class="language-r">d2 &lt;- d %&gt;% dplyr::select( Q3, Q11)
+d2 &lt;- d2[-12,] #this student didn't provide answers to either question
+names(d2) &lt;- c('specific suggested changes','number one recommendation')
+knitr::kable(d2) %&gt;% kable_styling() 
+</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> specific suggested changes </th>
+   <th style="text-align:left;"> number one recommendation </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Less information per module. Most of these modules should be split into two weeks. </td>
+   <td style="text-align:left;"> You need to put yourself in the eyes of a graduate student who is new to R and has a minimal stats background. As a graduate student in general public health field, what are the most important things to prepare is for publishing papers, understanding data, etc. 
+We should have spent two weeks on data wrangling and two weeks on data visualization. These are EXTREMELY important topics, and they were rushed through in one week. I do not think my understanding of how to do these things is good, and instead we are moving onto other topics that are less important. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> As mentioned above, just a bit more time on the quizzes would be great! </td>
+   <td style="text-align:left;"> A small increase in the time allotted to take the weekly quizzes. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> I suggest that you can give the solution for this chapter ahead. We can learn through solution if we get stuck.
+<p>To reduce time to learn by myself, I suggest that professor can create R scripts with coding and explain what is the purpose of the code by text or better having a video to show how the code works in purpose.I think that this way will be better than the way that students have to go through many chapters of reading. If going through many chapters, students have to learn the new things and be able to finalize the knowledge at the same. This process is hard. So, I suggest that professor finalize the knowledge, then show it to us. You can indicate book in case they are still confused or do not understand, and need to read further. </td></p>
+   <td style="text-align:left;"> For the knowledge that I learn through the R primer, I am happy with them. However, for other chapters that have to read through R4DS, and IDS, it is too time consuming and not an efficient way to learn. If you can have a better resources for the knowledge covered in R4DS and IDS, I am happy with this course. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> More homework assignments that mimic the material that is in the readings, where we can use the readings as a reference/starting point. I feel like if we replace the quizzes/readings with an assignment that goes over what is generally important from the chapters you assign it would be more worthwhile. </td>
+   <td style="text-align:left;"> No quizzes - replace with short assignments that reinforce the material presented in the reading each week. Still makes it so you have to read but not that you have to spend hours upon hours doings so. 
+<p>Also as a side note - maybe introduce folders in the class github so that its organized by assignment so we can easily find things. </td></p>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Specifically not much. </td>
+   <td style="text-align:left;"> Establishing a working discussion board from the beginning would probably be the best thing. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> I think that there should be more time allotted for the quizzes, simply because of the complexity of the questions as well as the vast amount of reading required. </td>
+   <td style="text-align:left;"> Be a little more lenient on quizzes and giving out massive assignments. For an online course in coding, you're asking a lot from us. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> It might be helpful to have "coding drop in sessions" where students can meet in a room, bring snacks, and discuss the course as a group. 
+<p>It would be helpful if each modules was spread out over two weeks. It would be helpful to have more of Dr. Handel&rsquo;s exercises (not necessarily the IDS R4DS ones). </td></p>
+   <td style="text-align:left;"> Trim the modules </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> I know that I do significantly better on the exercise portions of the class as I can see where the material is applicable but, again, this may be a personal preference. One blanket recommendation would be improving the navigational ability of the GitHub course site and breaking down the sections within each module to highlight where outside links need to be used. </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> If this class is going to remain online I think the professor should record himself lecturing and have a split screen showing him using R instead of reading everything to get instructions. I think the supplementary reading/interactive learnings are helpful, but they should be in addition to teaching, not the only mode of learning. At this point I don't even feel like my professor is teaching me, a website and book are (barely). </td>
+   <td style="text-align:left;"> Either change back to in person instruction or have video lectures with a computer split screen to show examples, THEN supplement with readings and interactive learning. The entire course just can't be a written instruction list and a website with definitions. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Make the assignments more relevant rather than busy work or at least have a required part and then then optional parts because to have to do a time consuming assignment each week isn't beneficial </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> I liked the quiz this week (Module 7) because you specifically said that the exercises were optional in the reading so it did take the pressure off of having to go through multiple chapters. If the purpose of the quizzes are to make sure we are reading the material, then it was nice to focus on the content of the chapters. (And not lose 30 minutes to solving one exercise) </td>
+   <td style="text-align:left;"> exercises from chapters not be covered on quizzes. :) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Again, the class is great. The only improvements are needed by me. </td>
+   <td style="text-align:left;"> I do think the tidyverse is so massive an undertaking for a beginner that it could be split into two modules. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Nothing in particular comes to mind at the moment, as I've felt very comfortable voicing recommendations to Dr. Handel as they arise :) </td>
+   <td style="text-align:left;"> Alternative way of testing for our reading each week? As of right now, the quizzes are precarious (one wrong answer can doom a grade) and time-constrained, and a pretty significant source of stress for me. However, as mentioned earlier, Dr. Handel and I are in communication about this! </td>
+  </tr>
+</tbody>
+</table>
+<p><strong>Conlusions from these answers: Reduce content per module (or alternatively increase time). Adjust or drop quizzes. More exercises. Record some lectures or provide links to recordings.</strong></p>
+<h2 id="automated-text-analysis">Automated text analysis</h2>
+<p>So this is likely not too useful, but I wanted to play around with some automated text analysis. Maybe the computer can figure out things I can&rsquo;t?</p>
+<p>I don&rsquo;t actually know how to do text analysis, so I&rsquo;ll have to peek at the <code>tidytext</code> tutorial. Getting some ideas from <a href="https://cran.r-project.org/web/packages/tidytext/vignettes/tidytext.html" target="_blank" rel="noopener">this tutorial</a> and the <a href="https://www.tidytextmining.com/" target="_blank" rel="noopener">Text Mining with R book</a>.</p>
+<p>Turn all answers into a long dataframe of words</p>
+<pre><code class="language-r">d2 &lt;- d %&gt;% tidyr::pivot_longer(cols = starts_with('Q'), names_to =&quot;question&quot;, values_to = &quot;answers&quot;) %&gt;% 
+            drop_na() %&gt;%
+            unnest_tokens(word, answers, token = &quot;words&quot;)
+</code></pre>
+<p>Look at most frequent words.</p>
+<pre><code class="language-r">d2 %&gt;%  count(word, sort = TRUE) 
+</code></pre>
+<pre><code>## # A tibble: 835 x 2
+##    word      n
+##    &lt;chr&gt; &lt;int&gt;
+##  1 the     215
+##  2 i       134
+##  3 to      126
+##  4 and      90
+##  5 of       81
+##  6 a        75
+##  7 is       59
+##  8 in       57
+##  9 that     48
+## 10 are      47
+## # ... with 825 more rows
+</code></pre>
+<p>The usual words are the most frequent.</p>
+<h2 id="sentiment-analysis">Sentiment analysis</h2>
+<p>Sentiment analysis, look at most frequent positive and negative words.</p>
+<pre><code class="language-r">bing &lt;- get_sentiments(&quot;bing&quot;)
+positive &lt;- bing %&gt;% filter(sentiment == &quot;positive&quot;)
+d2 %&gt;% semi_join(positive) %&gt;% nrow()
+</code></pre>
+<pre><code>## [1] 158
+</code></pre>
+<pre><code class="language-r">negative &lt;- get_sentiments(&quot;bing&quot;) %&gt;% filter(sentiment == &quot;negative&quot;)
+d2 %&gt;% semi_join(negative) %&gt;% nrow()
+</code></pre>
+<pre><code>## [1] 72
+</code></pre>
+<pre><code class="language-r">bing_word_counts &lt;- d2 %&gt;%
+  inner_join(bing) %&gt;%
+  count(word, sentiment, sort = TRUE) %&gt;%
+  mutate(n = ifelse(sentiment == &quot;negative&quot;, -n, n)) %&gt;%
+  mutate(word = reorder(word, n)) 
+</code></pre>
+<p>Plot positive and negative words.</p>
+<pre><code class="language-r">bing_word_counts %&gt;% ggplot(aes(word, n, fill = sentiment)) +
+  geom_bar( stat = &quot;identity&quot;) +
+  coord_flip() +
+  labs(y = &quot;Counts&quot;)
+</code></pre>
+<p><img src="https://www.andreashandel.com/posts/mada-survey-analysis/index_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>About twice as many positive as negative words, i guess that&rsquo;s good 😃. And the most frequent negative words do reflect that things are &ldquo;too much&rdquo;.</p>
+<p>Let&rsquo;s look at sentiment per question. Higher values are more positive.</p>
+<pre><code class="language-r">question_sentiment &lt;- d2 %&gt;%
+      inner_join(bing) %&gt;%
+      count(question, sentiment) %&gt;%
+  spread(sentiment, n, fill = 0) %&gt;%
+  mutate(sentiment = positive - negative)
+
+ggplot(question_sentiment, aes(question, sentiment)) +
+  geom_bar(stat = &quot;identity&quot;, show.legend = FALSE) 
+</code></pre>
+<p><img src="https://www.andreashandel.com/posts/mada-survey-analysis/index_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p>Not surprising, the 1st question &ldquo;what is working well&rdquo; has lots of positive. Surprisingly, question 2, &ldquo;what&rsquo;s not working well&rdquo; has fairly high positive sentiment. One problem could be that what I&rsquo;m plotting is total counts, but I should probably normalize by total words written per question. Let&rsquo;s try:</p>
+<pre><code class="language-r">words_per_q &lt;- d2 %&gt;% group_by(question) %&gt;% count()
+print(words_per_q)
+</code></pre>
+<pre><code>## # A tibble: 7 x 2
+## # Groups:   question [7]
+##   question     n
+##   &lt;chr&gt;    &lt;int&gt;
+## 1 Q1         799
+## 2 Q11        393
+## 3 Q2        1304
+## 4 Q3         582
+## 5 Q5         193
+## 6 Q7         202
+## 7 Q9         240
+</code></pre>
+<p>Yep, looks like most words were written by far for Q2. Maybe not a good sign? But maybe ok, since this specifically solicited feedback on all aspects. So let&rsquo;s replot sentiment, normalized by number of words.</p>
+<pre><code class="language-r">question_sentiment &lt;- question_sentiment %&gt;% mutate(sent_per_word = sentiment / words_per_q$n)
+ggplot(question_sentiment, aes(question, sent_per_word)) +
+  geom_bar(stat = &quot;identity&quot;, show.legend = FALSE) 
+</code></pre>
+<p><img src="https://www.andreashandel.com/posts/mada-survey-analysis/index_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>Ok, changed things a bit but not a lot. Q2 drop (expected) is most noticable change. Still, even for the &ldquo;what&rsquo;s not good&rdquo; section, positive words dominate. That either means the course is quite good, or students are very optimistic or polite, or it might mean nothing at all.</p>
+<h2 id="wordclouds">Wordclouds</h2>
+<p>Why not? Everyone loves a wordcloud, even if they are just fun to look at, right?</p>
+<pre><code class="language-r">d2 %&gt;%
+inner_join(bing) %&gt;%
+  count(word, sentiment, sort = TRUE) %&gt;%
+  acast(word ~ sentiment, value.var = &quot;n&quot;, fill = 0) %&gt;%
+  wordcloud::comparison.cloud(colors = c(&quot;#F8766D&quot;, &quot;#00BFC4&quot;),
+                   max.words = 100)
+</code></pre>
+<p><img src="https://www.andreashandel.com/posts/mada-survey-analysis/index_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>At this point, I ran out of ideas for further text analysis. I didn&rsquo;t think analysis by word pairs, or sentences, or such alternatives would lead to any further interesting results.  I looked in the <a href="https://www.tidytextmining.com/" target="_blank" rel="noopener">Text Mining with R book</a> for some more ideas of what kind of analyses might be useful, but can&rsquo;t come up with anything else. Not that the above ones are that useful either, but it was fun to try some text analysis, which is a type of data analysis I&rsquo;m not very familiar with. So, I&rsquo;ll stop this here. Feel free to play around yourself, you have access to the raw data and this script in the GitHub repository.</p>
+<h1 id="overall-conclusions-and-my-commentary">Overall conclusions and my commentary</h1>
+<p>There seem to be some clear themes to me, I&rsquo;ll list them here and add my thoughts:</p>
+<p><strong>1. Less material per week/module:</strong> I&rsquo;ll adjust reading and will move almost all external sources to the optional category, only require certain readings if I consider them essential. In a future version of the course, I&rsquo;ll adjust all modules accordingly.</p>
+<p><strong>2. Change quizzes:</strong> There is a good bit of evidence showing that testing/quizzing helps learning. But I think the way I did it is covering too much per quiz, which didn&rsquo;t work. Ideally, I wanted to build more <code>learnr</code> based content (like the one in module 10 and the R primers) which allow simple quizzes embedded (though currently no easy way of grading). I just didn&rsquo;t have time to make a lot of those for this class. For the rest of the course, the quizzes I already created (up to M12) will be there, but only cover a limited amount of material, I won&rsquo;t do any quizzes for the rest of the course.</p>
+<p><strong>3. More exercises:</strong> I had already planned a good bit of exercises for the rest of the class, now I&rsquo;ll certainly make sure to focus on those. For future courses, I&rsquo;ll add more of them.</p>
+<p><strong>4. Lecture recordings:</strong> I&rsquo;m not too interested in recording myself going through things. It seems to me there are already 100s of such videos out there. I&rsquo;ll try to find some good ones and place them in the <em>Resources</em> section. Suggestions appreciated.</p>
+<p><strong>Further thoughts:</strong> The theme of &ldquo;too much&rdquo; is clear. There are 2 main ways one can go. Reduce the amount of material covered, or increase time spent. The first will increase the <em>survey</em> nature of this course. I currently intend this to be a &lsquo;broad but shallow&rsquo; survey course, the idea is to go through <em>everything</em> in one semester. Which is quite ambitious. At some point, I&rsquo;m not sure if that works anymore or if the course becomes too superficial. The other option - and that&rsquo;s common in other places that teach this material - is to split the course into separate ones. E.g. 1 semester/course only on R/Coding, 1 course on wrangling/visualization, 1 course on machine learning/model fitting. Or even further splits (e.g. the Coursera Data Analysis concentration has I think 9 courses.) That would allow more depth per course, but woudn&rsquo;t allow students to get <em>everything</em> in a single course. I&rsquo;m currently leaning toward sticking with the survey/intro/everything course and just further reduce materials. But I&rsquo;d love to hear everyone&rsquo;s opinion.</p>
+<p>Also further note: In the future, once our EPID 7500 (R Coding) course is fully up and running and regularly offered, that course will likely become a pre-requisite for MADA. In that sense, a bit of sequencing will be introduced.</p>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://www.andreashandel.com/posts/mada-survey-analysis/&amp;text=Text%20analysis%20of%20a%20mid-semester%20course%20survey" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://www.andreashandel.com/posts/mada-survey-analysis/&amp;t=Text%20analysis%20of%20a%20mid-semester%20course%20survey" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Text%20analysis%20of%20a%20mid-semester%20course%20survey&amp;body=https://www.andreashandel.com/posts/mada-survey-analysis/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://www.andreashandel.com/posts/mada-survey-analysis/&amp;title=Text%20analysis%20of%20a%20mid-semester%20course%20survey" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Text%20analysis%20of%20a%20mid-semester%20course%20survey%20https://www.andreashandel.com/posts/mada-survey-analysis/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://www.andreashandel.com/posts/mada-survey-analysis/&amp;title=Text%20analysis%20of%20a%20mid-semester%20course%20survey" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://www.andreashandel.com/"><img class="avatar mr-3 avatar-circle" src="/author/andreas-handel/avatar_hu55f54e78a4232ec20a6487b1ce16fd22_418898_270x270_fill_q75_lanczos_center.jpg" alt="Andreas Handel"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://www.andreashandel.com/">Andreas Handel</a></h5>
+      <h6 class="card-subtitle">Professor</h6>
+      <p class="card-text">Data analysis and modeling with a focus on infectious diseases.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.andreashandel.com" target="_blank" rel="noopener">
+        <i class="fas fa-globe"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/andreashandel" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/andreashandel" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/andreashandel/" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.com/citations?user=bruHK0YAAAAJ&amp;hl=en" target="_blank" rel="noopener">
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://impactstory.org/u/0000-0002-4622-1146" target="_blank" rel="noopener">
+        <i class="ai ai-impactstory"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://orcid.org/0000-0002-4622-1146" target="_blank" rel="noopener">
+        <i class="ai ai-orcid"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+<script src="https://utteranc.es/client.js"
+        repo="andreashandel/andreashandelwebsite"
+        issue-term="pathname"
+        label="comments"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+  
+  <p class="powered-by">
+    <a href="/license/">LICENSE: CC-BY-NC-SA <br> <i class="fab fa-creative-commons fa-2x"></i><i class="fab fa-creative-commons-by fa-2x"></i><i class="fab fa-creative-commons-sa fa-2x"></i><i class="fab fa-creative-commons-nc fa-2x"></i> </a><br>
+  </p>
+  
+
+  <p class="powered-by">
+    ©  Andreas Handel, 2021 &middot; 
+
+    Created with <a href="https://github.com/rstudio/blogdown" target="_blank" rel="noopener">blogdown</a>, and the
+    <a href="https://wowchemy.com/" target="_blank" rel="noopener">Wowchemy theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>. <br>
+	Lot's of inspiration and code snippets taken from <a href="https://alison.rbind.io/" target="_blank" rel="noopener">Alison Hill's website</a>. <a href="https://github.com/andreashandel/andreashandelwebsite" target="_blank" rel="noopener">GitHub repo.</a> 
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/python.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    <script src="/js/bootstrap.bundle.min.6aed84840afc03ab4d5750157f69c120.js"></script>
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.8859d3cf6e5d748215fea2814e2e9c7f.js"></script>
+
+    
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+
+
+</body>
+</html>

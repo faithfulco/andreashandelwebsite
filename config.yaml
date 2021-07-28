@@ -57,7 +57,6 @@ taxonomies:
   category: categories
   publication_type: publication_types
   author: authors
-  post: posts
 related:
   threshold: 80
   includeNewer: true

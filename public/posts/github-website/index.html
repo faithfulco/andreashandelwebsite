@@ -1,0 +1,1381 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.3.0 for Hugo" />
+  
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Andreas Handel" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="The following are step-by-step instructions for creating a fairly basic but still useful website using [R Markdown](https://rmarkdown.rstudio.com/) (through [R Studio](https://rstudio.com/products/rstudio/)) and [Github](https://github.com/)." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://www.andreashandel.com/posts/github-website/" />
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css" integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous" media="print" onload="this.media='all'">
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.f0cf03b20998d63e314819fa4a90c13f.css" />
+
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-48442618-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-48442618-4', {});
+  gtag('set', {'cookie_flags': 'SameSite=None;Secure'});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hu5aa01ef3f5a2b4ecf2f7517df7c485bf_90212_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu5aa01ef3f5a2b4ecf2f7517df7c485bf_90212_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://www.andreashandel.com/posts/github-website/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image" />
+  
+    <meta property="twitter:site" content="@andreashandel" />
+    <meta property="twitter:creator" content="@andreashandel" />
+  
+  <meta property="og:site_name" content="Andreas Handel" />
+  <meta property="og:url" content="https://www.andreashandel.com/posts/github-website/" />
+  <meta property="og:title" content="Create a simple Markdown/Github website in less than 30 minutes | Andreas Handel" />
+  <meta property="og:description" content="The following are step-by-step instructions for creating a fairly basic but still useful website using [R Markdown](https://rmarkdown.rstudio.com/) (through [R Studio](https://rstudio.com/products/rstudio/)) and [Github](https://github.com/)." /><meta property="og:image" content="https://www.andreashandel.com/posts/github-website/featured.png" />
+    <meta property="twitter:image" content="https://www.andreashandel.com/posts/github-website/featured.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2021-01-11T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2021-01-11T00:00:00&#43;00:00">
+  
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Create a simple Markdown/Github website in less than 30 minutes | Andreas Handel</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="73683e7b3a6a2513d7490617f6eafc41" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.8988fb2a4bba758785868cfcb5244555.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container-xl">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/"><img src="/media/logo_hu5aa01ef3f5a2b4ecf2f7517df7c485bf_90212_0x70_resize_lanczos_3.png" alt="Andreas Handel"></a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/"><img src="/media/logo_hu5aa01ef3f5a2b4ecf2f7517df7c485bf_90212_0x70_resize_lanczos_3.png" alt="Andreas Handel"></a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/about"><span>About</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/presentations"><span>Presentations</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/projects"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/subscribe"><span>Subscribe</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+      
+
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+
+<div class="article-container pt-3">
+  <h1>Create a simple Markdown/Github website in less than 30 minutes</h1>
+
+  
+
+  
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 11, 2021
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+  
+
+
+
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 569px;">
+  <div style="position: relative">
+    <img src="/posts/github-website/featured_hucd909db76bcd137de65d03180adfd630_144604_720x0_resize_lanczos_3.png" alt="" class="featured-image">
+    <span class="article-header-caption">Photo by (200 Degrees)[https://pixabay.com/users/200degrees-2051452]/Pixabay</span>
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <p>The following blog post provides step-by-step instructions for creating a simple (and free) website using (R)Markdown and Github.</p>
+<h1 id="motivation">Motivation</h1>
+<p>Previously, I wrote a 2-series blog post with instructions for creating your own website using <a href="https://bookdown.org/yihui/blogdown/" target="_blank" rel="noopener">blogdown</a>, <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> and <a href="https://www.netlify.com/" target="_blank" rel="noopener">Netlify</a>. (Here are <a href="/posts/blogdown-website-1/">Part 1</a> and <a href="/posts/blogdown-website-2/">part 2</a>).</p>
+<p>The blogdown/Hugo setup is fairly flexible and powerful, but sometimes more complex than what is needed. At least I find this to be the case. While I&rsquo;m using Hugo/blogdown for my <a href="https://www.andreashandel.com" target="_blank" rel="noopener">personal website</a> I am currently hosting my online courses using a simpler setup, the one I&rsquo;ll be describing here.</p>
+<h1 id="required-skills">Required skills</h1>
+<p>I assume that you have general computer literacy, but no experience with any of the tools that will be used. Also, no coding, web-development or related experience is expected.</p>
+<h1 id="what-this-document-covers">What this document covers</h1>
+<p>This document is meant to provide you with the minimum required instructions to get a simple own website up and running quickly. As such, instructions and background information are kept at a minimum. I used a <em>recipe-like</em> approach by giving hopefully detailed and specific enough instructions to get things to work. I&rsquo;m not covering any <em>why</em> here or provide much further explanations. If you decide you like to use this setup for your website, you will likely want to go beyond this document and learn a bit more about the various tools involved in the process. To that end, links to further resources are provided.</p>
+<h1 id="who-this-is-not-for">Who this is (not) for</h1>
+<p><strong>This way of making and hosting a website might be for you if:</strong></p>
+<ul>
+<li>You are (or would like to be) an R, RMarkdown and GitHub user. This is a method of creating a website using those tools which very efficiently fits into such a workflow.</li>
+<li>You want a way to host a website where all the content is fully controlled by you, and the website can be hosted without much resources (and for free).</li>
+<li>You are curious about R/RMarkdown/GitHub, how to use it to build a website, and you&rsquo;ve got a bit of time to spare and want to give it a try.</li>
+<li>You want something that&rsquo;s fairly simple and easy to set up and maintain.</li>
+</ul>
+<p><strong>This way of making and hosting a website might not be for you if:</strong></p>
+<ul>
+<li>Your main workflow is MS Word, Powerpoint, etc. and you are not interested in R/Markdown/GitHub.</li>
+<li>You want everything accessible through a graphical interface.</li>
+<li>You need a complex setup with lots of control over layout and many advanced features.</li>
+</ul>
+<h1 id="motivating-examples">Motivating Examples</h1>
+<p>Here are a few examples of websites written with R Markdown/Github:</p>
+<ul>
+<li><a href="https://andreashandel.github.io/MADAcourse/" target="_blank" rel="noopener">My modern applied data analysis course</a></li>
+<li><a href="http://jtleek.com/advdatasci/" target="_blank" rel="noopener">Jeff Leek&rsquo;s advanced data science course</a></li>
+</ul>
+<h1 id="quick-tool-overview">Quick tool overview</h1>
+<p>The tools used here are fairly simple. Github is used for hosting the website and R Markdown and a few extra files contain all the content and formatting.</p>
+<h1 id="pre-requisites">Pre-requisites</h1>
+<p>First, you need to install R and Rstudio and set up a Github account. (That does not count toward the 30 minutes of getting the website up and running 😁.)</p>
+<h2 id="install-r-and-rstudio">Install R and RStudio</h2>
+<p>If you don&rsquo;t already have it on your computer, <a href="https://www.r-project.org/" target="_blank" rel="noopener">install R first</a>. You can pick any mirror you like. If you already have R installed, make sure it is a fairly recent version. If yours is old, I suggest you update (install a new R version).</p>
+<p>Once you have R installed, install the free version of <a href="https://www.rstudio.com/products/rstudio/download/" target="_blank" rel="noopener">RStudio Desktop</a>. Again, make sure it&rsquo;s a recent version. If you have an older verion of RStudio, you should update.</p>
+<p>Installing R and RStudio should be fairly straightforward. If you want some more details or need instructions, see <a href="https://andreashandel.GitHub.io/MADAcourse/1c_RandRStudio.html" target="_blank" rel="noopener">this page</a> (which is part of an online course I teach).</p>
+<h2 id="get-github-up-and-running">Get Github up and running</h2>
+<p>If you are new to Github, you need to create an account. At some point, it would also be useful to learn more about what Git/Github is and how to use it, but for this purpose you actually don&rsquo;t need to know much. If you want to read a bit about Git/Github, see e.g. <a href="https://andreashandel.github.io/MADAcourse/Github_Introduction.html" target="_blank" rel="noopener">this document, which I wrote for one of my courses.</a>. But for now, you don&rsquo;t need to know much about Git/Github.</p>
+<h2 id="install-gitkraken-optional-but-assumed">Install Gitkraken (optional but assumed)</h2>
+<p>There are many ways you can interact with Git/Github. I mosty use the fairly user-friendly and full-featured <a href="https://www.gitkraken.com/" target="_blank" rel="noopener">Gitkraken</a>. You can get a basic version for free, if you are a student, you can get the Pro version through the <a href="https://education.github.com/pack" target="_blank" rel="noopener">Github developer pack</a>, teachers can get it through the <a href="https://education.github.com/toolbox" target="_blank" rel="noopener">Github teacher toolbox</a>. If you qualify for either, I highly recommend signing up. But you don&rsquo;t need it for our purpose.</p>
+<p>I assume for the rest of the post that you are using Gitkraken. If you have your own preferred Git/Github client (e.g. the one that comes with RStudio), you can of course use that one too.
+Make sure you <a href="https://www.gitkraken.com/resources/gitkraken-github-cheat-sheet" target="_blank" rel="noopener">connect Gitkraken to your Github account</a>.</p>
+<h1 id="starting-your-website">Starting your website</h1>
+<p>Ok, the 30 minute timer starts now 😁</p>
+<p>With the above registration and installation bits out of the way, you can get started with your website. To do so, follow these steps:</p>
+<h3 id="github">Github</h3>
+<ul>
+<li>Go to Github, log in if needed.</li>
+<li>Somewhere (usually on the left), you should find a green button that says <em>New</em>, click it to create a new repository. Give it the name of the webpage you want to create (e.g. <code>mywebsite</code>). Provide a brief description (e.g. <em>My first Github website</em>.)</li>
+<li>Check the boxes <code>add readme</code> and <code>add .gitignore</code> and for the template chose <code>R</code>. You can keep the license box unchecked, or choose a license for your page.</li>
+<li>Once done, create the new repository.</li>
+</ul>
+<h3 id="gitkraken">Gitkraken</h3>
+<p><em>I assume you&rsquo;ll be using Gitkraken, but if you have another way of using Git/Github, feel free to use your own approach.</em></p>
+<ul>
+<li>Make sure <a href="https://www.gitkraken.com/resources/gitkraken-github-cheat-sheet" target="_blank" rel="noopener">Gitkraken is connected to your Github account</a>.</li>
+<li>Open Gitkraken, under <code>File</code> choose <code>Clone Repo</code> go to <code>Github.com</code>, find the name of the repository you just created and clone it to some place on your local computer (i.e. copy it from Github to your local computer.) E.g. if your repository was called <code>mywebsite</code>, and you place it on your desktop under windows, you might choose <code>C:\Users\yourname\Desktop</code> as the target.</li>
+</ul>
+<h3 id="starter-files">Starter files</h3>
+<ul>
+<li>Download the files <a href="/post/2021-01-11-simple-github-website/_navbar.yml">_navbar.yml</a>, <a href="/post/2021-01-11-simple-github-website/_site.yml">_site.yml</a> and <a href="/post/2021-01-11-simple-github-website/index.Rmd">index.Rmd</a>. You need those are 3 files to create your website and I&rsquo;m providing you with simple templates. Place all 3 files into the folder of your new website (e.g. <code>C:\Users\yourname\Desktop\mywebsite</code>).</li>
+</ul>
+<h3 id="rstudio">RStudio</h3>
+<ul>
+<li>Open RStudio.</li>
+<li>Choose <code>File</code>, <code>New Project</code>, <code>Existing Directory</code> and find the directory/folder you just created on Github and copied to your local computer (e.g. <code>C:\Users\yourname\Desktop\mywebsite</code>).</li>
+<li>Based on the files you copied into the folder earlier, R Studio should recognize that you are making a website and in the top right pane there should be a <code>Build</code> tab. Click on it, then <code>Build Website.</code> If that doesn&rsquo;t work, you can also type <code>rmarkdown::render_site()</code> into the R console (bottom left pane in R Studio).</li>
+<li>If you don&rsquo;t find the <code>Build Website</code> button or the <code>rmarkdown::render_site()</code> command produced an error message, something went wrong with the setup. You can try to close RStudio, navigate to the folder for your website and click on the <code>.Rproj</code> file, which should open RStudio and place you in the project. Maybe the <code>Build</code> tab and <code>Build Website</code> buttons are now there? If not, revisit the steps above and make sure you did them all, especially make sure the 3 starter files are in the same folder.</li>
+<li>If things work, a preview window should open with the beginning of your new website. You&rsquo;ll see a menu at the top, but if you click on the links, they won&rsquo;t work. We need to create those files first, which we&rsquo;ll do below.</li>
+</ul>
+<h1 id="a-brief-explanation-of-your-new-website">A brief explanation of your new website</h1>
+<p>Your website is fairly simple and consists of these documents.</p>
+<h3 id="the-file-indexrmd">The file <code>index.Rmd</code></h3>
+<p>This is the main landing page of your website. It always needs to be there and you fill it with the content you want on your main page. It&rsquo;s a regular R Markdown site. If you are new to R Markdown, you can learn more about it <a href="https://rmarkdown.rstudio.com/" target="_blank" rel="noopener">on the R Markdown website</a>. I also have a discussion of R Markdown and reproducibility <a href="https://andreashandel.github.io/MADAcourse/ToolsforReproducibility.html" target="_blank" rel="noopener">on one of my course pages</a>. You&rsquo;ll find additional links to potentially useful R Markdown (and Github) resources there.</p>
+<h3 id="the-file-_siteyml">The file <code>_site.yml</code></h3>
+<p>This short file contains the main settings for your site that control the styling. To change the layout, the <code>theme</code> setting is the most important. R Markdown supports the <a href="https://bootswatch.com/" target="_blank" rel="noopener">Bootswatch</a> theme library. More information on themes and other configuration options for the <code>_site.yml</code> file <a href="https://bookdown.org/yihui/rmarkdown/html-document.html#appearance-and-style" target="_blank" rel="noopener">can be found here</a>.
+Once you start playing with your website, you&rsquo;ll want to explore and probably adjust those options. You can even include your own style using CSS. <a href="https://bookdown.org/yihui/rmarkdown/html-document.html" target="_blank" rel="noopener">This whole section</a> of the R Markdown book is useful to read (at some point) to learn what you can do.</p>
+<p>For now, just to give it a quick try, open the <code>_site.yml</code> file (in R Studio or some other text editor) and replace <code>cerulean</code> with <code>spacelab</code>. Save, then rebuild the website. You should see the layout has changed.</p>
+<h3 id="the-file-_navbaryml">The file <code>_navbar.yml</code></h3>
+<p>This file allows you to build a menu for your website. If you open the file, you&rsquo;ll see that I created a small menu. You see links to files <code>aboutme.html</code>, <code>project1.html</code>, <code>project2.html</code> and <code>contact.html</code>. Those files currently do not exist, thus if you click on those menus in the preview, you get an error message. You need to make sure that the files of your website match those listed in this menu file.</p>
+<p>You can find some more information on the <code>_navbar.yml</code> file and what settings are available <a href="https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html" target="_blank" rel="noopener">in this chapter of the R Markdown book</a>. As you&rsquo;ll read, it is possible to have only a single <code>_site.yml</code> file which contains the <code>_navbar.yml</code> content, but I prefer to keep them separate.</p>
+<p>If a file is not listed in the <code>_navbar.yml</code> file, it is not accessible to users, unless they know the direct link to the file. This can be useful since it means you can have files in development in the Github repository, and they will only become visible once you link them. Of course since they can be found through a direct link or through browsing your Github repository, don&rsquo;t place anything private/confidential in this folder (e.g. if you use this four a course, keep the solutions to your homework problems offline until after the deadline 😄).</p>
+<h3 id="the-docs-folder">The <code>docs</code> folder</h3>
+<p>This folder is created and updated when you build the website. It contains the html files that are created from your <code>Rmd</code> files. Those files will be used by Github to display your website (we&rsquo;ll do that below). Note that you can change the folder name in <code>_site.yml</code>, but I recommend leaving it as is, since <code>docs</code> is also the default location for Github to look for these files.</p>
+<h3 id="additional-content">Additional content</h3>
+<p>Additional files are either for Github (e.g. <code>.gitignore</code> and <code>README.md</code>) or for RStudio (e.g. the <code>mywebsite.Rproj</code> file). Those should be there, and you might want to edit those at some point, especially the <code>README.md</code> file. But since they are not directly part of the website, I&rsquo;ll not further discuss them here.</p>
+<h3 id="beware">Beware!</h3>
+<p><strong>Both <code>_site.yml</code> and <code>_navbar.yml</code> are very picky about the exact formatting, and the number of leading empty spaces. Often, if you change something in those files and the site doesn&rsquo;t compile, it means you forgot to add the required empty spaces or added more than you should. Always check first if the spacing is correct.</strong></p>
+<h1 id="creating-and-editing-content">Creating and editing content</h1>
+<p>Making new content for your website is very easy, all you need to do is create new Rmd files. Note that if you don&rsquo;t use R code in your file, you could just use plain Markdown/Md files, but I find it easier for consistency to always use Rmd files, even if they don&rsquo;t contain R code.</p>
+<p>Let&rsquo;s create the missing documents. Go to <code>File</code>, <code>New File</code>, <code>R Markdown</code> choose as output format <code>HTML document</code> and give it a title and name. A template will open, you can fill it and then save as say <code>project1.Rmd</code> into the main folder of your website.</p>
+<p>Another option, which I usually use, is to go into the folder, make a copy of an existing file and rename. E.g. copy <code>project1.Rmd</code> to <code>project2.Rmd</code>, then open and edit. Either approach works.</p>
+<p>Use whichever approach you like to create Rmd versions of the 4 files that are listed in the <code>_navbar.yml</code> file, namely <code>aboutme.Rmd</code>, <code>project1.Rmd</code>, <code>project2.Rmd</code> and <code>contact.Rmd</code>. All files should be in the main folder. Edit the content in those files as much or as little as you want.</p>
+<p>Once created, rebuild the website. In the preview that shows up, you should now be able to click on all menus in the preview and reach the pages you just created. (You&rsquo;ll find the newly created html files in the <code>docs</code> folder.)</p>
+<h1 id="making-your-site-public">Making your site public.</h1>
+<p>The final step involves getting your site public, which is easy.</p>
+<ul>
+<li>Once you are done editing your content (for now), go to Gitkraken (or your preferred Git client) and push your changes to Github.</li>
+<li>Go to Github.com and find the repository for this website. On the bar at the top, in the right corner there should be the <code>Settings</code> button. Click on it. Scroll down until you find the <code>GitHub Pages</code> section. Under <code>Source</code>, select <code>Main</code> and then choose <code>/docs</code> as the folder. Don&rsquo;t choose a theme since we are using our own. Save those changes. Now if you look right underneath the <code>GitHub Pages</code> section, there should be something like <code>Your site is ready to be published at https://andreashandel.github.io/mywebsite/</code>. Click on the link. If everything works, your website is now live and public!</li>
+</ul>
+<p>**That&rsquo;s basically it. Now the hard part starts, creating good content. 😄 **</p>
+<h1 id="updating-your-site">Updating your site</h1>
+<p>This process is fairly simple, you just need to remember to go through all the steps.</p>
+<ol>
+<li>Make any changes to files you want to make. Create new Rmd files in the main folder, edit them. If you include new files or rename them, don&rsquo;t forget to change your <code>_navbar.yml</code> file.</li>
+<li>Rebuild the website by either clicking the <code>Build Website</code> button inside the <code>Build</code> tab in the top right R Studio pane, or by typing <code>rmarkdown::render_site()</code> into the console.</li>
+<li>Push your changes to GitHub.</li>
+<li>Wait a minute or so, then reload your website on Github and check that things look right.</li>
+</ol>
+<h1 id="some-tips-tricks-and-comments">Some tips, tricks and comments</h1>
+<p>Here are some thoughts and suggestions that I&rsquo;ve learned by using this setup for several online courses.</p>
+<ul>
+<li>
+<p>The setup described here works well for fairly simple sites. If you want your content structured in a more complex way and more features, you probably want to use the <a href="/posts/blogdown-website-1/">blogdown/hugo setup</a>. Similarly, while you can customize the layout  by trying different themes and by including your own CSS (see links above), if you want to start making it look exactly how you want, you&rsquo;ll likely be wasting a lot of time and might be better off using a different setup (e.g. blogdown/hugo).</p>
+</li>
+<li>
+<p>Every time you build your website, everything gets recompiled. If you have simple content, and no/little R code, that&rsquo;s ok. If you are having things that take long to run (e.g. complex R code inside your website), I suggest to move the R code to a separate R script and save results from the code into files (figures/tables/Rdata files). You then just load thpse results into your Rmd file. This way you only need to run the time-consuming R code if those parts have changed, but on a standard website re-build the code won&rsquo;t need to run.</p>
+</li>
+<li>
+<p>Sometimes when I build websites like this one on a Windows computer, things slow down markedly. It turns out that Windows Defender is at times not working right and I have to make adjustments to prevent it from trying to scan all newly created files in real time while re-building my website. If you encounter a very slow re-build process on a Windows machine, this could be the issue and you might want to check out <a href="https://community.rstudio.com/t/performance-issue-rstudio-windows-10/7608" target="_blank" rel="noopener">this discussion</a> and especially the provided link which explains how to potentially fix it (the fix worked for me).</p>
+</li>
+<li>
+<p>You can have files other than Rmd/Md in your main folder, and you can have files in sub-folders. Those are ignored by <code>rmarkdown</code> when the site is built. Having those can be useful for storing additional materials. I generally have a <code>media</code> folder in which I place figures and other materials, and link to it from my Rmd files.</p>
+</li>
+<li>
+<p>If you use this setup for teaching and want to slowly release content to students (while still making edits to later parts of the course), I recommend using a <em>staging</em> setup. A simple way to do that is to make 2 repositories, the main one for the course, and one where you do the development. Note that even if you set this to a private repository, if you turn on <code>Github Pages</code>, students could find it. That&rsquo;s usually not a big deal, nobody is looking. But you might want to be aware of it. With 2 repositories, you can do the testing/development of the course in the <em>staging</em> repository. Once things work and whenever you want to release new content to the students, you copy it over to the main repository, build it there and push it to the main course repo. Alternatively, you can do development in the main repository, as long as you don&rsquo;t make the files visible in the <code>_navbar.yml</code> file, students won&rsquo;t easily see them.</p>
+</li>
+<li>
+<p>I like to be able to specify the date when a page was last changed. The problem is that all pages are always rebuild, so asking for &lsquo;current date&rsquo; during rebuilding doesn&rsquo;t work. What I found out to work is to have this line in the YAML file header: <code>file.mtime(knitr::current_input())</code>. It gets the &lsquo;last modified&rsquo; time stamp of the file that is being processed and displays it. It&rsquo;s not perfect, e.g. if you recently cloned the files from Github to a new computer, it will show that date as the modified date. But it&rsquo;s good enough for me. If you want exact <em>last edited date</em> time stamps, you&rsquo;ll probably have to do it manually.</p>
+</li>
+<li>
+<p>It&rsquo;s easy to have broken links when creating any website and it&rsquo;s good to check that things are ok. There are simple free tools out there that let you check to make sure links are not broken. I like using <a href="https://www.drlinkcheck.com/" target="_blank" rel="noopener">Dr Link Check</a> or the <a href="https://validator.w3.org/checklink" target="_blank" rel="noopener">W3C Link Checker</a>. I&rsquo;m sure many others exist.</p>
+</li>
+</ul>
+<h1 id="more-information">More Information</h1>
+<p>The whole area of <em>use R Markdown to make websites</em> is still under rapid development. Here are a few sources that - as of this writing - might be useful and not too outdated.</p>
+<ul>
+<li>
+<p>Since this setup is fully based on R Markdown, the <a href="https://bookdown.org/yihui/rmarkdown/" target="_blank" rel="noopener">R Markdown book</a> is very useful and contains lots of relevant information, especially <a href="https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html" target="_blank" rel="noopener">this section</a>. There is also the newer <a href="https://bookdown.org/yihui/rmarkdown-cookbook/" target="_blank" rel="noopener">R Markdown cookbook</a> which is more of a how-to guide, while the R Markdown book is more of a full reference book. Both are very useful sources of information.</p>
+</li>
+<li>
+<p>The R Studio folks have a package called <a href="https://rstudio.github.io/distill/" target="_blank" rel="noopener"><code>distill</code></a> which is still under heavy development and which allows turning R Markdown into lots of outputs, including <a href="https://rstudio.github.io/distill/publish_website.html" target="_blank" rel="noopener">basic websites</a>. This is still a work in progress, and while I tried distill in the past (and it couldn&rsquo;t quite do what I want), I haven&rsquo;t tried it lately. I find the setup I describe here works for my teaching needs, but if you need more/different features, I recommend checking out distill. There is aparently also a new package called <a href="https://github.com/seankross/postcards" target="_blank" rel="noopener"><code>postcards</code></a> that works with distill to produce simple websites, very similar to the approach shown here. See e.g. <a href="https://alison.rbind.io/blog/2020-12-postcards-distill/" target="_blank" rel="noopener">this blog post by Allison Hill</a> for an introduction. I expect these packages to develop and mature quickly.</p>
+</li>
+<li>
+<p>In my teaching, I use the Github/R Markdown workflow, so students are exposed to it. Therefore, I have a good bit of information and links on that topic. You can browse through <a href="https://andreashandel.github.io/MADAcourse/index.html" target="_blank" rel="noopener">the website of this 
+course</a> and look for relevant content. A lot of the exercises also teach parts of Github and making webpages (even simpler ones than described here).</p>
+</li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/r/">R</a>
+  
+  <a class="badge badge-light" href="/tag/markdown/">markdown</a>
+  
+  <a class="badge badge-light" href="/tag/github/">github</a>
+  
+  <a class="badge badge-light" href="/tag/website/">website</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://www.andreashandel.com/posts/github-website/&amp;text=Create%20a%20simple%20Markdown/Github%20website%20in%20less%20than%2030%20minutes" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://www.andreashandel.com/posts/github-website/&amp;t=Create%20a%20simple%20Markdown/Github%20website%20in%20less%20than%2030%20minutes" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Create%20a%20simple%20Markdown/Github%20website%20in%20less%20than%2030%20minutes&amp;body=https://www.andreashandel.com/posts/github-website/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://www.andreashandel.com/posts/github-website/&amp;title=Create%20a%20simple%20Markdown/Github%20website%20in%20less%20than%2030%20minutes" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Create%20a%20simple%20Markdown/Github%20website%20in%20less%20than%2030%20minutes%20https://www.andreashandel.com/posts/github-website/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://www.andreashandel.com/posts/github-website/&amp;title=Create%20a%20simple%20Markdown/Github%20website%20in%20less%20than%2030%20minutes" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://www.andreashandel.com/"><img class="avatar mr-3 avatar-circle" src="/author/andreas-handel/avatar_hu55f54e78a4232ec20a6487b1ce16fd22_418898_270x270_fill_q75_lanczos_center.jpg" alt="Andreas Handel"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://www.andreashandel.com/">Andreas Handel</a></h5>
+      <h6 class="card-subtitle">Professor</h6>
+      <p class="card-text">Data analysis and modeling with a focus on infectious diseases.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.andreashandel.com" target="_blank" rel="noopener">
+        <i class="fas fa-globe"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/andreashandel" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/andreashandel" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/andreashandel/" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.com/citations?user=bruHK0YAAAAJ&amp;hl=en" target="_blank" rel="noopener">
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://impactstory.org/u/0000-0002-4622-1146" target="_blank" rel="noopener">
+        <i class="ai ai-impactstory"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://orcid.org/0000-0002-4622-1146" target="_blank" rel="noopener">
+        <i class="ai ai-orcid"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+<script src="https://utteranc.es/client.js"
+        repo="andreashandel/andreashandelwebsite"
+        issue-term="pathname"
+        label="comments"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+  
+  <p class="powered-by">
+    <a href="/license/">LICENSE: CC-BY-NC-SA <br> <i class="fab fa-creative-commons fa-2x"></i><i class="fab fa-creative-commons-by fa-2x"></i><i class="fab fa-creative-commons-sa fa-2x"></i><i class="fab fa-creative-commons-nc fa-2x"></i> </a><br>
+  </p>
+  
+
+  <p class="powered-by">
+    ©  Andreas Handel, 2021 &middot; 
+
+    Created with <a href="https://github.com/rstudio/blogdown" target="_blank" rel="noopener">blogdown</a>, and the
+    <a href="https://wowchemy.com/" target="_blank" rel="noopener">Wowchemy theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>. <br>
+	Lot's of inspiration and code snippets taken from <a href="https://alison.rbind.io/" target="_blank" rel="noopener">Alison Hill's website</a>. <a href="https://github.com/andreashandel/andreashandelwebsite" target="_blank" rel="noopener">GitHub repo.</a> 
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/python.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    <script src="/js/bootstrap.bundle.min.6aed84840afc03ab4d5750157f69c120.js"></script>
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.8859d3cf6e5d748215fea2814e2e9c7f.js"></script>
+
+    
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+
+
+</body>
+</html>

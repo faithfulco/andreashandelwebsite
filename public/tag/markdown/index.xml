@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>markdown | Andreas Handel</title>
+    <link>https://www.andreashandel.com/tag/markdown/</link>
+      <atom:link href="https://www.andreashandel.com/tag/markdown/index.xml" rel="self" type="application/rss+xml" />
+    <description>markdown</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Sun, 21 Mar 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://www.andreashandel.com/media/logo_hu5aa01ef3f5a2b4ecf2f7517df7c485bf_90212_300x300_fit_lanczos_3.png</url>
+      <title>markdown</title>
+      <link>https://www.andreashandel.com/tag/markdown/</link>
+    </image>
+    
+    <item>
+      <title>Create a GitHub website with distill in less than 30 minutes</title>
+      <link>https://www.andreashandel.com/posts/distill-github-website/</link>
+      <pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate>
+      <guid>https://www.andreashandel.com/posts/distill-github-website/</guid>
+      <description>&lt;p&gt;The following blog post provides step-by-step instructions for creating a website using R Markdown, the &lt;code&gt;distill&lt;/code&gt; R package and GitHub.&lt;/p&gt;
+&lt;h1 id=&#34;motivation&#34;&gt;Motivation&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://rstudio.github.io/distill/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;The &lt;code&gt;distill&lt;/code&gt; R package&lt;/a&gt; is a fairly new R package from the RStudio folks, it is under heavy development. One of its purposes is to create simple but still somewhat flexible websites. If you are trying your first website, or just need a fairly simple one that is quick to set up, this is a good place to start. To see a few examples of websites created with &lt;code&gt;distill&lt;/code&gt;, check out the cleverly named &lt;a href=&#34;https://jhelvy.github.io/distillery/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;the distillery website&lt;/a&gt;.&lt;/p&gt;
+&lt;h1 id=&#34;required-skills&#34;&gt;Required skills&lt;/h1&gt;
+&lt;p&gt;I assume that you have general computer literacy, but no experience with any of the tools that will be used. Also, no coding, web-development or related experience is expected.&lt;/p&gt;
+&lt;h1 id=&#34;what-this-document-covers&#34;&gt;What this document covers&lt;/h1&gt;
+&lt;p&gt;This document is meant to provide you with the minimum required instructions to get your own website up and running quickly. As such, instructions and background information are kept at a minimum. I used a &lt;em&gt;recipe-like&lt;/em&gt; approach by giving hopefully detailed and specific enough instructions to get things to work. I&amp;rsquo;m not covering any &lt;em&gt;why&lt;/em&gt; here or provide much further explanations. If you decide you like to use this setup for your website, you will likely want to go beyond this document and learn a bit more about the various tools involved in the process. To that end, links to further resources are provided.&lt;/p&gt;
+&lt;h1 id=&#34;who-this-is-not-for&#34;&gt;Who this is (not) for&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;This way of making and hosting a website might be for you if:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;You are (or would like to be) an R, R Markdown and GitHub user. This is a method of creating a website using those tools which very efficiently fits into such a work flow.&lt;/li&gt;
+&lt;li&gt;You want a way to host a website where all the content is fully controlled by you, and the website can be hosted without much resources (and for free).&lt;/li&gt;
+&lt;li&gt;You want something that&amp;rsquo;s fairly simple and easy to set up and maintain, but still gives you some ability to configure things.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;This way of making and hosting a website might not be for you if:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Your main work flow is MS Word, Powerpoint, etc. and you are not interested in R Markdown or GitHub.&lt;/li&gt;
+&lt;li&gt;You want everything accessible through a graphical interface.&lt;/li&gt;
+&lt;li&gt;You need a complex setup with lots of control over layout and many advanced features.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;related-content&#34;&gt;Related content&lt;/h1&gt;
+&lt;p&gt;I previously posted tutorials describing two other ways of making a website using a similar set of tools.&lt;/p&gt;
+&lt;p&gt;One rather simple way to set up a website is using R Markdown and Github without the &lt;code&gt;distill&lt;/code&gt; package, I described this approach &lt;a href=&#34;https://www.andreashandel.com/posts/github-website/&#34;&gt;in this blog post&lt;/a&gt;. That approach is rather similar to the one described here. The advantage of using &lt;code&gt;distill&lt;/code&gt; is that it&amp;rsquo;s likely going to see more development and will allow more configuration down the road.&lt;/p&gt;
+&lt;p&gt;If you need the ability to do more customization, you can use the &lt;code&gt;blogdown&lt;/code&gt; R package and Hugo. I wrote a 2-series blog post with instructions for creating your own website using &lt;a href=&#34;https://bookdown.org/yihui/blogdown/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;blogdown&lt;/a&gt;, &lt;a href=&#34;https://gohugo.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Hugo&lt;/a&gt; and &lt;a href=&#34;https://www.netlify.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Netlify&lt;/a&gt;. (Here are &lt;a href=&#34;https://www.andreashandel.com/posts/blogdown-website-1/&#34;&gt;Part 1&lt;/a&gt; and &lt;a href=&#34;https://www.andreashandel.com/posts/blogdown-website-2/&#34;&gt;part 2&lt;/a&gt;). While I&amp;rsquo;m using Hugo/blogdown for my &lt;a href=&#34;https://www.andreashandel.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;personal website&lt;/a&gt; I have been using a basic RMarkdown/Github setup for my online courses, such as &lt;a href=&#34;https://andreashandel.github.io/IDEMAcourse/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this one&lt;/a&gt;.&lt;/p&gt;
+&lt;h1 id=&#34;quick-tool-overview&#34;&gt;Quick tool overview&lt;/h1&gt;
+&lt;p&gt;The tools used here are fairly simple. &lt;code&gt;GitHub&lt;/code&gt; is used for hosting the website and &lt;code&gt;R&lt;/code&gt; and &lt;code&gt;RStudio&lt;/code&gt;, together with some packages (most importantly the &lt;code&gt;distill&lt;/code&gt; package) are used to create the site.&lt;/p&gt;
+&lt;h1 id=&#34;pre-requisites&#34;&gt;Pre-requisites&lt;/h1&gt;
+&lt;p&gt;First, you need to install R and Rstudio and set up a GitHub account. (That does not count toward the 30 minutes of getting the website up and running 😁.)&lt;/p&gt;
+&lt;h2 id=&#34;install-r-and-rstudio&#34;&gt;Install R and RStudio&lt;/h2&gt;
+&lt;p&gt;If you don&amp;rsquo;t already have it on your computer, &lt;a href=&#34;https://www.r-project.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;install R first&lt;/a&gt;. You can pick any mirror you like. If you already have R installed, make sure it is a fairly recent version. If yours is old, I suggest you install a new R version.&lt;/p&gt;
+&lt;p&gt;Once you have R installed, install the free version of &lt;a href=&#34;https://www.rstudio.com/products/rstudio/download/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;RStudio Desktop&lt;/a&gt;. Again, make sure it&amp;rsquo;s a recent version. If you have an older version, you should update.&lt;/p&gt;
+&lt;p&gt;Installing R and RStudio should be fairly straightforward. If you want some more details or need instructions, see &lt;a href=&#34;https://andreashandel.GitHub.io/MADAcourse/RandRStudio.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this page&lt;/a&gt; (which is part of an online course I teach).&lt;/p&gt;
+&lt;h2 id=&#34;get-github-up-and-running&#34;&gt;Get GitHub up and running&lt;/h2&gt;
+&lt;p&gt;If you are new to GitHub, you need to create an account. At some point, it would also be useful to learn more about what Git/GitHub is and how to use it, but for this purpose you actually don&amp;rsquo;t need to know much. If you want to read a bit about Git/GitHub, see e.g. &lt;a href=&#34;https://andreashandel.github.io/MADAcourse/Github_Introduction.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this document, which I wrote for one of my courses.&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;install-gitkraken-optional-but-assumed&#34;&gt;Install Gitkraken (optional but assumed)&lt;/h2&gt;
+&lt;p&gt;There are many ways you can interact with Git/GitHub. I mostly use the fairly user-friendly and full-featured &lt;a href=&#34;https://www.gitkraken.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Gitkraken&lt;/a&gt;. You can get a basic version for free. If you are a student, you can get the Pro version through the &lt;a href=&#34;https://education.github.com/pack&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Github developer pack&lt;/a&gt;, teachers can get it through the &lt;a href=&#34;https://education.github.com/toolbox&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Github teacher toolbox&lt;/a&gt;. If you qualify for either, I highly recommend signing up. But you don&amp;rsquo;t need it for our purpose.&lt;/p&gt;
+&lt;p&gt;Once you have your GitHub account set up and Gitkraken installed, make sure you &lt;a href=&#34;https://www.gitkraken.com/resources/gitkraken-github-cheat-sheet&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;connect Gitkraken to your Github account&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I assume for the rest of the post that you are using Gitkraken. If you have your own preferred Git/GitHub client (e.g. the one that comes with RStudio), you can of course use that one too.&lt;/p&gt;
+&lt;h1 id=&#34;starting-your-website&#34;&gt;Starting your website&lt;/h1&gt;
+&lt;p&gt;Ok, the 30 minute timer starts now 😁. With the above registration and installation bits out of the way, you can get started with your website. To do so, follow these steps:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Open RStudio.&lt;/li&gt;
+&lt;li&gt;Install the distill package by typing &lt;code&gt;install.packages(&#39;distill&#39;)&lt;/code&gt; into the R console.&lt;/li&gt;
+&lt;li&gt;Choose &lt;code&gt;File -&amp;gt; New Project -&amp;gt; New Directory&lt;/code&gt; and find the &lt;code&gt;Distill Website&lt;/code&gt; entry. If it&amp;rsquo;s not there, close and re-open RStudio and make sure the &lt;code&gt;distill&lt;/code&gt; package installed ok (e.g., by calling &lt;code&gt;library(distill)&lt;/code&gt; in the R console and making sure there is no error message).&lt;/li&gt;
+&lt;li&gt;In the menu that opens, provide the name for your website project (this will also be the name of the URL on GitHub, so choose something informative). Decide where to locate it on your local drive. Don&amp;rsquo;t place it somewhere were it gets synced with e.g., Dropbox, OneDrive, Google Drive. This can mess with the GitHub work flow. Give it a title and check the &lt;code&gt;configure GitHub Pages&lt;/code&gt; box, as shown in the figure.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;setup.png&#34; width=&#34;100%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;test-the-website&#34;&gt;Test the website&lt;/h1&gt;
+&lt;p&gt;Once you created the project following the steps outlined above, RStudio should restart itself and you should see 3 files open in the RStudio file pane (top left) namely &lt;code&gt;index.Rmd&lt;/code&gt;, &lt;code&gt;about.Rmd&lt;/code&gt; and &lt;code&gt;_site.yml&lt;/code&gt;. In the top right pane, you should see a tab called &lt;code&gt;Build&lt;/code&gt;. Click on it, then click on the &lt;code&gt;Build Website&lt;/code&gt; hammer icon. Alternatively, you can type ``rmarkdown::render_site()` into the R console.&lt;/p&gt;
+&lt;p&gt;If you don&amp;rsquo;t find the &lt;code&gt;Build Website&lt;/code&gt; button or the &lt;code&gt;rmarkdown::render_site()&lt;/code&gt; command produced an error message, something went wrong with the setup. You can try to close RStudio, navigate to the folder for your website you just created and click on the &lt;code&gt;.Rproj&lt;/code&gt; file, which should open RStudio and place you in the project. Maybe the &lt;code&gt;Build&lt;/code&gt; tab and &lt;code&gt;Build Website&lt;/code&gt; buttons are now there? If not, revisit the steps above and make sure you did them all, especially make sure the 3 starter files are in the same folder.&lt;/p&gt;
+&lt;p&gt;If things work, a preview window should open with the beginning of your new website. You&amp;rsquo;ll see a menu at the top, you can click on the links. Not much will happen just now, we&amp;rsquo;ll get to this.&lt;/p&gt;
+&lt;h1 id=&#34;a-brief-explanation-of-your-new-website&#34;&gt;A brief explanation of your new website&lt;/h1&gt;
+&lt;p&gt;Your website is fairly simple and consists of these documents.&lt;/p&gt;
+&lt;h3 id=&#34;the-file-indexrmd&#34;&gt;The file &lt;code&gt;index.Rmd&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;This is the main landing page of your website. It always needs to be there and you fill it with the content you want on your main page. It should have opened in RStudio, if not, click on it (in the lower right &lt;code&gt;File&lt;/code&gt; section of RStudio) to open it. You will see some stuff at the top between the &lt;code&gt;---&lt;/code&gt; symbols, that&amp;rsquo;s called the YAML header and is used for formatting. In this case, we are using the &lt;code&gt;distill&lt;/code&gt; format for output. This is a type of R Markdown. If you are new to R Markdown, you can learn more about it &lt;a href=&#34;https://rmarkdown.rstudio.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on the R Markdown website&lt;/a&gt;. I also have a discussion of R Markdown and reproducibility &lt;a href=&#34;https://andreashandel.github.io/MADAcourse/1e_ToolsforReproducibility.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on one of my course pages&lt;/a&gt;. You&amp;rsquo;ll find additional links to potentially useful R Markdown (and Github) resources there. Details about the &lt;code&gt;distill&lt;/code&gt; version of R Markdown are &lt;a href=&#34;https://rstudio.github.io/distill/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;the-file-aboutrmd&#34;&gt;The file &lt;code&gt;about.Rmd&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;This is another R Markdown file with so far little content.&lt;/p&gt;
+&lt;h3 id=&#34;the-file-_siteyml&#34;&gt;The file &lt;code&gt;_site.yml&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;This short file (called a YAML file) contains the main settings for your site that control the overall look. It also defines the structure, i.e. the menu bar at the top of your site. We&amp;rsquo;ll edit this file shortly.&lt;/p&gt;
+&lt;h3 id=&#34;the-docs-folder&#34;&gt;The &lt;code&gt;docs&lt;/code&gt; folder&lt;/h3&gt;
+&lt;p&gt;This folder is created and updated when you build the website. It contains the html files that are created from your &lt;code&gt;Rmd&lt;/code&gt; files. Those files will be used by Github to display your website (we&amp;rsquo;ll do that below). Note that you can change the folder name in &lt;code&gt;_site.yml&lt;/code&gt;, but I recommend leaving it as is, since &lt;code&gt;docs&lt;/code&gt; is also the default location for Github to look for these files.&lt;/p&gt;
+&lt;h3 id=&#34;additional-content&#34;&gt;Additional content&lt;/h3&gt;
+&lt;p&gt;There is an &lt;code&gt;.Rproj&lt;/code&gt; file that is used by RStudio to store information about your project. Later, we&amp;rsquo;ll add a few more additional files.&lt;/p&gt;
+&lt;h1 id=&#34;creating-and-editing-content&#34;&gt;Creating and editing content&lt;/h1&gt;
+&lt;p&gt;Making new content for your website is very easy, all you need to do is edit existing or create new R Markdown (&lt;code&gt;.Rmd&lt;/code&gt;) files. Note that if you don&amp;rsquo;t use R code in your file, you could just use plain Markdown/Md files, but I find it easier for consistency to always use Rmd files, even if they don&amp;rsquo;t contain R code.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s create some content. Open the &lt;code&gt;index.Rmd&lt;/code&gt; file and write some introductory text at the bottom of the file, below the YAML header. Something like &lt;em&gt;This is my new website, it&amp;rsquo;s going to be awesome!&lt;/em&gt; or whatever you like to write.&lt;/p&gt;
+&lt;p&gt;Then open the &lt;code&gt;about.Rmd&lt;/code&gt; file and also write some text, e.g. provide an introduction that describes you. if you want, add a picture, as e.g. described &lt;a href=&#34;https://rstudio.github.io/distill/figures.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Finally, let&amp;rsquo;s create yet another file. Go to &lt;code&gt;File&lt;/code&gt;, &lt;code&gt;New File&lt;/code&gt;, &lt;code&gt;R Markdown&lt;/code&gt; choose as output format &lt;code&gt;HTML document&lt;/code&gt; and give it a title and name. Let&amp;rsquo;s call it &lt;em&gt;Projects&lt;/em&gt;. A template will open. Replace the &lt;code&gt;output: html_document&lt;/code&gt; line in the YAML with &lt;code&gt;output: distill::distill_article&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Also delete the existing content (or keep it at the bottom if you want to see how it looks when compiled). Then write some placeholder text, e.g. &lt;em&gt;This is where I will list my cool projects.&lt;/em&gt; Save this new page as &lt;code&gt;projects.Rmd&lt;/code&gt; into the main folder of your website.&lt;/p&gt;
+&lt;p&gt;Another option for creating new files, which I usually use, is to go into the website folder, make a copy of an existing file and rename. E.g. copy &lt;code&gt;projects.Rmd&lt;/code&gt; to &lt;code&gt;newpage.Rmd&lt;/code&gt;, then open and edit. Either approach works.&lt;/p&gt;
+&lt;p&gt;Now we need to include the new page you created into the overall site by adding it to the &lt;code&gt;navbar&lt;/code&gt; section of &lt;code&gt;_site.yml&lt;/code&gt;. Open that file, and in the &lt;code&gt;navbar&lt;/code&gt; section below the current &lt;code&gt;About&lt;/code&gt; entry, add&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- text: &amp;quot;Projects&amp;quot;
+href: projects.html
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Warning! YAML files or YAML headers are very picky about the exact formatting, and the number of leading empty spaces. Often, if you change something in those files and the site doesn&amp;rsquo;t compile, it means you forgot to add the required empty spaces or added more than you should. Always check that the spacing is correct.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Here, make sure your new &lt;code&gt;navbar&lt;/code&gt; entries is exactly positioned like the entries above it.&lt;/p&gt;
+&lt;p&gt;Once edited the &lt;code&gt;_site.yml&lt;/code&gt; file, save all your files, then rebuild the website. If things work, the preview window should show up, and you should now see the text you wrote and be able to click on your new &lt;code&gt;Projects&lt;/code&gt; entry. (You&amp;rsquo;ll find the newly created html files in the &lt;code&gt;docs&lt;/code&gt; folder.)&lt;/p&gt;
+&lt;h1 id=&#34;editing-the-look&#34;&gt;Editing the look&lt;/h1&gt;
+&lt;p&gt;As mentioned above &lt;code&gt;_site.yml&lt;/code&gt; controls the look. You already edited it by adding something to the navigation bar.&lt;/p&gt;
+&lt;p&gt;To do major style changes, &lt;code&gt;distill&lt;/code&gt; uses CSS, which is the standard of styling for any website. At some point, you&amp;rsquo;ll likely need to mess with CSS a bit (it&amp;rsquo;s easy) to get exactly the look you want. For now, we&amp;rsquo;ll take a shortcut and get and apply a theme someone else wrote.&lt;/p&gt;
+&lt;p&gt;The website of Emi Tanaka (who I do not know personally) is one of the sites featured on &lt;a href=&#34;https://jhelvy.github.io/distillery/showcase.html#emi-tanaka&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;the distillery&lt;/a&gt;. Her website &lt;a href=&#34;https://emitanaka.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;is here&lt;/a&gt;. As of the time of this writing, she has a theme with different fonts and colors. The theme is controlled by a CSS file for her site. You can get it by &lt;a href=&#34;https://github.com/emitanaka/emitanaka.github.io/blob/master/assets/theme.css&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;right-clicking here and doing a &amp;lsquo;save link as&amp;rsquo;&lt;/a&gt;. Save the file (which should be called &lt;code&gt;theme.css&lt;/code&gt; into the main directory of your new website.&lt;/p&gt;
+&lt;p&gt;After you have done that, go to the &lt;code&gt;_site.yml&lt;/code&gt; file and add &lt;code&gt;theme: theme.css&lt;/code&gt; as a new line under the &lt;code&gt;title&lt;/code&gt; line. Save, rebuild your website, and you should see it looking differently.&lt;/p&gt;
+&lt;p&gt;Since the promise was that we&amp;rsquo;ll get a website going in 30 minutes, we won&amp;rsquo;t do any more styling now 😁. As you start customizing your look more, you might want to start read the section &lt;a href=&#34;https://rstudio.github.io/distill/website.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Creating a Website&lt;/a&gt; section on the distill website.&lt;/p&gt;
+&lt;h1 id=&#34;making-your-site-public-on-github&#34;&gt;Making your site public on GitHub.&lt;/h1&gt;
+&lt;p&gt;The final step involves getting your site onto GitHub so it can be turned into a public website. 
+For the following, I assume you have GitKraken up and running. If you are familiar with Git/GitHub and use your own workflow, adjust accordingly.&lt;/p&gt;
+&lt;h2 id=&#34;gitkraken&#34;&gt;Gitkraken&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Open GitKraken, go to &lt;code&gt;File -&amp;gt; Init Repo -&amp;gt; Local Only&lt;/code&gt;. Give it the name of your main website directory, e.g. &lt;code&gt;mywebsite&lt;/code&gt;. The &lt;code&gt;Initialize In&lt;/code&gt; folder should be the folder above where you created the website, such that the &lt;code&gt;Full path&lt;/code&gt; entry is the actual location of your website on your computer. For &lt;code&gt;.gitignore Template&lt;/code&gt; you can choose &lt;code&gt;R&lt;/code&gt;. The rest you can leave as is.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;gitkraken.png&#34; width=&#34;100%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Once done, click &lt;code&gt;Create repository&lt;/code&gt;. You should see a bunch of files ready for staging on the left. Click &lt;code&gt;Stage all changes&lt;/code&gt; enter a commit message, commit. Then Click the &lt;code&gt;Push&lt;/code&gt; button.&lt;/p&gt;
+&lt;p&gt;At this point, if you didn&amp;rsquo;t properly connect GitKraken and GitHub previously, you&amp;rsquo;ll likely get an error message. Follow the error message and the &lt;a href=&#34;https://www.gitkraken.com/resources/gitkraken-github-cheat-sheet&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;connect Gitkraken to your Github account&lt;/a&gt; information to get it to work.&lt;/p&gt;
+&lt;p&gt;You&amp;rsquo;ll see a message about no remote existing and if you want to add one. Say &lt;code&gt;yes&lt;/code&gt;. A menu on the left should show up. Make sure the repository name is the same as your website folder name. Then click the green button. If things worked, your local website folder has been sent to GitHub and is ready to be turned into a website.&lt;/p&gt;
+&lt;h2 id=&#34;github-website&#34;&gt;Github website&lt;/h2&gt;
+&lt;p&gt;For the last step, go to your account on Github.com and find the repository for the website you just created. On the bar at the top, in the right corner there should be the &lt;code&gt;Settings&lt;/code&gt; button. Click on it. Scroll down until you find the &lt;code&gt;GitHub Pages&lt;/code&gt; section. Under &lt;code&gt;Source&lt;/code&gt;, select &lt;code&gt;Main&lt;/code&gt; and then choose &lt;code&gt;/docs&lt;/code&gt; as the folder. Don&amp;rsquo;t choose a theme since we are using our own. Save those changes. If everything works (it could take a minute or so), your website is now live and public! Look right underneath the &lt;code&gt;GitHub Pages&lt;/code&gt; section, there should be something like &lt;code&gt;Your site is ready to be published at https://andreashandel.github.io/mywebsite/&lt;/code&gt;. Click on the link and your new site should show up.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;That&amp;rsquo;s it. Now the hard part starts, creating good content. 😄&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id=&#34;next-steps&#34;&gt;Next steps&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;You&amp;rsquo;ll likely want to create content and change the look. See the sources listed below.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;You might also want to update the &lt;code&gt;Readme.md&lt;/code&gt; file which is the file people see when they land in your GitHub repository for this file. I suggest adding a link to the website.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;updating-your-site&#34;&gt;Updating your site&lt;/h1&gt;
+&lt;p&gt;This process is fairly simple, you just need to remember to go through all the steps.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Make any changes to files you want to make. Create new Rmd files in the main folder, edit them. If you include new files or rename them, don&amp;rsquo;t forget to change your &lt;code&gt;_navbar.yml&lt;/code&gt; file.&lt;/li&gt;
+&lt;li&gt;Rebuild the website by either clicking the &lt;code&gt;Build Website&lt;/code&gt; button inside the &lt;code&gt;Build&lt;/code&gt; tab in the top right R Studio pane, or by typing &lt;code&gt;rmarkdown::render_site()&lt;/code&gt; into the console.&lt;/li&gt;
+&lt;li&gt;Push your changes to GitHub.&lt;/li&gt;
+&lt;li&gt;Wait a minute or so, then reload your website on Github and check that things look right.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;more-information&#34;&gt;More Information&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Since this setup is based on R Markdown, the &lt;a href=&#34;https://bookdown.org/yihui/rmarkdown/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;R Markdown book&lt;/a&gt; is very useful and contains lots of relevant information, especially &lt;a href=&#34;https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this section&lt;/a&gt;. There is also the newer &lt;a href=&#34;https://bookdown.org/yihui/rmarkdown-cookbook/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;R Markdown cookbook&lt;/a&gt; which is more of a how-to guide, while the R Markdown book is more of a full reference book. Both are very useful sources of information.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;a href=&#34;https://rstudio.github.io/distill/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;distill website&lt;/a&gt; is the obvious place for additional information on the &lt;code&gt;distill&lt;/code&gt; package.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Look at the examples shown on the &lt;a href=&#34;https://jhelvy.github.io/distillery/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;distillery website&lt;/a&gt;. If you see something you like, look at their GitHub repository and their code to see how they do it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;In my teaching, I use the Github/R Markdown workflow. Therefore, I have some information and links on that topic. You can browse through &lt;a href=&#34;https://andreashandel.github.io/MADAcourse/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;the website of this course&lt;/a&gt; and look for relevant content. The exercises teach parts of Github and making web pages (in fact, going through this tutorial is part of an exercise 😃.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;some-tips-tricks-and-comments&#34;&gt;Some tips, tricks and comments&lt;/h1&gt;
+&lt;p&gt;Here are some thoughts and suggestions that I&amp;rsquo;ve learned by using this general setup for several online courses (previously I didn&amp;rsquo;t use the &lt;code&gt;distill&lt;/code&gt; setup, but these comments still apply).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Every time you build your website, everything gets recompiled. If you have simple content, and no/little R code, that&amp;rsquo;s ok. If you are having materials that take long to run (e.g. complex R code inside your website), I suggest to move the R code from the Rmd file to a separate R script and save results from the code into files (figures/tables/Rdata files). Then load those results into your Rmd file. This way you only need to run the time-consuming R code if those parts have changed, but on a standard website re-build the code won&amp;rsquo;t need to run. There is also a way to set up your distill website as a blog that doesn&amp;rsquo;t lead to everything being recompiled. &lt;a href=&#34;https://rstudio.github.io/distill/blog.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;See here for more&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sometimes when I use this workflow to build websites on a Windows computer, things slow down markedly. It turns out that Windows Defender is at times not working right. If you encounter a very slow re-build process on a Windows machine, this could be the issue and you might want to check out &lt;a href=&#34;https://community.rstudio.com/t/performance-issue-rstudio-windows-10/7608&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this discussion&lt;/a&gt; and especially the provided link which explains how to potentially fix it (the fix worked for me).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;You can have files other than Rmd/Md in your main folder, and you can have files in sub-folders. Those are ignored by &lt;code&gt;rmarkdown&lt;/code&gt; when the site is built. Having those can be useful for storing additional materials. I generally have a &lt;code&gt;media&lt;/code&gt; folder in which I place figures and other materials, and link to it from my Rmd files.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If you use this setup for teaching and want to slowly release content to students (while still making edits to later parts of the course), I recommend using a &lt;em&gt;staging&lt;/em&gt; setup. A simple way to do that is to make 2 repositories, the main one for the course, and one where you do the development. Note that even if you set this to a private repository, if you turn on &lt;code&gt;Github Pages&lt;/code&gt;, students could find it. That&amp;rsquo;s usually not a big deal, nobody is looking. But you might want to be aware of it. With 2 repositories, you can do the testing/development of the course in the &lt;em&gt;staging&lt;/em&gt; repository. Once things work and whenever you want to release new content to the students, you copy it over to the main repository, build it there and push it to the main course repo. Alternatively, you can do development in the main repository, as long as you don&amp;rsquo;t make the files visible in the &lt;code&gt;navbar&lt;/code&gt; section, students won&amp;rsquo;t easily see them. Of course the files can be found through a direct link or through browsing the Github repository, so don&amp;rsquo;t place anything in there (e.g. if you use this four a course, keep the solutions to your homework problems offline until after the deadline 😄).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;It&amp;rsquo;s easy to have broken links when creating any website and it&amp;rsquo;s good to check that things are ok. There are simple free tools out there that let you check to make sure links are not broken. I like using &lt;a href=&#34;https://www.drlinkcheck.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Dr Link Check&lt;/a&gt; or the &lt;a href=&#34;https://validator.w3.org/checklink&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;W3C Link Checker&lt;/a&gt;. I&amp;rsquo;m sure many others exist.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Create a simple Markdown/Github website in less than 30 minutes</title>
+      <link>https://www.andreashandel.com/posts/github-website/</link>
+      <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://www.andreashandel.com/posts/github-website/</guid>
+      <description>&lt;p&gt;The following blog post provides step-by-step instructions for creating a simple (and free) website using (R)Markdown and Github.&lt;/p&gt;
+&lt;h1 id=&#34;motivation&#34;&gt;Motivation&lt;/h1&gt;
+&lt;p&gt;Previously, I wrote a 2-series blog post with instructions for creating your own website using &lt;a href=&#34;https://bookdown.org/yihui/blogdown/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;blogdown&lt;/a&gt;, &lt;a href=&#34;https://gohugo.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Hugo&lt;/a&gt; and &lt;a href=&#34;https://www.netlify.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Netlify&lt;/a&gt;. (Here are &lt;a href=&#34;https://www.andreashandel.com/posts/blogdown-website-1/&#34;&gt;Part 1&lt;/a&gt; and &lt;a href=&#34;https://www.andreashandel.com/posts/blogdown-website-2/&#34;&gt;part 2&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;The blogdown/Hugo setup is fairly flexible and powerful, but sometimes more complex than what is needed. At least I find this to be the case. While I&amp;rsquo;m using Hugo/blogdown for my &lt;a href=&#34;https://www.andreashandel.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;personal website&lt;/a&gt; I am currently hosting my online courses using a simpler setup, the one I&amp;rsquo;ll be describing here.&lt;/p&gt;
+&lt;h1 id=&#34;required-skills&#34;&gt;Required skills&lt;/h1&gt;
+&lt;p&gt;I assume that you have general computer literacy, but no experience with any of the tools that will be used. Also, no coding, web-development or related experience is expected.&lt;/p&gt;
+&lt;h1 id=&#34;what-this-document-covers&#34;&gt;What this document covers&lt;/h1&gt;
+&lt;p&gt;This document is meant to provide you with the minimum required instructions to get a simple own website up and running quickly. As such, instructions and background information are kept at a minimum. I used a &lt;em&gt;recipe-like&lt;/em&gt; approach by giving hopefully detailed and specific enough instructions to get things to work. I&amp;rsquo;m not covering any &lt;em&gt;why&lt;/em&gt; here or provide much further explanations. If you decide you like to use this setup for your website, you will likely want to go beyond this document and learn a bit more about the various tools involved in the process. To that end, links to further resources are provided.&lt;/p&gt;
+&lt;h1 id=&#34;who-this-is-not-for&#34;&gt;Who this is (not) for&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;This way of making and hosting a website might be for you if:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;You are (or would like to be) an R, RMarkdown and GitHub user. This is a method of creating a website using those tools which very efficiently fits into such a workflow.&lt;/li&gt;
+&lt;li&gt;You want a way to host a website where all the content is fully controlled by you, and the website can be hosted without much resources (and for free).&lt;/li&gt;
+&lt;li&gt;You are curious about R/RMarkdown/GitHub, how to use it to build a website, and you&amp;rsquo;ve got a bit of time to spare and want to give it a try.&lt;/li&gt;
+&lt;li&gt;You want something that&amp;rsquo;s fairly simple and easy to set up and maintain.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;This way of making and hosting a website might not be for you if:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Your main workflow is MS Word, Powerpoint, etc. and you are not interested in R/Markdown/GitHub.&lt;/li&gt;
+&lt;li&gt;You want everything accessible through a graphical interface.&lt;/li&gt;
+&lt;li&gt;You need a complex setup with lots of control over layout and many advanced features.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;motivating-examples&#34;&gt;Motivating Examples&lt;/h1&gt;
+&lt;p&gt;Here are a few examples of websites written with R Markdown/Github:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://andreashandel.github.io/MADAcourse/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;My modern applied data analysis course&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://jtleek.com/advdatasci/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Jeff Leek&amp;rsquo;s advanced data science course&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;quick-tool-overview&#34;&gt;Quick tool overview&lt;/h1&gt;
+&lt;p&gt;The tools used here are fairly simple. Github is used for hosting the website and R Markdown and a few extra files contain all the content and formatting.&lt;/p&gt;
+&lt;h1 id=&#34;pre-requisites&#34;&gt;Pre-requisites&lt;/h1&gt;
+&lt;p&gt;First, you need to install R and Rstudio and set up a Github account. (That does not count toward the 30 minutes of getting the website up and running 😁.)&lt;/p&gt;
+&lt;h2 id=&#34;install-r-and-rstudio&#34;&gt;Install R and RStudio&lt;/h2&gt;
+&lt;p&gt;If you don&amp;rsquo;t already have it on your computer, &lt;a href=&#34;https://www.r-project.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;install R first&lt;/a&gt;. You can pick any mirror you like. If you already have R installed, make sure it is a fairly recent version. If yours is old, I suggest you update (install a new R version).&lt;/p&gt;
+&lt;p&gt;Once you have R installed, install the free version of &lt;a href=&#34;https://www.rstudio.com/products/rstudio/download/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;RStudio Desktop&lt;/a&gt;. Again, make sure it&amp;rsquo;s a recent version. If you have an older verion of RStudio, you should update.&lt;/p&gt;
+&lt;p&gt;Installing R and RStudio should be fairly straightforward. If you want some more details or need instructions, see &lt;a href=&#34;https://andreashandel.GitHub.io/MADAcourse/1c_RandRStudio.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this page&lt;/a&gt; (which is part of an online course I teach).&lt;/p&gt;
+&lt;h2 id=&#34;get-github-up-and-running&#34;&gt;Get Github up and running&lt;/h2&gt;
+&lt;p&gt;If you are new to Github, you need to create an account. At some point, it would also be useful to learn more about what Git/Github is and how to use it, but for this purpose you actually don&amp;rsquo;t need to know much. If you want to read a bit about Git/Github, see e.g. &lt;a href=&#34;https://andreashandel.github.io/MADAcourse/Github_Introduction.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this document, which I wrote for one of my courses.&lt;/a&gt;. But for now, you don&amp;rsquo;t need to know much about Git/Github.&lt;/p&gt;
+&lt;h2 id=&#34;install-gitkraken-optional-but-assumed&#34;&gt;Install Gitkraken (optional but assumed)&lt;/h2&gt;
+&lt;p&gt;There are many ways you can interact with Git/Github. I mosty use the fairly user-friendly and full-featured &lt;a href=&#34;https://www.gitkraken.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Gitkraken&lt;/a&gt;. You can get a basic version for free, if you are a student, you can get the Pro version through the &lt;a href=&#34;https://education.github.com/pack&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Github developer pack&lt;/a&gt;, teachers can get it through the &lt;a href=&#34;https://education.github.com/toolbox&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Github teacher toolbox&lt;/a&gt;. If you qualify for either, I highly recommend signing up. But you don&amp;rsquo;t need it for our purpose.&lt;/p&gt;
+&lt;p&gt;I assume for the rest of the post that you are using Gitkraken. If you have your own preferred Git/Github client (e.g. the one that comes with RStudio), you can of course use that one too.
+Make sure you &lt;a href=&#34;https://www.gitkraken.com/resources/gitkraken-github-cheat-sheet&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;connect Gitkraken to your Github account&lt;/a&gt;.&lt;/p&gt;
+&lt;h1 id=&#34;starting-your-website&#34;&gt;Starting your website&lt;/h1&gt;
+&lt;p&gt;Ok, the 30 minute timer starts now 😁&lt;/p&gt;
+&lt;p&gt;With the above registration and installation bits out of the way, you can get started with your website. To do so, follow these steps:&lt;/p&gt;
+&lt;h3 id=&#34;github&#34;&gt;Github&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Go to Github, log in if needed.&lt;/li&gt;
+&lt;li&gt;Somewhere (usually on the left), you should find a green button that says &lt;em&gt;New&lt;/em&gt;, click it to create a new repository. Give it the name of the webpage you want to create (e.g. &lt;code&gt;mywebsite&lt;/code&gt;). Provide a brief description (e.g. &lt;em&gt;My first Github website&lt;/em&gt;.)&lt;/li&gt;
+&lt;li&gt;Check the boxes &lt;code&gt;add readme&lt;/code&gt; and &lt;code&gt;add .gitignore&lt;/code&gt; and for the template chose &lt;code&gt;R&lt;/code&gt;. You can keep the license box unchecked, or choose a license for your page.&lt;/li&gt;
+&lt;li&gt;Once done, create the new repository.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;gitkraken&#34;&gt;Gitkraken&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;I assume you&amp;rsquo;ll be using Gitkraken, but if you have another way of using Git/Github, feel free to use your own approach.&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Make sure &lt;a href=&#34;https://www.gitkraken.com/resources/gitkraken-github-cheat-sheet&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Gitkraken is connected to your Github account&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Open Gitkraken, under &lt;code&gt;File&lt;/code&gt; choose &lt;code&gt;Clone Repo&lt;/code&gt; go to &lt;code&gt;Github.com&lt;/code&gt;, find the name of the repository you just created and clone it to some place on your local computer (i.e. copy it from Github to your local computer.) E.g. if your repository was called &lt;code&gt;mywebsite&lt;/code&gt;, and you place it on your desktop under windows, you might choose &lt;code&gt;C:\Users\yourname\Desktop&lt;/code&gt; as the target.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;starter-files&#34;&gt;Starter files&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Download the files &lt;a href=&#34;https://www.andreashandel.com/post/2021-01-11-simple-github-website/_navbar.yml&#34;&gt;_navbar.yml&lt;/a&gt;, &lt;a href=&#34;https://www.andreashandel.com/post/2021-01-11-simple-github-website/_site.yml&#34;&gt;_site.yml&lt;/a&gt; and &lt;a href=&#34;https://www.andreashandel.com/post/2021-01-11-simple-github-website/index.Rmd&#34;&gt;index.Rmd&lt;/a&gt;. You need those are 3 files to create your website and I&amp;rsquo;m providing you with simple templates. Place all 3 files into the folder of your new website (e.g. &lt;code&gt;C:\Users\yourname\Desktop\mywebsite&lt;/code&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;rstudio&#34;&gt;RStudio&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Open RStudio.&lt;/li&gt;
+&lt;li&gt;Choose &lt;code&gt;File&lt;/code&gt;, &lt;code&gt;New Project&lt;/code&gt;, &lt;code&gt;Existing Directory&lt;/code&gt; and find the directory/folder you just created on Github and copied to your local computer (e.g. &lt;code&gt;C:\Users\yourname\Desktop\mywebsite&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;Based on the files you copied into the folder earlier, R Studio should recognize that you are making a website and in the top right pane there should be a &lt;code&gt;Build&lt;/code&gt; tab. Click on it, then &lt;code&gt;Build Website.&lt;/code&gt; If that doesn&amp;rsquo;t work, you can also type &lt;code&gt;rmarkdown::render_site()&lt;/code&gt; into the R console (bottom left pane in R Studio).&lt;/li&gt;
+&lt;li&gt;If you don&amp;rsquo;t find the &lt;code&gt;Build Website&lt;/code&gt; button or the &lt;code&gt;rmarkdown::render_site()&lt;/code&gt; command produced an error message, something went wrong with the setup. You can try to close RStudio, navigate to the folder for your website and click on the &lt;code&gt;.Rproj&lt;/code&gt; file, which should open RStudio and place you in the project. Maybe the &lt;code&gt;Build&lt;/code&gt; tab and &lt;code&gt;Build Website&lt;/code&gt; buttons are now there? If not, revisit the steps above and make sure you did them all, especially make sure the 3 starter files are in the same folder.&lt;/li&gt;
+&lt;li&gt;If things work, a preview window should open with the beginning of your new website. You&amp;rsquo;ll see a menu at the top, but if you click on the links, they won&amp;rsquo;t work. We need to create those files first, which we&amp;rsquo;ll do below.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;a-brief-explanation-of-your-new-website&#34;&gt;A brief explanation of your new website&lt;/h1&gt;
+&lt;p&gt;Your website is fairly simple and consists of these documents.&lt;/p&gt;
+&lt;h3 id=&#34;the-file-indexrmd&#34;&gt;The file &lt;code&gt;index.Rmd&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;This is the main landing page of your website. It always needs to be there and you fill it with the content you want on your main page. It&amp;rsquo;s a regular R Markdown site. If you are new to R Markdown, you can learn more about it &lt;a href=&#34;https://rmarkdown.rstudio.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on the R Markdown website&lt;/a&gt;. I also have a discussion of R Markdown and reproducibility &lt;a href=&#34;https://andreashandel.github.io/MADAcourse/ToolsforReproducibility.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on one of my course pages&lt;/a&gt;. You&amp;rsquo;ll find additional links to potentially useful R Markdown (and Github) resources there.&lt;/p&gt;
+&lt;h3 id=&#34;the-file-_siteyml&#34;&gt;The file &lt;code&gt;_site.yml&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;This short file contains the main settings for your site that control the styling. To change the layout, the &lt;code&gt;theme&lt;/code&gt; setting is the most important. R Markdown supports the &lt;a href=&#34;https://bootswatch.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Bootswatch&lt;/a&gt; theme library. More information on themes and other configuration options for the &lt;code&gt;_site.yml&lt;/code&gt; file &lt;a href=&#34;https://bookdown.org/yihui/rmarkdown/html-document.html#appearance-and-style&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;can be found here&lt;/a&gt;.
+Once you start playing with your website, you&amp;rsquo;ll want to explore and probably adjust those options. You can even include your own style using CSS. &lt;a href=&#34;https://bookdown.org/yihui/rmarkdown/html-document.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;This whole section&lt;/a&gt; of the R Markdown book is useful to read (at some point) to learn what you can do.&lt;/p&gt;
+&lt;p&gt;For now, just to give it a quick try, open the &lt;code&gt;_site.yml&lt;/code&gt; file (in R Studio or some other text editor) and replace &lt;code&gt;cerulean&lt;/code&gt; with &lt;code&gt;spacelab&lt;/code&gt;. Save, then rebuild the website. You should see the layout has changed.&lt;/p&gt;
+&lt;h3 id=&#34;the-file-_navbaryml&#34;&gt;The file &lt;code&gt;_navbar.yml&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;This file allows you to build a menu for your website. If you open the file, you&amp;rsquo;ll see that I created a small menu. You see links to files &lt;code&gt;aboutme.html&lt;/code&gt;, &lt;code&gt;project1.html&lt;/code&gt;, &lt;code&gt;project2.html&lt;/code&gt; and &lt;code&gt;contact.html&lt;/code&gt;. Those files currently do not exist, thus if you click on those menus in the preview, you get an error message. You need to make sure that the files of your website match those listed in this menu file.&lt;/p&gt;
+&lt;p&gt;You can find some more information on the &lt;code&gt;_navbar.yml&lt;/code&gt; file and what settings are available &lt;a href=&#34;https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;in this chapter of the R Markdown book&lt;/a&gt;. As you&amp;rsquo;ll read, it is possible to have only a single &lt;code&gt;_site.yml&lt;/code&gt; file which contains the &lt;code&gt;_navbar.yml&lt;/code&gt; content, but I prefer to keep them separate.&lt;/p&gt;
+&lt;p&gt;If a file is not listed in the &lt;code&gt;_navbar.yml&lt;/code&gt; file, it is not accessible to users, unless they know the direct link to the file. This can be useful since it means you can have files in development in the Github repository, and they will only become visible once you link them. Of course since they can be found through a direct link or through browsing your Github repository, don&amp;rsquo;t place anything private/confidential in this folder (e.g. if you use this four a course, keep the solutions to your homework problems offline until after the deadline 😄).&lt;/p&gt;
+&lt;h3 id=&#34;the-docs-folder&#34;&gt;The &lt;code&gt;docs&lt;/code&gt; folder&lt;/h3&gt;
+&lt;p&gt;This folder is created and updated when you build the website. It contains the html files that are created from your &lt;code&gt;Rmd&lt;/code&gt; files. Those files will be used by Github to display your website (we&amp;rsquo;ll do that below). Note that you can change the folder name in &lt;code&gt;_site.yml&lt;/code&gt;, but I recommend leaving it as is, since &lt;code&gt;docs&lt;/code&gt; is also the default location for Github to look for these files.&lt;/p&gt;
+&lt;h3 id=&#34;additional-content&#34;&gt;Additional content&lt;/h3&gt;
+&lt;p&gt;Additional files are either for Github (e.g. &lt;code&gt;.gitignore&lt;/code&gt; and &lt;code&gt;README.md&lt;/code&gt;) or for RStudio (e.g. the &lt;code&gt;mywebsite.Rproj&lt;/code&gt; file). Those should be there, and you might want to edit those at some point, especially the &lt;code&gt;README.md&lt;/code&gt; file. But since they are not directly part of the website, I&amp;rsquo;ll not further discuss them here.&lt;/p&gt;
+&lt;h3 id=&#34;beware&#34;&gt;Beware!&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Both &lt;code&gt;_site.yml&lt;/code&gt; and &lt;code&gt;_navbar.yml&lt;/code&gt; are very picky about the exact formatting, and the number of leading empty spaces. Often, if you change something in those files and the site doesn&amp;rsquo;t compile, it means you forgot to add the required empty spaces or added more than you should. Always check first if the spacing is correct.&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id=&#34;creating-and-editing-content&#34;&gt;Creating and editing content&lt;/h1&gt;
+&lt;p&gt;Making new content for your website is very easy, all you need to do is create new Rmd files. Note that if you don&amp;rsquo;t use R code in your file, you could just use plain Markdown/Md files, but I find it easier for consistency to always use Rmd files, even if they don&amp;rsquo;t contain R code.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s create the missing documents. Go to &lt;code&gt;File&lt;/code&gt;, &lt;code&gt;New File&lt;/code&gt;, &lt;code&gt;R Markdown&lt;/code&gt; choose as output format &lt;code&gt;HTML document&lt;/code&gt; and give it a title and name. A template will open, you can fill it and then save as say &lt;code&gt;project1.Rmd&lt;/code&gt; into the main folder of your website.&lt;/p&gt;
+&lt;p&gt;Another option, which I usually use, is to go into the folder, make a copy of an existing file and rename. E.g. copy &lt;code&gt;project1.Rmd&lt;/code&gt; to &lt;code&gt;project2.Rmd&lt;/code&gt;, then open and edit. Either approach works.&lt;/p&gt;
+&lt;p&gt;Use whichever approach you like to create Rmd versions of the 4 files that are listed in the &lt;code&gt;_navbar.yml&lt;/code&gt; file, namely &lt;code&gt;aboutme.Rmd&lt;/code&gt;, &lt;code&gt;project1.Rmd&lt;/code&gt;, &lt;code&gt;project2.Rmd&lt;/code&gt; and &lt;code&gt;contact.Rmd&lt;/code&gt;. All files should be in the main folder. Edit the content in those files as much or as little as you want.&lt;/p&gt;
+&lt;p&gt;Once created, rebuild the website. In the preview that shows up, you should now be able to click on all menus in the preview and reach the pages you just created. (You&amp;rsquo;ll find the newly created html files in the &lt;code&gt;docs&lt;/code&gt; folder.)&lt;/p&gt;
+&lt;h1 id=&#34;making-your-site-public&#34;&gt;Making your site public.&lt;/h1&gt;
+&lt;p&gt;The final step involves getting your site public, which is easy.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Once you are done editing your content (for now), go to Gitkraken (or your preferred Git client) and push your changes to Github.&lt;/li&gt;
+&lt;li&gt;Go to Github.com and find the repository for this website. On the bar at the top, in the right corner there should be the &lt;code&gt;Settings&lt;/code&gt; button. Click on it. Scroll down until you find the &lt;code&gt;GitHub Pages&lt;/code&gt; section. Under &lt;code&gt;Source&lt;/code&gt;, select &lt;code&gt;Main&lt;/code&gt; and then choose &lt;code&gt;/docs&lt;/code&gt; as the folder. Don&amp;rsquo;t choose a theme since we are using our own. Save those changes. Now if you look right underneath the &lt;code&gt;GitHub Pages&lt;/code&gt; section, there should be something like &lt;code&gt;Your site is ready to be published at https://andreashandel.github.io/mywebsite/&lt;/code&gt;. Click on the link. If everything works, your website is now live and public!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;**That&amp;rsquo;s basically it. Now the hard part starts, creating good content. 😄 **&lt;/p&gt;
+&lt;h1 id=&#34;updating-your-site&#34;&gt;Updating your site&lt;/h1&gt;
+&lt;p&gt;This process is fairly simple, you just need to remember to go through all the steps.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Make any changes to files you want to make. Create new Rmd files in the main folder, edit them. If you include new files or rename them, don&amp;rsquo;t forget to change your &lt;code&gt;_navbar.yml&lt;/code&gt; file.&lt;/li&gt;
+&lt;li&gt;Rebuild the website by either clicking the &lt;code&gt;Build Website&lt;/code&gt; button inside the &lt;code&gt;Build&lt;/code&gt; tab in the top right R Studio pane, or by typing &lt;code&gt;rmarkdown::render_site()&lt;/code&gt; into the console.&lt;/li&gt;
+&lt;li&gt;Push your changes to GitHub.&lt;/li&gt;
+&lt;li&gt;Wait a minute or so, then reload your website on Github and check that things look right.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;some-tips-tricks-and-comments&#34;&gt;Some tips, tricks and comments&lt;/h1&gt;
+&lt;p&gt;Here are some thoughts and suggestions that I&amp;rsquo;ve learned by using this setup for several online courses.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The setup described here works well for fairly simple sites. If you want your content structured in a more complex way and more features, you probably want to use the &lt;a href=&#34;https://www.andreashandel.com/posts/blogdown-website-1/&#34;&gt;blogdown/hugo setup&lt;/a&gt;. Similarly, while you can customize the layout  by trying different themes and by including your own CSS (see links above), if you want to start making it look exactly how you want, you&amp;rsquo;ll likely be wasting a lot of time and might be better off using a different setup (e.g. blogdown/hugo).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Every time you build your website, everything gets recompiled. If you have simple content, and no/little R code, that&amp;rsquo;s ok. If you are having things that take long to run (e.g. complex R code inside your website), I suggest to move the R code to a separate R script and save results from the code into files (figures/tables/Rdata files). You then just load thpse results into your Rmd file. This way you only need to run the time-consuming R code if those parts have changed, but on a standard website re-build the code won&amp;rsquo;t need to run.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sometimes when I build websites like this one on a Windows computer, things slow down markedly. It turns out that Windows Defender is at times not working right and I have to make adjustments to prevent it from trying to scan all newly created files in real time while re-building my website. If you encounter a very slow re-build process on a Windows machine, this could be the issue and you might want to check out &lt;a href=&#34;https://community.rstudio.com/t/performance-issue-rstudio-windows-10/7608&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this discussion&lt;/a&gt; and especially the provided link which explains how to potentially fix it (the fix worked for me).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;You can have files other than Rmd/Md in your main folder, and you can have files in sub-folders. Those are ignored by &lt;code&gt;rmarkdown&lt;/code&gt; when the site is built. Having those can be useful for storing additional materials. I generally have a &lt;code&gt;media&lt;/code&gt; folder in which I place figures and other materials, and link to it from my Rmd files.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If you use this setup for teaching and want to slowly release content to students (while still making edits to later parts of the course), I recommend using a &lt;em&gt;staging&lt;/em&gt; setup. A simple way to do that is to make 2 repositories, the main one for the course, and one where you do the development. Note that even if you set this to a private repository, if you turn on &lt;code&gt;Github Pages&lt;/code&gt;, students could find it. That&amp;rsquo;s usually not a big deal, nobody is looking. But you might want to be aware of it. With 2 repositories, you can do the testing/development of the course in the &lt;em&gt;staging&lt;/em&gt; repository. Once things work and whenever you want to release new content to the students, you copy it over to the main repository, build it there and push it to the main course repo. Alternatively, you can do development in the main repository, as long as you don&amp;rsquo;t make the files visible in the &lt;code&gt;_navbar.yml&lt;/code&gt; file, students won&amp;rsquo;t easily see them.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I like to be able to specify the date when a page was last changed. The problem is that all pages are always rebuild, so asking for &amp;lsquo;current date&amp;rsquo; during rebuilding doesn&amp;rsquo;t work. What I found out to work is to have this line in the YAML file header: &lt;code&gt;file.mtime(knitr::current_input())&lt;/code&gt;. It gets the &amp;lsquo;last modified&amp;rsquo; time stamp of the file that is being processed and displays it. It&amp;rsquo;s not perfect, e.g. if you recently cloned the files from Github to a new computer, it will show that date as the modified date. But it&amp;rsquo;s good enough for me. If you want exact &lt;em&gt;last edited date&lt;/em&gt; time stamps, you&amp;rsquo;ll probably have to do it manually.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;It&amp;rsquo;s easy to have broken links when creating any website and it&amp;rsquo;s good to check that things are ok. There are simple free tools out there that let you check to make sure links are not broken. I like using &lt;a href=&#34;https://www.drlinkcheck.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Dr Link Check&lt;/a&gt; or the &lt;a href=&#34;https://validator.w3.org/checklink&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;W3C Link Checker&lt;/a&gt;. I&amp;rsquo;m sure many others exist.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;more-information&#34;&gt;More Information&lt;/h1&gt;
+&lt;p&gt;The whole area of &lt;em&gt;use R Markdown to make websites&lt;/em&gt; is still under rapid development. Here are a few sources that - as of this writing - might be useful and not too outdated.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Since this setup is fully based on R Markdown, the &lt;a href=&#34;https://bookdown.org/yihui/rmarkdown/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;R Markdown book&lt;/a&gt; is very useful and contains lots of relevant information, especially &lt;a href=&#34;https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this section&lt;/a&gt;. There is also the newer &lt;a href=&#34;https://bookdown.org/yihui/rmarkdown-cookbook/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;R Markdown cookbook&lt;/a&gt; which is more of a how-to guide, while the R Markdown book is more of a full reference book. Both are very useful sources of information.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The R Studio folks have a package called &lt;a href=&#34;https://rstudio.github.io/distill/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;distill&lt;/code&gt;&lt;/a&gt; which is still under heavy development and which allows turning R Markdown into lots of outputs, including &lt;a href=&#34;https://rstudio.github.io/distill/publish_website.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;basic websites&lt;/a&gt;. This is still a work in progress, and while I tried distill in the past (and it couldn&amp;rsquo;t quite do what I want), I haven&amp;rsquo;t tried it lately. I find the setup I describe here works for my teaching needs, but if you need more/different features, I recommend checking out distill. There is aparently also a new package called &lt;a href=&#34;https://github.com/seankross/postcards&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;postcards&lt;/code&gt;&lt;/a&gt; that works with distill to produce simple websites, very similar to the approach shown here. See e.g. &lt;a href=&#34;https://alison.rbind.io/blog/2020-12-postcards-distill/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this blog post by Allison Hill&lt;/a&gt; for an introduction. I expect these packages to develop and mature quickly.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;In my teaching, I use the Github/R Markdown workflow, so students are exposed to it. Therefore, I have a good bit of information and links on that topic. You can browse through &lt;a href=&#34;https://andreashandel.github.io/MADAcourse/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;the website of this 
+course&lt;/a&gt; and look for relevant content. A lot of the exercises also teach parts of Github and making webpages (even simpler ones than described here).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

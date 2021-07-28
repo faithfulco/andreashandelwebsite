@@ -24,7 +24,8 @@ projects: []
 
 # Overview
 
-A bit more than a year ago, I wrote a 2-part blog post  ([part 1](/posts/publications-analysis-1/) and )
+A bit more than a year ago, I needed some bibliometric information for my materials for 
+wrote a 2-part blog post discus ([part 1](/posts/publications-analysis-1/) and )
 
 
 # Required packages
@@ -37,7 +38,10 @@ library(bibliometrix)
 
 # Loading data
 
+```{r}
+refs <- convert2df('handel_WOS_record.txt', dbsource = "wos", format = "plaintext")
 
+```
 
 
 

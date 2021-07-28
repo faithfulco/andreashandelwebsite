@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>online presence | Andreas Handel</title>
+    <link>https://www.andreashandel.com/category/online-presence/</link>
+      <atom:link href="https://www.andreashandel.com/category/online-presence/index.xml" rel="self" type="application/rss+xml" />
+    <description>online presence</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Thu, 21 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://www.andreashandel.com/media/logo_hu5aa01ef3f5a2b4ecf2f7517df7c485bf_90212_300x300_fit_lanczos_3.png</url>
+      <title>online presence</title>
+      <link>https://www.andreashandel.com/category/online-presence/</link>
+    </image>
+    
+    <item>
+      <title>Building and curating your brand (online presence)</title>
+      <link>https://www.andreashandel.com/presentations/2021-01-building-your-brand/</link>
+      <pubDate>Thu, 21 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://www.andreashandel.com/presentations/2021-01-building-your-brand/</guid>
+      <description>&lt;p&gt;These are slides for a discussion I led with our graduate students on the topic of online brand/presence building. &lt;a href=&#34;https://www.andreashandel.com/presentations/2021_01_Building_your_Brand.html&#34; target=&#34;_blank&#34;&gt;The presentation slides are here.&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
