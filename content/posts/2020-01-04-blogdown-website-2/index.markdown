@@ -24,7 +24,7 @@ projects: []
 
 This is part 2/2 of the website development posts, where we'll move the website to [GitHub](https://GitHub.com). This provides a nice and more automated workflow for editing and deploying your site.
 
-If you haven't seen [part 1](/post/blogdown-website-1/) yet, I suggest you read through that first. In that part, I covered how to create a website using [blogdown](https://bookdown.org/yihui/blogdown/), [Hugo](https://gohugo.io/), and [Netlify](https://www.netlify.com/).
+If you haven't seen [part 1](/posts/blogdown-website-1/) yet, I suggest you read through that first. In that part, I covered how to create a website using [blogdown](https://bookdown.org/yihui/blogdown/), [Hugo](https://gohugo.io/), and [Netlify](https://www.netlify.com/).
 
 
 # Required skills

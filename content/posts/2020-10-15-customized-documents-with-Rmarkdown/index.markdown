@@ -128,7 +128,7 @@ knitr::include_graphics("fig2.jpg")
 ````
 
 
-Note that by default, going from R Markdown to Word doesn't give you much ability to apply formatting. However, it is possible to do a decent amount of formatting using a word style template. I have [another blog post which describes this approach](https://www.andreashandel.com/post/word-formatting-rmarkdown/), and I'm using it here. 
+Note that by default, going from R Markdown to Word doesn't give you much ability to apply formatting. However, it is possible to do a decent amount of formatting using a word style template. I have [another blog post which describes this approach](/posts/word-formatting-rmarkdown/), and I'm using it here. 
 
 Even with the word style formatting, some things can't be controlled well. Placement and sizing of figures is the main problem, no matter if you include the figures with basic Markdown commands or use the `include_graphics()` function. You'll see the problem if you try to run this example (code below). As such, for something that includes figures, using the LaTeX/PDF workflow seems almost always better. A scenario where the Word setup might be useful is if you want to produce customized letters. The one main advantage of a Word output (in addition to not having to figuring out LaTeX commands) is that the output can be further edited if needed.
 
