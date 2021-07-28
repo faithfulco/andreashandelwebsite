@@ -53,7 +53,7 @@ pubs <- bibliometrix::convert2df("medline.txt", dbsource="pubmed",format="pubmed
 ```
 
 Each row of the data frame created by the `convert2df` function is a publication, the columns contain information for each publication. 
-For a list of what each column variable codes for, see [here](https://cran.r-project.org/web/packages/bibliometrix/vignettes/bibliometrix-vignette.html).
+For a list of what each column variable codes for, see the [bibliometrix documentation](https://www.bibliometrix.org/).
 
 
 # Analyzing 2 time periods

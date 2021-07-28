@@ -225,7 +225,7 @@ So far, everything happened on your local computer. In a final step, we want to 
 
 If you want, you can change the name of your site under `Site settings`. More advanced (not free but also not too expensive and not that hard) is to get your domain name, e.g. `www.yourname.com` or something like that. 
 
-If you want to add GitHub to the mix and have the deployment of your website automated, move on to [part 2](/post/blogdown-website-2/) of this post.
+If you want to add GitHub to the mix and have the deployment of your website automated, move on to [part 2](/posts/blogdown-website-2/) of this post.
 
 
 
