@@ -60,9 +60,9 @@ This document is meant to provide you with the minimum required instructions to 
 
 I previously posted tutorials describing two other ways of making a website using a similar set of tools.
 
-One rather simple way to set up a website is using R Markdown and Github without the `distill` package, I described this approach [in this blog post](/post/github-website/). That approach is rather similar to the one described here. The advantage of using `distill` is that it's likely going to see more development and will allow more configuration down the road.
+One rather simple way to set up a website is using R Markdown and Github without the `distill` package, I described this approach [in this blog post](/posts/github-website/). That approach is rather similar to the one described here. The advantage of using `distill` is that it's likely going to see more development and will allow more configuration down the road.
 
-If you need the ability to do more customization, you can use the `blogdown` R package and Hugo. I wrote a 2-series blog post with instructions for creating your own website using [blogdown](https://bookdown.org/yihui/blogdown/), [Hugo](https://gohugo.io/) and [Netlify](https://www.netlify.com/). (Here are [Part 1](/post/blogdown-website-1/) and [part 2](/post/blogdown-website-2/)). While I'm using Hugo/blogdown for my [personal website](https://www.andreashandel.com) I have been using a basic RMarkdown/Github setup for my online courses, such as [this one](https://andreashandel.github.io/IDEMAcourse/).
+If you need the ability to do more customization, you can use the `blogdown` R package and Hugo. I wrote a 2-series blog post with instructions for creating your own website using [blogdown](https://bookdown.org/yihui/blogdown/), [Hugo](https://gohugo.io/) and [Netlify](https://www.netlify.com/). (Here are [Part 1](/posts/blogdown-website-1/) and [part 2](/posts/blogdown-website-2/)). While I'm using Hugo/blogdown for my [personal website](https://www.andreashandel.com) I have been using a basic RMarkdown/Github setup for my online courses, such as [this one](https://andreashandel.github.io/IDEMAcourse/).
  
 
 # Quick tool overview
@@ -81,12 +81,12 @@ If you don't already have it on your computer, [install R first](https://www.r-p
 
 Once you have R installed, install the free version of [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/). Again, make sure it's a recent version. If you have an older version, you should update.
 
-Installing R and RStudio should be fairly straightforward. If you want some more details or need instructions, see [this page](https://andreashandel.GitHub.io/MADAcourse/1c_RandRStudio.html) (which is part of an online course I teach).
+Installing R and RStudio should be fairly straightforward. If you want some more details or need instructions, see [this page](https://andreashandel.GitHub.io/MADAcourse/RandRStudio.html) (which is part of an online course I teach).
 
 
 ## Get GitHub up and running
 
-If you are new to GitHub, you need to create an account. At some point, it would also be useful to learn more about what Git/GitHub is and how to use it, but for this purpose you actually don't need to know much. If you want to read a bit about Git/GitHub, see e.g. [this document, which I wrote for one of my courses.](https://andreashandel.github.io/MADAcourse/1d_Github.html). 
+If you are new to GitHub, you need to create an account. At some point, it would also be useful to learn more about what Git/GitHub is and how to use it, but for this purpose you actually don't need to know much. If you want to read a bit about Git/GitHub, see e.g. [this document, which I wrote for one of my courses.](https://andreashandel.github.io/MADAcourse/Github_Introduction.html). 
 
 ## Install Gitkraken (optional but assumed)
 There are many ways you can interact with Git/GitHub. I mostly use the fairly user-friendly and full-featured [Gitkraken](https://www.gitkraken.com/). You can get a basic version for free. If you are a student, you can get the Pro version through the [Github developer pack](https://education.github.com/pack), teachers can get it through the [Github teacher toolbox](https://education.github.com/toolbox). If you qualify for either, I highly recommend signing up. But you don't need it for our purpose.

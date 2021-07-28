@@ -26,12 +26,12 @@ projects: []
 
 I needed some information on all my publications for "bean counting" purposes related to preparing my promotion materials. In the past, I also needed similar information for NSF grant applications. 
 
-Instead of doing things by hand, there are nicer/faster ways using R. in [part 1](/post/publications-analysis-1/), I did a few things using the `scholar` package. 
+Instead of doing things by hand, there are nicer/faster ways using R. in [part 1](/posts/publications-analysis-1/), I did a few things using the `scholar` package. 
 While some parts worked nicely, I encountered 2 problems. First, since my Google Scholar record lists items other than peer-reviewed journal articles, they show up in the analysis and need to be cleaned out. Second, Google Scholar doesn't like automated queries through the API and is quick to block, at which point things don't work anymore.
 
 To get around these issues, I decided to give a different R package a try, namely [`bibliometrix`](https://www.bibliometrix.org/). The workflow is somewhat different.
 
-The RMarkdown file to run this analysis [is here](/post/2020-02-02-publications-analysis-2/index.Rmarkdown).
+The RMarkdown file to run this analysis [is here](/posts/2020-02-02-publications-analysis-2/index.Rmarkdown).
 
 # Required packages
 
@@ -405,7 +405,7 @@ Note that some values are reported as NA, e.g. the citations. Depending on which
 
 This can be useful for NSF applications. For reasons nobody understands, that agency still asks for a list of all co-authors. An insane request in the age of modern science. If one wanted to do that, the following gives a table. 
 
-**Update:** I have since created a short blog post describing how to do just that part in a bit more detail. It has a few additional components that might be useful, if interested [check it out here](/post/conflict-of-interest-form/).
+**Update:** I have since created a short blog post describing how to do just that part in a bit more detail. It has a few additional components that might be useful, if interested [check it out here](/posts/conflict-of-interest-form/).
 
 Here is the full table of my co-authors in the first period dataset.
 
@@ -558,7 +558,7 @@ Ok that worked somewhat. It couldn't find several journals. The reported IF seem
 
 # Discussion
 
-The `bibliometrix` package doesn't suffer from the problems that I encountered in [part 1](/post/publications-analysis-1/) of this post when I tried  the `scholar` package (and Google Scholar). The downside is that I can't get some of the information, e.g. my annual citations. So it seems there is not (yet) a comprehensive solution, and using both packages seems best. 
+The `bibliometrix` package doesn't suffer from the problems that I encountered in [part 1](/posts/publications-analysis-1/) of this post when I tried  the `scholar` package (and Google Scholar). The downside is that I can't get some of the information, e.g. my annual citations. So it seems there is not (yet) a comprehensive solution, and using both packages seems best. 
 
 A larger overall problem is that a lot of this information is controlled by corporations (Google, Elsevier, Clarivate Analytics, etc.), which might or might not allow R packages and individual users (who don't subscribe to their offerings) to access certain information. As such, R packages accessing this information will need to adjust to whatever the companies allow.
 

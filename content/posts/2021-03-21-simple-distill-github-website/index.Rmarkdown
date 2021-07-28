@@ -63,7 +63,7 @@ This document is meant to provide you with the minimum required instructions to 
 
 I previously posted tutorials describing two other ways of making a website using a similar set of tools.
 
-One rather simple way to set up a website is using R Markdown and Github without the `distill` package, I described this approach [in this blog post](/post/github-website/). That approach is rather similar to the one described here. The advantage of using `distill` is that it's likely going to see more development and will allow more configuration down the road.
+One rather simple way to set up a website is using R Markdown and Github without the `distill` package, I described this approach [in this blog post](/posts/github-website/). That approach is rather similar to the one described here. The advantage of using `distill` is that it's likely going to see more development and will allow more configuration down the road.
 
 If you need the ability to do more customization, you can use the `blogdown` R package and Hugo. I wrote a 2-series blog post with instructions for creating your own website using [blogdown](https://bookdown.org/yihui/blogdown/), [Hugo](https://gohugo.io/) and [Netlify](https://www.netlify.com/). (Here are [Part 1](/posts/blogdown-website-1/) and [part 2](/posts/blogdown-website-2/)). While I'm using Hugo/blogdown for my [personal website](https://www.andreashandel.com) I have been using a basic RMarkdown/Github setup for my online courses, such as [this one](https://andreashandel.github.io/IDEMAcourse/).
  
