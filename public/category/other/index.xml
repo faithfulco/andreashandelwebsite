@@ -1,35 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Research | Andreas Handel</title>
-    <link>https://www.andreashandel.com/tag/research/</link>
-      <atom:link href="https://www.andreashandel.com/tag/research/index.xml" rel="self" type="application/rss+xml" />
-    <description>Research</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Wed, 08 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <title>Other | Andreas Handel</title>
+    <link>https://www.andreashandel.com/category/other/</link>
+      <atom:link href="https://www.andreashandel.com/category/other/index.xml" rel="self" type="application/rss+xml" />
+    <description>Other</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Sat, 01 Mar 2014 00:00:00 -0500</lastBuildDate>
     <image>
       <url>https://www.andreashandel.com/media/logo_hu5aa01ef3f5a2b4ecf2f7517df7c485bf_90212_300x300_fit_lanczos_3.png</url>
-      <title>Research</title>
-      <link>https://www.andreashandel.com/tag/research/</link>
+      <title>Other</title>
+      <link>https://www.andreashandel.com/category/other/</link>
     </image>
-    
-    <item>
-      <title>Research and teaching resources website</title>
-      <link>https://www.andreashandel.com/posts/resource-website/</link>
-      <pubDate>Wed, 08 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>https://www.andreashandel.com/posts/resource-website/</guid>
-      <description>&lt;p&gt;I have been collecting lists of links related to research, teaching and (academic) career topics in a Github repository.
-I finally got around to doing some cleanup. I turned the repository into a small website. You can find this site &lt;a href=&#34;https://andreashandel.github.io/research-and-teaching-resources/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Model-based optimization of vaccine inoculum dose</title>
-      <link>https://www.andreashandel.com/presentations/2019-10-paris/</link>
-      <pubDate>Wed, 23 Oct 2019 17:00:00 +0000</pubDate>
-      <guid>https://www.andreashandel.com/presentations/2019-10-paris/</guid>
-      <description>&lt;p&gt;We described some of our past and ongoing work in using a combination of models and data to understand the role of inoculum dose on vaccination and infection outcomes. The &lt;a href=&#34;https://www.andreashandel.com/presentations/2019_10_Paris_Slides.pdf&#34;&gt;presentation slides (as pdf) are here&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
     
     <item>
       <title>Resource list website</title>

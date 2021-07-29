@@ -86,5 +86,5 @@ Netlify will monitor your Github repository and when it sees changes, automatica
 
 # More Information
 
-For the non-GitHub aspects of this, see the resources mentioned at the end of [part 1](/post/blogdown-website-1/). For some more GitHub related information, [see e.g. here](https://andreashandel.github.io/MADAcourse/1d_Github.html).
+For the non-GitHub aspects of this, see the resources mentioned at the end of [part 1](/posts/blogdown-website-1/). For some more GitHub related information, [see e.g. here](https://andreashandel.github.io/MADAcourse/Github_Introduction.html).
 

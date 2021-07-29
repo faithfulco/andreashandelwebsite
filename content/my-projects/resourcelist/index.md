@@ -1,12 +1,12 @@
 +++
 # Project title.
-title = "COVID-19 tracker"
+title = "Resource list website"
 
 # Date this page was created.
-date = 2012-03-01
+date = 2014-03-01
 
 # Project summary to display on homepage.
-summary = "An R/Shiny app that visualizes COVID-19 data."
+summary = "A simple website containing lists with links ot teaching and research resources."
 
 # Tags: can be used for filtering projects.
 tags = ["Infectious Disease", "Shiny", "Research", "Other"]
@@ -29,6 +29,5 @@ url_custom = [{icon_pack = "fas", icon="globe", name="Project Site", url = "http
   focal_point = "Smart"
 +++
 
-An R/Shiny app that visualizes COVID-19 cases, hospitalizations, deaths and tests for US states and counties, as well as countries around the world. 
-This app was created by [William Norfolk](https://github.com/williamnorfolk), [Robbie Richards](https://rlrichards.github.io) and [Andreas Handel.](https://www.andreashandel.com/) 
-[Check out the app here.](https://shiny.ovpr.uga.edu/yact/) The _About_ section of the app contains more information. 
+
+[A simple website](https://andreashandel.github.io/research-and-teaching-resources/) with a collection of lists with links to various resources that are related to my research and teaching, as well as some general (academic) career content.
