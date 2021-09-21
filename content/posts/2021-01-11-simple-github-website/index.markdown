@@ -80,12 +80,12 @@ If you don't already have it on your computer, [install R first](https://www.r-p
 
 Once you have R installed, install the free version of [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/). Again, make sure it's a recent version. If you have an older verion of RStudio, you should update.
 
-Installing R and RStudio should be fairly straightforward. If you want some more details or need instructions, see [this page](https://andreashandel.GitHub.io/MADAcourse/RandRStudio.html) (which is part of an online course I teach).
+Installing R and RStudio should be fairly straightforward. If you want some more details or need instructions, see [this page](https://andreashandel.GitHub.io/MADAcourse/Tools_RandRStudio.html) (which is part of an online course I teach).
 
 
 ## Get Github up and running
 
-If you are new to Github, you need to create an account. At some point, it would also be useful to learn more about what Git/Github is and how to use it, but for this purpose you actually don't need to know much. If you want to read a bit about Git/Github, see e.g. [this document, which I wrote for one of my courses.](https://andreashandel.github.io/MADAcourse/Github_Introduction.html). But for now, you don't need to know much about Git/Github.
+If you are new to Github, you need to create an account. At some point, it would also be useful to learn more about what Git/Github is and how to use it, but for this purpose you actually don't need to know much. If you want to read a bit about Git/Github, see e.g. [this document, which I wrote for one of my courses.](https://andreashandel.github.io/MADAcourse/Tools_Github_Introduction.html). But for now, you don't need to know much about Git/Github.
 
 ## Install Gitkraken (optional but assumed)
 There are many ways you can interact with Git/Github. I mosty use the fairly user-friendly and full-featured [Gitkraken](https://www.gitkraken.com/). You can get a basic version for free, if you are a student, you can get the Pro version through the [Github developer pack](https://education.github.com/pack), teachers can get it through the [Github teacher toolbox](https://education.github.com/toolbox). If you qualify for either, I highly recommend signing up. But you don't need it for our purpose.
@@ -131,7 +131,7 @@ Your website is fairly simple and consists of these documents.
 
 
 ### The file `index.Rmd` 
-This is the main landing page of your website. It always needs to be there and you fill it with the content you want on your main page. It's a regular R Markdown site. If you are new to R Markdown, you can learn more about it [on the R Markdown website](https://rmarkdown.rstudio.com/). I also have a discussion of R Markdown and reproducibility [on one of my course pages](https://andreashandel.github.io/MADAcourse/ToolsforReproducibility.html). You'll find additional links to potentially useful R Markdown (and Github) resources there.
+This is the main landing page of your website. It always needs to be there and you fill it with the content you want on your main page. It's a regular R Markdown site. If you are new to R Markdown, you can learn more about it [on the R Markdown website](https://rmarkdown.rstudio.com/). I also have a discussion of R Markdown and reproducibility [on one of my course pages](https://andreashandel.github.io/MADAcourse/Tools_Reproducibility.html). You'll find additional links to potentially useful R Markdown (and Github) resources there.
 
 
 ### The file `_site.yml` 
