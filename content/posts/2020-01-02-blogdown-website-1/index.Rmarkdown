@@ -103,7 +103,7 @@ If you don't already have it on your computer, [install R first](https://www.r-p
 
 Once you have R installed, install the free version of [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/). Again, make sure it's a recent version. If you have an older version of RStudio, you should update.
 
-Installing R and RStudio should be fairly straightforward. If you want some more details or need instructions, see [this page](https://andreashandel.GitHub.io/MADAcourse/1c_RandRStudio.html) (which is part of an online course I teach).
+Installing R and RStudio should be fairly straightforward. If you want some more details or need instructions, see [this page](https://andreashandel.github.io/MADAcourse/Tools_RandRStudio.html) (which is part of an online course I teach).
 
 
 # Starting your website 
@@ -163,7 +163,7 @@ Now that you know a little bit how your website is structured, let's dig in and 
 
 ## Playing with widgets
 
-All (or at least most) content goes into the `content` folder and its subfolders. Content is generally written in (R)Markdown. For this tutorial, you don't need to know much Rmarkdown, but at some point you will have to learn it. Fortunately, (R)Markdown is very easy to learn. See e.g. the RMarkdown section on [this page](https://andreashandel.github.io/MADAcourse/1e_ToolsforReproducibility.html), check out [this nice interactive tutorial](https://www.markdowntutorial.com/) or this [cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet). 
+All (or at least most) content goes into the `content` folder and its subfolders. Content is generally written in (R)Markdown. For this tutorial, you don't need to know much Rmarkdown, but at some point you will have to learn it. Fortunately, (R)Markdown is very easy to learn. See e.g. the RMarkdown section on [this page](https://andreashandel.github.io/MADAcourse/Tools_Reproducibility.html), check out [this nice interactive tutorial](https://www.markdowntutorial.com/) or this [cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet). 
 
 
 The Wowchemy/Academic theme, and many other modern websites, use a layout that employs **widgets**, which are components of a website that are individually formatted and styled. On the demo site you just created, you see many different sections, each is a widget. Which widgets you want is controlled by files in the `/content/home/` folder. Go into that folder (from within RStudio) and open the `demo.md` file. You will see a bunch of text. Some commands are between `+++` signs, this is called the TOML (or YAML if it's 3 `---`) header. These are instructions for the layout. The text below is what is actually shown on the site.
@@ -233,7 +233,7 @@ If you want to add GitHub to the mix and have the deployment of your website aut
 
 This post is just to get you up and running. If you like what you see and want to keep using blogdown/Hugo, you'll likely need to learn more. There is a lot of good information on blogdown/Hugo/Academic available. I recommend the following:
 
-* A short introductory course is Alison Hill's [summer of blogdown](https://alison.rbind.io/project/summer-of-blogdown/). Alison also has several blog posts on her website discussing more advanced concepts of Hugo. A [recent post from her](https://alison.rbind.io/post/new-year-new-blogdown/) is very helpful and covers similar ground to what I'm describing, though in a somewhat different order.
+* A short introductory course is Alison Hill's [summer of blogdown](https://alison.rbind.io/project/summer-of-blogdown/). Alison also has several blog posts on her website discussing Hugo and blogdown in a lot of detail, check out those materials. 
 * A lot of details and further information can be found in [the blogdown book](https://bookdown.org/yihui/blogdown/).
 * For the Wowchemy theme, check out [the docs for the theme](https://wowchemy.com/docs/). While they could be improved and at times a bit confusing, they are still a good source of information.
 

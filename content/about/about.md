@@ -56,8 +56,7 @@ subtitle = ""
 I am Professor and Associate Department Head in the [Department of Epidemiology and Biostatistics](http://www.publichealth.uga.edu/epibio/),
 [College of Public Health](http://www.publichealth.uga.edu/), at the [University of Georgia](http://www.uga.edu/). 
 
-I have adjunct appointments in UGA's [School of Ecology](https://www.ecology.uga.edu/directory/andreas-handel/) and [Department of Infectious Diseases in the College of Veterinary Medicine](https://vet.uga.edu/person/andreas-handel/), as well as the [Department of Epidemiology, Rollins School of Public Health](http://sph.emory.edu/faculty/profile/#AHANDEL) at Emory University. I am also a Member of UGA's [Institute of Bioinformatics](http://iob.uga.edu/faculty/) and 
-[Faculty of Infectious Diseases](https://fid.uga.edu/directory/).
+I have adjunct appointments in UGA's [School of Ecology](https://www.ecology.uga.edu/directory/andreas-handel/) and the [Department of Epidemiology, Rollins School of Public Health](http://sph.emory.edu/faculty/profile/#AHANDEL) at Emory University. I am also a Member of UGA's [Institute of Bioinformatics](http://iob.uga.edu/faculty/).
 
 
 ### Research focus

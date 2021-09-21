@@ -30,7 +30,7 @@ When I taught the course in fall 2019, one of the weekly assignments for the stu
 
 # Introduction
 
-If you are not familiar with TidyTuesdays, take a quick look [at the instructions for this exercise](https://andreashandel.github.io/MADAcourse/Exercise_Tidy_Tuesday_1.html), which contain a very short description.
+If you are not familiar with TidyTuesday, you can take a quick look [at the TidyTuesday section on this page](https://andreashandel.github.io/MADAcourse/Data_Analysis_Motivation.html).
 
 This week's data was all about Pizza. More on the data [is here](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-10-01).
 
@@ -317,10 +317,6 @@ That was a fun exploration. It was the first time I played with the tidyverse da
 
 While the exercise was supposed to focus on cleaning/wrangling and visualizing, I couldn't resist going all the way at the end and producing a **statistically significant** and **somewhat plausible sounding** finding. If this were a "real" study/analysis, such a nice result would be happily accepted by most analysts/authors, hyped by a university press release and - if the result is somewhat interesting/cute, picked up by various media outlets.
 
-I had no idea at the beginning what I was going to analyze, I did that longitude/latitude analysis on a whim, and if I hadn't found this correlation and had that crazy _distance to Italy_ idea, nothing would have happened. But now that I have a **significant** result and a good story to go with, I can publish! It's not really much sillier than the [Chocolate and Nobel Laureates paper](https://www.nejm.org/doi/full/10.1056/NEJMon1211064) paper [we discussed here](https://andreashandel.github.io/MADAcourse/4a_Data_Analysis_Overview.html).
+I had no idea at the beginning what I was going to analyze, I did that longitude/latitude analysis on a whim, and if I hadn't found this correlation and had that crazy _distance to Italy_ idea, nothing would have happened. But now that I have a **significant** result and a good story to go with, I can publish! It's not really much sillier than for instance the [Chocolate and Nobel Laureates paper](https://www.nejm.org/doi/full/10.1056/NEJMon1211064) paper.
 
 What I illustrated here (without having had any plan to do so), is a big, general problem in secondary data analysis. It's perfectly ok to do secondary analyses, and computing significance is also (kinda) ok, but selling exploratory (fishing) results as inferential/causal/confirmatory is wrong - and incredibly widespread. If you want to sharpen your critical thinking skills related to all those supposed significant and _real_ findings in science we see a lot, a great (though at times sobering) read is [Andrew Gelman's blog](https://statmodeling.stat.columbia.edu/) where he regularly picks apart studies/results like the one I did here or the chocolate and Nobel laureates one. And now I'll go eat some chocolate so I can increase my chances for a Nobel prize.
-
-
-
-

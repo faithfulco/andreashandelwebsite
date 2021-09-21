@@ -81,12 +81,12 @@ If you don't already have it on your computer, [install R first](https://www.r-p
 
 Once you have R installed, install the free version of [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/). Again, make sure it's a recent version. If you have an older version, you should update.
 
-Installing R and RStudio should be fairly straightforward. If you want some more details or need instructions, see [this page](https://andreashandel.GitHub.io/MADAcourse/RandRStudio.html) (which is part of an online course I teach).
+Installing R and RStudio should be fairly straightforward. If you want some more details or need instructions, see [this page](https://andreashandel.github.io/MADAcourse/Tools_RandRStudio.html) (which is part of an online course I teach).
 
 
 ## Get GitHub up and running
 
-If you are new to GitHub, you need to create an account. At some point, it would also be useful to learn more about what Git/GitHub is and how to use it, but for this purpose you actually don't need to know much. If you want to read a bit about Git/GitHub, see e.g. [this document, which I wrote for one of my courses.](https://andreashandel.github.io/MADAcourse/Github_Introduction.html). 
+If you are new to GitHub, you need to create an account. At some point, it would also be useful to learn more about what Git/GitHub is and how to use it, but for this purpose you actually don't need to know much. If you want to read a bit about Git/GitHub, see e.g. [this document, which I wrote for one of my courses.](https://andreashandel.github.io/MADAcourse/Tools_Github_Introduction.html). 
 
 ## Install Gitkraken (optional but assumed)
 There are many ways you can interact with Git/GitHub. I mostly use the fairly user-friendly and full-featured [Gitkraken](https://www.gitkraken.com/). You can get a basic version for free. If you are a student, you can get the Pro version through the [Github developer pack](https://education.github.com/pack), teachers can get it through the [Github teacher toolbox](https://education.github.com/toolbox). If you qualify for either, I highly recommend signing up. But you don't need it for our purpose.
@@ -122,7 +122,7 @@ If things work, a preview window should open with the beginning of your new webs
 Your website is fairly simple and consists of these documents.
 
 ### The file `index.Rmd` 
-This is the main landing page of your website. It always needs to be there and you fill it with the content you want on your main page. It should have opened in RStudio, if not, click on it (in the lower right `File` section of RStudio) to open it. You will see some stuff at the top between the `---` symbols, that's called the YAML header and is used for formatting. In this case, we are using the `distill` format for output. This is a type of R Markdown. If you are new to R Markdown, you can learn more about it [on the R Markdown website](https://rmarkdown.rstudio.com/). I also have a discussion of R Markdown and reproducibility [on one of my course pages](https://andreashandel.github.io/MADAcourse/ToolsforReproducibility.html). You'll find additional links to potentially useful R Markdown (and Github) resources there. Details about the `distill` version of R Markdown are [here](https://rstudio.github.io/distill/).
+This is the main landing page of your website. It always needs to be there and you fill it with the content you want on your main page. It should have opened in RStudio, if not, click on it (in the lower right `File` section of RStudio) to open it. You will see some stuff at the top between the `---` symbols, that's called the YAML header and is used for formatting. In this case, we are using the `distill` format for output. This is a type of R Markdown. If you are new to R Markdown, you can learn more about it [on the R Markdown website](https://rmarkdown.rstudio.com/). I also have a discussion of R Markdown and reproducibility [on one of my course pages](https://andreashandel.github.io/MADAcourse/Tools_Reproducibility.html). You'll find additional links to potentially useful R Markdown (and Github) resources there. Details about the `distill` version of R Markdown are [here](https://rstudio.github.io/distill/).
 
 
 ### The file `about.Rmd` 
