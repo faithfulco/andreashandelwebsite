@@ -8,12 +8,12 @@ authors: ["andreashandel"]
 
 # Talk start and end times.
 #   End time can optionally be hidden by prefixing the line with `#`.
-date: "2021-07-20"
-date_end: "2019-07-22"
+date: "2020-07-20"
+date_end: "2020-07-22"
 all_day: true
 
 # Schedule page publish date (NOT talk date).
-publishDate: "2020-07-15"
+publishDate: "2020-07-20"
 
 # Is this a featured talk? (true/false)
 featured: true
