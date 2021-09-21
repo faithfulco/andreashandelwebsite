@@ -5,7 +5,7 @@
     <link>https://www.andreashandel.com/tag/infectious-disease-models/</link>
       <atom:link href="https://www.andreashandel.com/tag/infectious-disease-models/index.xml" rel="self" type="application/rss+xml" />
     <description>Infectious Disease Models</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Sun, 01 Nov 2020 00:00:00 -0400</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Sun, 01 Nov 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://www.andreashandel.com/media/logo_hu5aa01ef3f5a2b4ecf2f7517df7c485bf_90212_300x300_fit_lanczos_3.png</url>
       <title>Infectious Disease Models</title>
@@ -15,7 +15,7 @@
     <item>
       <title>DSAIDE - Dynamical Systems Approach to Infectious Disease Epidemiology</title>
       <link>https://www.andreashandel.com/my-projects/dsaide/</link>
-      <pubDate>Sun, 01 Nov 2020 00:00:00 -0400</pubDate>
+      <pubDate>Sun, 01 Nov 2020 00:00:00 +0000</pubDate>
       <guid>https://www.andreashandel.com/my-projects/dsaide/</guid>
       <description>&lt;p&gt;We developed an R package that teaches a modern, model-based approach to infectious disease epidemiology, without the need to write computer code. Learn more about it &lt;a href=&#34;https://ahgroup.github.io/DSAIDE/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on the package website&lt;/a&gt;.&lt;/p&gt;
 </description>

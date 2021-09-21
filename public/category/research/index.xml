@@ -5,12 +5,21 @@
     <link>https://www.andreashandel.com/category/research/</link>
       <atom:link href="https://www.andreashandel.com/category/research/index.xml" rel="self" type="application/rss+xml" />
     <description>Research</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Wed, 28 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Fri, 24 Sep 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://www.andreashandel.com/media/logo_hu5aa01ef3f5a2b4ecf2f7517df7c485bf_90212_300x300_fit_lanczos_3.png</url>
       <title>Research</title>
       <link>https://www.andreashandel.com/category/research/</link>
     </image>
+    
+    <item>
+      <title>Adventures in Public Health Data Analytics - COVID-19 and beyond</title>
+      <link>https://www.andreashandel.com/presentations/2021-09-dsatl/</link>
+      <pubDate>Fri, 24 Sep 2021 00:00:00 +0000</pubDate>
+      <guid>https://www.andreashandel.com/presentations/2021-09-dsatl/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.andreashandel.com/presentations/2021_09_DSATL.html&#34; target=&#34;_blank&#34;&gt;These are the slides&lt;/a&gt; for a presentation I gave at a (virtual) meetup event of the &lt;a href=&#34;https://www.meetup.com/Atlanta-Society-for-Business-Intelligence&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Data Science &amp;amp; Business Intelligence Society of Atlanta&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>A Comparison of High-Dose and Regular-Dose Seasonal Influenza Vaccines Toward Eliciting Homologous and Heterologous Immunity</title>
@@ -45,7 +54,7 @@
       <link>https://www.andreashandel.com/presentations/2020-11-pudong/</link>
       <pubDate>Wed, 18 Nov 2020 00:00:00 +0000</pubDate>
       <guid>https://www.andreashandel.com/presentations/2020-11-pudong/</guid>
-      <description>&lt;p&gt;These are slides for a talk discussing some recent projects on modeling COVID-19 spread and control. I gave a pre-recorded online talk as part of the
+      <description>&lt;p&gt;These are slides for a talk discussing some recent projects on modeling COVID-19 spread and control. I gave a pre-recorded online talk as part of the 
 International Symposium on the Prevention and Control of Infectious Diseases during the Pandemic of COVID-19 - The 4th Pudong Health Forum and the Yangtze River Delta Regional Public Health Symposium. &lt;a href=&#34;https://www.andreashandel.com/presentations/2020-11-pudong.html&#34; target=&#34;_blank&#34;&gt;The presentation slides are here.&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>

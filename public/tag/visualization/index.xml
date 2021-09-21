@@ -5,7 +5,7 @@
     <link>https://www.andreashandel.com/tag/visualization/</link>
       <atom:link href="https://www.andreashandel.com/tag/visualization/index.xml" rel="self" type="application/rss+xml" />
     <description>Visualization</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Fri, 01 Mar 2019 00:00:00 -0500</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Fri, 01 Mar 2019 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://www.andreashandel.com/media/logo_hu5aa01ef3f5a2b4ecf2f7517df7c485bf_90212_300x300_fit_lanczos_3.png</url>
       <title>Visualization</title>
@@ -15,7 +15,7 @@
     <item>
       <title>flowdiagramr</title>
       <link>https://www.andreashandel.com/my-projects/flowdiagramr/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0500</pubDate>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
       <guid>https://www.andreashandel.com/my-projects/flowdiagramr/</guid>
       <description>&lt;p&gt;We developed an R package that allows anyone to easily create high-quality ggplot2 based flow diagrams of simulation models (and other flowcharts) with just a few lines of R code. Learn more about it &lt;a href=&#34;https://andreashandel.github.io/flowdiagramr/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on the package website&lt;/a&gt;.&lt;/p&gt;
 </description>

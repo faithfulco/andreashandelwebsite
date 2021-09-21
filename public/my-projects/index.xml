@@ -5,7 +5,7 @@
     <link>https://www.andreashandel.com/my-projects/</link>
       <atom:link href="https://www.andreashandel.com/my-projects/index.xml" rel="self" type="application/rss+xml" />
     <description>My-projects</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Fri, 01 Jan 2021 00:00:00 -0500</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://www.andreashandel.com/media/logo_hu5aa01ef3f5a2b4ecf2f7517df7c485bf_90212_300x300_fit_lanczos_3.png</url>
       <title>My-projects</title>
@@ -15,9 +15,9 @@
     <item>
       <title>Infectious Disease Epidemiology - A model-based approach</title>
       <link>https://www.andreashandel.com/my-projects/idemacourse/</link>
-      <pubDate>Fri, 01 Jan 2021 00:00:00 -0500</pubDate>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       <guid>https://www.andreashandel.com/my-projects/idemacourse/</guid>
-      <description>&lt;p&gt;Infectious Disease Epidemiology - A model-based approach (IDEMA) is an online course I teach at the University of Georgia.
+      <description>&lt;p&gt;Infectious Disease Epidemiology - A model-based approach (IDEMA) is an online course I teach at the University of Georgia. 
 All course materials (or links to the materials) are available in the form of a simple GitHub website and can be used by anyone. You can find the course &lt;a href=&#34;https://andreashandel.github.io/IDEMAcourse/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on this site&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The course also makes heavy use of my &lt;a href=&#34;https://andreashandel.github.io/IDEMAbook/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;IDEMA online book&lt;/a&gt; and the &lt;a href=&#34;https://ahgroup.github.io/DSAIDE/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DSAIDE R package&lt;/a&gt;.&lt;/p&gt;
 </description>
@@ -26,7 +26,7 @@ All course materials (or links to the materials) are available in the form of a 
     <item>
       <title>Infectious Disease Epidemiology - a Model-based Approach</title>
       <link>https://www.andreashandel.com/my-projects/idemabook/</link>
-      <pubDate>Tue, 01 Dec 2020 00:00:00 -0500</pubDate>
+      <pubDate>Tue, 01 Dec 2020 00:00:00 +0000</pubDate>
       <guid>https://www.andreashandel.com/my-projects/idemabook/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://andreashandel.github.io/IDEMAbook/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;An online book (perpetually under construction) convering infectious disease epidemiology using a model-based approach.&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Some parts of the book are fairly readable and complete enough that I use it when I teach a course on that topic. Other sections are currently only templates/outlines. While I try to ensure that what I write is correct, the whole book is not thoroughly fact-checked, error-corrected, properly referenced, etc. While I have been considering the idea of turning this into a full/real book, in my current thinking the cost-benefit analysis doesn&amp;rsquo;t pan out. I thus plan to leave it online for free as is, with occasional updates and fixes, but without an attempt to make it polished and complete enough for a printed book.&lt;/p&gt;
@@ -36,7 +36,7 @@ All course materials (or links to the materials) are available in the form of a 
     <item>
       <title>DSAIDE - Dynamical Systems Approach to Infectious Disease Epidemiology</title>
       <link>https://www.andreashandel.com/my-projects/dsaide/</link>
-      <pubDate>Sun, 01 Nov 2020 00:00:00 -0400</pubDate>
+      <pubDate>Sun, 01 Nov 2020 00:00:00 +0000</pubDate>
       <guid>https://www.andreashandel.com/my-projects/dsaide/</guid>
       <description>&lt;p&gt;We developed an R package that teaches a modern, model-based approach to infectious disease epidemiology, without the need to write computer code. Learn more about it &lt;a href=&#34;https://ahgroup.github.io/DSAIDE/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on the package website&lt;/a&gt;.&lt;/p&gt;
 </description>
@@ -45,7 +45,7 @@ All course materials (or links to the materials) are available in the form of a 
     <item>
       <title>DSAIRM - Dynamical Systems Approach to Immune Response Modeling</title>
       <link>https://www.andreashandel.com/my-projects/dsairm/</link>
-      <pubDate>Thu, 01 Oct 2020 00:00:00 -0400</pubDate>
+      <pubDate>Thu, 01 Oct 2020 00:00:00 +0000</pubDate>
       <guid>https://www.andreashandel.com/my-projects/dsairm/</guid>
       <description>&lt;p&gt;We developed an R package that provides immunologists and other bench scientists a user-friendly introduction to simulation modeling of within-host infection, without the need to write computer code. Learn more about it &lt;a href=&#34;https://ahgroup.github.io/DSAIRM/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on the package website&lt;/a&gt;.&lt;/p&gt;
 </description>
@@ -54,7 +54,7 @@ All course materials (or links to the materials) are available in the form of a 
     <item>
       <title>Simulation Modeling in Immunology</title>
       <link>https://www.andreashandel.com/my-projects/smicourse/</link>
-      <pubDate>Thu, 01 Oct 2020 00:00:00 -0400</pubDate>
+      <pubDate>Thu, 01 Oct 2020 00:00:00 +0000</pubDate>
       <guid>https://www.andreashandel.com/my-projects/smicourse/</guid>
       <description>&lt;p&gt;Simulation Modeling in Immunology (SMI) is an annual workshop that I co-teach with my colleague Paul Thomas. It usually occurs each year in July in Seattle. In 2020 we taught it online. All course materials are available in the form of a simple GitHub website and can be used by anyone for self-learning. You can find the course &lt;a href=&#34;https://andreashandel.github.io/SMIcourse/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on this site&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The course makes heavy use of my &lt;a href=&#34;https://ahgroup.github.io/DSAIRM/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DSAIRM R package&lt;/a&gt;.&lt;/p&gt;
@@ -64,7 +64,7 @@ All course materials (or links to the materials) are available in the form of a 
     <item>
       <title>Modern Applied Data Analysis</title>
       <link>https://www.andreashandel.com/my-projects/madacourse/</link>
-      <pubDate>Tue, 01 Sep 2020 00:00:00 -0400</pubDate>
+      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
       <guid>https://www.andreashandel.com/my-projects/madacourse/</guid>
       <description>&lt;p&gt;Modern Applied Data Analysis (MADA) is a course I regularly teach online. All course materials are available in the form of a simple GitHub website and can be used by anyone for self-learning. You can find the course &lt;a href=&#34;https://andreashandel.github.io/MADAcourse/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on this site&lt;/a&gt;.&lt;/p&gt;
 </description>
@@ -73,7 +73,7 @@ All course materials (or links to the materials) are available in the form of a 
     <item>
       <title>quizgrader</title>
       <link>https://www.andreashandel.com/my-projects/quizgrader/</link>
-      <pubDate>Mon, 01 Apr 2019 00:00:00 -0400</pubDate>
+      <pubDate>Mon, 01 Apr 2019 00:00:00 +0000</pubDate>
       <guid>https://www.andreashandel.com/my-projects/quizgrader/</guid>
       <description>&lt;p&gt;This - still in development - R package allows teachers to easily administer and auto-grade quizzes that students submit online. It replaces the functionality often found in learning management systems (LMS). Student submissions can be fully analyzed to gain insights into problem areas. Learn more about it &lt;a href=&#34;https://andreashandel.github.io/quizgrader/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on the package website&lt;/a&gt;.&lt;/p&gt;
 </description>
@@ -82,7 +82,7 @@ All course materials (or links to the materials) are available in the form of a 
     <item>
       <title>modelbuilder</title>
       <link>https://www.andreashandel.com/my-projects/modelbuilder/</link>
-      <pubDate>Fri, 15 Mar 2019 00:00:00 -0400</pubDate>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
       <guid>https://www.andreashandel.com/my-projects/modelbuilder/</guid>
       <description>&lt;p&gt;We are developing an R package that allows users to build and analyze compartmental, dynamical, mechanistic models (implemented as differential equations, discrete-time or stochastic), without the need to write computer code. Learn more about it &lt;a href=&#34;https://ahgroup.github.io/modelbuilder/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on the package website&lt;/a&gt;.&lt;/p&gt;
 </description>
@@ -91,7 +91,7 @@ All course materials (or links to the materials) are available in the form of a 
     <item>
       <title>flowdiagramr</title>
       <link>https://www.andreashandel.com/my-projects/flowdiagramr/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 -0500</pubDate>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
       <guid>https://www.andreashandel.com/my-projects/flowdiagramr/</guid>
       <description>&lt;p&gt;We developed an R package that allows anyone to easily create high-quality ggplot2 based flow diagrams of simulation models (and other flowcharts) with just a few lines of R code. Learn more about it &lt;a href=&#34;https://andreashandel.github.io/flowdiagramr/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on the package website&lt;/a&gt;.&lt;/p&gt;
 </description>
@@ -100,7 +100,7 @@ All course materials (or links to the materials) are available in the form of a 
     <item>
       <title>iblir - Introduction to Biostatistics Labs in R</title>
       <link>https://www.andreashandel.com/my-projects/iblir/</link>
-      <pubDate>Wed, 01 Mar 2017 00:00:00 -0500</pubDate>
+      <pubDate>Wed, 01 Mar 2017 00:00:00 +0000</pubDate>
       <guid>https://www.andreashandel.com/my-projects/iblir/</guid>
       <description>&lt;p&gt;An R package that contains several Shiny/learnr based tutorials that teach introductory aspects of biostatistics in an interactive way. Learn more about it &lt;a href=&#34;https://andreashandel.github.io/iblir/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on the package website&lt;/a&gt;.&lt;/p&gt;
 </description>
@@ -109,7 +109,7 @@ All course materials (or links to the materials) are available in the form of a 
     <item>
       <title>Resource list website</title>
       <link>https://www.andreashandel.com/my-projects/resourcelist/</link>
-      <pubDate>Sat, 01 Mar 2014 00:00:00 -0500</pubDate>
+      <pubDate>Sat, 01 Mar 2014 00:00:00 +0000</pubDate>
       <guid>https://www.andreashandel.com/my-projects/resourcelist/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://andreashandel.github.io/research-and-teaching-resources/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;A simple website&lt;/a&gt; with a collection of lists with links to various resources that are related to my research and teaching, as well as some general (academic) career content.&lt;/p&gt;
 </description>
@@ -118,10 +118,10 @@ All course materials (or links to the materials) are available in the form of a 
     <item>
       <title>COVID-19 tracker</title>
       <link>https://www.andreashandel.com/my-projects/yact/</link>
-      <pubDate>Thu, 01 Mar 2012 00:00:00 -0500</pubDate>
+      <pubDate>Thu, 01 Mar 2012 00:00:00 +0000</pubDate>
       <guid>https://www.andreashandel.com/my-projects/yact/</guid>
-      <description>&lt;p&gt;An R/Shiny app that visualizes COVID-19 cases, hospitalizations, deaths and tests for US states and counties, as well as countries around the world.
-This app was created by &lt;a href=&#34;https://github.com/williamnorfolk&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;William Norfolk&lt;/a&gt;, &lt;a href=&#34;https://rlrichards.github.io&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Robbie Richards&lt;/a&gt; and &lt;a href=&#34;https://www.andreashandel.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Andreas Handel.&lt;/a&gt;
+      <description>&lt;p&gt;An R/Shiny app that visualizes COVID-19 cases, hospitalizations, deaths and tests for US states and counties, as well as countries around the world. 
+This app was created by &lt;a href=&#34;https://github.com/williamnorfolk&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;William Norfolk&lt;/a&gt;, &lt;a href=&#34;https://rlrichards.github.io&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Robbie Richards&lt;/a&gt; and &lt;a href=&#34;https://www.andreashandel.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Andreas Handel.&lt;/a&gt; 
 &lt;a href=&#34;https://shiny.ovpr.uga.edu/yact/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Check out the app here.&lt;/a&gt; The &lt;em&gt;About&lt;/em&gt; section of the app contains more information.&lt;/p&gt;
 </description>
     </item>

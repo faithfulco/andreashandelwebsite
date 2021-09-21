@@ -80,7 +80,7 @@ If you don't already have it on your computer, [install R first](https://www.r-p
 
 Once you have R installed, install the free version of [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/). Again, make sure it's a recent version. If you have an older verion of RStudio, you should update.
 
-Installing R and RStudio should be fairly straightforward. If you want some more details or need instructions, see [this page](https://andreashandel.GitHub.io/MADAcourse/1c_RandRStudio.html) (which is part of an online course I teach).
+Installing R and RStudio should be fairly straightforward. If you want some more details or need instructions, see [this page](https://andreashandel.GitHub.io/MADAcourse/RandRStudio.html) (which is part of an online course I teach).
 
 
 ## Get Github up and running

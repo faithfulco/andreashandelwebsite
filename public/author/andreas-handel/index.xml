@@ -5,12 +5,48 @@
     <link>https://www.andreashandel.com/author/andreas-handel/</link>
       <atom:link href="https://www.andreashandel.com/author/andreas-handel/index.xml" rel="self" type="application/rss+xml" />
     <description>Andreas Handel</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Wed, 28 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Fri, 24 Sep 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://www.andreashandel.com/author/andreas-handel/avatar_hu55f54e78a4232ec20a6487b1ce16fd22_418898_270x270_fill_q75_lanczos_center.jpg</url>
       <title>Andreas Handel</title>
       <link>https://www.andreashandel.com/author/andreas-handel/</link>
     </image>
+    
+    <item>
+      <title>Adventures in Public Health Data Analytics - COVID-19 and beyond</title>
+      <link>https://www.andreashandel.com/presentations/2021-09-dsatl/</link>
+      <pubDate>Fri, 24 Sep 2021 00:00:00 +0000</pubDate>
+      <guid>https://www.andreashandel.com/presentations/2021-09-dsatl/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.andreashandel.com/presentations/2021_09_DSATL.html&#34; target=&#34;_blank&#34;&gt;These are the slides&lt;/a&gt; for a presentation I gave at a (virtual) meetup event of the &lt;a href=&#34;https://www.meetup.com/Atlanta-Society-for-Business-Intelligence&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Data Science &amp;amp; Business Intelligence Society of Atlanta&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Infectious Diseases, Immunology, and Within-Host Models</title>
+      <link>https://www.andreashandel.com/presentations/2020-07-sismid/</link>
+      <pubDate>Tue, 20 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>https://www.andreashandel.com/presentations/2020-07-sismid/</guid>
+      <description>&lt;p&gt;We placed all materials for this workshop online, you can &lt;a href=&#34;https://andreashandel.github.io/SMIcourse/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;find them here&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Infectious Diseases, Immunology, and Within-Host Models</title>
+      <link>https://www.andreashandel.com/presentations/2021-07-sismid/</link>
+      <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>https://www.andreashandel.com/presentations/2021-07-sismid/</guid>
+      <description>&lt;p&gt;We placed all materials for this workshop online, you can &lt;a href=&#34;https://andreashandel.github.io/SMIcourse/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;find them here&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>An R package to flexibly generate simulation model flow diagrams</title>
+      <link>https://www.andreashandel.com/presentations/2021-07-user/</link>
+      <pubDate>Wed, 07 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>https://www.andreashandel.com/presentations/2021-07-user/</guid>
+      <description>&lt;p&gt;The pre-recorded 5 minute video presentation &lt;a href=&#34;https://andreashandel.github.io/flowdiagramr/articles/otherinformation/useR2021_presentation.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;can be found here&lt;/a&gt;. And check out the &lt;a href=&#34;https://andreashandel.github.io/flowdiagramr/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;package website&lt;/a&gt; if you want to learn more.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>A Comparison of High-Dose and Regular-Dose Seasonal Influenza Vaccines Toward Eliciting Homologous and Heterologous Immunity</title>
@@ -53,7 +89,7 @@
       <link>https://www.andreashandel.com/presentations/2021-02-cv-resume/</link>
       <pubDate>Thu, 18 Feb 2021 00:00:00 +0000</pubDate>
       <guid>https://www.andreashandel.com/presentations/2021-02-cv-resume/</guid>
-      <description>&lt;p&gt;These are slides for a talk/discussion I led with our graduate students discussing CVs and resumes and how to create good ones.
+      <description>&lt;p&gt;These are slides for a talk/discussion I led with our graduate students discussing CVs and resumes and how to create good ones. 
 &lt;a href=&#34;https://www.andreashandel.com/presentations/2021_02_CV_Resume.html&#34; target=&#34;_blank&#34;&gt;The presentation slides are here.&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
@@ -100,7 +136,7 @@
       <link>https://www.andreashandel.com/presentations/2020-11-pudong/</link>
       <pubDate>Wed, 18 Nov 2020 00:00:00 +0000</pubDate>
       <guid>https://www.andreashandel.com/presentations/2020-11-pudong/</guid>
-      <description>&lt;p&gt;These are slides for a talk discussing some recent projects on modeling COVID-19 spread and control. I gave a pre-recorded online talk as part of the
+      <description>&lt;p&gt;These are slides for a talk discussing some recent projects on modeling COVID-19 spread and control. I gave a pre-recorded online talk as part of the 
 International Symposium on the Prevention and Control of Infectious Diseases during the Pandemic of COVID-19 - The 4th Pudong Health Forum and the Yangtze River Delta Regional Public Health Symposium. &lt;a href=&#34;https://www.andreashandel.com/presentations/2020-11-pudong.html&#34; target=&#34;_blank&#34;&gt;The presentation slides are here.&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
@@ -188,7 +224,7 @@ International Symposium on the Prevention and Control of Infectious Diseases dur
       <link>https://www.andreashandel.com/presentations/2020-01-your-brand/</link>
       <pubDate>Thu, 23 Jan 2020 00:00:00 +0000</pubDate>
       <guid>https://www.andreashandel.com/presentations/2020-01-your-brand/</guid>
-      <description>&lt;p&gt;These are slides for a talk/discussion I led with our graduate students on ways to build and curate an online presence and overall personal brand.
+      <description>&lt;p&gt;These are slides for a talk/discussion I led with our graduate students on ways to build and curate an online presence and overall personal brand. 
 &lt;a href=&#34;https://www.andreashandel.com/presentations/2020_01_Building_your_Brand.html&#34; target=&#34;_blank&#34;&gt;The presentation slides are here.&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>

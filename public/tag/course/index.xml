@@ -5,7 +5,7 @@
     <link>https://www.andreashandel.com/tag/course/</link>
       <atom:link href="https://www.andreashandel.com/tag/course/index.xml" rel="self" type="application/rss+xml" />
     <description>Course</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Fri, 01 Jan 2021 00:00:00 -0500</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://www.andreashandel.com/media/logo_hu5aa01ef3f5a2b4ecf2f7517df7c485bf_90212_300x300_fit_lanczos_3.png</url>
       <title>Course</title>
@@ -15,9 +15,9 @@
     <item>
       <title>Infectious Disease Epidemiology - A model-based approach</title>
       <link>https://www.andreashandel.com/my-projects/idemacourse/</link>
-      <pubDate>Fri, 01 Jan 2021 00:00:00 -0500</pubDate>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       <guid>https://www.andreashandel.com/my-projects/idemacourse/</guid>
-      <description>&lt;p&gt;Infectious Disease Epidemiology - A model-based approach (IDEMA) is an online course I teach at the University of Georgia.
+      <description>&lt;p&gt;Infectious Disease Epidemiology - A model-based approach (IDEMA) is an online course I teach at the University of Georgia. 
 All course materials (or links to the materials) are available in the form of a simple GitHub website and can be used by anyone. You can find the course &lt;a href=&#34;https://andreashandel.github.io/IDEMAcourse/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on this site&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The course also makes heavy use of my &lt;a href=&#34;https://andreashandel.github.io/IDEMAbook/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;IDEMA online book&lt;/a&gt; and the &lt;a href=&#34;https://ahgroup.github.io/DSAIDE/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DSAIDE R package&lt;/a&gt;.&lt;/p&gt;
 </description>
@@ -26,7 +26,7 @@ All course materials (or links to the materials) are available in the form of a 
     <item>
       <title>Simulation Modeling in Immunology</title>
       <link>https://www.andreashandel.com/my-projects/smicourse/</link>
-      <pubDate>Thu, 01 Oct 2020 00:00:00 -0400</pubDate>
+      <pubDate>Thu, 01 Oct 2020 00:00:00 +0000</pubDate>
       <guid>https://www.andreashandel.com/my-projects/smicourse/</guid>
       <description>&lt;p&gt;Simulation Modeling in Immunology (SMI) is an annual workshop that I co-teach with my colleague Paul Thomas. It usually occurs each year in July in Seattle. In 2020 we taught it online. All course materials are available in the form of a simple GitHub website and can be used by anyone for self-learning. You can find the course &lt;a href=&#34;https://andreashandel.github.io/SMIcourse/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on this site&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The course makes heavy use of my &lt;a href=&#34;https://ahgroup.github.io/DSAIRM/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DSAIRM R package&lt;/a&gt;.&lt;/p&gt;
@@ -36,7 +36,7 @@ All course materials (or links to the materials) are available in the form of a 
     <item>
       <title>Modern Applied Data Analysis</title>
       <link>https://www.andreashandel.com/my-projects/madacourse/</link>
-      <pubDate>Tue, 01 Sep 2020 00:00:00 -0400</pubDate>
+      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
       <guid>https://www.andreashandel.com/my-projects/madacourse/</guid>
       <description>&lt;p&gt;Modern Applied Data Analysis (MADA) is a course I regularly teach online. All course materials are available in the form of a simple GitHub website and can be used by anyone for self-learning. You can find the course &lt;a href=&#34;https://andreashandel.github.io/MADAcourse/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on this site&lt;/a&gt;.&lt;/p&gt;
 </description>

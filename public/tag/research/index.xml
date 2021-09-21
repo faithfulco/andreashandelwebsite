@@ -34,7 +34,7 @@ I finally got around to doing some cleanup. I turned the repository into a small
     <item>
       <title>Resource list website</title>
       <link>https://www.andreashandel.com/my-projects/resourcelist/</link>
-      <pubDate>Sat, 01 Mar 2014 00:00:00 -0500</pubDate>
+      <pubDate>Sat, 01 Mar 2014 00:00:00 +0000</pubDate>
       <guid>https://www.andreashandel.com/my-projects/resourcelist/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://andreashandel.github.io/research-and-teaching-resources/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;A simple website&lt;/a&gt; with a collection of lists with links to various resources that are related to my research and teaching, as well as some general (academic) career content.&lt;/p&gt;
 </description>
@@ -43,10 +43,10 @@ I finally got around to doing some cleanup. I turned the repository into a small
     <item>
       <title>COVID-19 tracker</title>
       <link>https://www.andreashandel.com/my-projects/yact/</link>
-      <pubDate>Thu, 01 Mar 2012 00:00:00 -0500</pubDate>
+      <pubDate>Thu, 01 Mar 2012 00:00:00 +0000</pubDate>
       <guid>https://www.andreashandel.com/my-projects/yact/</guid>
-      <description>&lt;p&gt;An R/Shiny app that visualizes COVID-19 cases, hospitalizations, deaths and tests for US states and counties, as well as countries around the world.
-This app was created by &lt;a href=&#34;https://github.com/williamnorfolk&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;William Norfolk&lt;/a&gt;, &lt;a href=&#34;https://rlrichards.github.io&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Robbie Richards&lt;/a&gt; and &lt;a href=&#34;https://www.andreashandel.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Andreas Handel.&lt;/a&gt;
+      <description>&lt;p&gt;An R/Shiny app that visualizes COVID-19 cases, hospitalizations, deaths and tests for US states and counties, as well as countries around the world. 
+This app was created by &lt;a href=&#34;https://github.com/williamnorfolk&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;William Norfolk&lt;/a&gt;, &lt;a href=&#34;https://rlrichards.github.io&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Robbie Richards&lt;/a&gt; and &lt;a href=&#34;https://www.andreashandel.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Andreas Handel.&lt;/a&gt; 
 &lt;a href=&#34;https://shiny.ovpr.uga.edu/yact/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Check out the app here.&lt;/a&gt; The &lt;em&gt;About&lt;/em&gt; section of the app contains more information.&lt;/p&gt;
 </description>
     </item>

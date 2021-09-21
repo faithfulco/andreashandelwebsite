@@ -5,12 +5,30 @@
     <link>https://www.andreashandel.com/category/modeling/</link>
       <atom:link href="https://www.andreashandel.com/category/modeling/index.xml" rel="self" type="application/rss+xml" />
     <description>modeling</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Mon, 23 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Tue, 20 Jul 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://www.andreashandel.com/media/logo_hu5aa01ef3f5a2b4ecf2f7517df7c485bf_90212_300x300_fit_lanczos_3.png</url>
       <title>modeling</title>
       <link>https://www.andreashandel.com/category/modeling/</link>
     </image>
+    
+    <item>
+      <title>Infectious Diseases, Immunology, and Within-Host Models</title>
+      <link>https://www.andreashandel.com/presentations/2020-07-sismid/</link>
+      <pubDate>Tue, 20 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>https://www.andreashandel.com/presentations/2020-07-sismid/</guid>
+      <description>&lt;p&gt;We placed all materials for this workshop online, you can &lt;a href=&#34;https://andreashandel.github.io/SMIcourse/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;find them here&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Infectious Diseases, Immunology, and Within-Host Models</title>
+      <link>https://www.andreashandel.com/presentations/2021-07-sismid/</link>
+      <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>https://www.andreashandel.com/presentations/2021-07-sismid/</guid>
+      <description>&lt;p&gt;We placed all materials for this workshop online, you can &lt;a href=&#34;https://andreashandel.github.io/SMIcourse/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;find them here&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>User-friendly software for simulation modeling of infectious diseases</title>
@@ -26,7 +44,7 @@
       <link>https://www.andreashandel.com/presentations/2020-11-pudong/</link>
       <pubDate>Wed, 18 Nov 2020 00:00:00 +0000</pubDate>
       <guid>https://www.andreashandel.com/presentations/2020-11-pudong/</guid>
-      <description>&lt;p&gt;These are slides for a talk discussing some recent projects on modeling COVID-19 spread and control. I gave a pre-recorded online talk as part of the
+      <description>&lt;p&gt;These are slides for a talk discussing some recent projects on modeling COVID-19 spread and control. I gave a pre-recorded online talk as part of the 
 International Symposium on the Prevention and Control of Infectious Diseases during the Pandemic of COVID-19 - The 4th Pudong Health Forum and the Yangtze River Delta Regional Public Health Symposium. &lt;a href=&#34;https://www.andreashandel.com/presentations/2020-11-pudong.html&#34; target=&#34;_blank&#34;&gt;The presentation slides are here.&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
@@ -34,7 +52,7 @@ International Symposium on the Prevention and Control of Infectious Diseases dur
     <item>
       <title>DSAIDE - Dynamical Systems Approach to Infectious Disease Epidemiology</title>
       <link>https://www.andreashandel.com/my-projects/dsaide/</link>
-      <pubDate>Sun, 01 Nov 2020 00:00:00 -0400</pubDate>
+      <pubDate>Sun, 01 Nov 2020 00:00:00 +0000</pubDate>
       <guid>https://www.andreashandel.com/my-projects/dsaide/</guid>
       <description>&lt;p&gt;We developed an R package that teaches a modern, model-based approach to infectious disease epidemiology, without the need to write computer code. Learn more about it &lt;a href=&#34;https://ahgroup.github.io/DSAIDE/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on the package website&lt;/a&gt;.&lt;/p&gt;
 </description>
