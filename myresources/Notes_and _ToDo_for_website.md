@@ -12,8 +12,9 @@
 
 ## Needed R packages
 This is a hopefully complete list of all R packages needed to recompile all the posts of the website:
+
 install.packages(c('cowplot','geosphere','scholar','wordcloud', 
-	'bibliometrix','tidytext','visdat','kableExtra','janitor'))
+	'bibliometrix','tidytext','visdat','kableExtra','janitor','ggplot2','dplyr','stringr','tidytuesdayR','readr'))
 
 remotes::install_github('hadley/emo') 
 
