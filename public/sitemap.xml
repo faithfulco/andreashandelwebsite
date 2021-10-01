@@ -2,19 +2,43 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.andreashandel.com/presentations/2021-09-dsatl/</loc>
-    <lastmod>2021-09-24T00:00:00+00:00</lastmod>
+    <loc>https://www.andreashandel.com/posts/tidytuesday-analysis-2021/</loc>
+    <lastmod>2021-09-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.andreashandel.com/</loc>
+    <lastmod>2021-09-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/categories/</loc>
+    <lastmod>2021-09-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/tag/data-analysis/</loc>
+    <lastmod>2021-09-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/category/data-analysis/</loc>
+    <lastmod>2021-09-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/posts/</loc>
+    <lastmod>2021-09-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/tag/r/</loc>
+    <lastmod>2021-09-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/category/r/</loc>
+    <lastmod>2021-09-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/tags/</loc>
+    <lastmod>2021-09-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/tag/tidy-tuesday/</loc>
+    <lastmod>2021-09-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.andreashandel.com/presentations/2021-09-dsatl/</loc>
     <lastmod>2021-09-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.andreashandel.com/author/andreas-handel/</loc>
     <lastmod>2021-09-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.andreashandel.com/authors/</loc>
-    <lastmod>2021-09-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.andreashandel.com/categories/</loc>
     <lastmod>2021-09-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.andreashandel.com/category/data-science/</loc>
@@ -97,18 +121,6 @@
   </url><url>
     <loc>https://www.andreashandel.com/tag/markdown/</loc>
     <lastmod>2021-03-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.andreashandel.com/posts/</loc>
-    <lastmod>2021-05-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.andreashandel.com/tag/r/</loc>
-    <lastmod>2021-05-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.andreashandel.com/category/r/</loc>
-    <lastmod>2021-05-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.andreashandel.com/tags/</loc>
-    <lastmod>2021-05-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.andreashandel.com/tag/website/</loc>
     <lastmod>2021-03-21T00:00:00+00:00</lastmod>
@@ -239,9 +251,6 @@
     <loc>https://www.andreashandel.com/presentations/2020-09-mjh/</loc>
     <lastmod>2020-09-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.andreashandel.com/tag/data-analysis/</loc>
-    <lastmod>2021-05-15T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.andreashandel.com/my-projects/madacourse/</loc>
     <lastmod>2020-09-01T00:00:00+00:00</lastmod>
   </url><url>
@@ -279,9 +288,6 @@
     <lastmod>2021-05-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.andreashandel.com/category/bibliometrics/</loc>
-    <lastmod>2021-05-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.andreashandel.com/category/data-analysis/</loc>
     <lastmod>2021-05-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.andreashandel.com/posts/publications-analysis-2/</loc>
