@@ -5,12 +5,21 @@
     <link>https://www.andreashandel.com/category/presentation/</link>
       <atom:link href="https://www.andreashandel.com/category/presentation/index.xml" rel="self" type="application/rss+xml" />
     <description>Presentation</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Fri, 24 Sep 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Mon, 25 Oct 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://www.andreashandel.com/media/logo_hu5aa01ef3f5a2b4ecf2f7517df7c485bf_90212_300x300_fit_lanczos_3.png</url>
       <title>Presentation</title>
       <link>https://www.andreashandel.com/category/presentation/</link>
     </image>
+    
+    <item>
+      <title>Introduction to infectious disease modeling</title>
+      <link>https://www.andreashandel.com/presentations/2021-10-fyos/</link>
+      <pubDate>Mon, 25 Oct 2021 00:00:00 +0000</pubDate>
+      <guid>https://www.andreashandel.com/presentations/2021-10-fyos/</guid>
+      <description>&lt;p&gt;These are slides for a talk I gave to a group of undergraduate students as part of a First Year Odyssey Seminar class. I provided a very brief introduction to infectious disease modeling, then we explored the &lt;a href=&#34;https://ahgroup.github.io/DSAIDE/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DSAIDE software&lt;/a&gt;. &lt;a href=&#34;https://www.andreashandel.com/presentations/2021-10-fyos.html&#34; target=&#34;_blank&#34;&gt;The presentation slides are here.&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Adventures in Public Health Data Analytics - COVID-19 and beyond</title>

@@ -24,7 +24,7 @@ image:
 
 This analysis was performed as part of an exercise for my [Modern Applied Data Analysis course](https://andreashandel.github.io/MADAcourse/) taught in fall 2021. 
 
-One of the weekly assignments for the students is to participate in [Tidy Tuesday](https://github.com/rfordatascience/tidytuesday). I did the exercise as well, this is my product. You can get the R Markdown file to re-run the analysis [here](/post/2021-09-30-tidy-tuesday-exploration/index.Rmarkdown).
+One of the weekly assignments for the students is to participate in [Tidy Tuesday](https://github.com/rfordatascience/tidytuesday). I did the exercise as well, this is my product. You can get the R Markdown file to re-run the analysis [here](/posts/2021-09-30-tidy-tuesday-exploration/index.Rmarkdown).
 
 
 # Introduction
