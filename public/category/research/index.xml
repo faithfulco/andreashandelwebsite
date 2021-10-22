@@ -5,12 +5,21 @@
     <link>https://www.andreashandel.com/category/research/</link>
       <atom:link href="https://www.andreashandel.com/category/research/index.xml" rel="self" type="application/rss+xml" />
     <description>Research</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Fri, 24 Sep 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Tue, 26 Oct 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://www.andreashandel.com/media/logo_hu5aa01ef3f5a2b4ecf2f7517df7c485bf_90212_300x300_fit_lanczos_3.png</url>
       <title>Research</title>
       <link>https://www.andreashandel.com/category/research/</link>
     </image>
+    
+    <item>
+      <title>Modeling the role of dose for vaccines &amp; some other projects</title>
+      <link>https://www.andreashandel.com/presentations/2021-10-metrum/</link>
+      <pubDate>Tue, 26 Oct 2021 00:00:00 +0000</pubDate>
+      <guid>https://www.andreashandel.com/presentations/2021-10-metrum/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.andreashandel.com/presentations/2021_10_MetrumRG.html&#34; target=&#34;_blank&#34;&gt;These are the slides&lt;/a&gt; for a presentation I gave to team members of &lt;a href=&#34;https://www.metrumrg.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Metrum Research Group&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Adventures in Public Health Data Analytics - COVID-19 and beyond</title>
