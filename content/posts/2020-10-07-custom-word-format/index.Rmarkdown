@@ -119,7 +119,7 @@ Overall, this approach gives you a good deal of flexibility for applying styling
 
 # Further Resources
 
-You can get the Word template and the example R Markdown file I used to illustrate this [here](/post/2020-10-07-custom-word-format/wordstyletemplate.docx) and [here](/post/2020-10-07-custom-word-format/word_formatting_example.Rmd).
+You can get the Word template and the example R Markdown file I used to illustrate this [here](/posts/2020-10-07-custom-word-format/wordstyletemplate.docx) and [here](/posts/2020-10-07-custom-word-format/word_formatting_example.Rmd).
 
 I recently saw that the new R Markdown cookbook has [a section describing word styling](https://bookdown.org/yihui/rmarkdown-cookbook/word-template.html). I expect that more content will be added to the cookbook, so it's worth checking regularly.
 

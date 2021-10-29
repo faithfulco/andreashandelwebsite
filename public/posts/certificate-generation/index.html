@@ -792,7 +792,7 @@
 <p>We&rsquo;ll discuss each element next.</p>
 <h1 id="data-frame">Data frame</h1>
 <p>This part is fairly straightforward. You need a file (e.g. and Excel or CSV file) that you can load as a data frame and that contains the information you want to use for each personalized document.
-Here is an example of a very simple data frame containing names and scores for 2 students, which is stored in <a href="/post/2020-10-15-customized-documents-with-Rmarkdown/student_data.csv">this csv file</a>.</p>
+Here is an example of a very simple data frame containing names and scores for 2 students, which is stored in <a href="/posts/2020-10-15-customized-documents-with-Rmarkdown/student_data.csv">this csv file</a>.</p>
 <table>
 <thead>
 <tr>
@@ -819,7 +819,7 @@ Here is an example of a very simple data frame containing names and scores for 2
 <p>There are different ways you can create the templates and thus the output, with different advantages and disadvantages. I&rsquo;ll describe and show examples for LaTeX/PDF and Word, and discuss other options briefly.</p>
 <h2 id="latexpdf">LaTeX/PDF</h2>
 <p>For this approach, you start with a template file that contains some LaTeX commands, including the placeholders that will get personalized.
-Here is code for an example file, you can get the file <a href="/post/2020-10-15-customized-documents-with-Rmarkdown/certificate_template_pdf.Rmd">here</a>. We&rsquo;ll look at the resulting output below.</p>
+Here is code for an example file, you can get the file <a href="/posts/2020-10-15-customized-documents-with-Rmarkdown/certificate_template_pdf.Rmd">here</a>. We&rsquo;ll look at the resulting output below.</p>
 <pre><code>---
 title: &quot;&quot;
 output: pdf_document
@@ -844,7 +844,7 @@ classoption: landscape
 <p>The advantages of the LaTeX/PDF approach are that 1) LaTeX allows you to do a lot of formatting and customization of the template so it looks exactly the way you want it, 2) the end product is a PDF file, which is easy to print or share with those for whom they are meant. The disadvantage is that you need to know a bit of LaTeX to set up your template, or at least be willing to spend some time with Google until you found all the snippets of commands you need for the layout you want to have.</p>
 <h2 id="word">Word</h2>
 <p>For this approach, you start with a template file that contains commands that lead to a decent looking Word document. Again, it needs to include the placeholders that will get personalized.
-Here is code for an example file, you can get the file <a href="/post/2020-10-15-customized-documents-with-Rmarkdown/certificate_template_word.Rmd">here</a>. We&rsquo;ll look at the end result below.</p>
+Here is code for an example file, you can get the file <a href="/posts/2020-10-15-customized-documents-with-Rmarkdown/certificate_template_word.Rmd">here</a>. We&rsquo;ll look at the end result below.</p>
 <pre><code>---
 title: &quot;&quot;
 output: 
@@ -876,7 +876,7 @@ knitr::include_graphics(&quot;fig2.jpg&quot;)
 <p>I believe the PDF or Word outputs are best for most instances, but occasionally another format might be needed. You can use this overall approach to generate other outputs, for instance the standard R Markdown html output, or different versions of presentation slides (e.g. ioslides, Beamer, Powerpoint), etc. In principle, any <a href="https://rmarkdown.rstudio.com/formats.html" target="_blank" rel="noopener">R Markdown output format</a> should work. You just need to alter your template file accordingly.</p>
 <h1 id="processing-script">Processing script</h1>
 <p>Once you generated your data and template, you only need a few lines of code to read the template, personalize it, and turn it into the wanted output.
-Here is example code that shows how to process the data and template files above, you can get the file <a href="/post/2020-10-15-customized-documents-with-Rmarkdown/certificate_generator.R">here</a>.</p>
+Here is example code that shows how to process the data and template files above, you can get the file <a href="/posts/2020-10-15-customized-documents-with-Rmarkdown/certificate_generator.R">here</a>.</p>
 <pre><code class="language-r">#####################################################
 # automatically create customized certificates
 #####################################################
@@ -922,9 +922,9 @@ for (i in 1:nrow(df))
 }
 </code></pre>
 <h1 id="results">Results</h1>
-<p>If you run the script for the PDF output, you&rsquo;ll get two pdf certificates, <a href="/post/2020-10-15-customized-documents-with-Rmarkdown/Smith_Jennifer_Certificate.pdf">here is one of them</a>. Similarly, if you run the Word template, you get two Word documents, <a href="/post/2020-10-15-customized-documents-with-Rmarkdown/Smith_Jennifer_Certificate.docx">here is one of them</a>. As mentioned above, the Word output is not that nicely formatted, the figure placement and sizing can&rsquo;t really be controlled.</p>
+<p>If you run the script for the PDF output, you&rsquo;ll get two pdf certificates, <a href="/posts/2020-10-15-customized-documents-with-Rmarkdown/Smith_Jennifer_Certificate.pdf">here is one of them</a>. Similarly, if you run the Word template, you get two Word documents, <a href="/posts/2020-10-15-customized-documents-with-Rmarkdown/Smith_Jennifer_Certificate.docx">here is one of them</a>. As mentioned above, the Word output is not that nicely formatted, the figure placement and sizing can&rsquo;t really be controlled.</p>
 <h1 id="further-resources">Further Resources</h1>
-<p>To reproduce the example here, you can download <a href="/post/2020-10-15-customized-documents-with-Rmarkdown/certificate_generator.zip">this zip file</a> which contains the <a href="/post/2020-10-15-customized-documents-with-Rmarkdown/student_data.csv">data file</a>, <a href="/post/2020-10-15-customized-documents-with-Rmarkdown/certificate_template_pdf.Rmd">the R Markdown template for PDF output</a> and <a href="/post/2020-10-15-customized-documents-with-Rmarkdown/certificate_template_word.Rmd">the R Markdown template for Word output</a>, the <a href="/post/2020-10-15-customized-documents-with-Rmarkdown/certificate_generator.R">certificate generator script</a>, the files for <a href="/post/2020-10-15-customized-documents-with-Rmarkdown/fig1.png">figure 1</a> and <a href="/post/2020-10-15-customized-documents-with-Rmarkdown/fig2.jpg">figure 2</a> as well as the <a href="/post/2020-10-15-customized-documents-with-Rmarkdown/wordstyletemplate.docx">word style file</a>. Place all files into a folder and run the <code>certificate_generator.R</code> function to produce either PDF or Word output.</p>
+<p>To reproduce the example here, you can download <a href="/posts/2020-10-15-customized-documents-with-Rmarkdown/certificate_generator.zip">this zip file</a> which contains the <a href="/posts/2020-10-15-customized-documents-with-Rmarkdown/student_data.csv">data file</a>, <a href="/posts/2020-10-15-customized-documents-with-Rmarkdown/certificate_template_pdf.Rmd">the R Markdown template for PDF output</a> and <a href="/posts/2020-10-15-customized-documents-with-Rmarkdown/certificate_template_word.Rmd">the R Markdown template for Word output</a>, the <a href="/posts/2020-10-15-customized-documents-with-Rmarkdown/certificate_generator.R">certificate generator script</a>, the files for <a href="/posts/2020-10-15-customized-documents-with-Rmarkdown/fig1.png">figure 1</a> and <a href="/posts/2020-10-15-customized-documents-with-Rmarkdown/fig2.jpg">figure 2</a> as well as the <a href="/posts/2020-10-15-customized-documents-with-Rmarkdown/wordstyletemplate.docx">word style file</a>. Place all files into a folder and run the <code>certificate_generator.R</code> function to produce either PDF or Word output.</p>
 
     </div>
 

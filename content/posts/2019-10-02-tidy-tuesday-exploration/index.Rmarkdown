@@ -25,7 +25,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 This analysis was performed as part of an exercise for my [Modern Applied Data Analysis course](https://andreashandel.github.io/MADAcourse/). 
 
-When I taught the course in fall 2019, one of the weekly assignments for the students was to participate in [TidyTuesday](https://github.com/rfordatascience/tidytuesday). I did the exercise as well, this is my product. You can get the R Markdown file to re-run the analysis [here](/post/2019-10-02-tidy-tuesday-exploration/index.Rmarkdown).
+When I taught the course in fall 2019, one of the weekly assignments for the students was to participate in [TidyTuesday](https://github.com/rfordatascience/tidytuesday). I did the exercise as well, this is my product. You can get the R Markdown file to re-run the analysis [here](/posts/2019-10-02-tidy-tuesday-exploration/index.Rmarkdown).
 
 
 # Introduction

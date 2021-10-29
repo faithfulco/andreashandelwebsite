@@ -27,7 +27,7 @@ While most of my grant proposals go to the NIH, which thankfully does not requir
 
 I don't want to retrieve all my co-authors and fill the form by hand. In a previous post, I showed how one can use the [`bibliometrix`](https://www.bibliometrix.org/) R package to [do an analysis of a set of publications](/posts/publications-analysis-2/). Among other things, this approach returns all co-authors, which I will use here to make the COI table almost completely automated.
 
-The RMarkdown file to run this analysis [is here](/post/2020-05-29-automate-conflict-of-interest-form/index.Rmarkdown).
+The RMarkdown file to run this analysis [is here](/posts/2020-05-29-automate-conflict-of-interest-form/index.Rmarkdown).
 
 # Required packages
 

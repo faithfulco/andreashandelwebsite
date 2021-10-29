@@ -31,7 +31,7 @@ While some parts worked nicely, I encountered 2 problems. First, since my Google
 
 To get around these issues, I decided to give a different R package a try, namely [`bibliometrix`](https://www.bibliometrix.org/). The workflow is somewhat different.
 
-The RMarkdown file to run this analysis [is here](/post/2020-02-02-publications-analysis-2/index.Rmarkdown).
+The RMarkdown file to run this analysis [is here](/posts/2020-02-02-publications-analysis-2/index.Rmarkdown).
 
 # Required packages
 

@@ -28,7 +28,7 @@ I needed some information on all my publications for "bean counting" purposes re
 
 Instead of doing things by hand, there are nicer/faster ways using R. The following shows a few things one can do with the [`scholar` package](https://cran.r-project.org/package=scholar). I describe an alternative approach using the [`bibliometrix` package](https://www.bibliometrix.org/) in [part 2](/posts/publications-analysis-2/) of this post.
 
-The RMarkdown file to run this analysis [is here](/post/2020-02-01-publications-analysis-1/index.Rmarkdown).
+The RMarkdown file to run this analysis [is here](/posts/2020-02-01-publications-analysis-1/index.Rmarkdown).
 
 # Notes
 

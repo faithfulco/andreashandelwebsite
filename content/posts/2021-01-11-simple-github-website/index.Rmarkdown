@@ -112,7 +112,7 @@ _I assume you'll be using Gitkraken, but if you have another way of using Git/Gi
 
 
 ### Starter files
-* Download the files [_navbar.yml](/post/2021-01-11-simple-github-website/_navbar.yml), [_site.yml](/post/2021-01-11-simple-github-website/_site.yml) and [index.Rmd](/post/2021-01-11-simple-github-website/index.Rmd). You need those are 3 files to create your website and I'm providing you with simple templates. Place all 3 files into the folder of your new website (e.g. `C:\Users\yourname\Desktop\mywebsite`). 
+* Download the files [_navbar.yml](/posts/2021-01-11-simple-github-website/_navbar.yml), [_site.yml](/posts/2021-01-11-simple-github-website/_site.yml) and [index.Rmd](/posts/2021-01-11-simple-github-website/index.Rmd). You need those are 3 files to create your website and I'm providing you with simple templates. Place all 3 files into the folder of your new website (e.g. `C:\Users\yourname\Desktop\mywebsite`). 
 
 
 ### RStudio

@@ -234,7 +234,7 @@ Make sure you &lt;a href=&#34;https://www.gitkraken.com/resources/gitkraken-gith
 &lt;/ul&gt;
 &lt;h3 id=&#34;starter-files&#34;&gt;Starter files&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;Download the files &lt;a href=&#34;https://www.andreashandel.com/post/2021-01-11-simple-github-website/_navbar.yml&#34;&gt;_navbar.yml&lt;/a&gt;, &lt;a href=&#34;https://www.andreashandel.com/post/2021-01-11-simple-github-website/_site.yml&#34;&gt;_site.yml&lt;/a&gt; and &lt;a href=&#34;https://www.andreashandel.com/post/2021-01-11-simple-github-website/index.Rmd&#34;&gt;index.Rmd&lt;/a&gt;. You need those are 3 files to create your website and I&amp;rsquo;m providing you with simple templates. Place all 3 files into the folder of your new website (e.g. &lt;code&gt;C:\Users\yourname\Desktop\mywebsite&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;Download the files &lt;a href=&#34;https://www.andreashandel.com/posts/2021-01-11-simple-github-website/_navbar.yml&#34;&gt;_navbar.yml&lt;/a&gt;, &lt;a href=&#34;https://www.andreashandel.com/posts/2021-01-11-simple-github-website/_site.yml&#34;&gt;_site.yml&lt;/a&gt; and &lt;a href=&#34;https://www.andreashandel.com/posts/2021-01-11-simple-github-website/index.Rmd&#34;&gt;index.Rmd&lt;/a&gt;. You need those are 3 files to create your website and I&amp;rsquo;m providing you with simple templates. Place all 3 files into the folder of your new website (e.g. &lt;code&gt;C:\Users\yourname\Desktop\mywebsite&lt;/code&gt;).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;rstudio&#34;&gt;RStudio&lt;/h3&gt;
 &lt;ul&gt;
