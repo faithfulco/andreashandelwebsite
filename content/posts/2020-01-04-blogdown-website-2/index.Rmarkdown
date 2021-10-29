@@ -19,11 +19,6 @@ projects: []
 ---
 
 
-```{r, include = FALSE}
-#remotes::install_github('emo')
-#library('emo')
-```
-
 
 This is part 2/2 of the website development posts, where we'll move the website to [GitHub](https://GitHub.com). This provides a nice and more automated workflow for editing and deploying your site.
 

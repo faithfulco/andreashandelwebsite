@@ -25,7 +25,6 @@ library('reshape2')
 library('visdat')
 library('knitr')
 library('kableExtra')
-library('emo') #not on CRAN, install from github
 ```
 
 
@@ -85,7 +84,7 @@ lines(1:14,rep(12,14))
 
 Based on answers to questions 4,6 and 8, the majority of students think the pace and level of difficulty of the course is right but the amount of material covered is too much. Based on answer to Q10, students spend more time than my target (12 hours, solid line). Even accounting for some "inflation factor" (people generally over-estimate the time they spend on tasks like these, counting all the other things they do at the same time e.g., texting/email/FB/drinknig coffee/...), the overall amount seems too high, and it agrees with Q6 answers about too much material.
 
-**First conclusion: Reduce weekly workload, probably best by reducing assigned reading (see text answers which I already glimpsed at `r emo::ji('smiley')`).**
+**First conclusion: Reduce weekly workload, probably best by reducing assigned reading (see text answers which I already glimpsed at `r emoji::emoji('smiley')`).**
 
 ## Manual text analysis
 
@@ -182,7 +181,7 @@ bing_word_counts %>% ggplot(aes(word, n, fill = sentiment)) +
   labs(y = "Counts")
 ```
 
-About twice as many positive as negative words, i guess that's good `r emo::ji('smiley')`. And the most frequent negative words do reflect that things are "too much". 
+About twice as many positive as negative words, i guess that's good `r emoji::emoji('smiley')`. And the most frequent negative words do reflect that things are "too much". 
 
 Let's look at sentiment per question. Higher values are more positive.
 

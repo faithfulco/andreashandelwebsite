@@ -18,8 +18,6 @@ projects: []
 ---
 
 
-
-
 # Background
 
 A good while back (around 2 years as of this writing), I needed the feature to turn an R Markdown document into a Word document (that's easy) and to apply custom styles to specific parts of the Word document (that was trickier). I found some good information [in this RStudio article](https://rmarkdown.rstudio.com/articles_docx.html), but it didn't quite address everything I was looking for.

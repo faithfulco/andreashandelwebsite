@@ -19,9 +19,6 @@ image:
 projects: []
 ---
 
-
-
-
 The following blog post provides step-by-step instructions for creating a website using R Markdown, the `distill` R package and GitHub.
 
 

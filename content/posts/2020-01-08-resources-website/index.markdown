@@ -17,8 +17,5 @@ image:
 projects: []
 ---
 
-
-
-
 I have been collecting lists of links related to research, teaching and (academic) career topics in a Github repository.
 I finally got around to doing some cleanup. I turned the repository into a small website. You can find this site [here](https://andreashandel.github.io/research-and-teaching-resources/). 

@@ -44,6 +44,7 @@ library("cowplot")
 library("plotly")
 library("forcats")
 library("geosphere")
+library("emoji")
 ```
 
 # Data loading
@@ -214,7 +215,7 @@ cowplot::plot_grid(p1, p2, p3, labels = c('A', 'B','C'), label_size = 12)
 
 Looks like the community in NY gives lower scores compared to other locations, less noticeable difference for critics and Dave.
 
-Ok, the next analysis might not make much sense, but why not check if there is a North-South or East-West trend related to ratings. Maybe restaurants are better in one of those directions? Or people in the South are more polite and give better scores? `r emo::ji('grin')`. I'm mostly doing this because longitude and latitude are continuous variables, so I can make a few more scatterplots. I don't have any real goal for this otherwise.
+Ok, the next analysis might not make much sense, but why not check if there is a North-South or East-West trend related to ratings. Maybe restaurants are better in one of those directions? Or people in the South are more polite and give better scores? `r emoji::emoji('grin')`. I'm mostly doing this because longitude and latitude are continuous variables, so I can make a few more scatterplots. I don't have any real goal for this otherwise.
 
 
 ```{r plot-longitude, warning=FALSE}
@@ -224,7 +225,7 @@ p3 <- d2 %>%  ggplot(aes(x=longitude, y = dave_score)) + geom_point() + geom_smo
 cowplot::plot_grid(p1, p2, p3, labels = c('A', 'B','C'), label_size = 12)
 ```
 
-So as we go from the west (-120) to the east (-70), there is a trend in restaurants getting higher scores, by all 3 groups. I guess as we are moving closer to Italy, the pizza quality goes up? `r emo::ji('smiley')`.
+So as we go from the west (-120) to the east (-70), there is a trend in restaurants getting higher scores, by all 3 groups. I guess as we are moving closer to Italy, the pizza quality goes up? `r emoji::emoji('smiley')`.
 
 
 Next, let's look at latitude.

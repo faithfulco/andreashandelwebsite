@@ -21,8 +21,6 @@ projects: []
 ---
 
 
-
-
 _Update 2021-03-01: Hugo and the Academic (now Wowchemy) theme keep changing rapidly. Since I originally posted this, things changed. I tried to update things to reflect some of the changes. If you find things not working, let me know so I can update._
 
 

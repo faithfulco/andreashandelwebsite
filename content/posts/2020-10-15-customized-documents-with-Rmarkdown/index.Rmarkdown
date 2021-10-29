@@ -16,10 +16,6 @@ image:
 projects: []
 ---
 
-```{r, include = FALSE}
-library('emo')
-```
-
 # Overview
 
 Generating personalized documents is often useful. Since this is a very common task, programs like Word or similar software can do this. But I like to use R if I can. And the whole R Markdown system is perfectly suited for repeat generation of customized documents. 
@@ -28,7 +24,7 @@ I'm certainly not the first one to have the idea of using R, and in fact my init
 
 # Rationale
 
-As a teacher, I occasionally need to generate personalized certificates for students to indicate they successfully completed a workshop, class, or similar event. Another use case is to generate personalized letters of acceptance (or rejection) to some program. Many other use cases exist. In fact, my first and original application was to automatically generate gift certificates for all my nieces and nephews `r emo::ji('grin')`.
+As a teacher, I occasionally need to generate personalized certificates for students to indicate they successfully completed a workshop, class, or similar event. Another use case is to generate personalized letters of acceptance (or rejection) to some program. Many other use cases exist. In fact, my first and original application was to automatically generate gift certificates for all my nieces and nephews `r emoji::emoji('grin')`.
 
 For this example, I assume that we are trying to generate certificates of completion for a group of students, with each certificate showing their name and score.
 

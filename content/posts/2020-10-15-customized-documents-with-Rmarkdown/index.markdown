@@ -16,8 +16,6 @@ image:
 projects: []
 ---
 
-
-
 # Overview
 
 Generating personalized documents is often useful. Since this is a very common task, programs like Word or similar software can do this. But I like to use R if I can. And the whole R Markdown system is perfectly suited for repeat generation of customized documents. 

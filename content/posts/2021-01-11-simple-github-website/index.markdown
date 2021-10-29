@@ -18,8 +18,6 @@ projects: []
 ---
 
 
-
-
 The following blog post provides step-by-step instructions for creating a simple (and free) website using (R)Markdown and Github.
 
 

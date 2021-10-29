@@ -21,11 +21,6 @@ projects: []
 ---
 
 
-```{r, include = FALSE}
-#remotes::install_github('hadley/emo')
-library('emo')
-```
-
 _Update 2021-03-01: Hugo and the Academic (now Wowchemy) theme keep changing rapidly. Since I originally posted this, things changed. I tried to update things to reflect some of the changes. If you find things not working, let me know so I can update._
 
 
@@ -144,7 +139,7 @@ There are other promising themes in the works, such as [Hugo Prose](https://gith
 
 The previous steps have given you a website with some example starter content. Any complex website has a certain structure consisting of folders and files. These files and folders either live only on a website server and you never see them (e.g. [Wordpress](https://wordpress.com/)), or they exist locally, as is the case for [Hugo](https://gohugo.io/) (and similar such website generators, e.g. [Jekyll](https://jekyllrb.com/).)
 
-Some of the files and folders you do not need to care much about, others you will need to interact with. To get a bit of an idea what lives where, here is a quick overview. Some of this depends on the Hugo theme you are using, but most of them have a rather similar structure. Open the directory where you placed your website, either through the `Files` pane in RStudio, or by using File Explorer (or whatever that is called on a Mac\Linux `r emo::ji('smiley')`).
+Some of the files and folders you do not need to care much about, others you will need to interact with. To get a bit of an idea what lives where, here is a quick overview. Some of this depends on the Hugo theme you are using, but most of them have a rather similar structure. Open the directory where you placed your website, either through the `Files` pane in RStudio, or by using File Explorer (or whatever that is called on a Mac\Linux `r emoji::emoji('smiley')`).
 
 * The folder `config` contains files that control some of the overall website look and feel. We'll visit them later. In Hugo, those files that control configuration are called either `TOML` or `YAML` files. The current trend for _Hugo_ is to switch everything to YAML, but you'll keep seeing a mix for a while. Many files have bits of TOML/YAML and other content in them, as you will see below.
 * The folder `content` and its subfolders contain almost all the actual content for your website. We'll edit some of that soon.

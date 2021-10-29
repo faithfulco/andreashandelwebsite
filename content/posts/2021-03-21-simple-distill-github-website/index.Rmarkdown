@@ -19,12 +19,6 @@ image:
 projects: []
 ---
 
-
-```{r, include = FALSE}
-#remotes::install_github('emo')
-library('emo')
-```
-
 The following blog post provides step-by-step instructions for creating a website using R Markdown, the `distill` R package and GitHub.
 
 
@@ -75,7 +69,7 @@ The tools used here are fairly simple. `GitHub` is used for hosting the website 
 
 # Pre-requisites
 
-First, you need to install R and Rstudio and set up a GitHub account. (That does not count toward the 30 minutes of getting the website up and running `r emo::ji('grin')`.)
+First, you need to install R and Rstudio and set up a GitHub account. (That does not count toward the 30 minutes of getting the website up and running `r emoji::emoji('grin')`.)
 
 
 ## Install R and RStudio 
@@ -102,7 +96,7 @@ I assume for the rest of the post that you are using Gitkraken. If you have your
 
 # Starting your website 
 
-Ok, the 30 minute timer starts now `r emo::ji('grin')`. With the above registration and installation bits out of the way, you can get started with your website. To do so, follow these steps:
+Ok, the 30 minute timer starts now `r emoji::emoji('grin')`. With the above registration and installation bits out of the way, you can get started with your website. To do so, follow these steps:
  
 * Open RStudio.
 * Install the distill package by typing `install.packages('distill')` into the R console.
@@ -187,7 +181,7 @@ The website of Emi Tanaka (who I do not know personally) is one of the sites fea
 
 After you have done that, go to the `_site.yml` file and add `theme: theme.css` as a new line under the `title` line. Save, rebuild your website, and you should see it looking differently.
 
-Since the promise was that we'll get a website going in 30 minutes, we won't do any more styling now `r emo::ji('grin')`. As you start customizing your look more, you might want to start read the section [Creating a Website](https://rstudio.github.io/distill/website.html) section on the distill website.
+Since the promise was that we'll get a website going in 30 minutes, we won't do any more styling now `r emoji::emoji('grin')`. As you start customizing your look more, you might want to start read the section [Creating a Website](https://rstudio.github.io/distill/website.html) section on the distill website.
 
 
 
@@ -216,7 +210,7 @@ You'll see a message about no remote existing and if you want to add one. Say `y
 
 For the last step, go to your account on Github.com and find the repository for the website you just created. On the bar at the top, in the right corner there should be the `Settings` button. Click on it. Scroll down until you find the `GitHub Pages` section. Under `Source`, select `Main` and then choose `/docs` as the folder. Don't choose a theme since we are using our own. Save those changes. If everything works (it could take a minute or so), your website is now live and public! Look right underneath the `GitHub Pages` section, there should be something like `Your site is ready to be published at https://andreashandel.github.io/mywebsite/`. Click on the link and your new site should show up. 
 
-**That's it. Now the hard part starts, creating good content. `r emo::ji('smile')`**
+**That's it. Now the hard part starts, creating good content. `r emoji::emoji('smile')`**
 
 
 # Next steps
@@ -247,7 +241,7 @@ This process is fairly simple, you just need to remember to go through all the s
 
 * Look at the examples shown on the [distillery website](https://jhelvy.github.io/distillery/). If you see something you like, look at their GitHub repository and their code to see how they do it.
 
-* In my teaching, I use the Github/R Markdown workflow. Therefore, I have some information and links on that topic. You can browse through [the website of this course](https://andreashandel.github.io/MADAcourse/index.html) and look for relevant content. The exercises teach parts of Github and making web pages (in fact, going through this tutorial is part of an exercise `r emo::ji('smiley')`.  
+* In my teaching, I use the Github/R Markdown workflow. Therefore, I have some information and links on that topic. You can browse through [the website of this course](https://andreashandel.github.io/MADAcourse/index.html) and look for relevant content. The exercises teach parts of Github and making web pages (in fact, going through this tutorial is part of an exercise `r emoji::emoji('smiley')`.  
 
 
 
@@ -262,7 +256,7 @@ Here are some thoughts and suggestions that I've learned by using this general s
 
 * You can have files other than Rmd/Md in your main folder, and you can have files in sub-folders. Those are ignored by `rmarkdown` when the site is built. Having those can be useful for storing additional materials. I generally have a `media` folder in which I place figures and other materials, and link to it from my Rmd files.
 
-* If you use this setup for teaching and want to slowly release content to students (while still making edits to later parts of the course), I recommend using a _staging_ setup. A simple way to do that is to make 2 repositories, the main one for the course, and one where you do the development. Note that even if you set this to a private repository, if you turn on `Github Pages`, students could find it. That's usually not a big deal, nobody is looking. But you might want to be aware of it. With 2 repositories, you can do the testing/development of the course in the _staging_ repository. Once things work and whenever you want to release new content to the students, you copy it over to the main repository, build it there and push it to the main course repo. Alternatively, you can do development in the main repository, as long as you don't make the files visible in the `navbar` section, students won't easily see them. Of course the files can be found through a direct link or through browsing the Github repository, so don't place anything in there (e.g. if you use this four a course, keep the solutions to your homework problems offline until after the deadline `r emo::ji('smile')`).
+* If you use this setup for teaching and want to slowly release content to students (while still making edits to later parts of the course), I recommend using a _staging_ setup. A simple way to do that is to make 2 repositories, the main one for the course, and one where you do the development. Note that even if you set this to a private repository, if you turn on `Github Pages`, students could find it. That's usually not a big deal, nobody is looking. But you might want to be aware of it. With 2 repositories, you can do the testing/development of the course in the _staging_ repository. Once things work and whenever you want to release new content to the students, you copy it over to the main repository, build it there and push it to the main course repo. Alternatively, you can do development in the main repository, as long as you don't make the files visible in the `navbar` section, students won't easily see them. Of course the files can be found through a direct link or through browsing the Github repository, so don't place anything in there (e.g. if you use this four a course, keep the solutions to your homework problems offline until after the deadline `r emoji::emoji('smile')`).
 
 * It's easy to have broken links when creating any website and it's good to check that things are ok. There are simple free tools out there that let you check to make sure links are not broken. I like using [Dr Link Check](https://www.drlinkcheck.com/) or the [W3C Link Checker](https://validator.w3.org/checklink). I'm sure many others exist. 
 

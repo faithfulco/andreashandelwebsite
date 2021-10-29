@@ -18,11 +18,6 @@ projects: []
 ---
 
 
-```{r, include = FALSE}
-#remotes::install_github('emo')
-library('emo')
-```
-
 The following blog post provides step-by-step instructions for creating a simple (and free) website using (R)Markdown and Github.
 
 
@@ -74,7 +69,7 @@ The tools used here are fairly simple. Github is used for hosting the website an
 
 # Pre-requisites
 
-First, you need to install R and Rstudio and set up a Github account. (That does not count toward the 30 minutes of getting the website up and running `r emo::ji('grin')`.)
+First, you need to install R and Rstudio and set up a Github account. (That does not count toward the 30 minutes of getting the website up and running `r emoji::emoji('grin')`.)
 
 
 ## Install R and RStudio 
@@ -99,7 +94,7 @@ Make sure you [connect Gitkraken to your Github account](https://www.gitkraken.c
 
 # Starting your website 
 
-Ok, the 30 minute timer starts now `r emo::ji('grin')`
+Ok, the 30 minute timer starts now `r emoji::emoji('grin')`
 
 With the above registration and installation bits out of the way, you can get started with your website. To do so, follow these steps:
 
@@ -149,7 +144,7 @@ This file allows you to build a menu for your website. If you open the file, you
 
 You can find some more information on the `_navbar.yml` file and what settings are available [in this chapter of the R Markdown book](https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html). As you'll read, it is possible to have only a single `_site.yml` file which contains the `_navbar.yml` content, but I prefer to keep them separate.
 
-If a file is not listed in the `_navbar.yml` file, it is not accessible to users, unless they know the direct link to the file. This can be useful since it means you can have files in development in the Github repository, and they will only become visible once you link them. Of course since they can be found through a direct link or through browsing your Github repository, don't place anything private/confidential in this folder (e.g. if you use this four a course, keep the solutions to your homework problems offline until after the deadline `r emo::ji('smile')`).
+If a file is not listed in the `_navbar.yml` file, it is not accessible to users, unless they know the direct link to the file. This can be useful since it means you can have files in development in the Github repository, and they will only become visible once you link them. Of course since they can be found through a direct link or through browsing your Github repository, don't place anything private/confidential in this folder (e.g. if you use this four a course, keep the solutions to your homework problems offline until after the deadline `r emoji::emoji('smile')`).
 
 
 
@@ -187,7 +182,7 @@ The final step involves getting your site public, which is easy.
 * Once you are done editing your content (for now), go to Gitkraken (or your preferred Git client) and push your changes to Github.
 * Go to Github.com and find the repository for this website. On the bar at the top, in the right corner there should be the `Settings` button. Click on it. Scroll down until you find the `GitHub Pages` section. Under `Source`, select `Main` and then choose `/docs` as the folder. Don't choose a theme since we are using our own. Save those changes. Now if you look right underneath the `GitHub Pages` section, there should be something like `Your site is ready to be published at https://andreashandel.github.io/mywebsite/`. Click on the link. If everything works, your website is now live and public! 
 
-**That's basically it. Now the hard part starts, creating good content. `r emo::ji('smile')` **
+**That's basically it. Now the hard part starts, creating good content. `r emoji::emoji('smile')` **
 
 
 # Updating your site
