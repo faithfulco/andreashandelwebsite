@@ -5,12 +5,21 @@
     <link>https://www.andreashandel.com/author/andreas-handel/</link>
       <atom:link href="https://www.andreashandel.com/author/andreas-handel/index.xml" rel="self" type="application/rss+xml" />
     <description>Andreas Handel</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Tue, 26 Oct 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>©  Andreas Handel, 2021</copyright><lastBuildDate>Mon, 01 Nov 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://www.andreashandel.com/author/andreas-handel/avatar_hu55f54e78a4232ec20a6487b1ce16fd22_418898_270x270_fill_q75_lanczos_center.jpg</url>
       <title>Andreas Handel</title>
       <link>https://www.andreashandel.com/author/andreas-handel/</link>
     </image>
+    
+    <item>
+      <title>Adventures in Data Analytics and Modeling - COVID-19 and influenza</title>
+      <link>https://www.andreashandel.com/presentations/2021-11-gasouthern/</link>
+      <pubDate>Mon, 01 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://www.andreashandel.com/presentations/2021-11-gasouthern/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.andreashandel.com/presentations/2021_11_GASouthern.html&#34; target=&#34;_blank&#34;&gt;These are the slides&lt;/a&gt; for a presentation I gave at GA Southern University.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Modeling the role of dose for vaccines &amp; some other projects</title>
