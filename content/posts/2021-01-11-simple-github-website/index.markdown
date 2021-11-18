@@ -3,7 +3,7 @@ title: Create a simple Markdown/Github website in less than 30 minutes
 subtitle: 
 summary: "The following are step-by-step instructions for creating a fairly basic but still useful website using [R Markdown](https://rmarkdown.rstudio.com/) (through [R Studio](https://rstudio.com/products/rstudio/)) and [Github](https://github.com/)."
 author: "[Andreas Handel](https://www.andreashandel.com)"
-date: '2021-01-11'
+date: 2021-01-11
 slug: github-website
 draft: false
 categories: []
@@ -11,7 +11,7 @@ tags: ["R", "markdown", "github", "website"]
 featured: no
 disable_jquery: no
 image:
-  caption: Photo by (200 Degrees)[https://pixabay.com/users/200degrees-2051452]/Pixabay
+  caption: Photo by [200 Degrees](https://pixabay.com/users/200degrees-2051452)/Pixabay
   focal_point: ''
   preview_only: no
 projects: []
@@ -142,10 +142,9 @@ For now, just to give it a quick try, open the `_site.yml` file (in R Studio or 
 ### The file `_navbar.yml`
 This file allows you to build a menu for your website. If you open the file, you'll see that I created a small menu. You see links to files `aboutme.html`, `project1.html`, `project2.html` and `contact.html`. Those files currently do not exist, thus if you click on those menus in the preview, you get an error message. You need to make sure that the files of your website match those listed in this menu file.
 
-You can find some more information on the `_navbar.yml` file and what settings are available [in this chapter of the R Markdown book](https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html). As you'll read, it is possible to have only a single `_site.yml` file which contains the `_navbar.yml` content, but I prefer to keep them separate.
+You can find some more information on the `_navbar.yml` file and what settings are available [in this chapter of the R Markdown book](https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html). If a file is not listed in the `_navbar.yml` file, it is not accessible to users, unless they know the direct link to the file. This can be useful since it means you can have files in development in the Github repository, and they will only become visible once you link them. Of course since they can be found through a direct link or through browsing your Github repository, don't place anything private/confidential in this folder (e.g. if you use this four a course, keep the solutions to your homework problems offline until after the deadline 😄).
 
-If a file is not listed in the `_navbar.yml` file, it is not accessible to users, unless they know the direct link to the file. This can be useful since it means you can have files in development in the Github repository, and they will only become visible once you link them. Of course since they can be found through a direct link or through browsing your Github repository, don't place anything private/confidential in this folder (e.g. if you use this four a course, keep the solutions to your homework problems offline until after the deadline 😄).
-
+Note that, as you'll read in the linked resource above, it is possible to have the `navbar` content inside a single `_site.yml` file. I sometimes keep them separate, sometimes I combine. It's up to you how you want to do it.
 
 
 ### The `docs` folder
@@ -182,7 +181,7 @@ The final step involves getting your site public, which is easy.
 * Once you are done editing your content (for now), go to Gitkraken (or your preferred Git client) and push your changes to Github.
 * Go to Github.com and find the repository for this website. On the bar at the top, in the right corner there should be the `Settings` button. Click on it. Scroll down until you find the `GitHub Pages` section. Under `Source`, select `Main` and then choose `/docs` as the folder. Don't choose a theme since we are using our own. Save those changes. Now if you look right underneath the `GitHub Pages` section, there should be something like `Your site is ready to be published at https://andreashandel.github.io/mywebsite/`. Click on the link. If everything works, your website is now live and public! 
 
-**That's basically it. Now the hard part starts, creating good content. 😄 **
+**That's basically it. Now the hard part starts, creating good content. 😄**
 
 
 # Updating your site
@@ -213,7 +212,8 @@ Here are some thoughts and suggestions that I've learned by using this setup for
 * I like to be able to specify the date when a page was last changed. The problem is that all pages are always rebuild, so asking for 'current date' during rebuilding doesn't work. What I found out to work is to have this line in the YAML file header: `file.mtime(knitr::current_input())`. It gets the 'last modified' time stamp of the file that is being processed and displays it. It's not perfect, e.g. if you recently cloned the files from Github to a new computer, it will show that date as the modified date. But it's good enough for me. If you want exact _last edited date_ time stamps, you'll probably have to do it manually.
 
 * It's easy to have broken links when creating any website and it's good to check that things are ok. There are simple free tools out there that let you check to make sure links are not broken. I like using [Dr Link Check](https://www.drlinkcheck.com/) or the [W3C Link Checker](https://validator.w3.org/checklink). I'm sure many others exist. 
- 
+
+* You have access to more bootstrap themes through the [bslib R package](https://rstudio.github.io/bslib/index.html). 
  
 
 # More Information
