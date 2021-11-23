@@ -58,6 +58,8 @@ Review of my technology stack for online courses
   * Github
   * Slack
   * gradingapp
+
+* Experiences teaching a course using Github organization versus not.
   
 * gh_class package to manage class with github and my experience using github for teaching: workflow, exercises
 
